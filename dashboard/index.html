@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P2603 SW-K60 - Análisis de Flexibilidad | Cartón Colombia</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <span class="logo-text">DML</span>
+                <span class="logo-accent">Engineering</span>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link active">Inicio</a>
+                <a href="tecnico.html" class="nav-link">Técnico</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1 class="hero-title">P2603 SW-K60</h1>
+            <p class="hero-subtitle">Análisis de Flexibilidad de Tuberías | Cartón Colombia</p>
+        </section>
+
+        <!-- Stats Generales -->
+        <section class="stats" id="stats">
+            <div class="stat-card">
+                <div class="stat-value" id="stat-total">--</div>
+                <div class="stat-label">Líneas Analizadas</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="stat-passed">--</div>
+                <div class="stat-label">Cumplen Norma</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="stat-ratio">--%</div>
+                <div class="stat-label">Ratio Máximo</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value mono" id="stat-date">--</div>
+                <div class="stat-label">Última Actualización</div>
+            </div>
+        </section>
+
+        <!-- Gráficas Resumen -->
+        <section class="card mb-lg">
+            <h2>Resumen de Resultados</h2>
+            <div class="charts-container">
+                <div class="chart-wrapper">
+                    <canvas id="compliance-chart"></canvas>
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="status-chart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tabla Resumen -->
+        <section class="card mb-lg">
+            <h2>Detalle por Línea</h2>
+            <div class="table-container">
+                <table id="lineas-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Línea</th>
+                            <th>Estado</th>
+                            <th>Ratio Máx.</th>
+                            <th>Nodo Crítico</th>
+                            <th>Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lineas-tbody">
+                        <tr>
+                            <td colspan="6" class="text-center">Cargando datos...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Grid de Líneas -->
+        <section>
+            <h2>Líneas Analizadas</h2>
+            <div class="lineas-grid" id="lineas-grid">
+                <div class="text-center" style="grid-column: 1/-1;">
+                    <p>Cargando isométricos...</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <p class="footer-text">P2603 SW-K60 - Cartón Colombia | DML Engineering</p>
+            <p class="footer-meta">Última actualización: <span id="last-update">--</span></p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/images.js"></script>
+    <script src="assets/js/charts.js"></script>
+    <script>
+        // Cargar datos y renderizar
+        async function loadData() {
+            try {
+                const response = await fetch('_data/lineas.json');
+                const data = await response.json();
+
+                // Actualizar stats
+                document.getElementById('stat-total').textContent = data.total_lineas;
+                document.getElementById('stat-date').textContent = data.ultima_actualizacion;
+
+                // Calcular stats
+                let passedCount = 0;
+                let maxRatio = 0;
+                data.lineas.forEach(linea => {
+                    if (linea.compliance && linea.compliance.passed) passedCount++;
+                    if (linea.compliance && linea.compliance.max_ratio_pct > maxRatio) {
+                        maxRatio = linea.compliance.max_ratio_pct;
+                    }
+                });
+
+                document.getElementById('stat-passed').textContent = passedCount;
+                document.getElementById('stat-ratio').textContent = maxRatio.toFixed(1) + '%';
+                document.getElementById('last-update').textContent = data.ultima_actualizacion;
+
+                // Renderizar tabla
+                renderTable(data.lineas);
+
+                // Renderizar grid
+                renderGrid(data.lineas);
+
+                // Renderizar gráficas
+                renderCharts(data);
+
+            } catch (error) {
+                console.error('Error cargando datos:', error);
+                document.getElementById('lineas-tbody').innerHTML =
+                    '<tr><td colspan="6" class="text-center">Error al cargar datos</td></tr>';
+            }
+        }
+
+        function renderTable(lineas) {
+            const tbody = document.getElementById('lineas-tbody');
+            tbody.innerHTML = lineas.map(linea => {
+                const compliance = linea.compliance || {};
+                const hasData = typeof compliance.passed === 'boolean';
+                const passed = compliance.passed;
+                const ratio = compliance.max_ratio_pct || 0;
+                const node = compliance.max_node || '-';
+
+                return `
+                    <tr onclick="window.location='linea.html?id=${linea.id}'" style="cursor: pointer;">
+                        <td class="mono">${linea.id}</td>
+                        <td>${linea.nombre}</td>
+                        <td>
+                            <span class="linea-status ${hasData ? (passed ? 'passed' : 'failed') : 'no-data'}">
+                                ${hasData ? (passed ? '✓ PASSED' : '✗ FAILED') : '? SIN DATOS'}
+                            </span>
+                        </td>
+                        <td class="mono">${hasData ? ratio.toFixed(1) + '%' : '-'}</td>
+                        <td class="mono">${hasData ? node : '-'}</td>
+                        <td>${linea.fecha_analisis}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function renderGrid(lineas) {
+            const grid = document.getElementById('lineas-grid');
+            grid.innerHTML = lineas.map(linea => {
+                const compliance = linea.compliance || {};
+                const hasData = typeof compliance.passed === 'boolean';
+                const passed = compliance.passed;
+                const ratio = compliance.max_ratio_pct || 0;
+
+                // Ruta al isométrico (assets/iso/, generada por el parser)
+                const isoPath = linea.isometrico || 'assets/iso/placeholder.png';
+
+                return `
+                    <div class="linea-card" onclick="window.location='linea.html?id=${linea.id}'">
+                        <img data-src="${isoPath}" alt="${linea.nombre}" class="linea-image lightbox-enabled loading">
+                        <div class="linea-content">
+                            <div class="linea-id mono">${linea.id}</div>
+                            <div class="linea-title">${linea.nombre}</div>
+                            <span class="linea-status ${hasData ? (passed ? 'passed' : 'failed') : 'no-data'}">
+                                ${hasData ? (passed ? '✓ PASSED' : '✗ FAILED') : '? SIN DATOS'}
+                            </span>
+                            <div class="linea-ratio mono">Ratio: ${ratio.toFixed(1)}%</div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderCharts(data) {
+            const ctx1 = document.getElementById('compliance-chart');
+            const ctx2 = document.getElementById('status-chart');
+
+            if (!ctx1 || !ctx2) return;
+
+            // Datos para gráfica de compliance
+            const labels = data.lineas.map(l => l.id);
+            const ratios = data.lineas.map(l => l.compliance?.max_ratio_pct || 0);
+            const colors = ratios.map(r => r < 80 ? '#00ff88' : r < 95 ? '#ffaa00' : '#ff3366');
+
+            // Gráfica de barras: Ratios de compliance
+            new Chart(ctx1, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Ratio de Compliance (%)',
+                        data: ratios,
+                        backgroundColor: colors,
+                        borderColor: colors,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { display: false },
+                        title: {
+                            display: true,
+                            text: 'Ratio de Compliance por Línea',
+                            color: '#a0a8c0'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: 'rgba(255,255,255,0.05)' },
+                            ticks: { color: '#6a7088' }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: '#6a7088' }
+                        }
+                    }
+                }
+            });
+
+            // Gráfica de pie: Estados
+            const passedCount = data.lineas.filter(l => l.compliance?.passed).length;
+            const failedCount = data.total_lineas - passedCount;
+
+            new Chart(ctx2, {
+                type: 'doughnut',
+                data: {
+                    labels: ['PASSED', 'FAILED'],
+                    datasets: [{
+                        data: [passedCount, failedCount],
+                        backgroundColor: ['#00ff88', '#ff3366'],
+                        borderColor: ['#00ff88', '#ff3366'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: { color: '#a0a8c0' }
+                        },
+                        title: {
+                            display: true,
+                            text: 'Distribución de Estados',
+                            color: '#a0a8c0'
+                        }
+                    }
+                }
+            });
+        }
+
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', loadData);
+    </script>
+
+    <style>
+        .charts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 300px;
+        }
+    </style>
+</body>
+</html>

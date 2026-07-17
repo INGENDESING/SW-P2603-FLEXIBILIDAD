@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Técnico - P2603 SW-K60 | Cartón Colombia</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <span class="logo-text">DML</span>
+                <span class="logo-accent">Engineering</span>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Inicio</a>
+                <a href="tecnico.html" class="nav-link active">Técnico</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <h1>Reportes Técnicos Detallados</h1>
+        <p class="hero-subtitle">Datos completos de análisis de flexibilidad - CAESAR II 2019</p>
+
+        <!-- Selector de Línea -->
+        <section class="card mb-lg">
+            <h2>Seleccionar Línea</h2>
+            <select id="linea-selector" class="linea-select">
+                <option value="">-- Seleccionar línea --</option>
+            </select>
+        </section>
+
+        <!-- Secciones de Report -->
+        <div id="report-content" style="display: none;">
+            <!-- CODE COMPLIANCE -->
+            <section class="card mb-lg" id="compliance-section">
+                <h2>CODE COMPLIANCE REPORT</h2>
+                <div id="compliance-summary" class="mb-lg"></div>
+                <div class="table-container">
+                    <table id="compliance-table">
+                        <thead>
+                            <tr>
+                                <th>Elemento</th>
+                                <th>Nodo Desde</th>
+                                <th>Nodo Hasta</th>
+                                <th>Code Stress (kPa)</th>
+                                <th>Allowable (kPa)</th>
+                                <th>Ratio (%)</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- DISPLACEMENTS -->
+            <section class="card mb-lg" id="displacements-section">
+                <h2>DISPLACEMENTS REPORT</h2>
+                <div class="table-container">
+                    <table id="displacements-table">
+                        <thead>
+                            <tr>
+                                <th>Nodo</th>
+                                <th>DX (mm)</th>
+                                <th>DY (mm)</th>
+                                <th>DZ (mm)</th>
+                                <th>RX (deg)</th>
+                                <th>RY (deg)</th>
+                                <th>RZ (deg)</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- RESTRAINTS -->
+            <section class="card mb-lg" id="restraints-section">
+                <h2>RESTRAINTS REPORT</h2>
+                <div class="table-container">
+                    <table id="restraints-table">
+                        <thead>
+                            <tr>
+                                <th>Nodo</th>
+                                <th>FX (N)</th>
+                                <th>FY (N)</th>
+                                <th>FZ (N)</th>
+                                <th>MX (N·m)</th>
+                                <th>MY (N·m)</th>
+                                <th>MZ (N·m)</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- STRESSES -->
+            <section class="card mb-lg" id="stresses-section">
+                <h2>B31.3 STRESSES REPORT</h2>
+                <div id="stresses-summary" class="mb-lg"></div>
+                <div class="table-container">
+                    <table id="stresses-table">
+                        <thead>
+                            <tr>
+                                <th>Nodo</th>
+                                <th>SLP (kPa)</th>
+                                <th>F/A (kPa)</th>
+                                <th>Bending (kPa)</th>
+                                <th>Torsion (kPa)</th>
+                                <th>Code (kPa)</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+
+        <div id="no-data" class="text-center">
+            <p>Seleccione una línea para ver los detalles técnicos</p>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <p class="footer-text">P2603 SW-K60 - Cartón Colombia | DML Engineering</p>
+            <p class="footer-meta">Última actualización: <span id="last-update">--</span></p>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        let allData = null;
+
+        async function loadData() {
+            try {
+                const response = await fetch('_data/lineas.json');
+                allData = await response.json();
+
+                // Poblar selector
+                const selector = document.getElementById('linea-selector');
+                allData.lineas.forEach((linea, index) => {
+                    const option = document.createElement('option');
+                    option.value = index;
+                    option.textContent = `${linea.id} - ${linea.nombre}`;
+                    selector.appendChild(option);
+                });
+
+                // Event listener
+                selector.addEventListener('change', (e) => {
+                    if (e.target.value !== '') {
+                        showLineaData(parseInt(e.target.value));
+                    }
+                });
+
+            } catch (error) {
+                console.error('Error cargando datos:', error);
+            }
+        }
+
+        function showLineaData(index) {
+            const linea = allData.lineas[index];
+
+            document.getElementById('no-data').style.display = 'none';
+            document.getElementById('report-content').style.display = 'block';
+
+            // Compliance
+            renderCompliance(linea);
+
+            // Displacements
+            renderDisplacements(linea);
+
+            // Restraints
+            renderRestraints(linea);
+
+            // Stresses
+            renderStresses(linea);
+        }
+
+        function renderCompliance(linea) {
+            const c = linea.compliance || {};
+            const summary = document.getElementById('compliance-summary');
+            summary.innerHTML = `
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-value mono">${typeof c.passed === 'boolean' ? (c.passed ? 'PASSED' : 'FAILED') : 'SIN DATOS'}</div>
+                        <div class="stat-label">Estado</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value mono">${(c.max_ratio_pct || 0).toFixed(1)}%</div>
+                        <div class="stat-label">Ratio Máximo</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value mono">${c.max_node || '-'}</div>
+                        <div class="stat-label">Nodo Crítico</div>
+                    </div>
+                </div>
+            `;
+
+            const tbody = document.querySelector('#compliance-table tbody');
+            if (c.elements && c.elements.length > 0) {
+                tbody.innerHTML = c.elements.map(el => `
+                    <tr>
+                        <td class="mono">${el.element}</td>
+                        <td class="mono">${el.from_node}</td>
+                        <td class="mono">${el.to_node}</td>
+                        <td class="mono">${el.code_stress?.toFixed(1) || 'N/A'}</td>
+                        <td class="mono">${el.allowable?.toFixed(1) || 'N/A'}</td>
+                        <td class="mono">${el.ratio?.toFixed(1) || 'N/A'}%</td>
+                    </tr>
+                `).join('');
+            } else {
+                tbody.innerHTML = '<tr><td colspan="6" class="text-center">Datos no disponibles</td></tr>';
+            }
+        }
+
+        function renderDisplacements(linea) {
+            const d = linea.displacements || {};
+            const tbody = document.querySelector('#displacements-table tbody');
+
+            const loadCases = Object.keys(d.load_cases || {});
+            if (loadCases.length > 0) {
+                const opeData = d.load_cases['ope'] || d.load_cases[loadCases[0]];
+                if (opeData.nodes && opeData.nodes.length > 0) {
+                    tbody.innerHTML = opeData.nodes.map(node => `
+                        <tr>
+                            <td class="mono">${node.node}</td>
+                            <td class="mono">${node.dx?.toFixed(3) || 'N/A'}</td>
+                            <td class="mono">${node.dy?.toFixed(3) || 'N/A'}</td>
+                            <td class="mono">${node.dz?.toFixed(3) || 'N/A'}</td>
+                            <td class="mono">${node.rx?.toFixed(4) || 'N/A'}</td>
+                            <td class="mono">${node.ry?.toFixed(4) || 'N/A'}</td>
+                            <td class="mono">${node.rz?.toFixed(4) || 'N/A'}</td>
+                        </tr>
+                    `).join('');
+                } else {
+                    tbody.innerHTML = '<tr><td colspan="7" class="text-center">Datos no disponibles</td></tr>';
+                }
+            } else {
+                tbody.innerHTML = '<tr><td colspan="7" class="text-center">Datos no disponibles</td></tr>';
+            }
+        }
+
+        function renderRestraints(linea) {
+            const r = linea.restraints || {};
+            const tbody = document.querySelector('#restraints-table tbody');
+
+            const loadCases = Object.keys(r.load_cases || {});
+            if (loadCases.length > 0) {
+                const opeData = r.load_cases['ope'] || r.load_cases[loadCases[0]];
+                if (opeData.nodes && opeData.nodes.length > 0) {
+                    tbody.innerHTML = opeData.nodes.map(node => `
+                        <tr>
+                            <td class="mono">${node.node}</td>
+                            <td class="mono">${node.fx?.toFixed(0) || '0'}</td>
+                            <td class="mono">${node.fy?.toFixed(0) || '0'}</td>
+                            <td class="mono">${node.fz?.toFixed(0) || '0'}</td>
+                            <td class="mono">${node.mx?.toFixed(0) || '0'}</td>
+                            <td class="mono">${node.my?.toFixed(0) || '0'}</td>
+                            <td class="mono">${node.mz?.toFixed(0) || '0'}</td>
+                        </tr>
+                    `).join('');
+                } else {
+                    tbody.innerHTML = '<tr><td colspan="7" class="text-center">Datos no disponibles</td></tr>';
+                }
+            } else {
+                tbody.innerHTML = '<tr><td colspan="7" class="text-center">Datos no disponibles</td></tr>';
+            }
+        }
+
+        function renderStresses(linea) {
+            const s = linea.stresses || {};
+            const summary = document.getElementById('stresses-summary');
+            summary.innerHTML = `
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-value mono">${(s.max_stress || 0).toFixed(0)}</div>
+                        <div class="stat-label">Stress Máx (kPa)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value mono">${s.max_node || '-'}</div>
+                        <div class="stat-label">Nodo Crítico</div>
+                    </div>
+                </div>
+            `;
+
+            const tbody = document.querySelector('#stresses-table tbody');
+            tbody.innerHTML = '<tr><td colspan="6" class="text-center">Datos de stress detallados no disponibles en versión actual</td></tr>';
+        }
+
+        document.addEventListener('DOMContentLoaded', loadData);
+    </script>
+
+    <style>
+        .linea-select {
+            width: 100%;
+            padding: var(--spacing-md);
+            background: var(--bg-secondary);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            color: var(--text-primary);
+            font-size: 0.875rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .linea-select:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+        }
+
+        #report-content {
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle Línea - P2603 SW-K60 | Cartón Colombia</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <span class="logo-text">DML</span>
+                <span class="logo-accent">Engineering</span>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Inicio</a>
+                <a href="tecnico.html" class="nav-link">Técnico</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb mb-lg">
+            <a href="index.html">Inicio</a>
+            <span class="separator">/</span>
+            <span id="linea-id">--</span>
+        </div>
+
+        <!-- Hero de Línea -->
+        <section class="linea-hero mb-lg">
+            <div class="linea-hero-content">
+                <h1 id="linea-titulo">--</h1>
+                <p id="linea-subtitulo">--</p>
+            </div>
+        </section>
+
+        <!-- Isométrico Grande -->
+        <section class="card mb-lg">
+            <h2>Isométrico</h2>
+            <div class="isometrico-container">
+                <img id="linea-isometrico" src="" alt="Isométrico" class="isometrico-img">
+            </div>
+        </section>
+
+        <!-- Compliance Summary -->
+        <section class="card mb-lg">
+            <h2>CODE COMPLIANCE - Resumen</h2>
+            <div class="compliance-status" id="compliance-status">
+                <span class="status-badge" id="status-badge">--</span>
+                <div class="status-details">
+                    <div class="status-item">
+                        <span class="status-label">Ratio Máximo:</span>
+                        <span class="status-value mono" id="max-ratio">--</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">Nodo Crítico:</span>
+                        <span class="status-value mono" id="max-node">--</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">Code Stress:</span>
+                        <span class="status-value mono" id="code-stress">--</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">Allowable:</span>
+                        <span class="status-value mono" id="allowable">--</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gráficas de la Línea -->
+        <section class="card mb-lg">
+            <h2>Resultados Gráficos</h2>
+            <div class="charts-container">
+                <div class="chart-wrapper">
+                    <canvas id="linea-chart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tablas Detalladas -->
+        <section class="card mb-lg">
+            <h2>Desplazamientos Nodales (Load Case OPE)</h2>
+            <div class="table-container">
+                <table id="displacements-table">
+                    <thead>
+                        <tr>
+                            <th>Nodo</th>
+                            <th>DX (mm)</th>
+                            <th>DY (mm)</th>
+                            <th>DZ (mm)</th>
+                            <th>Resultante (mm)</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Link al archivo original -->
+        <section class="card">
+            <h2>Descargas</h2>
+            <a id="download-md" href="" class="download-btn" download>
+                <span>⬇</span> Descargar Reporte Original (.md)
+            </a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <p class="footer-text">P2603 SW-K60 - Cartón Colombia | DML Engineering</p>
+            <p class="footer-meta">Última actualización: <span id="last-update">--</span></p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/images.js"></script>
+    <script src="assets/js/charts.js"></script>
+    <script>
+        let lineaData = null;
+
+        async function loadLineaData() {
+            try {
+                // Obtener ID de la línea de la URL
+                const urlParams = new URLSearchParams(window.location.search);
+                const lineaId = urlParams.get('id');
+
+                if (!lineaId) {
+                    document.getElementById('linea-titulo').textContent = 'Línea no especificada';
+                    return;
+                }
+
+                // Cargar datos
+                const response = await fetch('_data/lineas.json');
+                const data = await response.json();
+
+                // Buscar la línea
+                lineaData = data.lineas.find(l => l.id === lineaId);
+
+                if (!lineaData) {
+                    document.getElementById('linea-titulo').textContent = `Línea ${lineaId} no encontrada`;
+                    return;
+                }
+
+                // Renderizar datos
+                renderLinea(lineaData);
+
+            } catch (error) {
+                console.error('Error cargando datos:', error);
+            }
+        }
+
+        function renderLinea(linea) {
+            // Breadcrumb y títulos
+            document.getElementById('linea-id').textContent = linea.id;
+            document.getElementById('linea-titulo').textContent = linea.nombre;
+            document.getElementById('linea-subtitulo').textContent = `Job: ${linea.job_name} | Fecha: ${linea.fecha_analisis}`;
+
+            // Isométrico (ruta relativa a dashboard/, copiada por el parser)
+            const isoPath = linea.isometrico || 'assets/iso/placeholder.png';
+            document.getElementById('linea-isometrico').src = isoPath;
+
+            // Compliance status (sin datos ≠ fallido)
+            const c = linea.compliance || {};
+            const hasData = typeof c.passed === 'boolean';
+            const statusBadge = document.getElementById('status-badge');
+            statusBadge.textContent = hasData ? (c.passed ? '✓ PASSED' : '✗ FAILED') : '? SIN DATOS';
+            statusBadge.className = 'status-badge ' + (hasData ? (c.passed ? 'passed' : 'failed') : 'no-data');
+
+            document.getElementById('max-ratio').textContent = hasData ? (c.max_ratio_pct || 0).toFixed(1) + '%' : '-';
+            document.getElementById('max-node').textContent = hasData ? (c.max_node || '-') : '-';
+            document.getElementById('code-stress').textContent = hasData ? (c.code_stress_kpa || 0).toFixed(0) + ' kPa' : '-';
+            document.getElementById('allowable').textContent = hasData ? (c.allowable_kpa || 0).toFixed(0) + ' kPa' : '-';
+
+            // Descarga del reporte original (copiado a dashboard/assets/md/)
+            document.getElementById('download-md').href = linea.reporte_md || '#';
+
+            // Tabla de desplazamientos
+            renderDisplacementsTable(linea);
+
+            // Gráfica
+            renderLineaChart(linea);
+        }
+
+        function renderDisplacementsTable(linea) {
+            const d = linea.displacements || {};
+            const tbody = document.querySelector('#displacements-table tbody');
+
+            const opeData = d.load_cases?.ope || {};
+            if (opeData.nodes && opeData.nodes.length > 0) {
+                tbody.innerHTML = opeData.nodes.map(node => {
+                    const resultante = Math.sqrt(
+                        Math.pow(node.dx || 0, 2) +
+                        Math.pow(node.dy || 0, 2) +
+                        Math.pow(node.dz || 0, 2)
+                    );
+                    return `
+                        <tr>
+                            <td class="mono">${node.node}</td>
+                            <td class="mono">${node.dx?.toFixed(3) || 'N/A'}</td>
+                            <td class="mono">${node.dy?.toFixed(3) || 'N/A'}</td>
+                            <td class="mono">${node.dz?.toFixed(3) || 'N/A'}</td>
+                            <td class="mono">${resultante.toFixed(3)}</td>
+                        </tr>
+                    `;
+                }).join('');
+            } else {
+                tbody.innerHTML = '<tr><td colspan="5" class="text-center">Datos no disponibles</td></tr>';
+            }
+        }
+
+        function renderLineaChart(linea) {
+            const ctx = document.getElementById('linea-chart');
+            if (!ctx) return;
+
+            const d = linea.displacements || {};
+            const opeData = d.load_cases?.ope || {};
+            const nodes = opeData.nodes || [];
+
+            if (nodes.length === 0) return;
+
+            // Crear gráfica de desplazamientos
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: nodes.map(n => n.node),
+                    datasets: [
+                        {
+                            label: 'DX (mm)',
+                            data: nodes.map(n => n.dx),
+                            borderColor: '#00f5ff',
+                            backgroundColor: 'rgba(0, 245, 255, 0.1)',
+                            tension: 0.1
+                        },
+                        {
+                            label: 'DY (mm)',
+                            data: nodes.map(n => n.dy),
+                            borderColor: '#ff00ff',
+                            backgroundColor: 'rgba(255, 0, 255, 0.1)',
+                            tension: 0.1
+                        },
+                        {
+                            label: 'DZ (mm)',
+                            data: nodes.map(n => n.dz),
+                            borderColor: '#00ff88',
+                            backgroundColor: 'rgba(0, 255, 136, 0.1)',
+                            tension: 0.1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: { color: '#a0a8c0' }
+                        },
+                        title: {
+                            display: true,
+                            text: 'Desplazamientos Nodales',
+                            color: '#a0a8c0'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            grid: { color: 'rgba(255,255,255,0.05)' },
+                            ticks: { color: '#6a7088' }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: '#6a7088' },
+                            title: {
+                                display: true,
+                                text: 'Nodo',
+                                color: '#6a7088'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', loadLineaData);
+    </script>
+
+    <style>
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .breadcrumb a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .separator {
+            color: var(--text-muted);
+        }
+
+        .linea-hero {
+            text-align: center;
+            padding: var(--spacing-xl) 0;
+        }
+
+        .linea-titulo {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .linea-subtitulo {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .isometrico-container {
+            text-align: center;
+        }
+
+        .isometrico-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--glass-border);
+        }
+
+        .compliance-status {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-lg);
+        }
+
+        .status-badge {
+            font-size: 2rem;
+            font-weight: 700;
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-md);
+            min-width: 200px;
+            text-align: center;
+        }
+
+        .status-badge.passed {
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--success);
+            border: 1px solid var(--success);
+        }
+
+        .status-badge.failed {
+            background: rgba(255, 51, 102, 0.1);
+            color: var(--error);
+            border: 1px solid var(--error);
+        }
+
+        .status-badge.no-data {
+            background: rgba(160, 168, 192, 0.1);
+            color: var(--text-muted);
+            border: 1px solid var(--text-muted);
+        }
+
+        .status-details {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .status-item {
+            background: var(--glass-bg);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+        }
+
+        .status-label {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .status-value {
+            font-size: 1rem;
+            color: var(--text-primary);
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-md) var(--spacing-lg);
+            background: var(--bg-secondary);
+            border: 1px solid var(--accent-cyan);
+            border-radius: var(--radius-md);
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all var(--transition-normal);
+        }
+
+        .download-btn:hover {
+            background: rgba(0, 245, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .compliance-status {
+                flex-direction: column;
+            }
+
+            .status-badge {
+                min-width: 100%;
+            }
+        }
+    </style>
+</body>
+</html>

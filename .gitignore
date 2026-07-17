@@ -1,0 +1,16 @@
+# Exports crudos de isométricos Plant 3D (los PNG/JPEG ya están en el repo)
+*.tif
+*.tiff
+
+# Temporales y auxiliares de CAESAR II
+*.tmp
+*.HPL
+*.wrn
+
+# Sistema
+Thumbs.db
+desktop.ini
+
+# Python
+__pycache__/
+*.pyc
