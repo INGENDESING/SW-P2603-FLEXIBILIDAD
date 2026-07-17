@@ -155,6 +155,12 @@ mono, .mono {
     gap: var(--spacing-sm);
 }
 
+.logo-img {
+    height: 2.25rem;
+    width: auto;
+    display: block;
+}
+
 .logo-text {
     font-size: 1.25rem;
     font-weight: 700;

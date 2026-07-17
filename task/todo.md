@@ -65,3 +65,28 @@ Archivos entregables:
 Verificación ejecutada:
 - Script de chequeo: 7/7 líneas passed=True, ratio/nodo exactos vs .md → "VERIFICACION GLOBAL: OK".
 - Servidor local (puerto 8123): las 3 páginas, el JSON, las 7 imágenes y los 7 .md responden HTTP 200.
+
+
+---
+
+# Tarea: Resultados gráficos CAESAR + logo DML (2026-07-17)
+
+## Contexto
+- Objetivo: incluir en el dashboard las imágenes `ResultadosGraficos<PCF>.png` exportadas de CAESAR (4 de 7 disponibles) y el logo DML (`logo1.png`)
+- Disponibles: SIM-002 (103), SIM-003 (104), SIM-007 (107), SIM-011 (108). Pendientes: SIM-008, SIM-009, SIM-010 → espacio reservado
+
+## Revisión
+
+Resumen de cambios:
+- `scripts/parse_caesar_md.py`: la detección de isométrico ahora excluye `ResultadosGraficos*` (riesgo real de confundirlo con el isométrico, glob `*.png` por orden no garantizado); copia gráficos → `dashboard/assets/graficos/SIM-XXX.png` y `logo1.png` → `dashboard/assets/logo.png`; nuevo campo JSON `resultados_graficos` (null si no existe la imagen).
+- `dashboard/linea.html`: nueva sección "Resultados Gráficos — CAESAR II" (con lightbox); placeholder punteado "Espacio reservado…" cuando falta; la sección Chart.js se renombró a "Gráfica de Desplazamientos" para no duplicar títulos.
+- `dashboard/index.html`, `linea.html`, `tecnico.html` + `styles.css`: logo DML en el header (`.logo-img`, alto 2.25 rem; el PNG tiene canal alfa → se ve bien en fondo oscuro).
+
+Desviaciones: ninguna respecto a lo pedido.
+
+Limitaciones / trabajo futuro:
+- Faltan los gráficos de SIM-008, SIM-009, SIM-010: al agregarlos como `ResultadosGraficos*.png` en la carpeta de la línea y correr el parser, aparecen solos (el placeholder desaparece).
+
+Verificación ejecutada:
+- Parser regenerado: 7/7 PASSED con ratios/nodos intactos vs tabla Verdad CAESAR; isométricos siguen apuntando a PCF* (no a ResultadosGraficos).
+- Servidor local (8123): index, linea.html?id=SIM-011, logo.png, graficos SIM-002/SIM-011 y lineas.json → HTTP 200.

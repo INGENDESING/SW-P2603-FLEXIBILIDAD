@@ -9,6 +9,7 @@
       "carpeta": "DESCARGA BOMBA PP30BT03",
       "isometrico": "assets/iso/PCF108.png",
       "reporte_md": "assets/md/P2603-PR-PL-SIM-011.md",
+      "resultados_graficos": "assets/graficos/SIM-011.png",
       "fecha_analisis": "2026-07-17",
       "compliance": {
         "passed": true,
@@ -8152,6 +8153,7 @@
       "carpeta": "DESCARGA DE BOMBA DE RECIRCULACION 1 DDW",
       "isometrico": "assets/iso/PCF103.png",
       "reporte_md": "assets/md/P2603-PR-PL-SIM-002.md",
+      "resultados_graficos": "assets/graficos/SIM-002.png",
       "fecha_analisis": "2026-07-09",
       "compliance": {
         "passed": true,
@@ -10807,6 +10809,7 @@
       "carpeta": "DESCARGA DE BOMBA DE RECIRCULACION 2 DDW",
       "isometrico": "assets/iso/PCF104.png",
       "reporte_md": "assets/md/P2603-PR-PL-003.md",
+      "resultados_graficos": "assets/graficos/SIM-003.png",
       "fecha_analisis": "2026-07-09",
       "compliance": {
         "passed": true,
@@ -12552,6 +12555,7 @@
       "carpeta": "LINEA DE BOMBA DE VACIO NUEVA",
       "isometrico": "assets/iso/PCF107.png",
       "reporte_md": "assets/md/P2603-PR-PL-007.md",
+      "resultados_graficos": "assets/graficos/SIM-007.png",
       "fecha_analisis": "2026-07-09",
       "compliance": {
         "passed": true,
@@ -13968,6 +13972,7 @@
       "carpeta": "SUCCION DE BOMBA DE RECIRCULACION 1 DDW",
       "isometrico": "assets/iso/PCF106.png",
       "reporte_md": "assets/md/P2603-PR-PL-SIM-008.md",
+      "resultados_graficos": null,
       "fecha_analisis": "2026-07-09",
       "compliance": {
         "passed": true,
@@ -16749,6 +16754,7 @@
       "carpeta": "SUCCION DE BOMBA DE RECIRCULACION 2 DDW",
       "isometrico": "assets/iso/PCF105.png",
       "reporte_md": "assets/md/P2603-PR-PL-SIM-009.md",
+      "resultados_graficos": null,
       "fecha_analisis": "2026-07-08",
       "compliance": {
         "passed": true,
@@ -19600,6 +19606,7 @@
       "carpeta": "SUCCION DE BOMBA DE RECIRCULACION 3 DDW",
       "isometrico": "assets/iso/PCF102.jpeg",
       "reporte_md": "assets/md/P2603-PR-PL-SIM-010.md",
+      "resultados_graficos": null,
       "fecha_analisis": "2026-07-08",
       "compliance": {
         "passed": true,

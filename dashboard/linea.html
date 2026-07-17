@@ -11,6 +11,7 @@
     <header class="header">
         <div class="header-container">
             <div class="logo">
+                <img src="assets/logo.png" alt="DML Ingenieros Consultores" class="logo-img">
                 <span class="logo-text">DML</span>
                 <span class="logo-accent">Engineering</span>
             </div>
@@ -45,6 +46,14 @@
             </div>
         </section>
 
+        <!-- Resultados Gráficos exportados de CAESAR II -->
+        <section class="card mb-lg">
+            <h2>Resultados Gráficos — CAESAR II</h2>
+            <div class="isometrico-container" id="graficos-container">
+                <img id="linea-graficos" src="" alt="Resultados gráficos CAESAR II" class="isometrico-img lightbox-enabled">
+            </div>
+        </section>
+
         <!-- Compliance Summary -->
         <section class="card mb-lg">
             <h2>CODE COMPLIANCE - Resumen</h2>
@@ -73,7 +82,7 @@
 
         <!-- Gráficas de la Línea -->
         <section class="card mb-lg">
-            <h2>Resultados Gráficos</h2>
+            <h2>Gráfica de Desplazamientos</h2>
             <div class="charts-container">
                 <div class="chart-wrapper">
                     <canvas id="linea-chart"></canvas>
@@ -163,6 +172,14 @@
             // Isométrico (ruta relativa a dashboard/, copiada por el parser)
             const isoPath = linea.isometrico || 'assets/iso/placeholder.png';
             document.getElementById('linea-isometrico').src = isoPath;
+
+            // Resultados gráficos CAESAR II (espacio reservado si aún no se exportan)
+            const grafContainer = document.getElementById('graficos-container');
+            if (linea.resultados_graficos) {
+                document.getElementById('linea-graficos').src = linea.resultados_graficos;
+            } else {
+                grafContainer.innerHTML = '<div class="graficos-placeholder">Espacio reservado — Resultados gráficos pendientes de exportar desde CAESAR II</div>';
+            }
 
             // Compliance status (sin datos ≠ fallido)
             const c = linea.compliance || {};
@@ -332,6 +349,19 @@
             height: auto;
             border-radius: var(--radius-md);
             border: 1px solid var(--glass-border);
+        }
+
+        .graficos-placeholder {
+            padding: var(--spacing-xl);
+            border: 2px dashed var(--glass-border);
+            border-radius: var(--radius-md);
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
         }
 
         .compliance-status {

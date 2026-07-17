@@ -259,16 +259,26 @@ class CaesarParser:
 
         return sections
 
-    def copy_assets(self, md_path: Path, job_name: str, iso_src: Optional[Path]) -> Dict[str, Optional[str]]:
-        """Copia isométrico y .md a dashboard/assets/ y devuelve rutas relativas"""
+    def copy_assets(self, md_path: Path, job_name: str, iso_src: Optional[Path],
+                    graficos_src: Optional[Path] = None,
+                    linea_id: str = '') -> Dict[str, Optional[str]]:
+        """Copia isométrico, resultados gráficos y .md a dashboard/assets/ y devuelve rutas relativas"""
         iso_rel = None
         md_rel = None
+        graf_rel = None
 
         if iso_src:
             iso_dir = self.root_dir / 'dashboard' / 'assets' / 'iso'
             iso_dir.mkdir(parents=True, exist_ok=True)
             shutil.copy2(iso_src, iso_dir / iso_src.name)
             iso_rel = f'assets/iso/{iso_src.name}'
+
+        if graficos_src and linea_id:
+            graf_dir = self.root_dir / 'dashboard' / 'assets' / 'graficos'
+            graf_dir.mkdir(parents=True, exist_ok=True)
+            graf_name = f'{linea_id}{graficos_src.suffix.lower()}'
+            shutil.copy2(graficos_src, graf_dir / graf_name)
+            graf_rel = f'assets/graficos/{graf_name}'
 
         if job_name != 'UNKNOWN':
             md_dir = self.root_dir / 'dashboard' / 'assets' / 'md'
@@ -277,7 +287,15 @@ class CaesarParser:
             shutil.copy2(md_path, md_dir / md_name)
             md_rel = f'assets/md/{md_name}'
 
-        return {'isometrico': iso_rel, 'reporte_md': md_rel}
+        return {'isometrico': iso_rel, 'reporte_md': md_rel, 'resultados_graficos': graf_rel}
+
+    def copy_logo(self):
+        """Copia el logo DML (logo1.png en la raíz del proyecto) a dashboard/assets/"""
+        logo_src = self.root_dir / 'logo1.png'
+        if logo_src.exists():
+            assets_dir = self.root_dir / 'dashboard' / 'assets'
+            assets_dir.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(logo_src, assets_dir / 'logo.png')
 
     def parse_md_file(self, md_path: Path) -> Optional[Dict[str, Any]]:
         """Parsea un archivo .md individual"""
@@ -292,28 +310,40 @@ class CaesarParser:
             fecha = self.extract_fecha(content)
             carpeta = md_path.parent.name
 
-            # Buscar isométrico correspondiente
+            # Buscar isométrico correspondiente (excluir ResultadosGraficos,
+            # que son salidas gráficas de CAESAR, no el isométrico de Plant 3D)
             iso_src = None
             for ext in ['*.png', '*.jpeg', '*.jpg']:
-                iso_files = list(md_path.parent.glob(ext))
+                iso_files = [f for f in md_path.parent.glob(ext)
+                             if not f.name.startswith('ResultadosGraficos')]
                 if iso_files:
                     iso_src = iso_files[0]
                     break
 
+            # Buscar resultados gráficos exportados de CAESAR (si existen)
+            graficos_src = None
+            graf_files = [f for f in sorted(md_path.parent.glob('ResultadosGraficos*'))
+                          if f.suffix.lower() in ('.png', '.jpg', '.jpeg')]
+            if graf_files:
+                graficos_src = graf_files[0]
+
+            linea_id = self.extract_linea_id(job_name)
+
             # Copiar assets al dashboard
-            assets = self.copy_assets(md_path, job_name, iso_src)
+            assets = self.copy_assets(md_path, job_name, iso_src, graficos_src, linea_id)
 
             # Dividir en secciones
             sections = self.split_into_sections(content)
 
             # Parsear cada sección
             linea_data = {
-                'id': self.extract_linea_id(job_name),
+                'id': linea_id,
                 'job_name': job_name,
                 'nombre': carpeta,
                 'carpeta': carpeta,
                 'isometrico': assets['isometrico'],
                 'reporte_md': assets['reporte_md'],
+                'resultados_graficos': assets['resultados_graficos'],
                 'fecha_analisis': fecha,
                 'compliance': {},
                 'displacements': {'load_cases': {}},
@@ -376,6 +406,10 @@ class CaesarParser:
                 self.data['lineas'].append(linea_data)
 
         self.data['total_lineas'] = len(self.data['lineas'])
+
+        # Logo DML (asset global del dashboard)
+        self.copy_logo()
+
         return self.data
 
     def save_json(self, output_path: str):

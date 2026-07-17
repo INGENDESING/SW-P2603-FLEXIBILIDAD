@@ -4,8 +4,9 @@ Análisis de flexibilidad de tuberías con CAESAR II 2019. Flujo de trabajo: iso
 
 ## Estado actual
 
-- **Última tarea completada**: Auditoría y corrección del dashboard (2026-07-17). El parser extraía datos vacíos (6/7 líneas "FAILED" falsas); corregido → 7/7 PASSED, ratios/nodos verificados contra los .md de CAESAR.
-- **Próxima tarea pendiente**: Crear repo GitHub, habilitar Pages y pruebas de integración CI/CD (esperando al usuario)
+- **Última tarea completada**: Despliegue del dashboard en GitHub Pages (2026-07-17). Sitio en vivo: https://ingendesing.github.io/SW-P2603-FLEXIBILIDAD/ — 7/7 líneas PASSED, JSON, isométricos y .md con HTTP 200. Workflow CI/CD probado con push real (run success).
+- **Próxima tarea pendiente**: Validación con el cliente (Cartón Colombia)
+- **Repo**: https://github.com/INGENDESING/SW-P2603-FLEXIBILIDAD (público; Pages en repos privados exige GitHub Pro)
 - **Fecha de última actualización**: 2026-07-17
 
 ## Bases de diseño congeladas
@@ -53,6 +54,8 @@ Análisis de flexibilidad de tuberías con CAESAR II 2019. Flujo de trabajo: iso
 | `dashboard/linea.html` | Página individual de línea (`?id=SIM-011`) |
 | `dashboard/_data/lineas.json` | Datos estructurados (generado por el parser) |
 | `dashboard/assets/iso/` | Isométricos copiados por el parser (PCF102–108) |
+| `dashboard/assets/graficos/` | Resultados gráficos CAESAR por línea (`SIM-XXX.png`; faltan 008/009/010) |
+| `dashboard/assets/logo.png` | Logo DML (copia de `logo1.png` de la raíz) |
 | `dashboard/assets/md/` | Reportes .md copiados por el parser (descarga desde linea.html) |
 | `.github/workflows/update-dashboard.yml` | CI/CD pipeline |
 | `task/todo.md` | Plan y revisión de la auditoría 2026-07-17 |
@@ -75,7 +78,7 @@ Análisis de flexibilidad de tuberías con CAESAR II 2019. Flujo de trabajo: iso
 - **Normalización de saltos**: lectura con `newline=''` y reemplazo explícito `\r\n`/`\r` → `\n`; los .md antiguos mezclan `\r\r\n` (miles de CR sueltos) y eso destruía la detección de secciones
 - **Secciones como listas**: cada página/caso genera una sección; compliance usa el ÚLTIMO CODE COMPLIANCE (resumen global); displacements/restraints hacen merge de casos CON datos (ope/sus/exp); stresses = máximo bending global
 - **Regex clave**: job `P2603-PR-PL-(?:SIM-)?\d+` (003 y 007 no llevan "SIM"), ratio `Ratio\s*\(%\):` (CAESAR pone espacio), caso `CASE \d+ \(([\w-]+)\)` (acepta "Alt-SUS")
-- **Assets autocontenidos**: el parser copia isométricos a `dashboard/assets/iso/` y .md a `dashboard/assets/md/` → rutas relativas a `dashboard/`, funciona local y en Pages
+- **Assets autocontenidos**: el parser copia isométricos a `dashboard/assets/iso/`, resultados gráficos a `dashboard/assets/graficos/` (desde `ResultadosGraficos*.png` de cada carpeta; ese prefijo se EXCLUYE de la detección de isométrico), .md a `dashboard/assets/md/` y el logo `logo1.png` → `dashboard/assets/logo.png` → rutas relativas a `dashboard/`, funciona local y en Pages
 
 ### Dashboard
 - HTML estático + JSON dinámico → sin backend; páginas individuales por URL param `?id=SIM-XXX`
@@ -90,6 +93,11 @@ Análisis de flexibilidad de tuberías con CAESAR II 2019. Flujo de trabajo: iso
 - **Causa**: `\r\r\n` mixtos → líneas vacías extra → REPORT fuera de la ventana de detección → JSON vacío; HTML pintaba `undefined` como FAILED
 - **Lección**: los .md de CAESAR no tienen saltos de línea consistentes; SIEMPRE normalizar antes de parsear. SIM-011 era CRLF puro → único que parseaba
 - **Verificación obligatoria**: tras regenerar el JSON, comparar ratio/nodo de las 7 líneas contra los .md (tabla de este archivo)
+
+### GitHub Pages: despliegue fallaba con "repository not found" (resuelto 2026-07-17)
+- **Causa 1**: repo privado en cuenta Free → Pages exige repo público o GitHub Pro. Se hizo público
+- **Causa 2**: `permissions` a nivel job en `deploy-pages` anulaban `contents` → checkout sin acceso. Todo job con `permissions` propios debe incluir `contents: read` si usa `actions/checkout`
+- **Causa 3**: Pages Source debe ser "GitHub Actions" (el workflow usa `actions/deploy-pages`); "Deploy from a branch" publica la raíz con Jekyll y excluye `_data/`
 
 ## Comandos / workflows útiles
 
@@ -120,10 +128,10 @@ python -m http.server 8000
 
 ## Preguntas abiertas / bloqueos
 
-- [ ] GitHub repo creado (usuario avisa cuando lo haga)
-- [ ] GitHub Pages habilitado (requiere repo primero)
-- [ ] Prueba de integración CI/CD (requiere repo)
-- [ ] Validación con cliente (pendiente despliegue)
+- [x] GitHub repo creado (2026-07-17, público)
+- [x] GitHub Pages habilitado — Source: GitHub Actions (2026-07-17)
+- [x] Prueba de integración CI/CD — run success tras fix de permisos (2026-07-17)
+- [ ] Validación con cliente (pendiente, sitio ya desplegado)
 
 ## Referencias externas
 
