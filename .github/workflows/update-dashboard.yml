@@ -8,7 +8,9 @@ on:
       - 'DESCARGA DE BOMBA DE RECIRCULACION*/**/*.md'
       - 'DESCARGA BOMBA*/**/*.md'
       - 'LINEA DE BOMBA DE VACIO*/**/*.md'
+      - '**/ResultadosGraficos*'
       - 'scripts/**'
+      - 'dashboard/**'
       - '.github/workflows/**'
 
   workflow_dispatch:
