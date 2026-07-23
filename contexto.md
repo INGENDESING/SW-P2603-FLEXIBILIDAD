@@ -4,11 +4,11 @@ Análisis de flexibilidad de tuberías con CAESAR II 2019. Flujo de trabajo: iso
 
 ## Estado actual
 
-- **Última tarea completada**: Resultados gráficos CAESAR + logo DML en dashboard (2026-07-17, commit `6e2ff09`). 4/7 líneas con gráficos (SIM-002/003/007/011); SIM-008/009/010 con espacio reservado. Sitio verificado en producción (assets y JSON con HTTP 200, workflow success).
+- **Última tarea completada**: Cambio de tema a modo claro, cambio de cliente a Smurfit Westrock y logo DML + Smurfit Westrock en header (2026-07-23, commit `cc54cdd`). Sitio verificado en producción (assets y JSON con HTTP 200, workflow success).
 - **Sitio en vivo**: https://ingendesing.github.io/SW-P2603-FLEXIBILIDAD/ (7/7 líneas PASSED)
 - **Próxima tarea pendiente**: Exportar desde CAESAR los gráficos de SIM-008, SIM-009 y SIM-010 (`ResultadosGraficos*.png` en la carpeta de cada línea) y validación con el cliente (Smurfit Westrock)
 - **Repo**: https://github.com/INGENDESING/SW-P2603-FLEXIBILIDAD (público; Pages en repos privados exige GitHub Pro)
-- **Fecha de última actualización**: 2026-07-17
+- **Fecha de última actualización**: 2026-07-23
 
 ## Bases de diseño congeladas
 
@@ -41,8 +41,9 @@ Análisis de flexibilidad de tuberías con CAESAR II 2019. Flujo de trabajo: iso
 ### 2. Dashboard Web
 - **Ubicación**: `dashboard/` (autocontenido: datos, imágenes y reportes dentro)
 - **Propósito**: Visualización de resultados para cliente (Smurfit Westrock) e interno DML
-- Modo oscuro (glassmorphism + neón), Chart.js vía CDN, lazy loading, lightbox, responsive
+- Modo claro profesional (glassmorphism suave), Chart.js vía CDN, lazy loading, lightbox, responsive
 - Badge "SIN DATOS" gris cuando una línea no tiene compliance (nunca más FAILED por datos faltantes)
+- Header con logos de Smurfit Westrock (cliente) y DML Ingenieros Consultores (consultora)
 
 ### 3. Archivos clave
 
@@ -56,7 +57,8 @@ Análisis de flexibilidad de tuberías con CAESAR II 2019. Flujo de trabajo: iso
 | `dashboard/_data/lineas.json` | Datos estructurados (generado por el parser) |
 | `dashboard/assets/iso/` | Isométricos copiados por el parser (PCF102–108) |
 | `dashboard/assets/graficos/` | Resultados gráficos CAESAR por línea (`SIM-XXX.png`; faltan 008/009/010) |
-| `dashboard/assets/logo.png` | Logo DML (copia de `logo1.png` de la raíz) |
+| `dashboard/assets/logo.png` | Logo Smurfit Westrock (cliente) |
+| `dashboard/assets/logo-dml.png` | Logo DML Ingenieros Consultores (consultora) |
 | `dashboard/assets/md/` | Reportes .md copiados por el parser (descarga desde linea.html) |
 | `.github/workflows/update-dashboard.yml` | CI/CD pipeline |
 | `task/todo.md` | Plan y revisión de la auditoría 2026-07-17 |
@@ -85,7 +87,7 @@ Análisis de flexibilidad de tuberías con CAESAR II 2019. Flujo de trabajo: iso
 - HTML estático + JSON dinámico → sin backend; páginas individuales por URL param `?id=SIM-XXX`
 - HTML nunca asume FAILED ante datos faltantes: exige `typeof passed === 'boolean'`
 - `linea.html` tiene sección "Resultados Gráficos — CAESAR II" (lightbox) alimentada por el campo JSON `resultados_graficos`; cuando es null muestra placeholder punteado "Espacio reservado…" que desaparece solo al correr el parser con la imagen presente
-- Logo DML en header de las 3 páginas (`assets/logo.png`, copia de `logo1.png` raíz; tiene canal alfa)
+- Logos de Smurfit Westrock y DML Ingenieros Consultores en header de las 3 páginas (`assets/logo.png` y `assets/logo-dml.png`)
 
 ## Problemas recurrentes y soluciones
 
@@ -118,7 +120,7 @@ python scripts/parse_caesar_md.py
 ### Agregar resultados gráficos de una línea (SIM-008/009/010 pendientes)
 1. Exportar desde CAESAR como `ResultadosGraficos*.png` en la carpeta de la línea
 2. Ejecutar `python scripts/parse_caesar_md.py` y commitear PNG fuente + assets generados
-3. OJO: el workflow NO se dispara con push de solo PNGs (sus filtros son .md/scripts/workflows) → disparar a mano en Actions → "Run workflow", o incluir un cambio en `scripts/`
+3. El workflow se dispara automáticamente con cambios en `dashboard/**`, `scripts/**`, `.github/workflows/**`, archivos `.md` de las carpetas de línea y `**/ResultadosGraficos*`
 
 ### Servir dashboard localmente
 ```bash
@@ -141,7 +143,7 @@ python -m http.server 8000
 - [x] Prueba de integración CI/CD — run success tras fix de permisos (2026-07-17)
 - [x] Resultados gráficos CAESAR + logo DML en dashboard (2026-07-17, 4/7 líneas)
 - [ ] Gráficos faltantes SIM-008, SIM-009, SIM-010 — usuario los exporta desde CAESAR (ver workflow en Comandos)
-- [ ] Propuesta pendiente de respuesta: agregar `'**/ResultadosGraficos*'` y `'dashboard/**'` a los triggers del workflow para autodespliegue al subir solo imágenes
+- [x] Triggers del workflow actualizados: `dashboard/**` y `**/ResultadosGraficos*` incluidos para autodespliegue (2026-07-23)
 - [ ] Validación con cliente (pendiente, sitio ya desplegado)
 
 ## Referencias externas
