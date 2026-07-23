@@ -149,6 +149,24 @@ mono, .mono {
     align-items: center;
 }
 
+.header-logos {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+}
+
+.logo-cliente {
+    height: 2.25rem;
+    width: auto;
+    display: block;
+}
+
+.logo-consultora {
+    height: 2.25rem;
+    width: auto;
+    display: block;
+}
+
 .logo {
     display: flex;
     align-items: center;
