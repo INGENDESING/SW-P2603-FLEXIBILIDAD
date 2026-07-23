@@ -6,7 +6,7 @@ Análisis de flexibilidad de tuberías con CAESAR II 2019. Flujo de trabajo: iso
 
 - **Última tarea completada**: Resultados gráficos CAESAR + logo DML en dashboard (2026-07-17, commit `6e2ff09`). 4/7 líneas con gráficos (SIM-002/003/007/011); SIM-008/009/010 con espacio reservado. Sitio verificado en producción (assets y JSON con HTTP 200, workflow success).
 - **Sitio en vivo**: https://ingendesing.github.io/SW-P2603-FLEXIBILIDAD/ (7/7 líneas PASSED)
-- **Próxima tarea pendiente**: Exportar desde CAESAR los gráficos de SIM-008, SIM-009 y SIM-010 (`ResultadosGraficos*.png` en la carpeta de cada línea) y validación con el cliente (Cartón Colombia)
+- **Próxima tarea pendiente**: Exportar desde CAESAR los gráficos de SIM-008, SIM-009 y SIM-010 (`ResultadosGraficos*.png` en la carpeta de cada línea) y validación con el cliente (Smurfit Westrock)
 - **Repo**: https://github.com/INGENDESING/SW-P2603-FLEXIBILIDAD (público; Pages en repos privados exige GitHub Pro)
 - **Fecha de última actualización**: 2026-07-17
 
@@ -40,7 +40,7 @@ Análisis de flexibilidad de tuberías con CAESAR II 2019. Flujo de trabajo: iso
 
 ### 2. Dashboard Web
 - **Ubicación**: `dashboard/` (autocontenido: datos, imágenes y reportes dentro)
-- **Propósito**: Visualización de resultados para cliente (Cartón Colombia) e interno DML
+- **Propósito**: Visualización de resultados para cliente (Smurfit Westrock) e interno DML
 - Modo oscuro (glassmorphism + neón), Chart.js vía CDN, lazy loading, lightbox, responsive
 - Badge "SIN DATOS" gris cuando una línea no tiene compliance (nunca más FAILED por datos faltantes)
 
@@ -148,4 +148,4 @@ python -m http.server 8000
 
 - Normativa: ASME B31.3-2016, Jan 31, 2017
 - Software: CAESAR II 2019 (Ver.11.00.00.4800), Intergraph CADWorx
-- Cliente: Cartón Colombia - Proyecto P2603 SW-K60
+- Cliente: Smurfit Westrock - Proyecto P2603 SW-K60

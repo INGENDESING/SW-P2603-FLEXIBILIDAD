@@ -2,7 +2,7 @@
 
 ## Contexto
 - Objetivo: El dashboard muestra 6 de 7 líneas como "FAILED" y ratio 0.0 % en la única "PASSED". CAESAR II arrojó **CODE COMPLIANCE EVALUATION PASSED en las 7 líneas**. El error está en `scripts/parse_caesar_md.py` y en el render que trata "sin datos" como "FAILED".
-- Cliente / Proyecto DML: Cartón Colombia — P2603 SW-K60
+- Cliente / Proyecto DML: Smurfit Westrock — P2603 SW-K60
 - Normas aplicables: ASME B31.3-2016
 
 ## Verdad CAESAR (extraída de los .md, verificada por grep)

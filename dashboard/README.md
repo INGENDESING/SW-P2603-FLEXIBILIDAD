@@ -1,6 +1,6 @@
 # Dashboard Análisis de Flexibilidad - P2603 SW-K60
 
-Dashboard web para visualización de resultados de análisis de flexibilidad de tuberías (CAESAR II 2019) - Proyecto Cartón Colombia.
+Dashboard web para visualización de resultados de análisis de flexibilidad de tuberías (CAESAR II 2019) - Proyecto Smurfit Westrock.
 
 ## Características
 
@@ -192,7 +192,7 @@ Editar `assets/js/charts.js` para ajustar configuración de gráficas.
 
 ## Licencia
 
-Confidencial - Proyecto P2603 SW-K60, Cartón Colombia
+Confidencial - Proyecto P2603 SW-K60, Smurfit Westrock
 
 ---
 
