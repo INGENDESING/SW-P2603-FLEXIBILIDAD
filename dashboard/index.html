@@ -211,7 +211,7 @@
             // Datos para gráfica de compliance
             const labels = data.lineas.map(l => l.id);
             const ratios = data.lineas.map(l => l.compliance?.max_ratio_pct || 0);
-            const colors = ratios.map(r => r < 80 ? '#00ff88' : r < 95 ? '#ffaa00' : '#ff3366');
+            const colors = ratios.map(r => r < 80 ? '#10b981' : r < 95 ? '#f59e0b' : '#ef4444');
 
             // Gráfica de barras: Ratios de compliance
             new Chart(ctx1, {
@@ -233,18 +233,18 @@
                         title: {
                             display: true,
                             text: 'Ratio de Compliance por Línea',
-                            color: '#a0a8c0'
+                            color: '#475569'
                         }
                     },
                     scales: {
                         y: {
                             beginAtZero: true,
-                            grid: { color: 'rgba(255,255,255,0.05)' },
-                            ticks: { color: '#6a7088' }
+                            grid: { color: 'rgba(0, 0, 0, 0.06)' },
+                            ticks: { color: '#64748b' }
                         },
                         x: {
                             grid: { display: false },
-                            ticks: { color: '#6a7088' }
+                            ticks: { color: '#64748b' }
                         }
                     }
                 }
@@ -260,8 +260,8 @@
                     labels: ['PASSED', 'FAILED'],
                     datasets: [{
                         data: [passedCount, failedCount],
-                        backgroundColor: ['#00ff88', '#ff3366'],
-                        borderColor: ['#00ff88', '#ff3366'],
+                        backgroundColor: ['#10b981', '#ef4444'],
+                        borderColor: ['#10b981', '#ef4444'],
                         borderWidth: 1
                     }]
                 },
@@ -270,12 +270,12 @@
                     plugins: {
                         legend: {
                             position: 'bottom',
-                            labels: { color: '#a0a8c0' }
+                            labels: { color: '#475569' }
                         },
                         title: {
                             display: true,
                             text: 'Distribución de Estados',
-                            color: '#a0a8c0'
+                            color: '#475569'
                         }
                     }
                 }

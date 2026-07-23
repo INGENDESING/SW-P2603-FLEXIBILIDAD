@@ -4,8 +4,9 @@ Análisis de flexibilidad de tuberías con CAESAR II 2019. Flujo de trabajo: iso
 
 ## Estado actual
 
-- **Última tarea completada**: Despliegue del dashboard en GitHub Pages (2026-07-17). Sitio en vivo: https://ingendesing.github.io/SW-P2603-FLEXIBILIDAD/ — 7/7 líneas PASSED, JSON, isométricos y .md con HTTP 200. Workflow CI/CD probado con push real (run success).
-- **Próxima tarea pendiente**: Validación con el cliente (Cartón Colombia)
+- **Última tarea completada**: Resultados gráficos CAESAR + logo DML en dashboard (2026-07-17, commit `6e2ff09`). 4/7 líneas con gráficos (SIM-002/003/007/011); SIM-008/009/010 con espacio reservado. Sitio verificado en producción (assets y JSON con HTTP 200, workflow success).
+- **Sitio en vivo**: https://ingendesing.github.io/SW-P2603-FLEXIBILIDAD/ (7/7 líneas PASSED)
+- **Próxima tarea pendiente**: Exportar desde CAESAR los gráficos de SIM-008, SIM-009 y SIM-010 (`ResultadosGraficos*.png` en la carpeta de cada línea) y validación con el cliente (Cartón Colombia)
 - **Repo**: https://github.com/INGENDESING/SW-P2603-FLEXIBILIDAD (público; Pages en repos privados exige GitHub Pro)
 - **Fecha de última actualización**: 2026-07-17
 
@@ -83,6 +84,8 @@ Análisis de flexibilidad de tuberías con CAESAR II 2019. Flujo de trabajo: iso
 ### Dashboard
 - HTML estático + JSON dinámico → sin backend; páginas individuales por URL param `?id=SIM-XXX`
 - HTML nunca asume FAILED ante datos faltantes: exige `typeof passed === 'boolean'`
+- `linea.html` tiene sección "Resultados Gráficos — CAESAR II" (lightbox) alimentada por el campo JSON `resultados_graficos`; cuando es null muestra placeholder punteado "Espacio reservado…" que desaparece solo al correr el parser con la imagen presente
+- Logo DML en header de las 3 páginas (`assets/logo.png`, copia de `logo1.png` raíz; tiene canal alfa)
 
 ## Problemas recurrentes y soluciones
 
@@ -106,11 +109,16 @@ Análisis de flexibilidad de tuberías con CAESAR II 2019. Flujo de trabajo: iso
 python fix_pcf.py "RUTA/NUEVA LINEA/archivo.pcf"
 ```
 
-### Generar datos del dashboard (incluye copiar imágenes y .md)
+### Generar datos del dashboard (incluye copiar imágenes, gráficos, logo y .md)
 ```bash
 python scripts/parse_caesar_md.py
-# Genera dashboard/_data/lineas.json + dashboard/assets/{iso,md}/
+# Genera dashboard/_data/lineas.json + dashboard/assets/{iso,graficos,md}/ + assets/logo.png
 ```
+
+### Agregar resultados gráficos de una línea (SIM-008/009/010 pendientes)
+1. Exportar desde CAESAR como `ResultadosGraficos*.png` en la carpeta de la línea
+2. Ejecutar `python scripts/parse_caesar_md.py` y commitear PNG fuente + assets generados
+3. OJO: el workflow NO se dispara con push de solo PNGs (sus filtros son .md/scripts/workflows) → disparar a mano en Actions → "Run workflow", o incluir un cambio en `scripts/`
 
 ### Servir dashboard localmente
 ```bash
@@ -131,6 +139,9 @@ python -m http.server 8000
 - [x] GitHub repo creado (2026-07-17, público)
 - [x] GitHub Pages habilitado — Source: GitHub Actions (2026-07-17)
 - [x] Prueba de integración CI/CD — run success tras fix de permisos (2026-07-17)
+- [x] Resultados gráficos CAESAR + logo DML en dashboard (2026-07-17, 4/7 líneas)
+- [ ] Gráficos faltantes SIM-008, SIM-009, SIM-010 — usuario los exporta desde CAESAR (ver workflow en Comandos)
+- [ ] Propuesta pendiente de respuesta: agregar `'**/ResultadosGraficos*'` y `'dashboard/**'` a los triggers del workflow para autodespliegue al subir solo imágenes
 - [ ] Validación con cliente (pendiente, sitio ya desplegado)
 
 ## Referencias externas

@@ -9,16 +9,16 @@
 const PLACEHOLDER_SVG = `data:image/svg+xml,
 ${encodeURIComponent(`
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
-    <rect width="400" height="300" fill="#121836"/>
-    <rect x="20" y="20" width="360" height="260" fill="none" stroke="#3a4060" stroke-width="2" stroke-dasharray="10,5"/>
-    <text x="200" y="130" font-family="monospace" font-size="24" fill="#6a7088" text-anchor="middle">
+    <rect width="400" height="300" fill="#f0f4f8"/>
+    <rect x="20" y="20" width="360" height="260" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="10,5"/>
+    <text x="200" y="130" font-family="monospace" font-size="24" fill="#64748b" text-anchor="middle">
         Isométrico no disponible
     </text>
-    <text x="200" y="160" font-family="monospace" font-size="14" fill="#4a5070" text-anchor="middle">
+    <text x="200" y="160" font-family="monospace" font-size="14" fill="#94a3b8" text-anchor="middle">
         [Archivo no encontrado]
     </text>
-    <circle cx="200" cy="80" r="30" fill="none" stroke="#4a5070" stroke-width="2"/>
-    <path d="M190 80 L200 70 L210 80 M200 70 L200 90" stroke="#4a5070" stroke-width="2" fill="none"/>
+    <circle cx="200" cy="80" r="30" fill="none" stroke="#94a3b8" stroke-width="2"/>
+    <path d="M190 80 L200 70 L210 80 M200 70 L200 90" stroke="#94a3b8" stroke-width="2" fill="none"/>
 </svg>
 `)}`;
 

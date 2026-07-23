@@ -1,36 +1,36 @@
 /* ============================================
    P2603 SW-K60 - Dashboard Flexibilidad
-   Estilo: Modo Oscuro Futurista
-   Paleta: Glassmorphism + Neón
+   Estilo: Modo Claro Profesional
+   Paleta: Azul corporativo + acentos limpios
    ============================================ */
 
 /* === Variables CSS === */
 :root {
     /* Colores base */
-    --bg-primary: #0a0e27;
-    --bg-secondary: #121836;
-    --bg-tertiary: #1a2050;
+    --bg-primary: #f0f4f8;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #e2e8f0;
 
-    /* Acentos neón */
-    --accent-cyan: #00f5ff;
-    --accent-magenta: #ff00ff;
-    --accent-purple: #b026ff;
-    --accent-blue: #4d79ff;
+    /* Acentos */
+    --accent-cyan: #0077b6;
+    --accent-magenta: #9d4edd;
+    --accent-purple: #7c3aed;
+    --accent-blue: #2563eb;
 
     /* Estados */
-    --success: #00ff88;
-    --warning: #ffaa00;
-    --error: #ff3366;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --error: #ef4444;
 
     /* Texto */
-    --text-primary: #ffffff;
-    --text-secondary: #a0a8c0;
-    --text-muted: #6a7088;
+    --text-primary: #1e293b;
+    --text-secondary: #475569;
+    --text-muted: #94a3b8;
 
     /* Glassmorphism */
-    --glass-bg: rgba(255, 255, 255, 0.03);
-    --glass-border: rgba(255, 255, 255, 0.08);
-    --glass-shadow: rgba(0, 245, 255, 0.1);
+    --glass-bg: rgba(255, 255, 255, 0.72);
+    --glass-border: rgba(0, 0, 0, 0.08);
+    --glass-shadow: rgba(0, 0, 0, 0.06);
 
     /* Spacing */
     --spacing-xs: 0.25rem;
@@ -82,15 +82,15 @@ body::before {
     width: 100%;
     height: 100%;
     background:
-        radial-gradient(ellipse at 20% 20%, rgba(0, 245, 255, 0.05) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 80%, rgba(255, 0, 255, 0.05) 0%, transparent 50%);
+        radial-gradient(ellipse at 20% 20%, rgba(37, 99, 235, 0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(0, 119, 182, 0.05) 0%, transparent 50%);
     pointer-events: none;
     z-index: -1;
     animation: pulse-bg 10s ease-in-out infinite;
 }
 
 @keyframes pulse-bg {
-    0%, 100% { opacity: 0.5; }
+    0%, 100% { opacity: 0.6; }
     50% { opacity: 1; }
 }
 
@@ -103,7 +103,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
     font-size: clamp(1.75rem, 4vw, 2.5rem);
-    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-magenta));
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -135,7 +135,7 @@ mono, .mono {
     left: 0;
     right: 0;
     z-index: 100;
-    background: rgba(10, 14, 39, 0.8);
+    background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--glass-border);
 }
@@ -193,7 +193,7 @@ mono, .mono {
 
 .nav-link:hover {
     color: var(--accent-cyan);
-    background: var(--glass-bg);
+    background: var(--bg-tertiary);
 }
 
 .nav-link.active {
@@ -208,7 +208,7 @@ mono, .mono {
     transform: translateX(-50%);
     width: 80%;
     height: 2px;
-    background: linear-gradient(90deg, var(--accent-cyan), var(--accent-magenta));
+    background: linear-gradient(90deg, var(--accent-cyan), var(--accent-blue));
     border-radius: 2px;
 }
 
@@ -227,11 +227,12 @@ mono, .mono {
     border-radius: var(--radius-lg);
     padding: var(--spacing-lg);
     backdrop-filter: blur(10px);
+    box-shadow: 0 2px 12px var(--glass-shadow);
     transition: all var(--transition-normal);
 }
 
 .card:hover {
-    border-color: rgba(0, 245, 255, 0.2);
+    border-color: rgba(0, 119, 182, 0.25);
     box-shadow: 0 8px 32px var(--glass-shadow);
 }
 
@@ -296,12 +297,13 @@ mono, .mono {
     overflow: hidden;
     transition: all var(--transition-normal);
     cursor: pointer;
+    box-shadow: 0 2px 12px var(--glass-shadow);
 }
 
 .linea-card:hover {
     transform: translateY(-4px);
     border-color: var(--accent-cyan);
-    box-shadow: 0 12px 40px rgba(0, 245, 255, 0.15);
+    box-shadow: 0 12px 40px rgba(0, 119, 182, 0.12);
 }
 
 .linea-image {
@@ -339,18 +341,18 @@ mono, .mono {
 }
 
 .linea-status.passed {
-    background: rgba(0, 255, 136, 0.1);
-    color: var(--success);
+    background: rgba(16, 185, 129, 0.12);
+    color: #047857;
 }
 
 .linea-status.failed {
-    background: rgba(255, 51, 102, 0.1);
-    color: var(--error);
+    background: rgba(239, 68, 68, 0.12);
+    color: #b91c1c;
 }
 
 .linea-status.no-data {
-    background: rgba(160, 168, 192, 0.1);
-    color: var(--text-muted);
+    background: rgba(148, 163, 184, 0.18);
+    color: var(--text-secondary);
 }
 
 .linea-ratio {
@@ -373,14 +375,14 @@ table {
 }
 
 thead {
-    background: var(--bg-secondary);
+    background: var(--bg-tertiary);
 }
 
 th {
     text-align: left;
     padding: var(--spacing-md);
     font-weight: 600;
-    color: var(--text-secondary);
+    color: var(--text-primary);
     border-bottom: 1px solid var(--glass-border);
 }
 
@@ -391,7 +393,7 @@ td {
 }
 
 tr:hover td {
-    background: var(--glass-bg);
+    background: rgba(37, 99, 235, 0.04);
 }
 
 /* === Footer === */
@@ -401,6 +403,7 @@ tr:hover td {
     background: var(--bg-secondary);
     border-top: 1px solid var(--glass-border);
     text-align: center;
+    box-shadow: 0 -2px 12px var(--glass-shadow);
 }
 
 .footer-text {
@@ -411,7 +414,7 @@ tr:hover td {
 
 .footer-meta {
     font-size: 0.75rem;
-    color: var(--text-muted);
+    color: var(--text-secondary);
 }
 
 /* === Responsive === */
@@ -445,8 +448,8 @@ img {
 }
 
 img.loading {
-    opacity: 0.5;
-    background: var(--bg-secondary);
+    opacity: 0.6;
+    background: var(--bg-tertiary);
 }
 
 img.loaded {
@@ -465,7 +468,7 @@ img.error {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(10, 14, 39, 0.95);
+    background: rgba(15, 23, 42, 0.92);
     backdrop-filter: blur(10px);
     z-index: 1000;
     display: none;
@@ -506,20 +509,20 @@ img.error {
 
 .lightbox-close:hover {
     background: var(--accent-cyan);
-    color: var(--bg-primary);
+    color: #ffffff;
 }
 
 .lightbox-image {
     max-width: 100%;
     max-height: 85vh;
     border-radius: var(--radius-md);
-    border: 1px solid var(--glass-border);
+    border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .lightbox-caption {
     text-align: center;
     margin-top: var(--spacing-md);
-    color: var(--text-secondary);
+    color: #e2e8f0;
     font-size: 0.875rem;
 }
 

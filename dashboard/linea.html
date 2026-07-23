@@ -249,22 +249,22 @@
                         {
                             label: 'DX (mm)',
                             data: nodes.map(n => n.dx),
-                            borderColor: '#00f5ff',
-                            backgroundColor: 'rgba(0, 245, 255, 0.1)',
+                            borderColor: '#0891b2',
+                            backgroundColor: 'rgba(8, 145, 178, 0.12)',
                             tension: 0.1
                         },
                         {
                             label: 'DY (mm)',
                             data: nodes.map(n => n.dy),
-                            borderColor: '#ff00ff',
-                            backgroundColor: 'rgba(255, 0, 255, 0.1)',
+                            borderColor: '#9333ea',
+                            backgroundColor: 'rgba(147, 51, 234, 0.12)',
                             tension: 0.1
                         },
                         {
                             label: 'DZ (mm)',
                             data: nodes.map(n => n.dz),
-                            borderColor: '#00ff88',
-                            backgroundColor: 'rgba(0, 255, 136, 0.1)',
+                            borderColor: '#10b981',
+                            backgroundColor: 'rgba(16, 185, 129, 0.12)',
                             tension: 0.1
                         }
                     ]
@@ -274,26 +274,26 @@
                     plugins: {
                         legend: {
                             position: 'top',
-                            labels: { color: '#a0a8c0' }
+                            labels: { color: '#475569' }
                         },
                         title: {
                             display: true,
                             text: 'Desplazamientos Nodales',
-                            color: '#a0a8c0'
+                            color: '#475569'
                         }
                     },
                     scales: {
                         y: {
-                            grid: { color: 'rgba(255,255,255,0.05)' },
-                            ticks: { color: '#6a7088' }
+                            grid: { color: 'rgba(0, 0, 0, 0.06)' },
+                            ticks: { color: '#64748b' }
                         },
                         x: {
                             grid: { display: false },
-                            ticks: { color: '#6a7088' },
+                            ticks: { color: '#64748b' },
                             title: {
                                 display: true,
                                 text: 'Nodo',
-                                color: '#6a7088'
+                                color: '#64748b'
                             }
                         }
                     }
@@ -380,21 +380,21 @@
         }
 
         .status-badge.passed {
-            background: rgba(0, 255, 136, 0.1);
-            color: var(--success);
-            border: 1px solid var(--success);
+            background: rgba(16, 185, 129, 0.12);
+            color: #047857;
+            border: 1px solid #047857;
         }
 
         .status-badge.failed {
-            background: rgba(255, 51, 102, 0.1);
-            color: var(--error);
-            border: 1px solid var(--error);
+            background: rgba(239, 68, 68, 0.12);
+            color: #b91c1c;
+            border: 1px solid #b91c1c;
         }
 
         .status-badge.no-data {
-            background: rgba(160, 168, 192, 0.1);
-            color: var(--text-muted);
-            border: 1px solid var(--text-muted);
+            background: rgba(148, 163, 184, 0.18);
+            color: #64748b;
+            border: 1px solid #64748b;
         }
 
         .status-details {

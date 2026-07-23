@@ -4,20 +4,20 @@
  */
 
 // Configuración global de Chart.js
-Chart.defaults.color = '#a0a8c0';
-Chart.defaults.borderColor = 'rgba(255, 255, 255, 0.08)';
+Chart.defaults.color = '#475569';
+Chart.defaults.borderColor = 'rgba(0, 0, 0, 0.08)';
 Chart.defaults.font.family = "'Inter', system-ui, sans-serif";
 
 /**
  * Colores para gráficas de compliance
  */
 const ComplianceColors = {
-    good: '#00ff88',
-    warning: '#ffaa00',
-    critical: '#ff3366',
-    blue: '#4d79ff',
-    cyan: '#00f5ff',
-    magenta: '#ff00ff'
+    good: '#10b981',
+    warning: '#f59e0b',
+    critical: '#ef4444',
+    blue: '#2563eb',
+    cyan: '#0891b2',
+    magenta: '#9333ea'
 };
 
 /**
@@ -61,7 +61,7 @@ function createComplianceBarChart(canvasId, data) {
                 title: {
                     display: true,
                     text: 'Ratio de Compliance por Línea',
-                    color: '#a0a8c0',
+                    color: '#475569',
                     font: { size: 16, weight: 500 }
                 },
                 tooltip: {
@@ -76,9 +76,9 @@ function createComplianceBarChart(canvasId, data) {
                 y: {
                     beginAtZero: true,
                     max: 100,
-                    grid: { color: 'rgba(255,255,255,0.05)' },
+                    grid: { color: 'rgba(0, 0, 0, 0.06)' },
                     ticks: {
-                        color: '#6a7088',
+                        color: '#64748b',
                         callback: function(value) {
                             return value + '%';
                         }
@@ -86,7 +86,7 @@ function createComplianceBarChart(canvasId, data) {
                 },
                 x: {
                     grid: { display: false },
-                    ticks: { color: '#6a7088' }
+                    ticks: { color: '#64748b' }
                 }
             }
         }
@@ -120,7 +120,7 @@ function createStatusDoughnutChart(canvasId, passedCount, failedCount) {
                 legend: {
                     position: 'bottom',
                     labels: {
-                        color: '#a0a8c0',
+                        color: '#475569',
                         padding: 16,
                         font: { size: 12 }
                     }
@@ -128,7 +128,7 @@ function createStatusDoughnutChart(canvasId, passedCount, failedCount) {
                 title: {
                     display: true,
                     text: 'Distribución de Estados',
-                    color: '#a0a8c0',
+                    color: '#475569',
                     font: { size: 16, weight: 500 }
                 }
             }
@@ -158,7 +158,7 @@ function createDisplacementLineChart(canvasId, nodes, options = {}) {
             label: 'DX (mm)',
             data: nodes.map(n => n.dx),
             borderColor: ComplianceColors.cyan,
-            backgroundColor: 'rgba(0, 245, 255, 0.1)',
+            backgroundColor: 'rgba(8, 145, 178, 0.12)',
             tension: 0.1,
             pointRadius: 2,
             pointHoverRadius: 6
@@ -170,7 +170,7 @@ function createDisplacementLineChart(canvasId, nodes, options = {}) {
             label: 'DY (mm)',
             data: nodes.map(n => n.dy),
             borderColor: ComplianceColors.magenta,
-            backgroundColor: 'rgba(255, 0, 255, 0.1)',
+            backgroundColor: 'rgba(147, 51, 234, 0.12)',
             tension: 0.1,
             pointRadius: 2,
             pointHoverRadius: 6
@@ -182,7 +182,7 @@ function createDisplacementLineChart(canvasId, nodes, options = {}) {
             label: 'DZ (mm)',
             data: nodes.map(n => n.dz),
             borderColor: ComplianceColors.good,
-            backgroundColor: 'rgba(0, 255, 136, 0.1)',
+            backgroundColor: 'rgba(16, 185, 129, 0.12)',
             tension: 0.1,
             pointRadius: 2,
             pointHoverRadius: 6
@@ -194,7 +194,7 @@ function createDisplacementLineChart(canvasId, nodes, options = {}) {
             label: 'Resultante (mm)',
             data: nodes.map(n => Math.sqrt(Math.pow(n.dx || 0, 2) + Math.pow(n.dy || 0, 2) + Math.pow(n.dz || 0, 2))),
             borderColor: ComplianceColors.warning,
-            backgroundColor: 'rgba(255, 170, 0, 0.1)',
+            backgroundColor: 'rgba(245, 158, 11, 0.12)',
             tension: 0.1,
             pointRadius: 2,
             pointHoverRadius: 6,
@@ -219,7 +219,7 @@ function createDisplacementLineChart(canvasId, nodes, options = {}) {
                 legend: {
                     position: 'top',
                     labels: {
-                        color: '#a0a8c0',
+                        color: '#475569',
                         padding: 12,
                         font: { size: 11 }
                     }
@@ -227,7 +227,7 @@ function createDisplacementLineChart(canvasId, nodes, options = {}) {
                 title: {
                     display: true,
                     text: 'Desplazamientos Nodales',
-                    color: '#a0a8c0',
+                    color: '#475569',
                     font: { size: 16, weight: 500 }
                 },
                 tooltip: {
@@ -240,16 +240,16 @@ function createDisplacementLineChart(canvasId, nodes, options = {}) {
             },
             scales: {
                 y: {
-                    grid: { color: 'rgba(255,255,255,0.05)' },
-                    ticks: { color: '#6a7088' }
+                    grid: { color: 'rgba(0, 0, 0, 0.06)' },
+                    ticks: { color: '#64748b' }
                 },
                 x: {
                     grid: { display: false },
-                    ticks: { color: '#6a7088' },
+                    ticks: { color: '#64748b' },
                     title: {
                         display: true,
                         text: 'Nodo',
-                        color: '#6a7088'
+                        color: '#64748b'
                     }
                 }
             }
@@ -282,9 +282,9 @@ function createDisplacementPolarChart(canvasId, nodes) {
             datasets: [{
                 data: [avgX, avgY, avgZ],
                 backgroundColor: [
-                    'rgba(0, 245, 255, 0.6)',
-                    'rgba(255, 0, 255, 0.6)',
-                    'rgba(0, 255, 136, 0.6)'
+                    'rgba(8, 145, 178, 0.55)',
+                    'rgba(147, 51, 234, 0.55)',
+                    'rgba(16, 185, 129, 0.55)'
                 ],
                 borderColor: [
                     ComplianceColors.cyan,
@@ -300,18 +300,18 @@ function createDisplacementPolarChart(canvasId, nodes) {
             plugins: {
                 legend: {
                     position: 'bottom',
-                    labels: { color: '#a0a8c0' }
+                    labels: { color: '#475569' }
                 },
                 title: {
                     display: true,
                     text: 'Dirección de Desplazamientos (Promedio)',
-                    color: '#a0a8c0'
+                    color: '#475569'
                 }
             },
             scales: {
                 r: {
-                    grid: { color: 'rgba(255,255,255,0.05)' },
-                    ticks: { color: '#6a7088', backdropColor: 'transparent' }
+                    grid: { color: 'rgba(0, 0, 0, 0.06)' },
+                    ticks: { color: '#64748b', backdropColor: 'transparent' }
                 }
             }
         }
@@ -350,7 +350,7 @@ function createStressHistogram(canvasId, stresses) {
             datasets: [{
                 label: 'Frecuencia',
                 data: bins,
-                backgroundColor: 'rgba(77, 121, 255, 0.6)',
+                backgroundColor: 'rgba(37, 99, 235, 0.55)',
                 borderColor: ComplianceColors.blue,
                 borderWidth: 1
             }]
@@ -363,20 +363,20 @@ function createStressHistogram(canvasId, stresses) {
                 title: {
                     display: true,
                     text: 'Distribución de Esfuerzos',
-                    color: '#a0a8c0'
+                    color: '#475569'
                 }
             },
             scales: {
                 y: {
                     beginAtZero: true,
-                    grid: { color: 'rgba(255,255,255,0.05)' },
-                    ticks: { color: '#6a7088' },
-                    title: { display: true, text: 'Frecuencia', color: '#6a7088' }
+                    grid: { color: 'rgba(0, 0, 0, 0.06)' },
+                    ticks: { color: '#64748b' },
+                    title: { display: true, text: 'Frecuencia', color: '#64748b' }
                 },
                 x: {
                     grid: { display: false },
-                    ticks: { color: '#6a7088' },
-                    title: { display: true, text: 'Esfuerzo (kPa)', color: '#6a7088' }
+                    ticks: { color: '#64748b' },
+                    title: { display: true, text: 'Esfuerzo (kPa)', color: '#64748b' }
                 }
             }
         }
