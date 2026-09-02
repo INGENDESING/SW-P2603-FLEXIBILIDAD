@@ -4,11 +4,11 @@ Análisis de flexibilidad de tuberías con CAESAR II 2019. Flujo de trabajo: iso
 
 ## Estado actual
 
-- **Última tarea completada**: Cambio de tema a modo claro, cambio de cliente a Smurfit Westrock y logo DML + Smurfit Westrock en header (2026-07-23, commit `cc54cdd`). Sitio verificado en producción (assets y JSON con HTTP 200, workflow success).
-- **Sitio en vivo**: https://ingendesing.github.io/SW-P2603-FLEXIBILIDAD/ (7/7 líneas PASSED)
-- **Próxima tarea pendiente**: Exportar desde CAESAR los gráficos de SIM-008, SIM-009 y SIM-010 (`ResultadosGraficos*.png` en la carpeta de cada línea) y validación con el cliente (Smurfit Westrock)
+- **Última tarea completada**: SIM-012 SUCCION TK BLOWTANK agregada al dashboard (2026-09-02). PCF111 corregido con `fix_pcf.py`, .md generado desde `PCF111.OUT` (Opción B), parser con soporte multi-gráfico, 3 tif de CAESAR convertidos a PNG. Verificado local: 8/8 PASSED
+- **Sitio en vivo**: https://ingendesing.github.io/SW-P2603-FLEXIBILIDAD/ (7/7 líneas PASSED; SIM-012 pendiente de push)
+- **Próxima tarea pendiente**: Commit + push de SIM-012 para despliegue; exportar gráficos de SIM-008, SIM-009 y SIM-010 (`ResultadosGraficos*.png`); validación con el cliente (Smurfit Westrock)
 - **Repo**: https://github.com/INGENDESING/SW-P2603-FLEXIBILIDAD (público; Pages en repos privados exige GitHub Pro)
-- **Fecha de última actualización**: 2026-07-23
+- **Fecha de última actualización**: 2026-09-02
 
 ## Bases de diseño congeladas
 
@@ -31,6 +31,7 @@ Análisis de flexibilidad de tuberías con CAESAR II 2019. Flujo de trabajo: iso
 | SIM-009 Succión recirc. 2 DDW | 20.8 % | 60 | 4 (Alt-SUS) W+P2 |
 | SIM-010 Succión recirc. 3 DDW | 60.9 % | 310 | 6 (SUS) W+P2 |
 | SIM-011 Descarga PP30BT03 | 56.1 % | 260 | 4 (Alt-SUS) W+P2 |
+| SIM-012 Succión TK Blowtank | 32.4 % | 130 | 8 (EXP) L8=L3-L6 |
 
 ## Componentes del Proyecto
 
@@ -56,14 +57,14 @@ Análisis de flexibilidad de tuberías con CAESAR II 2019. Flujo de trabajo: iso
 | `dashboard/linea.html` | Página individual de línea (`?id=SIM-011`) |
 | `dashboard/_data/lineas.json` | Datos estructurados (generado por el parser) |
 | `dashboard/assets/iso/` | Isométricos copiados por el parser (PCF102–108) |
-| `dashboard/assets/graficos/` | Resultados gráficos CAESAR por línea (`SIM-XXX.png`; faltan 008/009/010) |
+| `dashboard/assets/graficos/` | Resultados gráficos CAESAR por línea (`SIM-XXX.png` o `SIM-XXX-N.png` si hay varios; faltan 008/009/010) |
 | `dashboard/assets/logo.png` | Logo Smurfit Westrock (cliente) |
 | `dashboard/assets/logo-dml.png` | Logo DML Ingenieros Consultores (consultora) |
 | `dashboard/assets/md/` | Reportes .md copiados por el parser (descarga desde linea.html) |
 | `.github/workflows/update-dashboard.yml` | CI/CD pipeline |
 | `task/todo.md` | Plan y revisión de la auditoría 2026-07-17 |
 
-### 4. Líneas analizadas (7 total, todas PASSED)
+### 4. Líneas analizadas (8 total, todas PASSED)
 
 | ID | Línea | PCF | Resultado .md |
 |----|-------|-----|---------------|
@@ -74,6 +75,7 @@ Análisis de flexibilidad de tuberías con CAESAR II 2019. Flujo de trabajo: iso
 | SIM-009 | Succión recirculación 2 DDW | PCF105 | P2603-PR-PL-SIM-009.md |
 | SIM-010 | Succión recirculación 3 DDW | 10.pcf | P2603-PR-PL-SIM-010.md |
 | SIM-011 | Descarga bomba PP30BT03 | PCF108 | P2603-PR-PL-SIM-011.md |
+| SIM-012 | Succión TK Blowtank | PCF111 | P2603-PR-PL-SIM-012.md (generado desde PCF111.OUT, Job Name reemplazado) |
 
 ## Decisiones de diseño clave
 
@@ -81,7 +83,8 @@ Análisis de flexibilidad de tuberías con CAESAR II 2019. Flujo de trabajo: iso
 - **Normalización de saltos**: lectura con `newline=''` y reemplazo explícito `\r\n`/`\r` → `\n`; los .md antiguos mezclan `\r\r\n` (miles de CR sueltos) y eso destruía la detección de secciones
 - **Secciones como listas**: cada página/caso genera una sección; compliance usa el ÚLTIMO CODE COMPLIANCE (resumen global); displacements/restraints hacen merge de casos CON datos (ope/sus/exp); stresses = máximo bending global
 - **Regex clave**: job `P2603-PR-PL-(?:SIM-)?\d+` (003 y 007 no llevan "SIM"), ratio `Ratio\s*\(%\):` (CAESAR pone espacio), caso `CASE \d+ \(([\w-]+)\)` (acepta "Alt-SUS")
-- **Assets autocontenidos**: el parser copia isométricos a `dashboard/assets/iso/`, resultados gráficos a `dashboard/assets/graficos/` (desde `ResultadosGraficos*.png` de cada carpeta; ese prefijo se EXCLUYE de la detección de isométrico), .md a `dashboard/assets/md/` y el logo `logo1.png` → `dashboard/assets/logo.png` → rutas relativas a `dashboard/`, funciona local y en Pages
+- **Assets autocontenidos**: el parser copia isométricos a `dashboard/assets/iso/`, resultados gráficos a `dashboard/assets/graficos/` (desde `ResultadosGraficos*` de cada carpeta; ese prefijo se EXCLUYE de la detección de isométrico), .md a `dashboard/assets/md/` y el logo `logo1.png` → `dashboard/assets/logo.png` → rutas relativas a `dashboard/`, funciona local y en Pages
+- **Multi-gráfico (2026-09-02)**: `resultados_graficos` es LISTA de rutas (o null); un solo archivo conserva `SIM-XXX.png`, varios se numeran `SIM-XXX-N.png`. `linea.html` renderiza galería (acepta lista o string legacy). SIM-012: los `.tif` RGBA de CAESAR se convirtieron a `ResultadosGraficosPCF111-N.png` con PIL (los tif no los muestra el navegador)
 
 ### Dashboard
 - HTML estático + JSON dinámico → sin backend; páginas individuales por URL param `?id=SIM-XXX`
@@ -142,6 +145,7 @@ python -m http.server 8000
 - [x] GitHub Pages habilitado — Source: GitHub Actions (2026-07-17)
 - [x] Prueba de integración CI/CD — run success tras fix de permisos (2026-07-17)
 - [x] Resultados gráficos CAESAR + logo DML en dashboard (2026-07-17, 4/7 líneas)
+- [x] SIM-012 Succión TK Blowtank agregada: PCF corregido, análisis CAESAR PASSED (32.4 % @130 EXP), .md generado desde .OUT, 3 gráficos tif→png, JSON verificado 8/8 (2026-09-02)
 - [ ] Gráficos faltantes SIM-008, SIM-009, SIM-010 — usuario los exporta desde CAESAR (ver workflow en Comandos)
 - [x] Triggers del workflow actualizados: `dashboard/**` y `**/ResultadosGraficos*` incluidos para autodespliegue (2026-07-23)
 - [ ] Validación con cliente (pendiente, sitio ya desplegado)

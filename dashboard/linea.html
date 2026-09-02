@@ -48,9 +48,7 @@
         <!-- Resultados Gráficos exportados de CAESAR II -->
         <section class="card mb-lg">
             <h2>Resultados Gráficos — CAESAR II</h2>
-            <div class="isometrico-container" id="graficos-container">
-                <img id="linea-graficos" src="" alt="Resultados gráficos CAESAR II" class="isometrico-img lightbox-enabled">
-            </div>
+            <div class="isometrico-container" id="graficos-container"></div>
         </section>
 
         <!-- Compliance Summary -->
@@ -172,10 +170,23 @@
             const isoPath = linea.isometrico || 'assets/iso/placeholder.png';
             document.getElementById('linea-isometrico').src = isoPath;
 
-            // Resultados gráficos CAESAR II (espacio reservado si aún no se exportan)
+            // Resultados gráficos CAESAR II (lista; espacio reservado si aún no se exportan)
             const grafContainer = document.getElementById('graficos-container');
-            if (linea.resultados_graficos) {
-                document.getElementById('linea-graficos').src = linea.resultados_graficos;
+            const graficos = Array.isArray(linea.resultados_graficos)
+                ? linea.resultados_graficos
+                : (linea.resultados_graficos ? [linea.resultados_graficos] : []);
+            if (graficos.length) {
+                graficos.forEach(src => {
+                    const img = document.createElement('img');
+                    img.src = src;
+                    img.alt = 'Resultados gráficos CAESAR II';
+                    img.className = 'isometrico-img';
+                    img.style.cursor = 'pointer';
+                    img.addEventListener('click', () => {
+                        window.ImageUtils.openLightbox(img.src, img.alt);
+                    });
+                    grafContainer.appendChild(img);
+                });
             } else {
                 grafContainer.innerHTML = '<div class="graficos-placeholder">Espacio reservado — Resultados gráficos pendientes de exportar desde CAESAR II</div>';
             }

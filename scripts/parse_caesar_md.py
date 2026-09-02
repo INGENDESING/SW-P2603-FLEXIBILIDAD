@@ -260,8 +260,8 @@ class CaesarParser:
         return sections
 
     def copy_assets(self, md_path: Path, job_name: str, iso_src: Optional[Path],
-                    graficos_src: Optional[Path] = None,
-                    linea_id: str = '') -> Dict[str, Optional[str]]:
+                    graficos_list: Optional[List[Path]] = None,
+                    linea_id: str = '') -> Dict[str, Any]:
         """Copia isométrico, resultados gráficos y .md a dashboard/assets/ y devuelve rutas relativas"""
         iso_rel = None
         md_rel = None
@@ -273,12 +273,19 @@ class CaesarParser:
             shutil.copy2(iso_src, iso_dir / iso_src.name)
             iso_rel = f'assets/iso/{iso_src.name}'
 
-        if graficos_src and linea_id:
+        if graficos_list and linea_id:
             graf_dir = self.root_dir / 'dashboard' / 'assets' / 'graficos'
             graf_dir.mkdir(parents=True, exist_ok=True)
-            graf_name = f'{linea_id}{graficos_src.suffix.lower()}'
-            shutil.copy2(graficos_src, graf_dir / graf_name)
-            graf_rel = f'assets/graficos/{graf_name}'
+            graf_rel = []
+            for i, graf_src in enumerate(graficos_list):
+                # Un solo gráfico conserva el nombre histórico SIM-XXX.png;
+                # con varios se numeran SIM-XXX-1.png, SIM-XXX-2.png, ...
+                if len(graficos_list) == 1:
+                    graf_name = f'{linea_id}{graf_src.suffix.lower()}'
+                else:
+                    graf_name = f'{linea_id}-{i + 1}{graf_src.suffix.lower()}'
+                shutil.copy2(graf_src, graf_dir / graf_name)
+                graf_rel.append(f'assets/graficos/{graf_name}')
 
         if job_name != 'UNKNOWN':
             md_dir = self.root_dir / 'dashboard' / 'assets' / 'md'
@@ -320,17 +327,14 @@ class CaesarParser:
                     iso_src = iso_files[0]
                     break
 
-            # Buscar resultados gráficos exportados de CAESAR (si existen)
-            graficos_src = None
-            graf_files = [f for f in sorted(md_path.parent.glob('ResultadosGraficos*'))
-                          if f.suffix.lower() in ('.png', '.jpg', '.jpeg')]
-            if graf_files:
-                graficos_src = graf_files[0]
+            # Buscar resultados gráficos exportados de CAESAR (pueden ser varios)
+            graficos_list = [f for f in sorted(md_path.parent.glob('ResultadosGraficos*'))
+                             if f.suffix.lower() in ('.png', '.jpg', '.jpeg')]
 
             linea_id = self.extract_linea_id(job_name)
 
             # Copiar assets al dashboard
-            assets = self.copy_assets(md_path, job_name, iso_src, graficos_src, linea_id)
+            assets = self.copy_assets(md_path, job_name, iso_src, graficos_list, linea_id)
 
             # Dividir en secciones
             sections = self.split_into_sections(content)
