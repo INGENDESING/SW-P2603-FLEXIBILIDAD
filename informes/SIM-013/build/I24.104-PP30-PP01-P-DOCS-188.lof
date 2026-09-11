@@ -1,0 +1,7 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {figure}{\numberline {1}{\ignorespaces Vista del modelo 3D de la l\'{i}nea de descarga del tanque de nivelaci\'{o}n (PCF113, AutoCAD Plant 3D 2027).}}{12}{figure.caption.10}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Perfil de desplazamientos nodales $DX$, $DY$ y $DZ$ en el caso 7 (EXP) L7=L1-L5.}}{13}{figure.caption.12}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Configuraci\'{o}n deformada del modelo en condici\'{o}n de operaci\'{o}n, con los desplazamientos amplificados para visualizaci\'{o}n (CAESAR II, job P2603-PR-SIM-013).}}{13}{figure.caption.13}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Perfil de esfuerzo de flexi\'{o}n por nodo, caso cr\'{i}tico 2 (Alt-SUS) W+P2. M\'{a}ximo: \num {9789.6}~\si {kPa} en el nodo 20.}}{14}{figure.caption.14}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Mapa de porcentaje de esfuerzo de c\'{o}digo (\textit {Code Stress by Percent}) sobre el modelo 3D, caso cr\'{i}tico 2 (Alt-SUS) W+P2 (CAESAR II, job P2603-PR-SIM-013). La escala de colores indica la relaci\'{o}n entre el esfuerzo de c\'{o}digo y el admisible en cada elemento.}}{15}{figure.caption.15}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Modelo de CAESAR II con los soportes y restricciones de la l\'{i}nea (job P2603-PR-SIM-013).}}{16}{figure.caption.17}%

@@ -23,7 +23,7 @@ class CaesarParser:
 
     # Regex patterns para detectar secciones
     HEADER_PATTERN = re.compile(r'CAESAR II 2019.*Date: (\w+) (\d+), (\d+)')
-    JOB_PATTERN = re.compile(r'Job Name: (P2603-PR-PL-(?:SIM-)?\d+)')
+    JOB_PATTERN = re.compile(r'Job Name: (P2603-PR-(?:PL-)?(?:SIM-)?\d+)')
     REPORT_PATTERN = re.compile(r'([A-Z][A-Z\.0-9 ]+) REPORT: (.+)')
     CASE_PATTERN = re.compile(r'CASE\s+\d+\s*\(([\w-]+)\)')
 
@@ -36,11 +36,16 @@ class CaesarParser:
         }
 
     def find_md_files(self) -> List[Path]:
-        """Encuentra todos los archivos .md de análisis en subcarpetas (sin duplicados)"""
+        """Encuentra todos los archivos .md de análisis en subcarpetas (sin duplicados).
+
+        Excluye las corridas archivadas en _corrida_anterior*/ (material viejo,
+        no es la fuente de verdad actual). El patrón tolera el espacio antes de
+        la extensión ('P2603-PR-SIM-002 .md', decisión del usuario: no renombrar).
+        """
         md_files = set()
-        for pattern in ['P2603-PR-PL-SIM-*.md', 'P2603-PR-PL-*.md']:
+        for pattern in ['P2603-PR-SIM-*.md', 'P2603-PR-PL-SIM-*.md', 'P2603-PR-PL-*.md']:
             md_files.update(self.root_dir.glob(f'*/{pattern}'))
-        return sorted(md_files)
+        return sorted(p for p in md_files if '_corrida_anterior' not in str(p))
 
     def parse_date(self, match) -> str:
         """Extrae fecha del header de CAESAR II"""
@@ -297,8 +302,8 @@ class CaesarParser:
         return {'isometrico': iso_rel, 'reporte_md': md_rel, 'resultados_graficos': graf_rel}
 
     def copy_logo(self):
-        """Copia el logo DML (logo1.png en la raíz del proyecto) a dashboard/assets/"""
-        logo_src = self.root_dir / 'logo1.png'
+        """Copia el logo DML (assets/logo1.png del proyecto) a dashboard/assets/"""
+        logo_src = self.root_dir / 'assets' / 'logo1.png'
         if logo_src.exists():
             assets_dir = self.root_dir / 'dashboard' / 'assets'
             assets_dir.mkdir(parents=True, exist_ok=True)
@@ -318,18 +323,29 @@ class CaesarParser:
             carpeta = md_path.parent.name
 
             # Buscar isométrico correspondiente (excluir ResultadosGraficos,
-            # que son salidas gráficas de CAESAR, no el isométrico de Plant 3D)
+            # que son salidas gráficas de CAESAR, no el isométrico de Plant 3D).
+            # Se prefiere PCF*; hoy los PCF*.png/.jpeg viven en Graficas/.
             iso_src = None
             for ext in ['*.png', '*.jpeg', '*.jpg']:
                 iso_files = [f for f in md_path.parent.glob(ext)
                              if not f.name.startswith('ResultadosGraficos')]
-                if iso_files:
-                    iso_src = iso_files[0]
+                graf_dir = md_path.parent / 'Graficas'
+                if graf_dir.is_dir():
+                    iso_files += [f for f in graf_dir.glob(ext)
+                                  if f.name.upper().startswith('PCF')]
+                pcf_files = [f for f in iso_files if f.name.upper().startswith('PCF')]
+                if pcf_files or iso_files:
+                    iso_src = (pcf_files or iso_files)[0]
                     break
 
-            # Buscar resultados gráficos exportados de CAESAR (pueden ser varios)
-            graficos_list = [f for f in sorted(md_path.parent.glob('ResultadosGraficos*'))
-                             if f.suffix.lower() in ('.png', '.jpg', '.jpeg')]
+            # Resultados gráficos: PNG convertidos de los .tif de CAESAR en
+            # Graficas/ (scripts/convertir_graficas.py). Excluye AnexoResultado*
+            # (en espera de instrucciones) y PCF* (es el isométrico).
+            graf_dir = md_path.parent / 'Graficas'
+            graficos_list = []
+            if graf_dir.is_dir():
+                graficos_list = [f for f in sorted(graf_dir.glob('*.png'))
+                                 if not f.name.startswith(('AnexoResultado', 'PCF'))]
 
             linea_id = self.extract_linea_id(job_name)
 

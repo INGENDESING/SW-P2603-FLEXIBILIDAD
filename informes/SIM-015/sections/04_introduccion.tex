@@ -1,0 +1,172 @@
+% ===================== INTRODUCCION =====================
+\section{Introduccion}
+\label{sec:intro}
+
+Las tuber\'{i}as de proceso de una planta industrial operan sometidas
+simult\'{a}neamente a presi\'{o}n interna, peso propio y gradientes t\'{e}rmicos
+entre la condici\'{o}n de instalaci\'{o}n y la de operaci\'{o}n. La expansi\'{o}n
+t\'{e}rmica restringida por anclas, equipos y soportes induce esfuerzos y cargas
+que, de no verificarse, pueden comprometer la integridad de la tuber\'{i}a, de las
+boquillas de los equipos conectados y de los propios soportes. El an\'{a}lisis de
+flexibilidad es la verificaci\'{o}n reglamentaria que el c\'{o}digo ASME B31.3
+exige para demostrar que un sistema de tuber\'{i}as absorbe dichas deformaciones
+dentro de l\'{i}mites seguros~\cite{asme_b313_2016}. El presente informe documenta
+el an\'{a}lisis de flexibilidad de la tuber\'{i}a del filtro de fibras
+PP1 (SIM-015) del proyecto P2603 SW-K60,
+ejecutado para Smurfit Westrock con el software CAESAR II
+2019~\cite{caesar2_ug_2019}.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Antecedentes}
+
+El proyecto P2603 SW-K60 comprende la modificaci\'{o}n y ampliaci\'{o}n de
+sistemas de tuber\'{i}as de la planta de Cart\'{o}n Colombia de Smurfit Westrock.
+Dentro del paquete de an\'{a}lisis de flexibilidad se han evaluado las
+l\'{i}neas asociadas a los sistemas de lavado (DDW), recirculaci\'{o}n, vac\'{i}o,
+transferencia, tanque de nivelaci\'{o}n y filtrado de fibras; todas ellas
+comparten las mismas bases de dise\~{n}o
+(secci\'{o}n~\ref{sec:bases}). La l\'{i}nea objeto de este informe corresponde a
+la tuber\'{i}a del filtro de fibras PP1, modelada a partir
+del isom\'{e}trico PCF114 emitido por el equipo de dise\~{n}o en AutoCAD Plant
+3D 2027.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Descripcion del Sistema}
+
+La l\'{i}nea SIM-015 conduce agua de proceso en el sistema del filtro de
+fibras PP1. Est\'{a} construida en acero inoxidable ASTM A312 TP 304L, con el
+tramo principal de 6~NPS Sch 10S y di\'{a}metros menores de 8, 3 y 2~NPS; el
+tramo de 3~NPS es Sch 40S, de acuerdo con la especificaci\'{o}n del
+isom\'{e}trico (secci\'{o}n~\ref{sec:bases}). Incluye codos de 90$^\circ$ y
+45$^\circ$ de radio largo (ASME B16.9), dos reductores conc\'{e}ntricos y dos
+tees (ASME B16.9), uniones bridadas tipo \textit{lap joint} con
+\textit{stub-end} de 150~lb (ASME B16.5 / B16.9-C), cuatro v\'{a}lvulas de
+mariposa Cl.~150 tipo \textit{lug}, tres v\'{a}lvulas de bola de segmento
+(\textit{V-port}) con actuador neum\'{a}tico y una v\'{a}lvula de retenci\'{o}n
+de placa simple Cl.~150.
+El modelo de elementos finitos comprende 136 nodos
+evaluados; la soporter\'{i}a intermedia incluye soportes r\'{i}gidos verticales
+(+Y) en los nodos 20, 80, 170, 220, 260, 370 y 430, una gu\'{i}a lateral (X) en
+el nodo 350, gu\'{i}as con holgura en los nodos 20, 260 y 430, y anclas
+r\'{i}gidas en los nodos 140, 320 y 510, correspondientes a las conexiones con
+los equipos y empalmes del tramo.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Motivacion del Estudio}
+
+Toda l\'{i}nea nueva o modificada del proyecto debe demostrar el cumplimiento de
+los criterios de esfuerzo de ASME B31.3-2016 antes de su puesta en servicio.
+La pregunta t\'{e}cnica que responde este informe es si la configuraci\'{o}n
+geom\'{e}trica y de soporter\'{i}a de la l\'{i}nea SIM-015 mantiene los esfuerzos
+de c\'{o}digo, los desplazamientos y las cargas en soportes dentro de l\'{i}mites
+aceptables en todas las condiciones de operaci\'{o}n previstas.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Marco Teorico}
+\label{ssec:marco}
+
+\subsubsection{Expansion termica y esfuerzo en tuberias restringidas}
+
+Una tuber\'{i}a instalada a temperatura ambiente y operada a mayor temperatura
+experimenta una expansi\'{o}n axial libre dada por:
+\begin{equation}
+    \Delta L = \alpha \, L \, \Delta T,
+    \label{eq:expansion}
+\end{equation}
+donde $\alpha$ es el coeficiente de expansi\'{o}n t\'{e}rmica lineal del material,
+$L$ la longitud del tramo y $\Delta T$ la diferencia entre la temperatura de
+operaci\'{o}n y la de instalaci\'{o}n. Si los extremos del tramo estuvieran
+totalmente restringidos, la expansi\'{o}n se convertir\'{i}a en un esfuerzo de
+compresi\'{o}n de magnitud:
+\begin{equation}
+    \sigma = E \, \alpha \, \Delta T,
+    \label{eq:esfuerzo_termico}
+\end{equation}
+con $E$ el m\'{o}dulo de elasticidad del material~\cite{toolbox_thermal_stress}. Para aceros inoxidables
+austen\'{i}ticos y los $\Delta T$ t\'{i}picos de proceso, este esfuerzo superar\'{i}a
+con facilidad el admisible; por ello las configuraciones reales incorporan codos
+y cambios de direcci\'{o}n que aportan flexibilidad y reducen las cargas
+transmitidas a anclas y equipos~\cite{peng_pipe_stress}.
+
+\subsubsection{Modelo numerico: metodo de elementos finitos}
+
+CAESAR II resuelve el sistema de tuber\'{i}as mediante el m\'{e}todo de elementos
+finitos: la l\'{i}nea se discretiza en elementos viga tridimensionales con seis
+grados de libertad por nodo (tres traslaciones y tres rotaciones), y el equilibrio
+est\'{a}tico del sistema se expresa en forma matricial:
+\begin{equation}
+    \mathbf{K} \, \mathbf{u} = \mathbf{F},
+    \label{eq:fem}
+\end{equation}
+donde $\mathbf{K}$ es la matriz de rigidez global ensamblada a partir de la
+geometr\'{i}a, el material y las restricciones de soporte, $\mathbf{u}$ el vector
+de desplazamientos nodales y $\mathbf{F}$ el vector de cargas (peso, presi\'{o}n,
+desplazamientos t\'{e}rmicos impuestos). Resueltos los desplazamientos, el
+programa calcula los esfuerzos en cada elemento y los compara con los
+admisibles del c\'{o}digo seleccionado~\cite{caesar2_ug_2019}.
+
+\subsubsection{Criterios de esfuerzo de ASME B31.3-2016}
+
+El c\'{o}digo distingue dos familias de cargas. Las \textbf{cargas sostenidas}
+(peso y presi\'{o}n) son primarias, de car\'{a}cter no auto-limitante: su esfuerzo
+longitudinal $S_L$ (evaluado seg\'{u}n el p\'{a}rrafo 320.2) no puede exceder el
+admisible b\'{a}sico a temperatura de operaci\'{o}n (p\'{a}rrafo 302.3.5(c)):
+\begin{equation}
+    S_L \leq S_h.
+    \label{eq:sl}
+\end{equation}
+
+Las \textbf{cargas t\'{e}rmicas} son secundarias y auto-limitantes: una fluencia
+local redistribuye y relaja el esfuerzo, y el modo de falla asociado es la fatiga
+por ciclos. El c\'{o}digo eval\'{u}a el rango de esfuerzo de expansi\'{o}n $S_E$
+(p\'{a}rrafo 319.4.4, ecuaci\'{o}n (17)):
+\begin{equation}
+    S_E = \sqrt{S_b^2 + 4 S_t^2},
+    \label{eq:se}
+\end{equation}
+donde $S_b$ es el esfuerzo de flexi\'{o}n resultante, amplificado por los
+factores de intensificaci\'{o}n de esfuerzo $i_i$ (en el plano) e $i_o$ (fuera del
+plano) propios de cada accesorio (Ap\'{e}ndice D de B31.3-2016):
+\begin{equation}
+    S_b = \frac{\sqrt{(i_i M_i)^2 + (i_o M_o)^2}}{Z},
+    \label{eq:sb}
+\end{equation}
+y $S_t$ el esfuerzo torsional:
+\begin{equation}
+    S_t = \frac{M_t}{2 Z},
+    \label{eq:st}
+\end{equation}
+con $M_i$, $M_o$ y $M_t$ los momentos flectores en el plano, fuera del plano y
+torsor, y $Z$ el m\'{o}dulo resistente de la secci\'{o}n. El criterio de
+aceptaci\'{o}n es (p\'{a}rrafo 302.3.5(d), ecuaci\'{o}n (1a)):
+\begin{equation}
+    S_E \leq S_A = f \left( 1.25 \, S_c + 0.25 \, S_h \right),
+    \label{eq:sa}
+\end{equation}
+con $f$ el factor de reducci\'{o}n por n\'{u}mero de ciclos t\'{e}rmicos previstos
+(Tabla 302.3.5; $f = 1.0$ hasta 7000 ciclos). Cuando $S_h > S_L$, el c\'{o}digo
+permite la forma liberal de la ecuaci\'{o}n (1b),
+$S_A = f\,[1.25\,(S_c + S_h) - S_L]$, que es la aplicada por CAESAR II en el
+presente modelo. En los reportes de CAESAR II, la columna \textit{Code}
+corresponde al esfuerzo de c\'{o}digo calculado, la columna \textit{Allowable} al
+admisible aplicable a cada caso, y el \textit{Ratio} a su cociente expresado en
+porcentaje; un Ratio $\leq$ 100~\% implica cumplimiento. Para el material de la
+l\'{i}nea (ASTM A312 TP 304L), los admisibles b\'{a}sicos los toma CAESAR II de
+la Tabla A-1 del Ap\'{e}ndice A de B31.3-2016: a la temperatura de
+operaci\'{o}n de 90~\si{\celsius} el admisible b\'{a}sico es
+$S_c = S_h = 16.7$~ksi (\num{115.1}~\si{MPa}), valor consistente con el
+admisible sostenido reportado por el modelo (\num{115142.4}~\si{kPa},
+secci\'{o}n~\ref{sec:resultados}).
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Estructura del Documento}
+
+La secci\'{o}n~\ref{sec:objetivos} presenta los objetivos del estudio; la
+secci\'{o}n~\ref{sec:alcance} define su alcance y limitaciones; la
+secci\'{o}n~\ref{sec:bases} re\'{u}ne las bases de dise\~{n}o congeladas del
+proyecto; la secci\'{o}n~\ref{sec:metodologia} describe el flujo de trabajo y
+los casos de carga; la secci\'{o}n~\ref{sec:resultados} presenta
+desplazamientos, esfuerzos y cargas en soportes; la
+secci\'{o}n~\ref{sec:analisis} desarrolla la evaluaci\'{o}n de cumplimiento de
+c\'{o}digo; y las secciones~\ref{sec:conclusiones} y~\ref{sec:recomendaciones}
+cierran con conclusiones y recomendaciones.

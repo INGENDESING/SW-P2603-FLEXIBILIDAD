@@ -1,0 +1,58 @@
+% ===================== ANALISIS DE RESULTADOS =====================
+\section{Analisis de Resultados}
+\label{sec:analisis}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Cumplimiento de Codigo (Code Compliance)}
+
+La evaluaci\'{o}n de cumplimiento de c\'{o}digo del modelo arroj\'{o}
+\textbf{CODE COMPLIANCE EVALUATION PASSED}. El esfuerzo de c\'{o}digo
+m\'{a}ximo del sistema es \num{18089.2}~\si{kPa}, en el nodo 120, para el caso
+4 (Alt-SUS) W+P2, frente a un admisible de \num{115142.4}~\si{kPa}; la
+relaci\'{o}n de utilizaci\'{o}n m\'{a}xima es por tanto 15.7~\%. La
+Tabla~\ref{tab:top5-ratio} relaciona los cinco nodos de mayor ratio del caso
+cr\'{i}tico; todos cumplen con holgura el criterio Code $\leq$ Allowable.
+
+\input{assets/tab_top5_ratio.tex}
+
+El caso que gobierna el dise\~{n}o es el sostenido alterno 4 (Alt-SUS) W+P2,
+es decir, la combinaci\'{o}n de peso propio y presi\'{o}n interna $P_2$. Este
+resultado es caracter\'{i}stico de l\'{i}neas con $\Delta T$ moderado
+(65~\si{\celsius}) y desplazamientos impuestos en los extremos: el esfuerzo de
+flexi\'{o}n se concentra en los codos pr\'{o}ximos a las zonas restringidas,
+como evidencia el perfil de la Figura~\ref{fig:esfuerzos}, con el m\'{a}ximo en
+el nodo 120 y valores relevantes en los nodos 110 y 130 (ratios de 15.4~\% y
+14.0~\%). Los casos de expansi\'{o}n presentan ratios inferiores, por lo que la
+condici\'{o}n sostenida es la determinante del cumplimiento.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Desplazamientos y Cargas en Soportes}
+
+Los desplazamientos propios de la expansi\'{o}n t\'{e}rmica son peque\~{n}os en
+magnitud absoluta (m\'{a}ximo de 2.3~\si{mm} en el caso 8, EXP, ver
+Tabla~\ref{tab:desplaz-max}); los valores de 5.0~\si{mm} en $DX$ y $DY$ de los
+casos 1, 3, 5 y 6 corresponden a los desplazamientos impuestos en los extremos del
+tramo, ya considerados en el modelo. No se identifica riesgo de interferencias
+por expansi\'{o}n.
+
+Las cargas en soportes (Tablas~\ref{tab:restricciones-ope} a
+\ref{tab:restricciones-exp}) son reducidas: la carga vertical m\'{a}xima
+corresponde al soporte del nodo 90 con \num{-1433}~\si{N} en los casos de
+operaci\'{o}n y sostenido; el soporte con holgura del nodo 50 carga apenas
+\num{-97}~\si{N} en vertical en esos mismos casos y el del nodo 150 permanece
+descargado, mientras que en los casos de expansi\'{o}n las cargas sobre todos
+los soportes son pr\'{a}cticamente nulas. La comparaci\'{o}n de las
+cargas en la boquilla de la bomba con los admisibles del fabricante del equipo
+queda fuera del alcance del presente informe (secci\'{o}n~\ref{sec:alcance}).
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Sintesis de Hallazgos}
+
+La l\'{i}nea SIM-003 presenta un margen amplio frente a los criterios de
+ASME B31.3-2016: el ratio m\'{a}ximo de utilizaci\'{o}n (15.7~\%) deja cerca del
+84~\% del admisible disponible, los desplazamientos de expansi\'{o}n son
+peque\~{n}os (m\'{a}ximo 2.3~\si{mm}) y las cargas en soportes son reducidas.
+No se identifican cuellos de botella, zonas de sobre-esfuerzo ni
+configuraciones de soporte cr\'{i}ticas. El \'{u}nico aspecto pendiente de
+verificaci\'{o}n externa es la aceptaci\'{o}n de las cargas en la boquilla del
+equipo por parte de su fabricante.

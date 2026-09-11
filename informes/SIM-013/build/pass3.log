@@ -1,0 +1,493 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex.fmt)
+ restricted \write18 enabled.
+entering extended mode
+(main.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-04-28>
+
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/elsarticle\elsarticle.c
+ls
+Document Class: elsarticle 2026/01/09, 3.5: Elsevier Ltd
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
+tex.def))
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/xparse\xpars
+e.sty)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/base\size12.clo))
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.c
+fg)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+)))
+(C:\Users\ingen\OneDrive\1.0 PROYECTOS DML\CARTON COLOMBIA\P2603 SW-K60\9.0 Fle
+xibilidad\ISOS ANALISIS FLEXIBILIDAD\informes\SIM-013\build\I24.104-PP30-PP01-P
+-DOCS-188.spl)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/natbib\natbib.sty))
+(config/preamble.tex
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty))
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
+*************************************
+* Local config file bblopts.cfg used
+*
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/es\babel
+-spanish.tex)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/babel-spanish\spanish.l
+df))
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/newtx\newtxtext.sty
+`newtxtext' v1.744, 2024/04/01 Text macros taking advantage of TeXGyre Termes a
+nd its extensions (msharpe)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/xpatch\xpatch.sty)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+) (C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.tex)
+)) (C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/base\textcomp.sty)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/xstring\xstring.sty
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/xstring\xstring.tex))
+ (C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/carlisle\scalefnt.sty)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/binhex\binhex.tex)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/fontaxes\fontaxes.sty
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/figureversions\figureve
+rsions.sty)))
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/newtx\newtxmath.sty
+`newtxmath' v1.754, 2024/09/22 Math macros based originally on txfonts (msharpe
+) (C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+For additional information on amsmath, use the `?' option.
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty))
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty))
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/oberdiek\centernot.sty)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/binhex\binhex.tex)
+amsthm NOT loaded
+)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype.sty
+
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype-pdf
+tex.def)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype.cfg
+))
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/titlesec\titlesec.sty
+
+Package titlesec Warning: Non standard sectioning command \paragraph
+(titlesec)                detected. Using default spacing and no format.
+
+) (C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty)
+
+! LaTeX Error: Command `\Bbbk' already defined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.261 ...ol{\Bbbk}           {\mathord}{AMSb}{"7C}
+                                                  
+)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/mathtools\mathtools.sty
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/tools\calc.sty)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/mathtools\mhsetup.sty))
+
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/textgreek\textgreek.sty
+
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/greek-fontenc\lgrenc.de
+f
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/greek-inputenc\lgrenc.d
+fu)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/greek-fontenc\greek-fon
+tenc.def)))
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/gensymb\gensymb.sty)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/siunitx\siunitx.sty
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/translations\translatio
+ns.sty
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds
+.sty
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.s
+ty)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty))
+) (C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty))
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/mhchem\mhchem.sty
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/l3keys2e\l3k
+eys2e.sty)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/chemgreek\chemgreek.sty
+)) (C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/chemfig\chemfig.sty
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendlayer\tikz.
+sty
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgf.sty
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfrcs.st
+y
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil
+-common.tex)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil
+-latex.def)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfrcs.
+code.tex
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf\pgf.revision.tex)
+))
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgfcore.
+sty
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/pgf/systemlayer\pgfsys.
+sty
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+s.code.tex
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys
+.code.tex
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys
+libraryfiltered.code.tex))
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf.c
+fg)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+s-pdftex.def
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+s-common-pdf.def)))
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+ssoftpath.code.tex)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+sprotocol.code.tex))
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+e.code.tex
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code
+.tex
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathutil.
+code.tex)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathparse
+r.code.tex)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.code.tex)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.basic.code.tex)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.trigonometric.code.tex)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.random.code.tex)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.comparison.code.tex)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.base.code.tex)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.round.code.tex)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.misc.code.tex)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.integerarithmetics.code.tex)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathcalc.
+code.tex)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfloat
+.code.tex))
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfint.code.
+tex)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epoints.code.tex)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epathconstruct.code.tex)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epathusage.code.tex)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+escopes.code.tex)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+egraphicstate.code.tex)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+etransformations.code.tex)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+equick.code.tex)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eobjects.code.tex)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epathprocessing.code.tex)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+earrows.code.tex)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eshade.code.tex)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eimage.code.tex)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eexternal.code.tex)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+elayers.code.tex)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+etransparency.code.tex)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epatterns.code.tex)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+erdf.code.tex)))
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
+shapes.code.tex)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
+plot.code.tex)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfco
+mp-version-0-65.sty)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfco
+mp-version-1-18.sty))
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgffor.st
+y
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfkeys.s
+ty
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys
+.code.tex))
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/pgf/math\pgfmath.sty
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code
+.tex))
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgffor.
+code.tex))
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z\tikz.code.tex
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibr
+aryplothandlers.code.tex)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
+matrix.code.tex)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibrarytopaths.code.tex)))
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/chemfig\chemfig.tex
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/simplekv\simplekv.tex
+)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibr
+aryarrows.meta.code.tex)))
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/caption\subcaption.sty
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption-elsarti
+cle.sto))
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/caption\ltcaption.sty))
+) (C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/tools\tabularx.sty)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/placeins\placeins.sty)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/svg\svg.sty
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrbase.sty
+
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrlfile.st
+y
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrlfile-ho
+ok.sty
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrlogo.sty
+))))
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/trimspaces\trimspaces.s
+ty) (C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/tools\shellesc.sty)
+)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/transparent\transparent
+.sty
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/transparent\transparent
+-nometadata.sty
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/auxhook\auxhook.sty)))
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
+)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefine
+keys.sty)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.s
+ty) (C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
+) (C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettit
+lestring.sty
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+)))
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.s
+ty) (C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
+) (C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
+) (C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/greek-fontenc\puenc-gre
+ek.def
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/greek-fontenc\greek-fon
+tenc.def))) (C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
+) (C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc
+.sty)))
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfil
+echeck.sty
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquec
+ounter.sty)))
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/colortbl\colortbl.sty)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/tocloft\tocloft.sty)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/appendix\appendix.sty)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/eso-pic\eso-pic.sty)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/lastpage\lastpage.sty
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/lastpage\lastpage2e.sty
+
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/lastpage\lastpagemodern
+.sty) 
+))
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\pdflscape.sty
+
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\pdflscape-nom
+etadata.sty
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/graphics\lscape.sty)))
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/fancyhdr\fancyhdr.sty)
+(config/datos_proyecto.tex)) (config/header.tex)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/newtx\t1ntxtlf.fd)
+(C:\Users\ingen\OneDrive\1.0 PROYECTOS DML\CARTON COLOMBIA\P2603 SW-K60\9.0 Fle
+xibilidad\ISOS ANALISIS FLEXIBILIDAD\informes\SIM-013\build\I24.104-PP30-PP01-P
+-DOCS-188.aux)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/newtx\omlntxmi.fd)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/newtx\untxexa.fd)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/newtx\lmsntxsy.fd)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/newtx\lmxntxexx.fd)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/cbfonts-fd\lgrcmr.fd)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
+ii
+[Loading MPS to PDF converter (version 2006.09.02).]
+)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
+ase.sty
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.c
+fg))
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-ptm.cfg)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/translations/dicts\tran
+slations-basic-dictionary-spanish.trsl)
+(C:\Users\ingen\OneDrive\1.0 PROYECTOS DML\CARTON COLOMBIA\P2603 SW-K60\9.0 Fle
+xibilidad\ISOS ANALISIS FLEXIBILIDAD\informes\SIM-013\build\I24.104-PP30-PP01-P
+-DOCS-188.out)
+(C:\Users\ingen\OneDrive\1.0 PROYECTOS DML\CARTON COLOMBIA\P2603 SW-K60\9.0 Fle
+xibilidad\ISOS ANALISIS FLEXIBILIDAD\informes\SIM-013\build\I24.104-PP30-PP01-P
+-DOCS-188.out) (sections/00_hojafirmas.tex
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/newtx\ot1minntx.fd)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/newtx\untxmia.fd)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/newtx\untxsym.fd)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/newtx\untxsyc.fd)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msa.cfg)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msb.cfg)
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/newtx\ts1ntxtlf.fd)
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+[1{C:/Users/ingen/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/in
+gen/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/newtx/ntx-ec-tlf.enc} <./logo
+s/logo1.png> <./logos/logo2.png>]) (sections/00_portada.tex
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.72 \end{titlepage}
+                     [1]) (sections/01_frontmatter.tex
+(C:\Users\ingen\AppData\Local\Programs\MiKTeX\tex/latex/newtx\t1ntxtt.fd))
+(sections/02_resumen.tex) (sections/03_nomenclatura.tex
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.32 
+      [1{C:/Users/ingen/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/newtx/ntx
+-ot1-tlf.enc}]
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+[2])
+(C:\Users\ingen\OneDrive\1.0 PROYECTOS DML\CARTON COLOMBIA\P2603 SW-K60\9.0 Fle
+xibilidad\ISOS ANALISIS FLEXIBILIDAD\informes\SIM-013\build\I24.104-PP30-PP01-P
+-DOCS-188.toc
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+[3])
+(C:\Users\ingen\OneDrive\1.0 PROYECTOS DML\CARTON COLOMBIA\P2603 SW-K60\9.0 Fle
+xibilidad\ISOS ANALISIS FLEXIBILIDAD\informes\SIM-013\build\I24.104-PP30-PP01-P
+-DOCS-188.lot)
+(C:\Users\ingen\OneDrive\1.0 PROYECTOS DML\CARTON COLOMBIA\P2603 SW-K60\9.0 Fle
+xibilidad\ISOS ANALISIS FLEXIBILIDAD\informes\SIM-013\build\I24.104-PP30-PP01-P
+-DOCS-188.lof)
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+[4] (sections/04_introduccion.tex
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+[5]) (sections/05_objetivos.tex
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+[6]) (sections/06_alcance.tex
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+[7]) (sections/07_bases_disenio.tex
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+[8]
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+[9]) (sections/08_metodologia.tex
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+[10] (assets/tab_casos.tex)) (sections/09_resultados.tex
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+[11]
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+[12 <./assets/PCF113.png>] (assets/tab_desplazamientos_max.tex)
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+[13 <./assets/NodosSoporte.png (PNG copy)>] (assets/tab_esfuerzos_critico.tex)
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+[14 <./assets/fig_desplazamientos.png> <./assets/fig_esfuerzos.png>]
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+[15 <./assets/Dezplazamiento.png (PNG copy)>] (assets/tab_restricciones_ope.tex
+) (assets/tab_restricciones_sus.tex) (assets/tab_restricciones_exp.tex))
+(sections/10_analisis.tex (assets/tab_top5_ratio.tex)
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+[16]) (sections/11_conclusiones.tex) (sections/12_recomendaciones.tex
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+[17])
+(C:\Users\ingen\OneDrive\1.0 PROYECTOS DML\CARTON COLOMBIA\P2603 SW-K60\9.0 Fle
+xibilidad\ISOS ANALISIS FLEXIBILIDAD\informes\SIM-013\build\I24.104-PP30-PP01-P
+-DOCS-188.bbl
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+[18]
+Underfull \hbox (badness 1609) in paragraph at lines 20--24
+[]\T1/ntxtlf/m/n/12 (+20) The En-gi-nee-ring Tool-Box, Fi-xed pi-pes -- stress 
+vs. chan-ge in tem-pe-ra-tu-re, [][]$\T1/ntxtt/m/n/12 https :
+) (sections/13_anexos.tex
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+[19])
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+Overfull \vbox (8.48424pt too high) has occurred while \output is active
+[20] 
+enddocument/afterlastpage (AED): lastpage setting LastPage.
+
+(C:\Users\ingen\OneDrive\1.0 PROYECTOS DML\CARTON COLOMBIA\P2603 SW-K60\9.0 Fle
+xibilidad\ISOS ANALISIS FLEXIBILIDAD\informes\SIM-013\build\I24.104-PP30-PP01-P
+-DOCS-188.aux) )
+(see the transcript file for additional information)<C:/Users/ingen/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/newtx/NewTXMI.pfb><C:/Users/ingen/AppData
+/Local/Programs/MiKTeX/fonts/type1/public/txfonts/t1xtt.pfb><C:/Users/ingen/App
+Data/Local/Programs/MiKTeX/fonts/type1/public/newtx/txexs.pfb><C:/Users/ingen/A
+ppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/txmiaX.pfb><C:/Users/inge
+n/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/txsys.pfb><C:/Users/in
+gen/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/ztmb.pfb><C:/Users/i
+ngen/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/ztmbi.pfb><C:/Users
+/ingen/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/ztmr.pfb><C:/User
+s/ingen/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/ztmri.pfb>
+Output written on "C:\Users\ingen\OneDrive\1.0 PROYECTOS DML\CARTON COLOMBIA\P2
+603 SW-K60\9.0 Flexibilidad\ISOS ANALISIS FLEXIBILIDAD\informes\SIM-013\build\I
+24.104-PP30-PP01-P-DOCS-188.pdf" (22 pages, 1872879 bytes).
+Transcript written on "C:\Users\ingen\OneDrive\1.0 PROYECTOS DML\CARTON COLOMBI
+A\P2603 SW-K60\9.0 Flexibilidad\ISOS ANALISIS FLEXIBILIDAD\informes\SIM-013\bui
+ld\I24.104-PP30-PP01-P-DOCS-188.log".

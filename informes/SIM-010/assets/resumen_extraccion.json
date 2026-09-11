@@ -1,0 +1,88 @@
+{
+  "linea": "SIM-010",
+  "md": "C:\\Users\\72-MS754\\OneDrive\\1.0 PROYECTOS DML\\CARTON COLOMBIA\\P2603 SW-K60\\9.0 Flexibilidad\\ISOS ANALISIS FLEXIBILIDAD\\6.0 SUCCION DE BOMBA DE RECIRCULACION 3 DDW\\P2603-PR-SIM-010.md",
+  "passed": true,
+  "ratio_pct": 46.7,
+  "nodo_critico": 430,
+  "loadcase": "8 (EXP) L8=L3-L6",
+  "code_kpa": 118934.5,
+  "allowable_kpa": 254721.8,
+  "casos": [
+    {
+      "n": 1,
+      "type": "OPE",
+      "comb": "W+T1+P2"
+    },
+    {
+      "n": 2,
+      "type": "Alt-SUS",
+      "comb": "W+P2"
+    },
+    {
+      "n": 3,
+      "type": "OPE",
+      "comb": "W+T2+P2"
+    },
+    {
+      "n": 4,
+      "type": "Alt-SUS",
+      "comb": "W+P2"
+    },
+    {
+      "n": 5,
+      "type": "SUS",
+      "comb": "W"
+    },
+    {
+      "n": 6,
+      "type": "SUS",
+      "comb": "W+P2"
+    },
+    {
+      "n": 7,
+      "type": "EXP",
+      "comb": "L7=L1-L5"
+    },
+    {
+      "n": 8,
+      "type": "EXP",
+      "comb": "L8=L3-L6"
+    },
+    {
+      "n": 9,
+      "type": "EXP",
+      "comb": "L9=L1-L3"
+    }
+  ],
+  "top5": [
+    {
+      "node": 430,
+      "ratio": 46.7
+    },
+    {
+      "node": 40,
+      "ratio": 45.9
+    },
+    {
+      "node": 310,
+      "ratio": 37.4
+    },
+    {
+      "node": 560,
+      "ratio": 32.1
+    },
+    {
+      "node": 560,
+      "ratio": 32.1
+    }
+  ],
+  "displ_overflow_casos": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "displ_fig_case": 7
+}

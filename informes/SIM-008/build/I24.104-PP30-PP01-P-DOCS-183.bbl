@@ -1,0 +1,48 @@
+\begin{thebibliography}{1}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \def\href#1#2{#2} \def\path#1{#1}\fi
+
+\bibitem{asme_b313_2016}
+The American Society of Mechanical Engineers, New York, NY, ASME B31.3-2016:
+  Process Piping, edici\'{o}n 2016, publicada el 4 de enero de 2017.
+  P\'{a}rrafos citados: 302.3.5, 319.4.4, 320.2; Tabla 302.3.5; Ap\'{e}ndices A
+  (Tabla A-1), C y D (2017).
+
+\bibitem{caesar2_ug_2019}
+Hexagon PPM (Intergraph / COADE, Inc.), Houston, TX, CAESAR II 2019 (Version
+  11.00) User's Guide, documentaci\'{o}n en l\'{i}nea:
+  \url{https://docs.hexagonppm.com} (2019).
+
+\bibitem{toolbox_thermal_stress}
+{The Engineering ToolBox}, Fixed pipes -- stress vs. change in temperature,
+  \url{https://www.engineeringtoolbox.com/pipes-temperature-stress-d_967.html},
+  consultado: septiembre 2026. Esfuerzo t\'{e}rmico en tuber\'{i}a restringida
+  $\sigma = \alpha\, E\, \Delta T$ (2005).
+
+\bibitem{peng_pipe_stress}
+L.-C. Peng, T.-L.~A. Peng, Pipe Stress Engineering, ASME Press, New York, NY,
+  2009.
+
+\bibitem{astm_a312}
+ASTM International, West Conshohocken, PA, ASTM A312/A312M: Standard
+  Specification for Seamless, Welded, and Heavily Cold Worked Austenitic
+  Stainless Steel Pipes (2022).
+
+\bibitem{asme_b169}
+The American Society of Mechanical Engineers, New York, NY, ASME B16.9:
+  Factory-Made Wrought Buttwelding Fittings (2018).
+
+\bibitem{asme_b165}
+The American Society of Mechanical Engineers, New York, NY, ASME B16.5: Pipe
+  Flanges and Flanged Fittings (2017).
+
+\bibitem{whatispiping_pipe_stress}
+{What Is Piping}, What is pipe stress analysis? a comprehensive guide,
+  \url{https://whatispiping.com/basics-of-pipe-stress-analysis/}, consultado:
+  septiembre 2026. Clasificaci\'{o}n de casos de carga OPE/SUS/EXP y criterios
+  B31.3 (2019).
+
+\end{thebibliography}

@@ -1,0 +1,123 @@
+% ===================== RESULTADOS =====================
+\section{Resultados}
+\label{sec:resultados}
+
+Los resultados que se presentan a continuaci\'{o}n fueron extra\'{i}dos
+program\'{a}ticamente del reporte de salida de CAESAR II del job
+P2603-PR-SIM-012 (fecha de an\'{a}lisis: 09/09/2026). El modelo comprende
+58 nodos evaluados en el caso cr\'{i}tico. La Figura~\ref{fig:isometrico}
+presenta el isom\'{e}trico de referencia de la l\'{i}nea.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{assets/PCF111.png}
+    \caption{Isom\'{e}trico de la l\'{i}nea de succi\'{o}n TK Blowtank (PCF111, AutoCAD Plant 3D 2027).}
+    \label{fig:isometrico}
+\end{figure}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Desplazamientos}
+
+La Tabla~\ref{tab:desplaz-max} resume los desplazamientos m\'{a}ximos absolutos
+por caso de carga y la Figura~\ref{fig:desplazamientos} muestra el perfil de
+desplazamientos nodales en condici\'{o}n de operaci\'{o}n (caso 1, OPE). El
+reporte del job tabula desplazamientos \'{u}nicamente para los casos 1, 3, 5,
+6, 7, 8 y 9; los casos sostenidos alternos 2 y 4 no incluyen este reporte. Los
+desplazamientos del caso 1 son inferiores a 0.3~\si{mm}; los m\'{a}ximos del
+sistema corresponden a la componente horizontal $DX$ en los casos con
+temperatura $T_2$ y en los de expansi\'{o}n (hasta 6.0~\si{mm}), valores que
+siguen siendo peque\~{n}os en magnitud absoluta y coherentes con una
+configuraci\'{o}n relativamente r\'{i}gida entre la boquilla del tanque y el
+ancla aguas abajo. Las Figuras~\ref{fig:graf-desplazamiento}
+y~\ref{fig:graf-desplazamiento-2} presentan las vistas de desplazamientos
+m\'{a}ximos del modelo exportadas desde CAESAR II.
+
+\input{assets/tab_desplazamientos_max.tex}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{assets/fig_desplazamientos.png}
+    \caption{Perfil de desplazamientos nodales $DX$, $DY$ y $DZ$ en el caso 1 (OPE) W+T1+P2.}
+    \label{fig:desplazamientos}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{assets/graf_desplazamiento.png}
+    \caption{Vista de desplazamientos m\'{a}ximos del modelo, vista 1 (CAESAR II, job P2603-PR-SIM-012).}
+    \label{fig:graf-desplazamiento}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{assets/graf_desplazamiento_2.png}
+    \caption{Vista de desplazamientos m\'{a}ximos del modelo, vista 2 (CAESAR II, job P2603-PR-SIM-012).}
+    \label{fig:graf-desplazamiento-2}
+\end{figure}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Esfuerzos}
+
+La Figura~\ref{fig:esfuerzos} presenta el perfil de esfuerzo de flexi\'{o}n
+(\textit{bending}) por nodo para el caso cr\'{i}tico 8 (EXP) L8=L3-L6, las
+Figuras~\ref{fig:mapa-esfuerzos} y~\ref{fig:mapa-esfuerzos-2} muestran el
+mapa de esfuerzo de c\'{o}digo sobre el modelo para ese mismo caso, y la
+Tabla~\ref{tab:esfuerzos-critico} consolida los valores de esfuerzo de
+c\'{o}digo, admisible y ratio de utilizaci\'{o}n por nodo.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{assets/fig_esfuerzos.png}
+    \caption{Perfil de esfuerzo de flexi\'{o}n por nodo, caso cr\'{i}tico 8 (EXP) L8=L3-L6. M\'{a}ximo: \num{92262.2}~\si{kPa} en el nodo 130.}
+    \label{fig:esfuerzos}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{assets/graf_stress_percent.png}
+    \caption{Distribuci\'{o}n del esfuerzo de c\'{o}digo en porcentaje del admisible (\textit{Code Stress by Percent}) sobre el modelo, caso cr\'{i}tico 8 (EXP) L8=L3-L6, vista 1 (CAESAR II, job P2603-PR-SIM-012).}
+    \label{fig:mapa-esfuerzos}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{assets/graf_stress_percent_2.png}
+    \caption{Distribuci\'{o}n del esfuerzo de c\'{o}digo en porcentaje del admisible (\textit{Code Stress by Percent}) sobre el modelo, caso cr\'{i}tico 8 (EXP) L8=L3-L6, vista 2 (CAESAR II, job P2603-PR-SIM-012).}
+    \label{fig:mapa-esfuerzos-2}
+\end{figure}
+
+\input{assets/tab_esfuerzos_critico.tex}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Cargas en Soportes y Anclas}
+
+Las Tablas~\ref{tab:restricciones-ope}, \ref{tab:restricciones-sus} y
+\ref{tab:restricciones-exp} presentan las fuerzas y momentos transmitidos a los
+soportes y anclas para los casos de operaci\'{o}n (caso 1), sostenido con
+presi\'{o}n (caso 6) y expansi\'{o}n cr\'{i}tico (caso 8), respectivamente. La
+soporter\'{i}a intermedia comprende seis soportes r\'{i}gidos verticales (+Y)
+en los nodos 30, 40, 90, 190, 230 y 260, y los extremos del tramo son anclas
+(ANC): la boquilla del tanque TK Blowtank (nodo 140) y el extremo aguas abajo
+(nodo 290). Las Figuras~\ref{fig:nodos-soporte} y~\ref{fig:nodos-soporte-2}
+muestran el modelo de CAESAR II con la ubicaci\'{o}n de los soportes y
+restricciones de la l\'{i}nea.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{assets/graf_nodos_soporte.png}
+    \caption{Modelo de CAESAR II con los soportes y restricciones de la l\'{i}nea, vista 1 (job P2603-PR-SIM-012).}
+    \label{fig:nodos-soporte}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{assets/graf_nodos_soporte_2.png}
+    \caption{Modelo de CAESAR II con los soportes y restricciones de la l\'{i}nea, vista 2 (job P2603-PR-SIM-012).}
+    \label{fig:nodos-soporte-2}
+\end{figure}
+
+\input{assets/tab_restricciones_ope.tex}
+
+\input{assets/tab_restricciones_sus.tex}
+
+\input{assets/tab_restricciones_exp.tex}

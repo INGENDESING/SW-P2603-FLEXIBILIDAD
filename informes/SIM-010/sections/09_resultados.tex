@@ -1,0 +1,125 @@
+% ===================== RESULTADOS =====================
+\section{Resultados}
+\label{sec:resultados}
+
+Los resultados que se presentan a continuaci\'{o}n fueron extra\'{i}dos
+program\'{a}ticamente del reporte de salida de CAESAR II del job
+P2603-PR-SIM-010 (fecha de an\'{a}lisis: 10/09/2026). El modelo comprende
+178 nodos evaluados en el caso cr\'{i}tico. La Figura~\ref{fig:isometrico}
+presenta el isom\'{e}trico de referencia de la l\'{i}nea.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{assets/PCF102.jpeg}
+    \caption{Isom\'{e}trico de la l\'{i}nea de succi\'{o}n de la bomba de recirculaci\'{o}n 3 DDW (PCF102, AutoCAD Plant 3D 2027).}
+    \label{fig:isometrico}
+\end{figure}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Desplazamientos}
+
+La Tabla~\ref{tab:desplaz-max} resume los desplazamientos m\'{a}ximos absolutos
+por caso de carga y la Figura~\ref{fig:desplazamientos} muestra el perfil de
+desplazamientos nodales del caso de expansi\'{o}n 7 (EXP) L7=L1-L5. El
+reporte del job tabula desplazamientos \'{u}nicamente para los casos de
+expansi\'{o}n 7, 8 y 9; estos son, precisamente, los rangos relevantes para
+la verificaci\'{o}n de flexibilidad. Los rangos de desplazamiento son
+moderados: el m\'{a}ximo corresponde a 8.8~\si{mm} en la componente $DX$ del
+caso 8 (EXP, condici\'{o}n t\'{e}rmica $T_2$), con 3.8~\si{mm} en $DY$ y
+7.9~\si{mm} en $DZ$, valores coherentes con el rango t\'{e}rmico
+($\Delta T$~=~65~\si{\celsius}) y con la flexibilidad aportada por los codos
+del recorrido entre los extremos restringidos. Las
+Figuras~\ref{fig:graf-desplazamiento} y~\ref{fig:graf-desplazamiento-2}
+presentan dos vistas del modelo de CAESAR II con la numeraci\'{o}n nodal de
+referencia.
+
+\input{assets/tab_desplazamientos_max.tex}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{assets/fig_desplazamientos.png}
+    \caption{Perfil de desplazamientos nodales $DX$, $DY$ y $DZ$ en el caso 7 (EXP) L7=L1-L5.}
+    \label{fig:desplazamientos}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{assets/graf_desplazamiento.png}
+    \caption{Modelo de CAESAR II de la l\'{i}nea SIM-010 con la numeraci\'{o}n nodal de referencia, vista 1 (job P2603-PR-SIM-010).}
+    \label{fig:graf-desplazamiento}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{assets/graf_desplazamiento_2.png}
+    \caption{Modelo de CAESAR II de la l\'{i}nea SIM-010 con la numeraci\'{o}n nodal de referencia, vista 2 (job P2603-PR-SIM-010).}
+    \label{fig:graf-desplazamiento-2}
+\end{figure}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Esfuerzos}
+
+La Figura~\ref{fig:esfuerzos} presenta el perfil de esfuerzo de flexi\'{o}n
+(\textit{bending}) por nodo para el caso cr\'{i}tico 8 (EXP) L8=L3-L6, las
+Figuras~\ref{fig:mapa-esfuerzos} y~\ref{fig:mapa-esfuerzos-2} muestran el
+mapa de esfuerzo de c\'{o}digo en porcentaje del admisible sobre el modelo 3D
+para ese mismo caso, y la Tabla~\ref{tab:esfuerzos-critico} consolida los
+valores de esfuerzo de c\'{o}digo, admisible y ratio de utilizaci\'{o}n por
+nodo para ese mismo caso.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{assets/fig_esfuerzos.png}
+    \caption{Perfil de esfuerzo de flexi\'{o}n por nodo, caso cr\'{i}tico 8 (EXP) L8=L3-L6. M\'{a}ximo: \num{118920.4}~\si{kPa} en el nodo 430.}
+    \label{fig:esfuerzos}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{assets/graf_stress_percent.png}
+    \caption{Mapa de esfuerzo de c\'{o}digo en porcentaje del admisible (\textit{Code Stress by Percent}) sobre el modelo 3D, caso cr\'{i}tico 8 (EXP) L8=L3-L6, vista 1 (CAESAR II, job P2603-PR-SIM-010).}
+    \label{fig:mapa-esfuerzos}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{assets/graf_stress_percent_2.png}
+    \caption{Mapa de esfuerzo de c\'{o}digo en porcentaje del admisible (\textit{Code Stress by Percent}) sobre el modelo 3D, caso cr\'{i}tico 8 (EXP) L8=L3-L6, vista 2 (CAESAR II, job P2603-PR-SIM-010).}
+    \label{fig:mapa-esfuerzos-2}
+\end{figure}
+
+\input{assets/tab_esfuerzos_critico.tex}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Cargas en Soportes y Anclas}
+
+Las Tablas~\ref{tab:restricciones-ope}, \ref{tab:restricciones-sus} y
+\ref{tab:restricciones-exp} presentan las fuerzas y momentos transmitidos a los
+soportes y anclas para los casos de operaci\'{o}n (caso 1), sostenido con
+presi\'{o}n (caso 6) y expansi\'{o}n (caso 8), respectivamente. Los soportes
+son r\'{i}gidos verticales (+Y) y gu\'{i}as laterales con holgura; los
+extremos del tramo son anclas (ANC) en los nodos 520 y 590, correspondientes
+a la conexi\'{o}n aguas arriba y a la boquilla de succi\'{o}n de la bomba de
+recirculaci\'{o}n 3 DDW. Las Figuras~\ref{fig:nodos-soporte}
+y~\ref{fig:nodos-soporte-2} muestran el modelo de CAESAR II con la
+ubicaci\'{o}n de los soportes y restricciones.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{assets/graf_nodos_soporte.png}
+    \caption{Modelo de CAESAR II con los soportes y restricciones de la l\'{i}nea, vista 1 (job P2603-PR-SIM-010).}
+    \label{fig:nodos-soporte}
+\end{figure}
+
+\input{assets/tab_restricciones_ope.tex}
+
+\input{assets/tab_restricciones_sus.tex}
+
+\input{assets/tab_restricciones_exp.tex}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{assets/graf_nodos_soporte_2.png}
+    \caption{Modelo de CAESAR II con los soportes y restricciones de la l\'{i}nea, vista 2 (job P2603-PR-SIM-010).}
+    \label{fig:nodos-soporte-2}
+\end{figure}

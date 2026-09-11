@@ -1,0 +1,41 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{Nomenclatura y Abreviaturas}{2}{affn.1}%
+\contentsline {section}{\numberline {1}Introduccion}{5}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Antecedentes}{5}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Descripcion del Sistema}{5}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Motivacion del Estudio}{5}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Marco Teorico}{5}{subsection.1.4}%
+\contentsline {subsubsection}{\numberline {1.4.1}Expansion termica y esfuerzo en tuberias restringidas}{5}{subsubsection.1.4.1}%
+\contentsline {subsubsection}{\numberline {1.4.2}Modelo numerico: metodo de elementos finitos}{6}{subsubsection.1.4.2}%
+\contentsline {subsubsection}{\numberline {1.4.3}Criterios de esfuerzo de ASME B31.3-2016}{6}{subsubsection.1.4.3}%
+\contentsline {subsection}{\numberline {1.5}Estructura del Documento}{7}{subsection.1.5}%
+\contentsline {section}{\numberline {2}Objetivos del Proyecto}{7}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Objetivo General}{7}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Objetivos Especificos}{7}{subsection.2.2}%
+\contentsline {section}{\numberline {3}Alcance y Limitaciones}{7}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Alcance del Estudio}{7}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Limitaciones del Estudio}{8}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Bases de Diseno}{8}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Restricciones de Operacion}{8}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Condiciones Ambientales del Sitio}{9}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Propiedades Fisicoquimicas del Fluido de Proceso}{9}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Especificacion de Tuberias y Accesorios}{9}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Especificacion de Equipos Principales}{10}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}Normativas y Estandares Aplicables}{10}{subsection.4.6}%
+\contentsline {section}{\numberline {5}Metodologia}{10}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Plan de Trabajo}{10}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Herramientas de Analisis}{11}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Matriz de Escenarios / Casos de Estudio}{11}{subsection.5.3}%
+\contentsline {section}{\numberline {6}Resultados}{12}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Desplazamientos}{12}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Esfuerzos}{14}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Cargas en Soportes}{15}{subsection.6.3}%
+\contentsline {section}{\numberline {7}Analisis de Resultados}{16}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Cumplimiento de Codigo (Code Compliance)}{16}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Desplazamientos y Cargas en Soportes}{16}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Sintesis de Hallazgos}{17}{subsection.7.3}%
+\contentsline {section}{\numberline {8}Conclusiones}{17}{section.8}%
+\contentsline {section}{\numberline {9}Recomendaciones}{17}{section.9}%
+\let \numberline \tmptocnumberline 
+\contentsline {section}{\numberline {Ap\'{e}ndice~A}Resultados Graficos del Modelo (CAESAR II)}{18}{section.A}%
+\contentsline {section}{\numberline {Ap\'{e}ndice~B}Documentos Tecnicos Consultados}{19}{section.B}%

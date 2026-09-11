@@ -1,0 +1,59 @@
+% ===================== HOJA DE FIRMAS =====================
+\begin{titlepage}
+	\thispagestyle{corporativo}
+
+	\vspace*{1.5cm}
+
+	% Título del informe
+	\centering
+	{\Large\bfseries \projecttitle}
+
+	\vspace{3cm}
+
+	% Tabla 1: Control de Elaboración
+	\begin{center}
+	\fontsize{10}{12}\selectfont
+	\renewcommand{\arraystretch}{1.5}
+	\setlength{\tabcolsep}{4pt}
+
+	\begin{tabular}{|p{0.3\textwidth}|p{0.3\textwidth}|p{0.3\textwidth}|}
+		\hline
+		\rowcolor{green!15}
+		\textbf{Elaborado por:} & \textbf{Revisado por:} & \textbf{Aprobado por:} \\
+		\hline
+		\centering\arraybackslash\vspace{1.2cm} \firmaElaboro & \centering\arraybackslash\vspace{1.2cm} \firmaReviso & \centering\arraybackslash\vspace{1.2cm} \firmaAprobo \\
+		\hline
+		\centering\arraybackslash Fecha: \fechaElaboro & \centering\arraybackslash Fecha: \fechaReviso & \centering\arraybackslash Fecha: \fechaAprobo \\
+		\hline
+	\end{tabular}
+	\end{center}
+
+	\vspace{2.5cm}
+
+	% Tabla 2: Control de Revisiones
+	\begin{center}
+	\fontsize{10}{12}\selectfont
+	\renewcommand{\arraystretch}{1.2}
+	\setlength{\tabcolsep}{3pt}
+
+	\begin{tabular}{|c|c|p{0.3\textwidth}|c|c|c|}
+		\hline
+		\rowcolor{green!15}
+		\textbf{Versión} & \textbf{Autor} & \textbf{Descripción} & \textbf{Fecha elab.} & \textbf{Fecha rev.} & \textbf{Revisado por} \\
+		\hline
+		R\docRevision & \firmaElaboro & \descRevCero & \fechaElaboro & \fechaReviso & \firmaReviso \\
+		\hline
+		R1 & -- & \descRevUno & \fechaRevUno & -- & -- \\
+		\hline
+		R2 & -- & \descRevDos & \fechaRevDos & -- & -- \\
+		\hline
+		R3 & -- & \descRevTres & \fechaRevTres & -- & -- \\
+		\hline
+		R4 & -- & \descRevCuatro & \fechaRevCuatro & -- & -- \\
+		\hline
+	\end{tabular}
+	\end{center}
+
+	\vfill
+
+\end{titlepage}

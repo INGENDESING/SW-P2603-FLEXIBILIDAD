@@ -1,0 +1,59 @@
+% ===================== ANALISIS DE RESULTADOS =====================
+\section{Analisis de Resultados}
+\label{sec:analisis}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Cumplimiento de Codigo (Code Compliance)}
+
+La evaluaci\'{o}n de cumplimiento de c\'{o}digo del modelo arroj\'{o}
+\textbf{CODE COMPLIANCE EVALUATION PASSED}. El esfuerzo de c\'{o}digo
+m\'{a}ximo del sistema es \num{93808.6}~\si{kPa}, en el nodo 130, para el caso
+8 (EXP) L8=L3-L6, frente a un admisible de \num{269891.8}~\si{kPa}; la
+relaci\'{o}n de utilizaci\'{o}n m\'{a}xima es por tanto 34.8~\%. La
+Tabla~\ref{tab:top5-ratio} relaciona los cinco nodos de mayor ratio del caso
+cr\'{i}tico; todos cumplen con holgura el criterio Code $\leq$ Allowable.
+
+\input{assets/tab_top5_ratio.tex}
+
+El caso que gobierna el dise\~{n}o es el de expansi\'{o}n L8=L3-L6, es decir, el
+rango t\'{e}rmico entre la operaci\'{o}n a $T_2$ y el estado sostenido con
+presi\'{o}n. Este resultado es caracter\'{i}stico de l\'{i}neas con $\Delta T$
+apreciable (65~\si{\celsius}) y configuraci\'{o}n corta entre anclas: el esfuerzo
+de flexi\'{o}n se concentra en los codos pr\'{o}ximos a los extremos
+restringidos, como evidencia la distribuci\'{o}n espacial de la
+Figura~\ref{fig:mapa-esfuerzos} y el perfil de la Figura~\ref{fig:esfuerzos}, con
+el m\'{a}ximo en el nodo 130 y valores relevantes en el nodo 80 (ratios de
+31.0~\% y 30.4~\%).
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Desplazamientos y Cargas en Soportes}
+
+Los desplazamientos de operaci\'{o}n son peque\~{n}os en magnitud absoluta
+(inferiores a 0.3~\si{mm} en el caso 1; m\'{a}ximos de 6.0~\si{mm} en los casos
+con temperatura $T_2$ y de expansi\'{o}n, ver Tabla~\ref{tab:desplaz-max}), lo
+que indica que la l\'{i}nea trabaja con bajos
+movimientos relativos y sin riesgo de interferencias por expans\'{o}n. Como se
+advierte en la secci\'{o}n~\ref{sec:resultados}, el reporte del job no tabula
+los desplazamientos de los casos sostenidos alternos 2 y 4, limitaci\'{o}n que
+no afecta la verificaci\'{o}n de c\'{o}digo, pues esta se apoya en los
+esfuerzos y en los rangos de expansi\'{o}n.
+
+Las cargas en soportes (Tablas~\ref{tab:restricciones-ope} a
+\ref{tab:restricciones-exp}) son moderadas: la carga vertical m\'{a}xima de
+operaci\'{o}n corresponde al soporte del nodo 90 con
+\num{-21559}~\si{N} (caso OPE), y las anclas transmiten fuerzas y momentos
+reducidos en todos los casos. No obstante, la comparaci\'{o}n de las cargas en
+la boquilla del tanque con los admisibles del fabricante del equipo queda
+fuera del alcance del presente informe (secci\'{o}n~\ref{sec:alcance}).
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Sintesis de Hallazgos}
+
+La l\'{i}nea SIM-012 presenta un margen amplio frente a los criterios de
+ASME B31.3-2016: el ratio m\'{a}ximo de utilizaci\'{o}n (34.8~\%) deja m\'{a}s
+de dos tercios del admisible disponible, los desplazamientos son peque\~{n}os
+(m\'{a}ximo 6.0~\si{mm}) y las cargas en soportes y anclas son moderadas. No se
+identifican cuellos de
+botella, zonas de sobre-esfuerzo ni configuraciones de soporte cr\'{i}ticas.
+El \'{u}nico aspecto pendiente de verificaci\'{o}n externa es la aceptaci\'{o}n
+de las cargas en la boquilla del equipo por parte de su fabricante.

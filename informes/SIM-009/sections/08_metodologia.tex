@@ -1,0 +1,49 @@
+% ===================== METODOLOGIA =====================
+\section{Metodologia}
+\label{sec:metodologia}
+
+\subsection{Plan de Trabajo}
+
+\begin{table}[htbp]
+    \centering
+    \caption{Plan de trabajo del an\'{a}lisis de flexibilidad.}
+    \label{tab:plan_trabajo}
+    \setcounter{itemcount}{0}
+    \begin{tabularx}{\textwidth}{@{}NlX@{}}
+        \toprule
+        \multicolumn{1}{c}{\textbf{Etapa}} & \textbf{Actividad} & \textbf{Descripcion} \\
+        \midrule
+        & Modelado isom\'{e}trico & El equipo de dise\~{n}o genera el isom\'{e}trico PCF105 en AutoCAD Plant 3D 2027 y exporta el archivo de intercambio PCF. \\
+        & Correcci\'{o}n del PCF & El archivo PCF se corrige con el script \texttt{fix\_pcf.py} para compatibilidad con CAESAR II 2019: eliminaci\'{o}n de bloques no soportados, fusi\'{o}n de \textit{stub-ends} con sus bridas y retiro de conexiones de instrumentaci\'{o}n. \\
+        & Modelo de esfuerzos & El PCF corregido se importa en CAESAR II 2019; se definen las condiciones de operaci\'{o}n (secci\'{o}n~\ref{sec:bases}) y los casos de carga (Tabla~\ref{tab:casos}). \\
+        & Verificaci\'{o}n y reporte & Se ejecuta el an\'{a}lisis est\'{a}tico y se verifica el resumen global de cumplimiento de c\'{o}digo; los reportes de desplazamientos, esfuerzos y restricciones se extraen del archivo de salida para este informe. \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Herramientas de Analisis}
+
+El modelo de esfuerzos se ejecut\'{o} en CAESAR II 2019 (Ver.11.00.00.4800,
+Hexagon / Intergraph), software de an\'{a}lisis de flexibilidad basado en el
+m\'{e}todo de elementos finitos con elementos viga tridimensionales de seis
+grados de libertad por nodo (secci\'{o}n~\ref{ssec:marco})~\cite{caesar2_ug_2019}.
+El isom\'{e}trico se produjo en AutoCAD Plant 3D 2027 (Autodesk) y la
+transferencia de geometr\'{i}a se realiz\'{o} mediante el formato PCF,
+previamente corregido con el script propio \texttt{fix\_pcf.py} (Python 3.14).
+Las tablas y curvas de este informe se generaron program\'{a}ticamente desde el
+reporte de salida de CAESAR II, sin transcripci\'{o}n manual de valores.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Matriz de Escenarios / Casos de Estudio}
+
+El an\'{a}lisis eval\'{u}a nueve casos de carga est\'{a}ticos, listados en la
+Tabla~\ref{tab:casos}: dos de operaci\'{o}n (OPE) para las condiciones
+t\'{e}rmicas $T_1$ y $T_2$, cuatro sostenidos (SUS y Alt-SUS) para las
+combinaciones de peso y presi\'{o}n, y tres de expansi\'{o}n (EXP) definidos como
+diferencia algebraica entre casos anteriores. El caso de expansi\'{o}n no
+representa una condici\'{o}n f\'{i}sica de carga, sino el rango de
+desplazamientos t\'{e}rmicos entre el estado de operaci\'{o}n y el estado
+sostenido~\cite{whatispiping_pipe_stress}.
+
+\input{assets/tab_casos.tex}

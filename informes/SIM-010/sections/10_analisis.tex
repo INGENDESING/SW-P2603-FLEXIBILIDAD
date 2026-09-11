@@ -1,0 +1,66 @@
+% ===================== ANALISIS DE RESULTADOS =====================
+\section{Analisis de Resultados}
+\label{sec:analisis}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Cumplimiento de Codigo (Code Compliance)}
+
+La evaluaci\'{o}n de cumplimiento de c\'{o}digo del modelo arroj\'{o}
+\textbf{CODE COMPLIANCE EVALUATION PASSED}. El esfuerzo de c\'{o}digo
+m\'{a}ximo del sistema es \num{118934.5}~\si{kPa}, en el nodo 430, para el
+caso 8 (EXP) L8=L3-L6, frente a un admisible de \num{254721.8}~\si{kPa}; la
+relaci\'{o}n de utilizaci\'{o}n m\'{a}xima es por tanto 46.7~\%. La
+Tabla~\ref{tab:top5-ratio} relaciona los cinco nodos de mayor ratio del caso
+cr\'{i}tico; todos cumplen con holgura el criterio Code $\leq$ Allowable.
+
+\input{assets/tab_top5_ratio.tex}
+
+El caso que gobierna el dise\~{n}o es el de expansi\'{o}n L8=L3-L6, es decir,
+el rango t\'{e}rmico asociado a la condici\'{o}n de operaci\'{o}n $T_2$, con
+el esfuerzo concentrado en el nodo 430 y valores relevantes en los nodos 40,
+310 y 560 (ratios entre 32.1~\% y 45.9~\%), zonas asociadas a los cambios de
+direcci\'{o}n y a las transiciones de di\'{a}metro del recorrido. El segundo
+caso de expansi\'{o}n, 9 (EXP) L9=L1-L3, alcanza un ratio de 39.9~\% en el
+nodo 40 frente a un admisible de \num{244940.0}~\si{kPa}. Los casos
+sostenidos quedan por debajo: el mayor ratio sostenido es 38.6~\% en el nodo
+310 para los casos 2 (Alt-SUS) y 6 (SUS) W+P2, con un esfuerzo de c\'{o}digo
+de \num{44403.8}~\si{kPa} frente al admisible sostenido de
+\num{115142.4}~\si{kPa}. Aunque el esfuerzo de flexi\'{o}n instant\'{a}neo
+m\'{a}ximo del sistema ocurre en operaci\'{o}n (\num{145727.2}~\si{kPa} en el
+nodo 40, caso 3 OPE W+T2+P2), los casos OPE no se comparan contra admisible
+de c\'{o}digo; son los casos SUS y EXP los que definen el cumplimiento
+seg\'{u}n ASME B31.3-2016.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Desplazamientos y Cargas en Soportes}
+
+Los rangos de desplazamiento t\'{e}rmico son moderados: el m\'{a}ximo
+absoluto es 8.8~\si{mm} en la componente $DX$ del caso 8 (EXP)
+(Tabla~\ref{tab:desplaz-max}), lo que indica que la l\'{i}nea absorbe la
+expansi\'{o}n t\'{e}rmica sin movimientos que comprometan la configuraci\'{o}n
+ni generen riesgo de interferencias. Como se advierte en la
+secci\'{o}n~\ref{sec:resultados}, el reporte del job no tabula los
+desplazamientos absolutos de los casos de operaci\'{o}n y sostenidos,
+limitaci\'{o}n que no afecta la verificaci\'{o}n de c\'{o}digo, pues esta se
+apoya en los esfuerzos y en los rangos de expansi\'{o}n.
+
+Las cargas en soportes (Tablas~\ref{tab:restricciones-ope} a
+\ref{tab:restricciones-exp}) son moderadas: la carga vertical m\'{a}xima
+corresponde al soporte r\'{i}gido +Y del nodo 130 con \num{-3616}~\si{N} en
+el caso sostenido 6, y las anclas de los nodos 520 y 590 transmiten fuerzas y
+momentos reducidos en todos los casos, con los mayores valores en el caso de
+expansi\'{o}n 8. No obstante, la comparaci\'{o}n de las cargas en la boquilla
+de succi\'{o}n de la bomba con los admisibles del fabricante del equipo queda
+fuera del alcance del presente informe (secci\'{o}n~\ref{sec:alcance}).
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Sintesis de Hallazgos}
+
+La l\'{i}nea SIM-010 cumple los criterios de ASME B31.3-2016: el ratio
+m\'{a}ximo de utilizaci\'{o}n (46.7~\%) deja m\'{a}s de la mitad del
+admisible disponible, los rangos de desplazamiento t\'{e}rmico son moderados
+(m\'{a}ximo 8.8~\si{mm}) y las cargas en soportes y anclas son reducidas. No
+se identifican cuellos de botella, zonas de sobre-esfuerzo ni configuraciones
+de soporte cr\'{i}ticas. El \'{u}nico aspecto pendiente de verificaci\'{o}n
+externa es la aceptaci\'{o}n de las cargas en la boquilla de la bomba por
+parte de su fabricante.

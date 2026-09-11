@@ -1,0 +1,18 @@
+This is BibTeX, Version 0.99e (MiKTeX 26.5)
+The top-level auxiliary file: I24.104-PP30-PP01-P-DOCS-207.aux
+The style file: elsarticle-num.bst
+I couldn't open database file references/bibliografia.bib
+---line 123 of file I24.104-PP30-PP01-P-DOCS-207.aux
+ : \bibdata{references/bibliografia.bib
+ :                                     }
+I'm skipping whatever remains of this command
+I found no database files---while reading file I24.104-PP30-PP01-P-DOCS-207.aux
+Warning--I didn't find a database entry for "asme_b313_2016"
+Warning--I didn't find a database entry for "caesar2_ug_2019"
+Warning--I didn't find a database entry for "toolbox_thermal_stress"
+Warning--I didn't find a database entry for "peng_pipe_stress"
+Warning--I didn't find a database entry for "astm_a312"
+Warning--I didn't find a database entry for "asme_b169"
+Warning--I didn't find a database entry for "asme_b165"
+Warning--I didn't find a database entry for "whatispiping_pipe_stress"
+(There were 2 error messages)

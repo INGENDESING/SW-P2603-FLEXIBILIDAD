@@ -1,0 +1,59 @@
+% ===================== ANALISIS DE RESULTADOS =====================
+\section{Analisis de Resultados}
+\label{sec:analisis}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Cumplimiento de Codigo (Code Compliance)}
+
+La evaluaci\'{o}n de cumplimiento de c\'{o}digo del modelo arroj\'{o}
+\textbf{CODE COMPLIANCE EVALUATION PASSED}. El esfuerzo de c\'{o}digo
+m\'{a}ximo del sistema es \num{30366.4}~\si{kPa}, en el nodo 60, para el caso
+2 (Alt-SUS) W+P2, frente a un admisible de \num{115142.4}~\si{kPa}; la
+relaci\'{o}n de utilizaci\'{o}n m\'{a}xima es por tanto 26.4~\%. La
+Tabla~\ref{tab:top5-ratio} relaciona los cinco nodos de mayor ratio del caso
+cr\'{i}tico; todos cumplen con holgura el criterio Code $\leq$ Allowable.
+
+\input{assets/tab_top5_ratio.tex}
+
+El caso que gobierna el dise\~{n}o es el sostenido alterno W+P2, es decir, la
+combinaci\'{o}n de peso propio con la presi\'{o}n de operaci\'{o}n $P_2$. Los
+casos de expansi\'{o}n t\'{e}rmica resultan despreciables frente al admisible
+de expansi\'{o}n de \num{262649.9}~\si{kPa}, con ratios redondeados a
+0.0~\%, comportamiento caracter\'{i}stico de una configuraci\'{o}n con
+recorrido corto y cambios de direcci\'{o}n que absorben el $\Delta T$ de
+65~\si{\celsius} sin concentrar esfuerzos de flexi\'{o}n relevantes. El
+m\'{a}ximo esfuerzo de flexi\'{o}n se concentra en el nodo 60, como evidencia
+el perfil de la Figura~\ref{fig:esfuerzos}, con valores relevantes tambi\'{e}n
+en los nodos 100 y 160 (ratios de 21.9~\% y 18.1~\%). La intensidad de
+esfuerzo m\'{a}xima del modelo es \num{36818.7}~\si{kPa} en el nodo 100, para
+el caso 3 (OPE) W+T2+P2.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Desplazamientos y Cargas en Soportes}
+
+Los desplazamientos de operaci\'{o}n son peque\~{n}os en magnitud absoluta
+(inferiores a 1.7~\si{mm} en el caso 1; m\'{a}ximo de 10.2~\si{mm} en la
+componente $DZ$ del caso 3 con temperatura $T_2$, ver
+Tabla~\ref{tab:desplaz-max}), lo que indica que la l\'{i}nea trabaja con bajos
+movimientos relativos y sin riesgo de interferencias por expansi\'{o}n.
+
+Las cargas en soportes (Tablas~\ref{tab:restricciones-ope} a
+\ref{tab:restricciones-exp}) son moderadas: la carga vertical m\'{a}xima de
+operaci\'{o}n corresponde al soporte del nodo 60 con
+\num{-2382}~\si{N} (caso OPE), y las gu\'{i}as con holgura y la boquilla de la
+bomba (nodo 220) no transmiten cargas significativas en ning\'{u}n caso. No
+obstante, la comparaci\'{o}n de las cargas en la boquilla de la bomba con los
+admisibles del fabricante del equipo queda fuera del alcance del presente
+informe (secci\'{o}n~\ref{sec:alcance}).
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Sintesis de Hallazgos}
+
+La l\'{i}nea SIM-009 presenta un margen amplio frente a los criterios de
+ASME B31.3-2016: el ratio m\'{a}ximo de utilizaci\'{o}n (26.4~\%) deja cerca
+del 74~\% del admisible disponible, los desplazamientos son peque\~{n}os
+(m\'{a}ximo 10.2~\si{mm}) y las cargas en soportes y en la boquilla de la bomba
+son moderadas. No se identifican cuellos de
+botella, zonas de sobre-esfuerzo ni configuraciones de soporte cr\'{i}ticas.
+El \'{u}nico aspecto pendiente de verificaci\'{o}n externa es la aceptaci\'{o}n
+de las cargas en la boquilla del equipo por parte de su fabricante.

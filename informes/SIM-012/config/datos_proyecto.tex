@@ -1,0 +1,62 @@
+% ===================== DATOS DEL PROYECTO =====================
+% Toda la informacion del proyecto se centraliza aqui.
+% Para crear un nuevo informe, modifique unicamente los valores
+% entre corchetes manteniendo la estructura de comandos.
+
+% 1. Informacion General del Proyecto
+\newcommand{\projecttitle}{An\'{a}lisis de flexibilidad --- Succión TK Blowtank (SIM-012)}
+\newcommand{\documentcode}{I24.104-PP30-PP01-P-DOCS-187}
+\newcommand{\documenttype}{INFORME T\'{E}CNICO --- AN\'{A}LISIS DE FLEXIBILIDAD}
+\newcommand{\targetcompany}{Smurfit Westrock}
+\newcommand{\projectnumber}{P2603}
+
+% 2. Informacion de Documento y Emision
+\newcommand{\docRevision}{0}
+% Formato de fecha estandar: DD/MM/AAAA
+\newcommand{\twodigits}[1]{\ifnum#1<10 0\fi\number#1}
+\newcommand{\docFecha}{\twodigits{\day}/\twodigits{\month}/\number\year}
+\newcommand{\docFechaLarga}{SEPTIEMBRE 2026}
+
+% 3. Integrantes y Control de Firmas
+\newcommand{\firmaElaboro}{J.ARBOLEDA}
+\newcommand{\firmaReviso}{F.NAVIA}
+\newcommand{\firmaAprobo}{H.ROSERO}
+
+% 4. Fechas de Firmas y Revisiones
+\newcommand{\fechaElaboro}{01/09/2026}
+\newcommand{\fechaReviso}{[DD/MM/AAAA]}
+\newcommand{\fechaAprobo}{[DD/MM/AAAA]}
+
+% 5. Datos de Historial de Revisiones (Portada / Firmas)
+\newcommand{\fechaRevCero}{[DD/MM/AAAA]}
+\newcommand{\descRevCero}{Emision inicial}
+\newcommand{\fechaRevUno}{--}
+\newcommand{\descRevUno}{--}
+\newcommand{\fechaRevDos}{--}
+\newcommand{\descRevDos}{--}
+\newcommand{\fechaRevTres}{--}
+\newcommand{\descRevTres}{--}
+\newcommand{\fechaRevCuatro}{--}
+\newcommand{\descRevCuatro}{--}
+
+% 6. Mapeo para compatibilidad con header.tex
+\newcommand{\documentrevision}{R\docRevision}
+\newcommand{\documentdate}{\docFecha}
+\newcommand{\elaboratedby}{\firmaElaboro}
+\newcommand{\reviewedby}{\firmaReviso}
+\newcommand{\approvedby}{\firmaAprobo}
+
+% 7. Textos del encabezado (centralizados para edicion sin tocar header.tex)
+% Lineas del titulo del documento (columna central del membrete)
+\newcommand{\headerlinetitulo}{INGENIERIA DE DETALLE}
+\newcommand{\headerlinesubuno}{EUCALYPTUS PULP PRODUCTION OPTIMIZATION PROJECT}
+\newcommand{\headerlinesubdos}{ANALISIS DE FLEXIBILIDAD TK BLOWTANK}
+
+% Etiquetas del membrete (columna 4)
+\newcommand{\headerlabelcode}{C\'{O}DIGO:}
+\newcommand{\headerlabelrevision}{REVISI\'{O}N:}
+\newcommand{\headerlabeldate}{FECHA:}
+\newcommand{\headerlabelelaboro}{ELABOR\'{O}:}
+\newcommand{\headerlabelreviso}{REVIS\'{O}:}
+\newcommand{\headerlabelaprobo}{APROB\'{O}:}
+\newcommand{\headerlabelproject}{PROYECTO:}

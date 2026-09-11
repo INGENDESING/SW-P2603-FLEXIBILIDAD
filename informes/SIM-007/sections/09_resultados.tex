@@ -1,0 +1,102 @@
+% ===================== RESULTADOS =====================
+\section{Resultados}
+\label{sec:resultados}
+
+Los resultados que se presentan a continuaci\'{o}n fueron extra\'{i}dos
+program\'{a}ticamente del reporte de salida de CAESAR II del job
+P2603-PR-SIM-007 (fecha de an\'{a}lisis: 10/09/2026). El modelo comprende
+28 nodos evaluados entre las anclas de los extremos del tramo (nodos 10 y
+110). La Figura~\ref{fig:isometrico} presenta el isom\'{e}trico de
+referencia de la l\'{i}nea.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{assets/PCF107.png}
+    \caption{Isom\'{e}trico de la l\'{i}nea de la bomba de vac\'{i}o nueva (PCF107, AutoCAD Plant 3D 2027).}
+    \label{fig:isometrico}
+\end{figure}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Desplazamientos}
+
+La Tabla~\ref{tab:desplaz-max} resume los desplazamientos m\'{a}ximos absolutos
+por caso de carga y la Figura~\ref{fig:desplazamientos} muestra el perfil de
+desplazamientos nodales en condici\'{o}n de operaci\'{o}n (caso 1, OPE). El
+reporte del job tabula desplazamientos \'{u}nicamente para los casos 1, 3, 5,
+6, 7, 8 y 9; los casos sostenidos alternos 2 y 4 no incluyen este reporte. Los
+desplazamientos del caso 1 son inferiores a 0.6~\si{mm}; los m\'{a}ximos del
+sistema corresponden al caso 3 (OPE) con temperatura $T_2$ (3.5~\si{mm} en
+$DX$ y 3.4~\si{mm} en $DZ$) y a los casos de expansi\'{o}n 8 y 9 (hasta
+3.4~\si{mm}), valores peque\~{n}os en magnitud absoluta y coherentes con una
+configuraci\'{o}n corta entre las anclas de los extremos. La
+Figura~\ref{fig:vista-desplazamiento} presenta la vista del modelo con la
+posici\'{o}n deformada de la l\'{i}nea.
+
+\input{assets/tab_desplazamientos_max.tex}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{assets/fig_desplazamientos.png}
+    \caption{Perfil de desplazamientos nodales $DX$, $DY$ y $DZ$ en el caso 1 (OPE) W+T1+P1.}
+    \label{fig:desplazamientos}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{assets/graf_desplazamiento.png}
+    \caption{Vista del modelo de CAESAR II con la posici\'{o}n deformada de la l\'{i}nea (job P2603-PR-SIM-007).}
+    \label{fig:vista-desplazamiento}
+\end{figure}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Esfuerzos}
+
+La Figura~\ref{fig:esfuerzos} presenta el perfil de esfuerzo de flexi\'{o}n
+(\textit{bending}) por nodo para el caso cr\'{i}tico 9 (EXP) L9=L1-L3, y la
+Tabla~\ref{tab:esfuerzos-critico} consolida los valores de esfuerzo de
+c\'{o}digo, admisible y ratio de utilizaci\'{o}n por nodo para ese mismo caso.
+La Figura~\ref{fig:code-stress} muestra la distribuci\'{o}n espacial del
+esfuerzo de c\'{o}digo, expresado como porcentaje del admisible, sobre el
+modelo.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{assets/fig_esfuerzos.png}
+    \caption{Perfil de esfuerzo de flexi\'{o}n por nodo, caso cr\'{i}tico 9 (EXP) L9=L1-L3. M\'{a}ximo: \num{191102.8}~\si{kPa} en el nodo 100.}
+    \label{fig:esfuerzos}
+\end{figure}
+
+\input{assets/tab_esfuerzos_critico.tex}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{assets/graf_stress_percent.png}
+    \caption{Distribuci\'{o}n del esfuerzo de c\'{o}digo como porcentaje del admisible (\textit{Code Stress by Percent}) sobre el modelo, caso cr\'{i}tico 9 (EXP) L9=L1-L3 (CAESAR II, job P2603-PR-SIM-007).}
+    \label{fig:code-stress}
+\end{figure}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Cargas en Soportes y Anclas}
+
+Las Tablas~\ref{tab:restricciones-ope}, \ref{tab:restricciones-sus} y
+\ref{tab:restricciones-exp} presentan las fuerzas y momentos transmitidos a los
+soportes y anclas para los casos de operaci\'{o}n (caso 1), sostenido con
+presi\'{o}n (caso 5) y expansi\'{o}n cr\'{i}tico (caso 9), respectivamente. Los
+extremos del tramo son anclas (ANC) en los nodos 10 y 110 ---este \'{u}ltimo
+tramo incluye la boquilla de la bomba de vac\'{i}o--- y el nodo intermedio 75
+cuenta con un soporte r\'{i}gido vertical (+Y) y una gu\'{i}a axial con holgura
+(Z \textit{w/gap}). La Figura~\ref{fig:nodos-soporte} muestra la ubicaci\'{o}n
+de estas restricciones sobre el modelo.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{assets/graf_nodos_soporte.png}
+    \caption{Modelo de CAESAR II con los soportes y restricciones de la l\'{i}nea: anclas en los nodos 10 y 110, y soporte r\'{i}gido vertical (+Y) con gu\'{i}a axial en el nodo 75 (job P2603-PR-SIM-007).}
+    \label{fig:nodos-soporte}
+\end{figure}
+
+\input{assets/tab_restricciones_ope.tex}
+
+\input{assets/tab_restricciones_sus.tex}
+
+\input{assets/tab_restricciones_exp.tex}

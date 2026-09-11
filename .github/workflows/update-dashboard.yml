@@ -4,10 +4,8 @@ on:
   push:
     branches: [ main, master ]
     paths:
-      - 'SUCCION DE BOMBA DE RECIRCULACION*/**/*.md'
-      - 'DESCARGA DE BOMBA DE RECIRCULACION*/**/*.md'
-      - 'DESCARGA BOMBA*/**/*.md'
-      - 'LINEA DE BOMBA DE VACIO*/**/*.md'
+      - '**/P2603-PR-*.md'
+      - '**/Graficas/**'
       - '**/ResultadosGraficos*'
       - 'scripts/**'
       - 'dashboard/**'

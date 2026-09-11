@@ -1,0 +1,77 @@
+% ===================== ANALISIS DE RESULTADOS =====================
+\section{Analisis de Resultados}
+\label{sec:analisis}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Cumplimiento de Codigo (Code Compliance)}
+
+La evaluaci\'{o}n de cumplimiento de c\'{o}digo del modelo arroj\'{o}
+\textbf{CODE COMPLIANCE EVALUATION PASSED}. El esfuerzo de c\'{o}digo
+m\'{a}ximo del sistema es \num{64417.1}~\si{kPa}, en el nodo 70, para el caso
+6 (SUS) W+P2, frente a un admisible de \num{115142.4}~\si{kPa}; la
+relaci\'{o}n de utilizaci\'{o}n m\'{a}xima es por tanto 55.9~\%. La
+Tabla~\ref{tab:top5-ratio} relaciona los cinco nodos de mayor ratio del caso
+cr\'{i}tico; todos cumplen con holgura el criterio Code $\leq$ Allowable.
+
+\input{assets/tab_top5_ratio.tex}
+
+El caso que gobierna el dise\~{n}o es el sostenido W+P2, es decir, la
+combinaci\'{o}n de peso propio con la presi\'{o}n de operaci\'{o}n $P_2$; los
+casos sostenidos alternos 2 y 4 (Alt-SUS) W+P2 presentan pr\'{a}cticamente el
+mismo ratio (55.9~\%, \num{64415.0}~\si{kPa} en el mismo nodo 70), el caso
+sostenido sin presi\'{o}n (caso 5, SUS W) alcanza 43.4~\%
+(\num{50001.6}~\si{kPa}) y los casos de expansi\'{o}n presentan ratios
+pr\'{a}cticamente nulos (m\'{a}ximo 0.2~\% en los casos 7, 8 y 9), frente a un
+admisible de expansi\'{o}n de \num{223439.0}~\si{kPa} en el nodo 70. Este
+resultado es caracter\'{i}stico de l\'{i}neas donde el esfuerzo longitudinal
+por presi\'{o}n y peso domina sobre el rango t\'{e}rmico. El esfuerzo de
+flexi\'{o}n se concentra en el nodo 70, correspondiente a la tee no reforzada
+del modelo (factores de intensificaci\'{o}n en el plano y fuera del plano de
+4.4 y 5.7, respectivamente), como evidencia el perfil de la
+Figura~\ref{fig:esfuerzos}, con \num{49856.3}~\si{kPa} de flexi\'{o}n en el
+caso cr\'{i}tico. En condici\'{o}n de operaci\'{o}n (caso 1, OPE, sin
+verificaci\'{o}n de c\'{o}digo) el modelo reporta un esfuerzo de flexi\'{o}n
+m\'{a}ximo de \num{66095.1}~\si{kPa} en el nodo 70, un esfuerzo
+circunferencial (\textit{hoop}) m\'{a}ximo de \num{29439.1}~\si{kPa} en el
+nodo 40, una torsi\'{o}n m\'{a}xima de \num{1246.6}~\si{kPa} en el nodo 58 y
+una intensidad de esfuerzo m\'{a}xima de \num{81035.8}~\si{kPa} en el nodo 70.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Desplazamientos y Cargas en Soportes}
+
+Los rangos de desplazamiento t\'{e}rmico se concentran en la direcci\'{o}n
+vertical del recorrido: el m\'{a}ximo absoluto es 39.2~\si{mm} en la
+componente $DZ$ del caso 8 (EXP) (Tabla~\ref{tab:desplaz-max}), valor
+coherente con la dilataci\'{o}n libre de la corrida vertical para
+$\Delta T$~=~65~\si{\celsius}. Los ratios de expansi\'{o}n asociados son
+des\-pre\-cia\-bles (m\'{a}ximo 0.2~\%), lo que indica que la configuraci\'{o}n
+absorbe la expansi\'{o}n con amplia holgura y sin riesgo de interferencias.
+Como se advierte en la secci\'{o}n~\ref{sec:resultados}, el reporte del job no
+tabula los desplazamientos absolutos de los casos de operaci\'{o}n y
+sostenidos, limitaci\'{o}n que no afecta la verificaci\'{o}n de c\'{o}digo,
+pues esta se apoya en los esfuerzos y en los rangos de expansi\'{o}n.
+
+Las cargas en soportes (Tablas~\ref{tab:restricciones-ope} a
+\ref{tab:restricciones-exp}) son moderadas: la \'{u}nica carga significativa
+corresponde al soporte vertical del nodo 105 con \num{-1728}~\si{N} en los
+casos de operaci\'{o}n y sostenidos; las gu\'{i}as de los nodos 40 y 105
+transmiten cargas laterales de hasta \num{324}~\si{N} y las cargas de
+expansi\'{o}n son pr\'{a}cticamente nulas (m\'{a}ximo 2~\si{N}). No obstante,
+la comparaci\'{o}n de las cargas en la conexi\'{o}n de descarga del TMS con los
+admisibles del fabricante del equipo queda fuera del alcance del presente
+informe (secci\'{o}n~\ref{sec:alcance}).
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Sintesis de Hallazgos}
+
+La l\'{i}nea SIM-014 presenta un margen amplio frente a los criterios de
+ASME B31.3-2016: el ratio m\'{a}ximo de utilizaci\'{o}n (55.9~\%) deja el
+44.1~\% del admisible disponible, los rangos de expansi\'{o}n t\'{e}rmica se
+absorben con ratios inferiores a 0.2~\% y las cargas en soportes son
+moderadas. La zona de mayor utilizaci\'{o}n corresponde a la tee no reforzada
+del nodo 70, comportamiento esperado por la concentraci\'{o}n de esfuerzo
+propia de este accesorio. No se identifican cuellos de botella, zonas de
+sobre-esfuerzo ni configuraciones de soporte cr\'{i}ticas. Los aspectos
+pendientes de verificaci\'{o}n externa son la aceptaci\'{o}n de las cargas en
+la conexi\'{o}n de descarga del TMS por parte del fabricante del equipo y las
+advertencias de modelado declaradas en la secci\'{o}n~\ref{sec:alcance}.

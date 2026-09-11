@@ -1,0 +1,71 @@
+% ===================== ANALISIS DE RESULTADOS =====================
+\section{Analisis de Resultados}
+\label{sec:analisis}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Cumplimiento de Codigo (Code Compliance)}
+
+La evaluaci\'{o}n de cumplimiento de c\'{o}digo del modelo arroj\'{o}
+\textbf{CODE COMPLIANCE EVALUATION PASSED}. El esfuerzo de c\'{o}digo
+m\'{a}ximo del sistema es \num{25955.2}~\si{kPa}, en el nodo 90, para el caso
+4 (Alt-SUS) W+P2, frente a un admisible de \num{115142.4}~\si{kPa}; la
+relaci\'{o}n de utilizaci\'{o}n m\'{a}xima es por tanto 22.5~\%. La
+Tabla~\ref{tab:top5-ratio} relaciona los cinco nodos de mayor ratio del caso
+cr\'{i}tico; todos cumplen con holgura el criterio Code $\leq$ Allowable.
+
+\input{assets/tab_top5_ratio.tex}
+
+A diferencia de lo usual en l\'{i}neas con $\Delta T$ apreciable, el caso que
+gobierna el dise\~{n}o no es el de expansi\'{o}n sino el sostenido alterno con
+la presi\'{o}n mayor ($P_2$): los casos de expansi\'{o}n (7 a 9) presentan
+ratios pr\'{a}cticamente nulos (0.0~\% frente a un admisible de
+\num{261900.9}~\si{kPa}), lo que indica que la configuraci\'{o}n absorbe el
+rango t\'{e}rmico sin generar esfuerzos de flexi\'{o}n significativos. En el
+caso cr\'{i}tico, el esfuerzo de c\'{o}digo est\'{a} dominado por la componente
+axial de presi\'{o}n (\textit{SLP}), cuyo m\'{a}ximo del caso es
+\num{17155.1}~\si{kPa} (nodo 80), mientras que el esfuerzo de flexi\'{o}n
+m\'{a}ximo del mismo caso es \num{11239.1}~\si{kPa} (nodo 60), como evidencia
+el perfil de la Figura~\ref{fig:esfuerzos}. El esfuerzo de flexi\'{o}n m\'{a}s
+alto de todo el modelo (\num{11731.5}~\si{kPa}, nodo 90) ocurre en el caso 1
+(OPE) W+T1+P1, que no est\'{a} sujeto a verificaci\'{o}n de c\'{o}digo por
+tratarse de una condici\'{o}n operativa de referencia para los rangos de
+expansi\'{o}n; en esa misma condici\'{o}n operativa el modelo reporta un
+esfuerzo circunferencial (\textit{hoop}) m\'{a}ximo de \num{34919.9}~\si{kPa}
+en el nodo 80 y una intensidad de esfuerzo m\'{a}xima de
+\num{36794.7}~\si{kPa} en el nodo 90.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Desplazamientos y Cargas en Soportes}
+
+Los desplazamientos de operaci\'{o}n son moderados: el m\'{a}ximo absoluto
+corresponde a la componente $DZ$ del caso 3 con 9.9~\si{mm} (2.6~\si{mm} en
+el caso 1), mientras la componente vertical $DY$ se mantiene por debajo de
+0.9~\si{mm} en todos los casos (Tabla~\ref{tab:desplaz-max} y
+Figura~\ref{fig:desplazamientos}). Estos movimientos son coherentes con la
+expansi\'{o}n del tramo entre sus extremos restringidos, y no representan
+riesgo de interferencias por expansi\'{o}n dadas las holguras previstas en las
+gu\'{i}as. Como se advierte en la secci\'{o}n~\ref{sec:resultados}, el reporte
+del job no tabula los desplazamientos de los casos sostenidos alternos 2 y 4,
+limitaci\'{o}n que no afecta la verificaci\'{o}n de c\'{o}digo, pues esta se
+apoya en los esfuerzos y en los rangos de expansi\'{o}n.
+
+Las cargas en soportes (Tablas~\ref{tab:restricciones-ope} a
+\ref{tab:restricciones-exp}) son bajas: la carga vertical m\'{a}xima de
+operaci\'{o}n corresponde al soporte del nodo 60 con \num{1847}~\si{N}, seguida
+del soporte del nodo 130 con \num{1672}~\si{N}, y las gu\'{i}as con holgura no
+transmiten cargas apreciables en los casos evaluados. No obstante, la
+comparaci\'{o}n de las cargas en la boquilla de succi\'{o}n de la bomba con los
+admisibles del fabricante del equipo queda fuera del alcance del presente
+informe (secci\'{o}n~\ref{sec:alcance}).
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Sintesis de Hallazgos}
+
+La l\'{i}nea SIM-008 presenta un margen amplio frente a los criterios de
+ASME B31.3-2016: el ratio m\'{a}ximo de utilizaci\'{o}n (22.5~\% en el nodo
+90, caso 4 Alt-SUS W+P2) deja cerca de tres cuartas partes del admisible
+disponible, los casos de expansi\'{o}n son despreciables y las cargas en
+soportes son bajas. No se identifican cuellos de botella, zonas de
+sobre-esfuerzo ni configuraciones de soporte cr\'{i}ticas. El \'{u}nico
+aspecto pendiente de verificaci\'{o}n externa es la aceptaci\'{o}n de las
+cargas en la boquilla de succi\'{o}n de la bomba por parte de su fabricante.

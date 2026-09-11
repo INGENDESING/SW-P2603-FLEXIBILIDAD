@@ -1,0 +1,8 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {figure}{\numberline {1}{\ignorespaces Isom\'{e}trico de la l\'{i}nea de descarga de la bomba de recirculaci\'{o}n 2 DDW (PCF104, AutoCAD Plant 3D 2027).}}{12}{figure.caption.10}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Perfil de desplazamientos nodales $DX$, $DY$ y $DZ$ en el caso 1 (OPE) W+T1+P1.}}{13}{figure.caption.12}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Modelo de CAESAR II con la forma deformada de la l\'{i}nea en condici\'{o}n de operaci\'{o}n; los desplazamientos se representan amplificados con fines de visualizaci\'{o}n (job P2603-PR-SIM-003).}}{13}{figure.caption.13}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Perfil de esfuerzo de flexi\'{o}n por nodo, caso cr\'{i}tico 4 (Alt-SUS) W+P2. M\'{a}ximo: \num {5312.4}~\si {kPa} en el nodo 120.}}{14}{figure.caption.14}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Mapa de esfuerzo de c\'{o}digo en porcentaje del admisible (\textit {Code Stress by Percent}) sobre el modelo 3D, caso cr\'{i}tico 4 (Alt-SUS) W+P2 (CAESAR II, job P2603-PR-SIM-003). La escala de colores indica el nivel de utilizaci\'{o}n del esfuerzo admisible en cada elemento.}}{15}{figure.caption.15}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Modelo de CAESAR II con los soportes y restricciones de la l\'{i}nea, vista 1 (job P2603-PR-SIM-003).}}{16}{figure.caption.17}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Modelo de CAESAR II con los soportes y restricciones de la l\'{i}nea, vista 2 (job P2603-PR-SIM-003).}}{17}{figure.caption.18}%

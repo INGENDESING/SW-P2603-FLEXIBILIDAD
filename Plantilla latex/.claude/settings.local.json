@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"c:/Users/ingen/OneDrive/1.0 PROYECTOS DML/A FORMATOS/PLANTILLA-INFORME-DML/config\" \"c:/Users/ingen/OneDrive/1.0 PROYECTOS DML/A FORMATOS/PLANTILLA-INFORME-DML/sections\" \"c:/Users/ingen/OneDrive/1.0 PROYECTOS DML/A FORMATOS/PLANTILLA-INFORME-DML/assets\" \"c:/Users/ingen/OneDrive/1.0 PROYECTOS DML/A FORMATOS/PLANTILLA-INFORME-DML/logos\" \"c:/Users/ingen/OneDrive/1.0 PROYECTOS DML/A FORMATOS/PLANTILLA-INFORME-DML/references\" \"c:/Users/ingen/OneDrive/1.0 PROYECTOS DML/A FORMATOS/PLANTILLA-INFORME-DML/build\" \"c:/Users/ingen/OneDrive/1.0 PROYECTOS DML/A FORMATOS/PLANTILLA-INFORME-DML/task\")",
+      "Read(//c/Users/ingen/OneDrive/1.0 PROYECTOS DML/A FORMATOS/**)",
+      "Bash(cp \"c:/Users/ingen/OneDrive/1.0 PROYECTOS DML/A FORMATOS/FORMATO LATEX CON ENCABEZADO/CLAUDE.md\" \"c:/Users/ingen/OneDrive/1.0 PROYECTOS DML/A FORMATOS/PLANTILLA-INFORME-DML/CLAUDE.md\")",
+      "Bash(cp \"c:/Users/ingen/OneDrive/1.0 PROYECTOS DML/A FORMATOS/FORMATO LATEX CON ENCABEZADO/logos/logo1.png\" \"c:/Users/ingen/OneDrive/1.0 PROYECTOS DML/A FORMATOS/PLANTILLA-INFORME-DML/logos/logo1.png\")",
+      "Bash(cp \"c:/Users/ingen/OneDrive/1.0 PROYECTOS DML/A FORMATOS/FORMATO LATEX CON ENCABEZADO/logos/logo2.png\" \"c:/Users/ingen/OneDrive/1.0 PROYECTOS DML/A FORMATOS/PLANTILLA-INFORME-DML/logos/logo2.png\")",
+      "Bash(cp \"c:/Users/ingen/OneDrive/1.0 PROYECTOS DML/A FORMATOS/FORMATO LATEX CON ENCABEZADO/config/preamble.tex\" \"c:/Users/ingen/OneDrive/1.0 PROYECTOS DML/A FORMATOS/PLANTILLA-INFORME-DML/config/preamble.tex\")",
+      "Bash(cp \"c:/Users/ingen/OneDrive/1.0 PROYECTOS DML/A FORMATOS/FORMATO LATEX CON ENCABEZADO/sections/00_hojafirmas.tex\" \"c:/Users/ingen/OneDrive/1.0 PROYECTOS DML/A FORMATOS/PLANTILLA-INFORME-DML/sections/00_hojafirmas.tex\")"
+    ]
+  }
+}

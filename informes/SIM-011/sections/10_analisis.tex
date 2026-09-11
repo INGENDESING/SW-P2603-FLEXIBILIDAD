@@ -1,0 +1,62 @@
+% ===================== ANALISIS DE RESULTADOS =====================
+\section{Analisis de Resultados}
+\label{sec:analisis}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Cumplimiento de Codigo (Code Compliance)}
+
+La evaluaci\'{o}n de cumplimiento de c\'{o}digo del modelo arroj\'{o}
+\textbf{CODE COMPLIANCE EVALUATION PASSED}. El esfuerzo de c\'{o}digo
+m\'{a}ximo del sistema es \num{77420.2}~\si{kPa}, en el nodo 260, para el caso
+4 (Alt-SUS) W+P2, frente a un admisible de \num{115142.4}~\si{kPa}; la
+relaci\'{o}n de utilizaci\'{o}n m\'{a}xima es por tanto 67.2~\%. La
+Tabla~\ref{tab:top5-ratio} relaciona los cinco nodos de mayor ratio del caso
+cr\'{i}tico; todos cumplen con holgura el criterio Code $\leq$ Allowable.
+
+\input{assets/tab_top5_ratio.tex}
+
+El caso que gobierna el dise\~{n}o es el sostenido alterno W+P2, es decir, la
+combinaci\'{o}n de peso y presi\'{o}n a la condici\'{o}n $P_2$: la l\'{i}nea es
+de gran di\'{a}metro (predominantemente 10~NPS) y el peso del fluido m\'{a}s la
+presi\'{o}n interna dominan sobre el rango t\'{e}rmico. En efecto, los casos de
+expansi\'{o}n presentan ratios inferiores (2.0~\% a 37.7~\%, con admisibles
+entre \num{217069.3}~\si{kPa} y \num{257442.5}~\si{kPa} derivados de la
+ecuaci\'{o}n~\eqref{eq:sa}), mientras que los mayores esfuerzos de flexi\'{o}n
+del caso cr\'{i}tico se concentran en los nodos 260 y 450 (ratios de 67.2~\%,
+62.9~\%, 62.1~\% y 61.5~\%, ver Figura~\ref{fig:esfuerzos}), ubicados en las
+proximidades de las zonas restringidas del tramo. El mayor esfuerzo de flexi\'{o}n absoluto del
+modelo corresponde al caso 3 (OPE) W+T2+P2 con \num{108775.6}~\si{kPa} en el
+nodo 640, condici\'{o}n de operaci\'{o}n cuyo esfuerzo queda cubierto por la
+verificaci\'{o}n de los casos sostenidos y de expansi\'{o}n que lo acotan.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Desplazamientos y Cargas en Soportes}
+
+Los desplazamientos de operaci\'{o}n son moderados (m\'{a}ximo 4.7~\si{mm} en el
+caso 1; m\'{a}ximos de 20.8~\si{mm} en el caso 3 y 23.8~\si{mm} en el caso 8,
+ver Tabla~\ref{tab:desplaz-max}), lo que indica que la l\'{i}nea absorbe la
+expansi\'{o}n t\'{e}rmica de sus tramos largos sin concentraciones an\'{o}malas
+de movimiento y sin riesgo aparente de interferencias, siempre que la
+soporter\'{i}a se construya conforme al isom\'{e}trico.
+
+Las cargas en soportes (Tablas~\ref{tab:restricciones-ope} a
+\ref{tab:restricciones-exp}) son consistentes con una l\'{i}nea de 10~NPS
+llena de agua: la mayor carga vertical de operaci\'{o}n corresponde al ancla de
+la boquilla de descarga de la bomba (nodo 110) con \num{-18381}~\si{N} (caso
+OPE), y entre los soportes verticales el m\'{a}s cargado es el del nodo 340 con
+\num{-7231}~\si{N}. El ancla del nodo 420 transmite adem\'{a}s un momento
+$MX$ de \num{-5795}~\si{N.m} en operaci\'{o}n. La comparaci\'{o}n de las cargas
+en la boquilla de la bomba con los admisibles del fabricante (p.\,ej. API 610)
+queda fuera del alcance del presente informe (secci\'{o}n~\ref{sec:alcance}).
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Sintesis de Hallazgos}
+
+La l\'{i}nea SIM-011 cumple los criterios de ASME B31.3-2016 con margen
+suficiente: el ratio m\'{a}ximo de utilizaci\'{o}n (67.2~\%) deja cerca del
+33~\% del admisible disponible, los desplazamientos son moderados (m\'{a}ximo
+23.8~\si{mm}) y las cargas en soportes y anclas son coherentes con el peso y la
+presi\'{o}n del sistema. No se identifican zonas de sobre-esfuerzo ni
+configuraciones de soporte cr\'{i}ticas. El \'{u}nico aspecto pendiente de
+verificaci\'{o}n externa es la aceptaci\'{o}n de las cargas en la boquilla de
+descarga de la bomba PP30BT03 por parte de su fabricante.

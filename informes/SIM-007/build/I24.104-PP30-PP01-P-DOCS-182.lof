@@ -1,0 +1,7 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {figure}{\numberline {1}{\ignorespaces Isom\'{e}trico de la l\'{i}nea de la bomba de vac\'{i}o nueva (PCF107, AutoCAD Plant 3D 2027).}}{12}{figure.caption.10}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Perfil de desplazamientos nodales $DX$, $DY$ y $DZ$ en el caso 1 (OPE) W+T1+P1.}}{13}{figure.caption.12}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Vista del modelo de CAESAR II con la posici\'{o}n deformada de la l\'{i}nea (job P2603-PR-SIM-007).}}{13}{figure.caption.13}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Perfil de esfuerzo de flexi\'{o}n por nodo, caso cr\'{i}tico 9 (EXP) L9=L1-L3. M\'{a}ximo: \num {191102.8}~\si {kPa} en el nodo 100.}}{14}{figure.caption.14}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Distribuci\'{o}n del esfuerzo de c\'{o}digo como porcentaje del admisible (\textit {Code Stress by Percent}) sobre el modelo, caso cr\'{i}tico 9 (EXP) L9=L1-L3 (CAESAR II, job P2603-PR-SIM-007).}}{14}{figure.caption.16}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Modelo de CAESAR II con los soportes y restricciones de la l\'{i}nea: anclas en los nodos 10 y 110, y soporte r\'{i}gido vertical (+Y) con gu\'{i}a axial en el nodo 75 (job P2603-PR-SIM-007).}}{16}{figure.caption.17}%

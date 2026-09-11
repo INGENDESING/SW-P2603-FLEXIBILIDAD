@@ -1,0 +1,127 @@
+% ===================== BASES DE DISENO =====================
+\section{Bases de Diseno}
+\label{sec:bases}
+
+Las bases de dise\~{n}o del presente an\'{a}lisis corresponden a las condiciones
+congeladas del proyecto P2603 SW-K60 y son comunes a las ocho l\'{i}neas del
+paquete de flexibilidad. No es admisible modificarlas sin un nuevo ciclo de
+revisi\'{o}n con el cliente.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Restricciones de Operacion}
+\label{ssec:restricciones}
+
+\begin{table}[htbp]
+    \centering
+    \caption{Condiciones de dise\~{n}o y operaci\'{o}n de la l\'{i}nea SIM-002.}
+    \label{tab:restricciones}
+    \setcounter{itemcount}{0}
+    \begin{tabularx}{\textwidth}{@{}NXccl@{}}
+        \toprule
+        \multicolumn{1}{c}{\textbf{Item}} & \textbf{Parametro} & \textbf{Valor} & \textbf{Unidad} & \textbf{Referencia} \\
+        \midrule
+        & Presi\'{o}n m\'{a}xima de operaci\'{o}n & \num{1241} & \si{kPa}~g (180~psig) & Bases de dise\~{n}o del proyecto \\
+        & Temperatura de operaci\'{o}n & 90 & \si{\celsius} & Bases de dise\~{n}o del proyecto \\
+        & Temperatura de instalaci\'{o}n & 25 & \si{\celsius} & Bases de dise\~{n}o del proyecto \\
+        & Rango t\'{e}rmico de evaluaci\'{o}n $\Delta T$ & 65 & \si{\celsius} & Derivado de las anteriores \\
+        & C\'{o}digo de evaluaci\'{o}n & \multicolumn{2}{c}{ASME B31.3-2016} & Cliente \\
+        & Criterio de aceptaci\'{o}n & \multicolumn{2}{c}{Code $\leq$ Allowable (Ratio $\leq$ 100~\%)} & ASME B31.3-2016 \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Condiciones Ambientales del Sitio}
+\label{ssec:amb}
+
+La temperatura de instalaci\'{o}n se adopt\'{o} igual a 25~\si{\celsius}, valor
+est\'{a}ndar de referencia ambiente empleado en el paquete de an\'{a}lisis; el
+modelo no considera cargas de viento ni de sismo (ver limitaciones,
+secci\'{o}n~\ref{sec:alcance}).
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Propiedades Fisicoquimicas del Fluido de Proceso}
+\label{ssec:fluido}
+
+\begin{table}[htbp]
+    \centering
+    \caption{Propiedades del fluido de proceso (agua).}
+    \label{tab:propfluido}
+    \setcounter{itemcount}{0}
+    \begin{tabularx}{\textwidth}{@{}NXccc@{}}
+        \toprule
+        \multicolumn{1}{c}{\textbf{Item}} & \textbf{Propiedad} & \textbf{Valor} & \textbf{Unidad} & \textbf{Referencia} \\
+        \midrule
+        & Fluido & \multicolumn{2}{c}{Agua de proceso} & Cliente \\
+        & Gravedad espec\'{i}fica (SG) & 1.0 & --- & Bases de dise\~{n}o del proyecto \\
+        & Densidad & \num{1000} & \si{kg/m^3} (0.001~\si{kg/cm^3}) & Bases de dise\~{n}o del proyecto \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Especificacion de Tuberias y Accesorios}
+\label{ssec:tuberia}
+
+La l\'{i}nea est\'{a} construida en acero inoxidable austen\'{i}tico
+ASTM A312 TP 304L seg\'{u}n ASME B36.19, Sch 10S, sin tolerancia por
+corrosi\'{o}n (CA~=~0), conforme a la especificaci\'{o}n de tuber\'{i}as del
+proyecto. La Tabla~\ref{tab:tuberia} resume la especificaci\'{o}n extra\'{i}da
+del archivo PCF del isom\'{e}trico.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Especificaci\'{o}n de tuber\'{i}as y accesorios de la l\'{i}nea SIM-002 (fuente: PCF103).}
+    \label{tab:tuberia}
+    \setcounter{itemcount}{0}
+    \begin{tabularx}{\textwidth}{@{}N>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
+        \toprule
+        \multicolumn{1}{c}{\textbf{Item}} & \textbf{Componente} & \textbf{Especificacion} \\
+        \midrule
+        & Tuber\'{i}a & ASTM A312 Gr TP 304L, ASME B36.19, Sch 10S, sin costura y ERW, extremos PE/BW \\
+        & Di\'{a}metro nominal presente & 6 NPS \\
+        & Codos 90$^\circ$ y 45$^\circ$ radio largo & ASTM A403 Gr WP 304L, ASME B16.9, Sch 10S, BW \\
+        & Bridas \textit{slip-on} & 150~lb, RF, ASME B16.5, ASTM A182 Gr F304L \\
+        & Uniones bridadas \textit{lap joint} + \textit{stub-end} & 150~lb, ASME B16.5 / B16.9-C \\
+        & V\'{a}lvula de retenci\'{o}n \textit{swing} & Cl.~150, RF, ASME B16.10 \\
+        & V\'{a}lvulas de bola & Paso total, NPT, ASME B16.10; una con actuador neum\'{a}tico \\
+        & Medidor magn\'{e}tico de flujo & Cl.~150, RF \\
+        & Conexiones forjadas de la derivaci\'{o}n menor & \textit{Sockolet} 3000~lb, ASME B16.11, ASTM A182 Gr F304L \\
+        & Tolerancia por corrosi\'{o}n (CA) & 0 \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Especificacion de Equipos Principales}
+\label{ssec:equipos}
+
+El \'{u}nico equipo conectado al tramo analizado es la bomba de
+recirculaci\'{o}n 1 del sistema DDW, cuya boquilla de descarga marca el inicio
+del modelo (nodo 10). La conexi\'{o}n con el equipo y el empalme aguas abajo
+(nodo 170) se modelan mediante restricciones r\'{i}gidas con holgura
+(\textit{w/gap}); las cargas que la l\'{i}nea transmite a los soportes se
+reportan en la secci\'{o}n~\ref{sec:resultados}.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Normativas y Estandares Aplicables}
+\label{ssec:normas}
+
+\begin{table}[htbp]
+    \centering
+    \caption{Marco normativo aplicable al an\'{a}lisis de flexibilidad.}
+    \label{tab:normas}
+    \setcounter{itemcount}{0}
+    \begin{tabularx}{\textwidth}{@{}NXXl@{}}
+        \toprule
+        \multicolumn{1}{c}{\textbf{Item}} & \textbf{Norma / Estandar} & \textbf{Alcance} & \textbf{Edicion} \\
+        \midrule
+        & ASME B31.3~\cite{asme_b313_2016} & C\'{o}digo de tuber\'{i}as de proceso: criterios de esfuerzo sostenido, expansi\'{o}n y admisibles & 2016 \\
+        & ASTM A312 / ASME B36.19~\cite{astm_a312} & Material y dimensiones de tuber\'{i}a inoxidable & Vigente \\
+        & ASTM A403 / ASME B16.9~\cite{asme_b169} & Accesorios forjados para soldadura a tope & Vigente \\
+        & ASME B16.5~\cite{asme_b165} & Bridas y uniones bridadas & Vigente \\
+        & ASME B16.10 & Dimensiones cara a cara de v\'{a}lvulas & Vigente \\
+        & ASME B16.11 & Accesorios forjados roscados y de soldadura de encaje & Vigente \\
+        \bottomrule
+    \end{tabularx}
+\end{table}

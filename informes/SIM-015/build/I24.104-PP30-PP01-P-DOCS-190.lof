@@ -1,0 +1,9 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {figure}{\numberline {1}{\ignorespaces Vista del modelo 3D de la tuber\'{i}a del filtro de fibras PP1 (PCF114, AutoCAD Plant 3D 2027).}}{13}{figure.caption.10}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Perfil de desplazamientos nodales $DX$, $DY$ y $DZ$ en el caso 1 (OPE) W+T1+P2.}}{14}{figure.caption.12}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Configuraci\'{o}n deformada del modelo y distribuci\'{o}n de desplazamientos (CAESAR II, job P2603-PR-SIM-015).}}{14}{figure.caption.13}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Perfil de esfuerzo de flexi\'{o}n por nodo, caso cr\'{i}tico 2 (Alt-SUS) W+P2. M\'{a}ximo: \num {27386.6}~\si {kPa} en el nodo 80.}}{15}{figure.caption.14}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Mapa de porcentaje de esfuerzo de c\'{o}digo (\textit {Code Stress by Percent}) sobre el modelo 3D, caso cr\'{i}tico 2 (Alt-SUS) W+P2, vista 1 (CAESAR II, job P2603-PR-SIM-015). La escala de colores indica la relaci\'{o}n entre el esfuerzo de c\'{o}digo y el admisible en cada elemento.}}{19}{figure.caption.15}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Mapa de porcentaje de esfuerzo de c\'{o}digo (\textit {Code Stress by Percent}) sobre el modelo 3D, caso cr\'{i}tico 2 (Alt-SUS) W+P2, vista 2 (CAESAR II, job P2603-PR-SIM-015).}}{19}{figure.caption.16}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Modelo de CAESAR II con los soportes y restricciones de la l\'{i}nea, vista 1 (job P2603-PR-SIM-015).}}{21}{figure.caption.20}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Modelo de CAESAR II con los soportes y restricciones de la l\'{i}nea, vista 2 (job P2603-PR-SIM-015).}}{22}{figure.caption.21}%

@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(python fix_pcf.py \"SUCCION DE BOMBA DE RECIRCULACION 1 DDW\\\\PCF106.pcf\")"
+    ]
+  }
+}

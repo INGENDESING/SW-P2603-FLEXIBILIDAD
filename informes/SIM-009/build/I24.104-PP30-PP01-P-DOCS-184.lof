@@ -1,0 +1,7 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {figure}{\numberline {1}{\ignorespaces Isom\'{e}trico de la l\'{i}nea de succi\'{o}n de la bomba de recirculaci\'{o}n 2 DDW (PCF105, AutoCAD Plant 3D 2027).}}{12}{figure.caption.10}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Perfil de desplazamientos nodales $DX$, $DY$ y $DZ$ en el caso 1 (OPE) W+T1+P2.}}{13}{figure.caption.12}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Modelo de CAESAR II con la posici\'{o}n inicial y la posici\'{o}n desplazada de la l\'{i}nea en la condici\'{o}n de desplazamientos m\'{a}ximos (job P2603-PR-SIM-009).}}{13}{figure.caption.13}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Perfil de esfuerzo de flexi\'{o}n por nodo, caso cr\'{i}tico 2 (Alt-SUS) W+P2. M\'{a}ximo: \num {15898.0}~\si {kPa} en el nodo 60.}}{14}{figure.caption.14}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Mapa del esfuerzo de c\'{o}digo en porcentaje del admisible (\textit {Code Stress by Percent}) sobre el modelo 3D, caso cr\'{i}tico 2 (Alt-SUS) W+P2 (CAESAR II, job P2603-PR-SIM-009).}}{14}{figure.caption.15}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Modelo de CAESAR II con la numeraci\'{o}n de nodos y la ubicaci\'{o}n de los soportes y restricciones de la l\'{i}nea (job P2603-PR-SIM-009).}}{16}{figure.caption.17}%

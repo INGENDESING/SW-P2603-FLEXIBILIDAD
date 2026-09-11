@@ -1,0 +1,109 @@
+% ===================== ANEXOS =====================
+\appendix
+\section{[Titulo del Anexo Tecnico]}
+\label{appendix:calculations}
+
+[Incluir en este anexo los calculos detallados, desarrollos matematicos,
+balances de masa o energia, y modelos fisicos que sustenten los resultados
+presentados en el cuerpo del informe. Cada ecuacion debe estar numerada,
+con las variables definidas inmediatamente despues.]
+
+\subsection{[Nombre del Modelo o Calculo]}
+
+[Describir el objetivo del calculo, los supuestos del modelo y su rango
+de validez. Referenciar la fuente bibliografica del modelo.]
+
+\subsubsection{Ecuaciones fundamentales}
+
+[Presentar las ecuaciones fundamentales del modelo. Ejemplo de balance termico:]
+
+La resistencia termica por conveccion interna se expresa como:
+\begin{equation}
+    R_{\mathrm{int}} = \frac{1}{h_{\mathrm{int}} \, \pi D_{\mathrm{int}} L},
+    \label{eq:r_int}
+\end{equation}
+donde $h_{\mathrm{int}}$ es el coeficiente de transferencia de calor por conveccion
+forzada, $D_{\mathrm{int}}$ el diametro interno y $L$ la longitud de la tuberia.
+
+La resistencia por conduccion en la pared metalica:
+\begin{equation}
+    R_{\mathrm{pared}} = \frac{\ln(D_{\mathrm{ext}}/D_{\mathrm{int}})}{2\pi k_{\mathrm{acero}} L},
+    \label{eq:r_pared}
+\end{equation}
+con $k_{\mathrm{acero}}$ la conductividad termica del material.
+
+El flujo de calor perdido hacia el ambiente:
+\begin{equation}
+    \dot{Q}_{\mathrm{perdida}} = \frac{T_{\mathrm{fluido}} - T_{\infty}}{R_{\mathrm{total}}}.
+    \label{eq:q_perdida}
+\end{equation}
+
+La caida de temperatura del fluido:
+\begin{equation}
+    \Delta T = \frac{\dot{Q}_{\mathrm{perdida}}}{\dot{m} \, c_{p}},
+    \label{eq:delta_t}
+\end{equation}
+donde $\dot{m}$ es el flujo masico y $c_{p}$ la capacidad calorifica especifica.
+
+\subsubsection{Parametros de entrada y supuestos}
+
+[Incluir tabla con los parametros fisicos, geometricos y de operacion
+utilizados en el calculo, con sus fuentes.]
+
+\begin{table}[htbp]
+    \centering
+    \caption{[Leyenda descriptiva de parametros del modelo.]}
+    \label{tab:param_modelo}
+    \begin{tabular}{@{}llcl@{}}
+        \toprule
+        \textbf{Parametro} & \textbf{Simbolo} & \textbf{Valor} & \textbf{Unidad} \\
+        \midrule
+        <Parametro 1> & <$S_1$> & <Valor> & <Unidad> \\
+        <Parametro 2> & <$S_2$> & <Valor> & <Unidad> \\
+        <Parametro 3> & <$S_3$> & <Valor> & <Unidad> \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\section{[Titulo del Segundo Anexo]}
+\label{appendix:drawings}
+
+[Relacionar planos, diagramas, isometricos o documentacion tecnica consultada
+como base para el estudio. Incluir tabla de relacion de documentos.]
+
+\begin{table}[htbp]
+    \centering
+    \caption{[Leyenda descriptiva de planos tecnicos consultados.]}
+    \label{tab:planos}
+    \begin{tabular}{@{}lll@{}}
+        \toprule
+        \textbf{Documento} & \textbf{Descripcion} & \textbf{Ubicacion} \\
+        \midrule
+        <Documento 1> & <Descripcion> & <Ruta / Carpeta> \\
+        <Documento 2> & <Descripcion> & <Ruta / Carpeta> \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\section{[Titulo del Tercer Anexo]}
+\label{appendix:specs}
+
+[Incluir especificaciones tecnicas de equipos relevantes para el estudio.
+Una subseccion por equipo.]
+
+\subsection{[Equipo 1]}
+
+\begin{table}[htbp]
+    \centering
+    \caption{[Leyenda descriptiva de especificaciones del equipo.]}
+    \label{tab:spec_equipo1}
+    \begin{tabular}{@{}lll@{}}
+        \toprule
+        \textbf{Parametro} & \textbf{Valor} & \textbf{Unidad} \\
+        \midrule
+        <Fabricante / Modelo> & <Valor> & <---> \\
+        <Parametro 1> & <Valor> & <Unidad> \\
+        <Parametro 2> & <Valor> & <Unidad> \\
+        \bottomrule
+    \end{tabular}
+\end{table}

@@ -1,0 +1,88 @@
+{
+  "linea": "SIM-013",
+  "md": "C:\\Users\\72-MS754\\OneDrive\\1.0 PROYECTOS DML\\CARTON COLOMBIA\\P2603 SW-K60\\9.0 Flexibilidad\\ISOS ANALISIS FLEXIBILIDAD\\9.0 DESCARGA TANQUE DE NIVELACION\\P2603-PR-SIM-013.md",
+  "passed": true,
+  "ratio_pct": 24.3,
+  "nodo_critico": 100,
+  "loadcase": "2 (Alt-SUS) W+P2",
+  "code_kpa": 27937.0,
+  "allowable_kpa": 115142.4,
+  "casos": [
+    {
+      "n": 1,
+      "type": "OPE",
+      "comb": "W+T1+P2"
+    },
+    {
+      "n": 2,
+      "type": "Alt-SUS",
+      "comb": "W+P2"
+    },
+    {
+      "n": 3,
+      "type": "OPE",
+      "comb": "W+T2+P2"
+    },
+    {
+      "n": 4,
+      "type": "Alt-SUS",
+      "comb": "W+P2"
+    },
+    {
+      "n": 5,
+      "type": "SUS",
+      "comb": "W"
+    },
+    {
+      "n": 6,
+      "type": "SUS",
+      "comb": "W+P2"
+    },
+    {
+      "n": 7,
+      "type": "EXP",
+      "comb": "L7=L1-L5"
+    },
+    {
+      "n": 8,
+      "type": "EXP",
+      "comb": "L8=L3-L6"
+    },
+    {
+      "n": 9,
+      "type": "EXP",
+      "comb": "L9=L1-L3"
+    }
+  ],
+  "top5": [
+    {
+      "node": 100,
+      "ratio": 24.3
+    },
+    {
+      "node": 100,
+      "ratio": 24.3
+    },
+    {
+      "node": 90,
+      "ratio": 22.1
+    },
+    {
+      "node": 10,
+      "ratio": 21.0
+    },
+    {
+      "node": 19,
+      "ratio": 21.0
+    }
+  ],
+  "displ_overflow_casos": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "displ_fig_case": 7
+}

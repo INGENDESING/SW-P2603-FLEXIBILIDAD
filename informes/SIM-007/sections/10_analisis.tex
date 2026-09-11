@@ -1,0 +1,65 @@
+% ===================== ANALISIS DE RESULTADOS =====================
+\section{Analisis de Resultados}
+\label{sec:analisis}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Cumplimiento de Codigo (Code Compliance)}
+
+La evaluaci\'{o}n de cumplimiento de c\'{o}digo del modelo arroj\'{o}
+\textbf{CODE COMPLIANCE EVALUATION PASSED}. El esfuerzo de c\'{o}digo
+m\'{a}ximo del sistema es \num{191915.1}~\si{kPa}, en el nodo 100, para el caso
+9 (EXP) L9=L1-L3, frente a un admisible de \num{273789.8}~\si{kPa}; la
+relaci\'{o}n de utilizaci\'{o}n m\'{a}xima es por tanto 70.1~\%. La
+Tabla~\ref{tab:top5-ratio} relaciona los cinco nodos de mayor ratio del caso
+cr\'{i}tico; todos cumplen el criterio Code $\leq$ Allowable, y el nodo 100 lo
+hace con un margen de 29.9~\% del admisible disponible.
+
+\input{assets/tab_top5_ratio.tex}
+
+El caso que gobierna el dise\~{n}o es el de expansi\'{o}n L9=L1-L3, es decir,
+el rango t\'{e}rmico entre las dos condiciones de operaci\'{o}n evaluadas
+($T_1$ y $T_2$). Este resultado es caracter\'{i}stico de l\'{i}neas con
+$\Delta T$ apreciable (65~\si{\celsius}) y configuraci\'{o}n corta entre
+anclas: el esfuerzo de flexi\'{o}n se concentra en los codos pr\'{o}ximos a
+los extremos restringidos, como evidencia la distribuci\'{o}n espacial de la
+Figura~\ref{fig:code-stress} y el perfil de la Figura~\ref{fig:esfuerzos}, con
+el m\'{a}ximo en el nodo 100, inmediato al ancla del nodo 110. El segundo nodo
+m\'{a}s exigido (nodo 20, ratio 19.7~\%) queda muy por debajo, lo que confirma
+que la criticidad de la l\'{i}nea se concentra en un \'{u}nico punto. Con un
+ratio de 70.1~\%, la l\'{i}nea SIM-007 es la m\'{a}s exigida del paquete de
+flexibilidad del proyecto.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Desplazamientos y Cargas en Soportes}
+
+Los desplazamientos de operaci\'{o}n son peque\~{n}os en magnitud absoluta
+(inferiores a 0.6~\si{mm} en el caso 1; m\'{a}ximos de 3.5~\si{mm} en el caso
+con temperatura $T_2$ y de 3.4~\si{mm} en los de expansi\'{o}n, ver
+Tabla~\ref{tab:desplaz-max}), lo que indica que la l\'{i}nea trabaja con bajos
+movimientos relativos y sin riesgo de interferencias por expansi\'{o}n.
+
+Las cargas en soportes y anclas (Tablas~\ref{tab:restricciones-ope} a
+\ref{tab:restricciones-exp}) son moderadas en operaci\'{o}n: la carga vertical
+m\'{a}xima corresponde al ancla del nodo 110 con \num{-1329}~\si{N} (caso 1,
+OPE) y al soporte +Y del nodo 75 con \num{-1489}~\si{N} (caso 5, SUS). En el
+caso de expansi\'{o}n cr\'{i}tico las anclas transmiten fuerzas axiales de
+\num{4659}~\si{N} y un momento m\'{a}ximo de \num{5869}~\si{N.m} en el nodo
+110, valores acordes con la concentraci\'{o}n de esfuerzo observada en el nodo
+100. La comparaci\'{o}n de las cargas en la boquilla de la bomba de vac\'{i}o
+con los admisibles del fabricante del equipo (p.\,ej. API 610) queda fuera del
+alcance del presente informe (secci\'{o}n~\ref{sec:alcance}).
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Sintesis de Hallazgos}
+
+La l\'{i}nea SIM-007 cumple los criterios de ASME B31.3-2016 en los nueve casos
+de carga evaluados, pero con el margen m\'{a}s reducido del paquete de
+flexibilidad: el ratio m\'{a}ximo de utilizaci\'{o}n (70.1~\% en el nodo 100)
+deja disponible 29.9~\% del admisible. Los desplazamientos son
+peque\~{n}os (m\'{a}ximo 3.5~\si{mm}) y las cargas en soportes y anclas son
+moderadas. No se identifican sobre-esfuerzos, pero la configuraci\'{o}n
+analizada debe conservarse: cualquier cambio de recorrido,
+di\'{a}metro o soporter\'{i}a reduce el margen disponible y puede invalidar el
+veredicto de cumplimiento. El \'{u}nico aspecto pendiente de verificaci\'{o}n
+externa es la aceptaci\'{o}n de las cargas en la boquilla del equipo por parte
+de su fabricante.

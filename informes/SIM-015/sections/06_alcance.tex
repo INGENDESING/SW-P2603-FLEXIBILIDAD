@@ -1,0 +1,55 @@
+% ===================== ALCANCE =====================
+\section{Alcance y Limitaciones}
+\label{sec:alcance}
+
+\subsection{Alcance del Estudio}
+
+\begin{table}[htbp]
+    \centering
+    \caption{Elementos incluidos en el alcance del an\'{a}lisis.}
+    \label{tab:alcance_incluido}
+    \setcounter{itemcount}{0}
+    \begin{tabularx}{\textwidth}{@{}NX@{}}
+        \toprule
+        \multicolumn{1}{c}{\textbf{Item}} & \textbf{Descripcion} \\
+        \midrule
+        & Modelo de elementos finitos de la l\'{i}nea SIM-015 (job CAESAR P2603-PR-SIM-015), tuber\'{i}a del filtro de fibras PP1, generado desde el isom\'{e}trico PCF114. \\
+        & Evaluaci\'{o}n de esfuerzos seg\'{u}n ASME B31.3-2016 para nueve casos de carga: dos de operaci\'{o}n (OPE), dos sostenidos alternos (Alt-SUS), dos sostenidos (SUS) y tres de expansi\'{o}n (EXP). \\
+        & Reporte de desplazamientos nodales, esfuerzos por elemento y cargas en soportes para los casos de carga relevantes. \\
+        & Verificaci\'{o}n de cumplimiento de c\'{o}digo (\textit{code compliance}) y elaboraci\'{o}n del presente informe t\'{e}cnico con c\'{o}digo de documento I24.104-PP30-PP01-P-DOCS-190. \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\subsection{Limitaciones del Estudio}
+
+\begin{table}[htbp]
+    \centering
+    \caption{Elementos excluidos del alcance del an\'{a}lisis.}
+    \label{tab:alcance_excluido}
+    \setcounter{itemcount}{0}
+    \begin{tabularx}{\textwidth}{@{}NX@{}}
+        \toprule
+        \multicolumn{1}{c}{\textbf{Item}} & \textbf{Descripcion} \\
+        \midrule
+        & Cargas ocasionales de viento y sismo: no reportadas en el modelo; su evaluaci\'{o}n, de ser requerida, corresponde a un an\'{a}lisis posterior. \\
+        & Cargas en boquillas de equipos frente a criterios de fabricante: la comparaci\'{o}n de las cargas en las conexiones con los equipos (anclas de los nodos 140, 320 y 510) con los admisibles de cada equipo requiere los datos del fabricante, no disponibles a la fecha. \\
+        & Fatiga detallada por ciclos de arranque/parada: el criterio de expansi\'{o}n de B31.3 con factor $f$ cubre el rango t\'{e}rmico; no se ejecut\'{o} an\'{a}lisis de fatiga espec\'{i}fico. \\
+        & Verificaci\'{o}n en campo de la soporter\'{i}a: las propiedades de los soportes corresponden a las definidas en el isom\'{e}trico de dise\~{n}o. \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\subsection{Advertencias del Modelo}
+
+La corrida de CAESAR II report\'{o} advertencias de modelado que se declaran a
+continuaci\'{o}n. Algunos componentes del archivo de intercambio no tra\'{i}an
+material asignado en la especificaci\'{o}n y recibieron el material por defecto
+durante la importaci\'{o}n; el material de evaluaci\'{o}n de todo el modelo se
+fij\'{o} posteriormente en ASTM A312 TP 304L, consistente con el admisible
+reportado de \num{115142.4}~\si{kPa} (secci\'{o}n~\ref{sec:resultados}).
+Adem\'{a}s, los soportes sin tipo definido en el isom\'{e}trico se importaron
+como soportes verticales, consistentes con la soporter\'{i}a de la
+Figura~\ref{fig:nodos-soporte}. Estas advertencias no afectan el veredicto de
+cumplimiento de c\'{o}digo, pero deben considerarse ante cualquier
+modificaci\'{o}n futura del modelo.

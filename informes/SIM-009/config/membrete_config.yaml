@@ -1,0 +1,57 @@
+auto_generation:
+  debounce_delay: 2.0
+  watch_latex_files: true
+  watched_files:
+  - config/preamble.tex
+  - config/header.tex
+  - sections/00_portada.tex
+  - P25XX-PR-INF-00X REVX.tex
+  - config/membrete_config.yaml
+company:
+  address: CRA 81D NO 3549
+  email: proyectos2@dmlsas.com
+  logo_path: C:\Users\ingen\OneDrive\1.0 PROYECTOS DML\A FORMATOS\FORMATO LATEX CON
+    ENCABEZADO\assets\logos
+  name: INGREDION SA
+  nit: 123.456.789-0
+  phone: '+573107038863'
+  website: www.dmlsas.com
+document:
+  code_pattern: P25XX-PR-IN-001
+  current_year: 25
+  default_category: INF
+  default_type: PR
+element_positions:
+  company_info:
+    x: 90
+    y: 775
+  contact_info:
+    x: 20
+    y: 745
+  document_info:
+    x: 400
+    y: 775
+  logo:
+    x: 20
+    y: 775
+layout:
+  header_height: 120
+  logo_height: 40
+  logo_width: 60
+  margins:
+    bottom: 25
+    left: 20
+    right: 20
+    top: 45
+  page_size: Letter
+styling:
+  accent_color: '#2ecc71'
+  border_radius: 0
+  font_family: Helvetica
+  line_width: 0.5
+  normal_text_size: 9
+  primary_color: '#1a5490'
+  secondary_color: '#ffffff'
+  subtitle_size: 10
+  text_color: '#333333'
+  title_size: 14

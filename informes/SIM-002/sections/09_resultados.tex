@@ -1,0 +1,104 @@
+% ===================== RESULTADOS =====================
+\section{Resultados}
+\label{sec:resultados}
+
+Los resultados que se presentan a continuaci\'{o}n fueron extra\'{i}dos
+program\'{a}ticamente del reporte de salida de CAESAR II del job
+P2603-PR-SIM-002 (fecha de an\'{a}lisis: 09/09/2026). El modelo comprende
+36 nodos evaluados. La Figura~\ref{fig:isometrico} presenta la vista de
+referencia de la l\'{i}nea en el modelo 3D de dise\~{n}o.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{assets/PCF103.png}
+    \caption{Vista del modelo 3D de la l\'{i}nea de descarga de la bomba de recirculaci\'{o}n 1 DDW (PCF103, AutoCAD Plant 3D 2027).}
+    \label{fig:isometrico}
+\end{figure}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Desplazamientos}
+
+La Tabla~\ref{tab:desplaz-max} resume los desplazamientos m\'{a}ximos absolutos
+por caso de carga y la Figura~\ref{fig:desplazamientos} muestra el perfil de
+desplazamientos nodales en condici\'{o}n de operaci\'{o}n (caso 1, OPE). El
+reporte del job tabula desplazamientos \'{u}nicamente para los casos 1, 3, 5,
+6, 7, 8 y 9; los casos sostenidos alternos 2 y 4 no incluyen este reporte. La
+Figura~\ref{fig:graf-desplazamiento} presenta la configuraci\'{o}n deformada
+del modelo superpuesta a la geometr\'{i}a original. Los m\'{a}ximos de
+5.0~\si{mm} en las componentes horizontales $DX$ y $DZ$ corresponden al
+cierre de la holgura de los soportes r\'{i}gidos \textit{w/gap} de los
+extremos del tramo (nodos 10 y 170); en los casos de expansi\'{o}n 8 y 9
+el rango relativo alcanza 10.0~\si{mm} en $DX$, coherente con el recorrido
+entre las dos posiciones de contacto de la holgura. Los desplazamientos
+verticales son peque\~{n}os (m\'{a}ximo 2.0~\si{mm} en el caso 3, OPE), valores
+coherentes con una configuraci\'{o}n relativamente r\'{i}gida entre los extremos
+restringidos.
+
+\input{assets/tab_desplazamientos_max.tex}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{assets/fig_desplazamientos.png}
+    \caption{Perfil de desplazamientos nodales $DX$, $DY$ y $DZ$ en el caso 1 (OPE) W+T1+P1.}
+    \label{fig:desplazamientos}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{assets/graf_desplazamiento.png}
+    \caption{Configuraci\'{o}n deformada del modelo superpuesta a la geometr\'{i}a original (CAESAR II, job P2603-PR-SIM-002).}
+    \label{fig:graf-desplazamiento}
+\end{figure}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Esfuerzos}
+
+La Figura~\ref{fig:esfuerzos} presenta el perfil de esfuerzo de flexi\'{o}n
+(\textit{bending}) por nodo para el caso cr\'{i}tico 6 (SUS) W+P2, la
+Figura~\ref{fig:mapa-esfuerzos} muestra la distribuci\'{o}n del porcentaje de
+utilizaci\'{o}n del admisible sobre el modelo 3D para ese mismo caso, y la
+Tabla~\ref{tab:esfuerzos-critico} consolida los valores de esfuerzo de
+c\'{o}digo, admisible y ratio de utilizaci\'{o}n por nodo para ese mismo caso.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{assets/fig_esfuerzos.png}
+    \caption{Perfil de esfuerzo de flexi\'{o}n por nodo, caso cr\'{i}tico 6 (SUS) W+P2. M\'{a}ximo: \num{26891.5}~\si{kPa} en el nodo 78.}
+    \label{fig:esfuerzos}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{assets/graf_stress_percent.png}
+    \caption{Distribuci\'{o}n del porcentaje de utilizaci\'{o}n del esfuerzo admisible (\textit{Code Stress by Percent}) sobre el modelo 3D, caso cr\'{i}tico 6 (SUS) W+P2 (CAESAR II, job P2603-PR-SIM-002).}
+    \label{fig:mapa-esfuerzos}
+\end{figure}
+
+\input{assets/tab_esfuerzos_critico.tex}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Cargas en Soportes}
+
+Las Tablas~\ref{tab:restricciones-ope}, \ref{tab:restricciones-sus} y
+\ref{tab:restricciones-exp} presentan las fuerzas y momentos transmitidos a los
+soportes para los casos de operaci\'{o}n (caso 1), sostenido (caso 5) y
+expansi\'{o}n (caso 7), respectivamente. La
+Figura~\ref{fig:nodos-soporte} muestra el modelo de CAESAR II con la
+numeraci\'{o}n de nodos y la ubicaci\'{o}n de los soportes y restricciones. La
+soporter\'{i}a comprende soportes r\'{i}gidos verticales (+Y) en los nodos 25 y
+70, una restricci\'{o}n r\'{i}gida traslacional (X, Y, Z) en el nodo 130 y
+soportes r\'{i}gidos con holgura (\textit{w/gap}) en los nodos 10 (conexi\'{o}n
+con la bomba) y 170 (empalme aguas abajo).
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{assets/graf_nodos_soporte.png}
+    \caption{Modelo de CAESAR II con la numeraci\'{o}n de nodos y los soportes y restricciones de la l\'{i}nea (job P2603-PR-SIM-002).}
+    \label{fig:nodos-soporte}
+\end{figure}
+
+\input{assets/tab_restricciones_ope.tex}
+
+\input{assets/tab_restricciones_sus.tex}
+
+\input{assets/tab_restricciones_exp.tex}

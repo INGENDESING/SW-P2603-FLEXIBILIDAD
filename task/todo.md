@@ -178,3 +178,416 @@ Verificación ejecutada:
 ## Pendiente del usuario (post-tarea)
 - Commit + push para despliegue automático
 - Exportar `ResultadosGraficos*.png` de SIM-008/009/010 cuando se pueda
+
+
+---
+
+# Plan: `generadorinf.md` — prompt maestro para informes LaTeX de flexibilidad (2026-09-02)
+
+## Contexto
+- Objetivo: convertir `PropmtGeneracionInformes.txt` (borrador de una idea, 7 líneas con errores de tipeo) en `generadorinf.md`: un prompt maestro autocontenido y reproducible que gobierne la generación de los informes LaTeX de análisis de flexibilidad, uno por línea, a partir de los reportes CAESAR II `.md`.
+- Cliente / Proyecto DML: Smurfit Westrock — P2603 SW-K60
+- Normas aplicables: ASME B31.3-2016 (análisis); estilo Elsevier/ScienceDirect y estándares de entregables de `AGENTS.md` (redacción)
+
+## Hallazgos de la auditoría de insumos (hechos verificados)
+1. **`Plantilla latex/` YA EXISTE y está completa** (actualizada por el usuario 2026-09-02): clase `elsarticle` A4 12pt, TG Termes, pdfLaTeX, UTF-8; 15 secciones modulares (`sections/00_hojafirmas.tex` … `13_anexos.tex`); datos del proyecto centralizados en `config/datos_proyecto.tex` (título, código doc, firmas, membrete); `compilar_informe.ps1` (doble pasada pdflatex → `build/<job>.pdf`); convenciones documentadas en `Plantilla latex/CLAUDE_plantilla.md` (tablas Elsevier `toprule/midrule/bottomrule`, `siunitx`, sin viñetas, figuras citadas antes de aparecer). `main.pdf`/`build/*.pdf` confirman que compila. Regla de la plantilla: NO editar `main.tex`, `preamble.tex`, `header.tex`; solo `datos_proyecto.tex`, `sections/`, `references/`, `assets/`.
+2. **Datos por línea (8 líneas, todas PASSED)**:
+   - `.md` CAESAR por línea: 9 casos de carga × (DISPLACEMENTS, RESTRAINTS, B31.3 STRESSES) + 1 CODE COMPLIANCE (resumen global). SIM-012 además RESTRAINTS EXTENDED. Casos: 2 OPE, 2 Alt-SUS, 2 SUS, 3 EXP.
+   - `dashboard/_data/lineas.json`: compliance (ratio/nodo/caso/allowable), desplazamientos nodales ope/sus/exp (DX..RZ), cargas en restricciones con tipo de soporte, bending máximo.
+   - Tablas de esfuerzos por elemento (SLP, F/A, Bending, Torsion, SIF, Code, Allowable, Ratio por nodo) SOLO están en los `.md`, no en el JSON → el generador debe parsear el `.md` directamente.
+   - Imágenes: isométrico `PCF1XX.png` + resultados gráficos CAESAR (5/8 líneas; faltan 008/009/010).
+3. **Toolchain disponible**: MiKTeX-pdfTeX 4.27 (compilación LaTeX OK), Python 3.14 + matplotlib 3.11 + PIL (figuras OK).
+4. **Bases de diseño congeladas** (de `contexto.md`, no re-derivar): ASME B31.3-2016, TP 304L Sch 10S CA=0, 180 psig = 1241 kPa g, 90 °C (ΔT=65 °C), agua 0.001 kg/cm³, casos OPE/SUS/EXP.
+
+## Decisiones requeridas del usuario (bloquean redacción final de generadorinf.md)
+- ~~D1. Plantilla~~ **RESUELTA (2026-09-02)**: el usuario aportó la plantilla corporativa DML en `Plantilla latex/` — se usa tal cual, sin crear nada desde cero.
+- D2. **Alcance del documento**: ¿un informe independiente por línea (8 PDF, lo que dice el prompt original) o un informe consolidado con un capítulo por línea?
+- D3. **Arquitectura de generación**: ¿híbrida script+LLM (Python extrae tablas/figuras de los `.md` → el LLM redacta la prosa técnica en las `sections/` → `compilar_informe.ps1` compila) o generación íntegra por LLM en una sola pasada? (Recomendada: híbrida — los números no se alucinan, salen del `.md`.)
+
+## Estructura propuesta de `generadorinf.md` (el entregable de esta tarea)
+
+1. **Frontmatter de control**: versión, fecha, proyecto P2603 SW-K60, cliente, norma, líneas válidas (SIM-002…012), rutas de entrada/salida.
+2. **Rol y alcance del generador**: qué produce (informe PDF por línea), qué NO produce (no recalcula CAESAR, no cambia bases de diseño congeladas).
+3. **Insumos por línea (contrato de entrada)**: `.md` CAESAR (fuente de verdad numérica), isométrico, resultados gráficos (opcional con fallback), bases congeladas citadas de `contexto.md`.
+4. **Estructura obligatoria del informe = archivos de la plantilla** (mapeo 1:1 con `Plantilla latex/sections/`; el prompt original pedía "resumen ejecutivo integrado" → la plantilla lo separa en abstract + resumen, se adopta la plantilla):
+   - `00_portada.tex` + `00_hojafirmas.tex` — portada con control de revisiones y hoja de firmas (se alimentan de `datos_proyecto.tex`: código doc por línea, elaboró/revisó/aprobó)
+   - `01_frontmatter.tex` — abstract (≤ 200 palabras: línea, código B31.3, PASSED/FAILED, ratio máximo, nodo y caso crítico) + keywords
+   - `02_resumen.tex` — resumen ejecutivo (el informe ES un resumen: 1 página máx, síntesis de resultados y veredicto)
+   - `03_nomenclatura.tex` — tabla de abreviaturas (CAESAR II, OPE/SUS/EXP/Alt-SUS, SIF, DDW, TK, SG, CA, Lb/plg²→kPa, etc.) + índices automáticos (`tableofcontents`, `listoftables`, `listoffigures` ya en `main.tex`)
+   - `04_introduccion.tex` — marco teórico: qué es CAESAR II, FEM para tuberías, ecuaciones B31.3-2016 (esfuerzo sostenido SL, expansión SE con SIF i), criterio Code ≤ Allowable
+   - `05_objetivos.tex` — general + específicos
+   - `06_alcance.tex` — línea analizada, límites del modelo (anclas, equipos), exclusiones
+   - `07_bases_disenio.tex` — tabla de condiciones (instalación 25 °C → operación 90 °C, 1241 kPa g, agua 0.001 kg/cm³), TP 304L Sch 10S CA=0, casos de carga con combinaciones (2 OPE, 2 Alt-SUS, 2 SUS, 3 EXP según el `.md` de cada línea)
+   - `08_metodologia.tex` — flujo Plant 3D → PCF (`fix_pcf.py`) → CAESAR II 2019 → verificación
+   - `09_resultados.tex` — (9.1) desplazamientos: tabla de máximos por caso + curvas DX/DY/DZ vs nodo (matplotlib desde JSON); (9.2) esfuerzos: tabla por nodo del caso crítico (desde `.md`) + curva esfuerzo vs nodo; (9.3) restricciones: tabla FX..MZ + tipo de soporte por nodo y caso; figuras: isométrico + resultados gráficos CAESAR
+   - `10_analisis.tex` — code compliance: tabla de los N nodos de mayor ratio (cumple/no cumple) + discusión del caso crítico
+   - `11_conclusiones.tex` + `12_recomendaciones.tex`
+   - `references/bibliografia.bib` — ASME B31.3-2016, CAESAR II 2019 User Guide, ASME B16.5/B16.9
+   - `13_anexos.tex` — tablas completas de esfuerzos/desplazamientos de todos los casos (lo que no quepa en resultados)
+5. **Reglas de estilo** (de `AGENTS.md` + `Plantilla latex/CLAUDE_plantilla.md`, copiadas al prompt para autocontención): prohibido viñetas, tablas Elsevier `toprule/midrule/bottomrule` con leyenda arriba, figuras con leyenda debajo y citadas antes (`Figura~\ref{...}`), ecuaciones numeradas a la derecha con variables definidas después, `siunitx` con espacio valor-unidad (`25~\si{\celsius}`), voz impersonal, trazabilidad de todo número al `.md`, no editar `main.tex`/`preamble.tex`/`header.tex`.
+6. **Mapeo dato → fuente** (tabla en el propio prompt): cada tabla/figura del informe ↔ sección exacta del `.md` o campo del JSON; regla de oro: el ratio/nodo/caso del informe == resumen global CODE COMPLIANCE del `.md` (no valores parciales por caso).
+7. **Pipeline de ejecución** (si D3=híbrida): (1) copiar `Plantilla latex/` → `informes/SIM-0XX/`; (2) script Python extrae del `.md`/JSON las tablas (`.tex` Elsevier) y figuras (matplotlib PNG) → `informes/SIM-0XX/assets/`; (3) LLM redacta la prosa en `sections/` y llena `datos_proyecto.tex` (código doc `P2603-PR-INF-0XX`, título de la línea, firmas); (4) copiar isométrico/gráficos a `assets/`; (5) compilar con `compilar_informe.ps1 -jobName "P2603-PR-INF-0XX"`; (6) checklist de verificación.
+8. **Lista de verificación final** (checklist que el generador debe cumplir antes de entregar): compila sin errores, números == `.md`, coherencia dimensional, sin viñetas, figuras citadas, abreviaturas usadas están en la tabla.
+9. **Manejo de casos borde**: línea sin resultados gráficos (placeholder textual, no imagen falsa), nodos con "N/A" en restricciones, jobs sin "SIM" en nombre, espacio en "P2603-PR-PL-007 .md".
+
+## Tareas
+- [x] T1. Resolver D1–D3 — D1: plantilla aportada por el usuario en `Plantilla latex/`; D2: 8 informes independientes (usuario: "continua" → decisión por defecto del plan); D3: arquitectura híbrida script+LLM
+- [x] T2. Redactar `generadorinf.md` (v1.0; `PropmtGeneracionInformes.txt` se conserva como referencia histórica)
+- [x] T3. Revisión cruzada del prompt: script de verificación automatizado, 52/52 checks OK
+- [x] T4. Actualizar `contexto.md` (nuevo componente generador de informes, sección 2b)
+
+## Fuera de alcance de esta tarea (fase posterior, requiere su propio plan)
+- Ejecutar el generador: scripts de extracción, redacción de las `sections/` por línea, generación de los informes PDF
+- Dato pendiente del usuario para la ejecución: firmas (elaboró/revisó/aprobó) y fechas de emisión de los informes
+
+## Riesgos / Puntos de verificación
+- [x] El prompt no pide ningún dato que no exista en los `.md`/JSON (52 checks: tabla sección 1 == JSON == verdad CAESAR, campos JSON citados existen, 15 sections + comandos `datos_proyecto.tex` + `compilar_informe.ps1` existen, isométrico en las 8 carpetas, presencia/ausencia de ResultadosGraficos coincide con lo documentado)
+- [x] El prompt cita las bases congeladas sin re-derivarlas (fuente única: `contexto.md`)
+- [x] Compatibilidad con las 8 líneas incluyendo casos borde (hallazgo 2 y sección 9 del prompt)
+
+## Revisión (2026-09-02)
+
+Resumen de cambios:
+- `generadorinf.md` creado (v1.0, 10 secciones): control de documento + tabla verdad CAESAR de las 8 líneas, rol/alcance del generador, contrato de insumos (.md como fuente de verdad, JSON de apoyo, imágenes, bases congeladas, plantilla), estructura del informe mapeada 1:1 a los 15 archivos `sections/` de la plantilla, reglas de estilo autocontenidas, mapeo dato→fuente, pipeline híbrido de 7 pasos, checklist de verificación, 8 casos borde documentados.
+- Corrección en revisión: referencia B31.3 para SL era 304.3.5 → corregida a 302.3.5 (SE en 319.4.4, correcto).
+- `contexto.md`: nueva sección 2b (generador de informes) y componente en archivos clave.
+
+Desviaciones respecto al plan original:
+- D2 y D3 se resolvieron por decisión por defecto del plan (usuario indicó "continua" sin elegir): D2 = informe por línea (lo que pedía el prompt original), D3 = híbrida (recomendada en el plan).
+
+Limitaciones conocidas y trabajo futuro:
+- La distribución de casos de carga (2 OPE, 2 Alt-SUS, 2 SUS, 3 EXP) se verificó solo en SIM-002; el prompt ordena extraerla del `.md` de cada línea, no asumirla.
+- Ejecución del generador (scripts de extracción + redacción + compilación de 8 PDF) queda como tarea posterior con su propio plan en `task/todo.md`.
+- Firmas y fechas de emisión pendientes de confirmación del usuario.
+
+Archivos entregables:
+- `generadorinf.md`, `task/todo.md`, `contexto.md` (actualizados).
+
+Verificación ejecutada:
+- Script de revisión cruzada: 52/52 checks OK (ver Riesgos arriba).
+
+
+### Addendum a la Revisión de generadorinf.md (2026-09-02, v1.1)
+
+El usuario actualizó `PropmtGeneracionInformes.txt` tras la primera lectura (ahora 3 ítems). Cambios incorporados a `generadorinf.md` v1.1:
+- Ítem 3 (codificación): `\documentcode` = `I24.104-PP30-PP01-P-DOCS-18X`, consecutivo desde 180 en orden SIM (SIM-002→180 … SIM-012→187); reemplaza el `P2603-PR-INF-0XX` propuesto. Nombre del PDF y `-jobName` de compilación usan el mismo código.
+- Ítem 1 (sin resumen ejecutivo): `02_resumen.tex` queda VACÍO (el informe ES el resumen ejecutivo); `main.tex` no se edita, por eso se conserva el archivo con solo comentarios.
+- Ítem 1 (investigación web): nuevo paso 3 del pipeline — agentes de investigación en internet para introducción, objetivos y marco teórico; solo fuentes citables (normas, User Guide CAESAR, papers con DOI, NIST); registro en `bibliografia.bib`; se investiga una vez y se reutiliza en las 8 líneas.
+- Checklist (sección 8): nuevo punto de verificación de código de documento y resumen vacío.
+- Versión del prompt: 1.0 → 1.1. `contexto.md` actualizado.
+
+
+---
+
+# Plan: Ejecutar generador de informes — piloto SIM-012 (2026-09-02)
+
+## Contexto
+- Objetivo: generar el primer informe PDF de flexibilidad (`I24.104-PP30-PP01-P-DOCS-187`, SIM-012 Succión TK Blowtank) siguiendo `generadorinf.md` v1.1; el piloto valida el pipeline antes de replicar a las otras 7 líneas.
+- Cliente / Proyecto DML: Smurfit Westrock — P2603 SW-K60
+- Normas aplicables: ASME B31.3-2016
+- Especificación: `generadorinf.md` (secciones 4–8); plantilla: `Plantilla latex/`; fuente numérica: `SUCCION TK BLOWTANK/P2603-PR-PL-SIM-012.md`
+
+## Supuestos clave
+- [x] `generadorinf.md` v1.1 es la especificación vigente (codificación DOCS-18X, sin resumen ejecutivo, investigación web)
+- [ ] Firmas (elaboró/revisó/aprobó) no confirmadas → `datos_proyecto.tex` con `[POR CONFIRMAR]` en el piloto
+- [x] La investigación teórica se hace una vez y se reutiliza en las 8 líneas (marco teórico común)
+
+## Tareas
+- [x] T1. `scripts/extraer_informe.py`: parsear `.md` (con normalización \r) + JSON → `informes/SIM-012/assets/`: tab_casos.tex, tab_esfuerzos_critico.tex, tab_top5_ratio.tex, tab_desplazamientos_max.tex, tab_restricciones_{ope,sus,exp}.tex (Elsevier, listas para \input), fig_desplazamientos.png, fig_esfuerzos.png (matplotlib 300 dpi), copia de isométrico PCF111.png y ResultadosGraficosPCF111-{1,2,3}.png
+- [x] T2. Verificación de extracción: números de tablas/figuras == `.md` (ratio 32.4 % @130 EXP; code 92 844.5 kPa; allowable 286 952.5 kPa; casos del `.md`)
+- [x] T3. Investigación web con agentes (una sola vez, reutilizable): CAESAR II y FEM para tuberías, ecuaciones B31.3 (SL 302.3.5, SE 319.4.4, SIF), criterio SA; solo fuentes citables → insumos para `04_introduccion.tex`, `05_objetivos.tex` y `bibliografia.bib`
+- [x] T4. Copiar plantilla → `informes/SIM-012/` (sin build/ ni PDFs de prueba) y llenar `config/datos_proyecto.tex` (código I24.104-PP30-PP01-P-DOCS-187, membrete, firmas [POR CONFIRMAR])
+- [x] T5. Redactar `sections/` (02_resumen.tex vacío; 09/10 con \input de tablas del paso T1; resto con prosa técnica + material de T3)
+- [x] T6. Completar `references/bibliografia.bib` (ASME B31.3-2016, CAESAR II 2019 User Guide, B16.5/B16.9 + fuentes de T3) y citar en el texto
+- [x] T7. Compilar: `compilar_informe.ps1 -jobName "I24.104-PP30-PP01-P-DOCS-187"` desde `informes/SIM-012/`; resolver errores hasta PDF limpio
+- [x] T8. Checklist sección 8 de `generadorinf.md` (8/8 puntos) + lectura visual del PDF
+- [x] T9. Actualizar `contexto.md` (estado informes) — rollout a las 7 líneas restantes queda como tarea posterior con aprobación
+
+## Riesgos / Puntos de verificación
+- [x] Ratio/nodo/caso del informe == resumen global del `.md` (32.4 % @130, caso 8 EXP L8=L3-L6) — no valores parciales por caso
+- [x] Cero viñetas; tablas con \input de archivos generados (no transcritas)
+- [x] `compilar_informe.ps1` es PowerShell: ejecutar desde Git Bash vía `powershell.exe -File` o compilar con pdflatex directo (doble pasada) si falla la invocación
+- [x] Código I24.104-PP30-PP01-P-DOCS-187 en portada, membrete y nombre del PDF
+- [x] No editar main.tex / preamble.tex / header.tex; no tocar los archivos CAESAR fuente
+
+
+## Revisión — Ejecución generador piloto SIM-012 (2026-09-02)
+
+Resumen de cambios:
+- `scripts/extraer_informe.py` creado: parsea el `.md` CAESAR (tab-separated, con normalización \r y valores N/A) y genera 6 tablas Elsevier `.tex`, 2 figuras matplotlib (300 dpi), copia de isométrico/gráficos y `resumen_extraccion.json` en `informes/<SIM>/assets/`.
+- `informes/SIM-012/` = plantilla DML + 15 secciones redactadas (02_resumen.tex vacío por instrucción del cliente) + `datos_proyecto.tex` (código I24.104-PP30-PP01-P-DOCS-187, firmas [POR CONFIRMAR]) + `bibliografia.bib` (10 fuentes verificadas por agente de investigación web).
+- PDF compilado: `informes/SIM-012/I24.104-PP30-PP01-P-DOCS-187.pdf` (22 páginas A4, 0 referencias indefinidas).
+
+Decisiones técnicas verificadas contra la salida de CAESAR:
+- SE = √(Sb² + 4St²) SIN /2 (B31.3-2016 párr. 319.4.4 ec. 17): confirmado numéricamente — √(91345² + 4×7838.1²) ≈ 92 680 + axial ≈ 92 844.5 = Code de CAESAR @130.
+- CAESAR usa la forma liberal SA = f[1.25(Sc+Sh) − SL] (ec. 1b): 1.25×(16.7+16.7) ksi − SL ≈ 41.6 ksi = 286 952.5 kPa = Allowable reportado → Sc = Sh = 16.7 ksi (115.1 MPa) para TP304L (Tabla A-1).
+- SA está en 302.3.5(d) (no 302.3.4); SL en 302.3.5(c) evaluado por 320.2; f en Tabla 302.3.5 (1.0 hasta 7000 ciclos).
+
+Desviaciones y correcciones durante la verificación:
+- compilar_informe.ps1 NO ejecuta bibtex → compilación manual: pdflatex → bibtex (desde raíz del informe, NO desde build/) → pdflatex ×2. Documentado para el rollout.
+- Tabla 6 (tubería): columnas `l` sin ajuste aplastaban la tabla → cambiadas a X raggedright.
+- Error de prosa detectado en lectura visual: "desplazamientos < 0.2 mm en todos los casos" era FALSO (casos T2/EXP llegan a 3.8 mm en DY) → corregido en 09, 10 y 11.
+- Error `\Bbbk already defined`: preexistente en la plantilla (aparece en sus propios logs), no fatal; preamble.tex no se edita por regla de la plantilla.
+
+Limitaciones conocidas y trabajo futuro:
+- Firmas/fechas/autor quedan [POR CONFIRMAR] — pendiente del usuario antes de emitir al cliente.
+- B16.10 listado en tabla de normas sin entrada .bib (menor; B16.5/B16.9/A312 sí citados).
+- Rollout a las 7 líneas restantes: mismo pipeline; extraer_informe.py --linea SIM-0XX + ajustar prosa de secciones por línea (narrativa de SIM-012 no es genérica).
+
+Verificación ejecutada (checklist generadorinf sección 8, 9/9):
+- Compila sin ?? ni undefined refs (0); ratio/nodo/caso == resumen global == tabla sección 1 (32.4 % @130 EXP L8=L3-L6); todas las tablas numéricas vía \input de archivos generados; cero viñetas; figuras citadas antes; siunitx; código de documento en portada/membrete/nombre PDF; 02_resumen vacío; PDF en build/ + raíz.
+- Lectura visual de 16/22 páginas renderizadas (portada, firmas, abstract, nomenclatura, TOC, marco teórico, alcance, bases, metodología, resultados, análisis, conclusiones, anexos).
+
+Archivos entregables:
+- `informes/SIM-012/I24.104-PP30-PP01-P-DOCS-187.pdf` (+ `build/` con auxiliares)
+- `scripts/extraer_informe.py`, `informes/SIM-012/{config,sections,references,assets}/`
+
+
+### Addendum 2 — Correcciones de formato del membrete (2026-09-02, solicitud del usuario)
+
+Cambios aplicados a `Plantilla latex/` (formato original) y sincronizados a `informes/SIM-012/`:
+- Textos del membrete (datos_proyecto.tex del informe): filas 1-2 INGENIERIA DE DETALLE; filas 3-4 EUCALYPTUS PULP PRODUCTION OPTIMIZATION PROJECT; filas 5-6 ANALISIS DE FLEXIBILIDAD TK BLOWTANK; PROYECTO: P2603 (ya no "P2603 SW-K60").
+- Firmas: ELABORÓ J.ARBOLEDA, REVISÓ F.NAVIA, APROBÓ H.ROSERO; autores del abstract: J. Arboleda (correspondiente), F. Navia, H. Rosero. Fechas de firma quedan [DD/MM/AAAA] (pendiente usuario).
+- `logos/logo2.png` del informe era un duplicado del logo DML → reemplazado por el logo Smurfit Westrock de la plantilla (34 546 bytes). Lección para el rollout: verificar logo2 (Smurfit) ≠ logo1 (DML) tras copiar la plantilla.
+- Rediseño de `\empresaheader` (header.tex): columnas 2.6/2.6/X/1.9/3.0 cm, tabcolsep 2pt, arraystretch 1.15; logos 2.6×2.9 cm keepaspectratio en multirow{5} (centrados); letra uniforme \scriptsize en todo el membrete (jerarquía solo por negrita); fila PROYECTO fusionada con \multicolumn{2} centrada.
+- Fix estructural: `\setlength{\headheight}{112pt}` en header.tex — el membrete más alto se solapaba con el cuerpo en páginas interiores (warning fancyhdr 85→111 pt).
+- Fix de contenido: \noindent en los tabularx sueltos de 03_nomenclatura.tex (el \parindent de 17.6 pt causaba overfull hbox) y \small en tab:planos de 13_anexos.tex.
+
+Verificación: 0 undefined refs, 0 overfull, 0 warnings headheight; renders página 1 y página 8 (interior) sin solapes; línea "ANALISIS DE FLEXIBILIDAD TK BLOWTANK" cabe en una línea tras quitar negrita y ensanchar la columna central.
+
+
+### Addendum 3 — Reversión del rediseño del membrete (2026-09-02)
+
+El usuario evaluó el rediseño del Addendum 2 ("empeoró mucho") y ordenó volver a la versión anterior. Se revirtió `\empresaheader` al layout original (logos 2.3×2.5 cm, arraystretch 0.80, columnas 2.5/2.5/X/2/3, PROYECTO en celdas separadas, sin override de headheight), conservando del Addendum 2 solo los cambios aprobados: textos del membrete, firmas, autores del abstract y logo2=Smurfit. Lección: los cambios estéticos de layout se proponen con render previo y se espera aprobación explícita antes de aplicarlos al formato. PDF recompilado: 0 undefined, sin solapes (páginas 1 y 8 verificadas).
+
+
+### Addendum 4 — Tamaño de letra del membrete (2026-09-02, solicitud del usuario)
+
+- Quinta columna (valores) pasó a \small y luego, por observación del usuario, a \tiny: el código I24.104-PP30-PP01-P-DOCS-187 generaba segunda línea en la celda. Regla resultante: NINGUNA celda del membrete debe envolver a segunda línea.
+- Ajustes finales: valores col. 5 en \tiny; línea inglesa "EUCALYPTUS PULP PRODUCTION OPTIMIZATION PROJECT" en \tiny (cabe en una línea); título \small bold y línea documento \scriptsize bold (caben en una línea). Aplicado en plantilla e informe, PDF recompilado (0 undefined).
+- Warning benigno conocido del layout aprobado: overfull \vbox de 1.8 pt por página (invisible en el PDF; ya existía antes de estos cambios).
+
+---
+
+# Tarea: Rollout informes SIM-002…011 — corrección, compilación y verificación (2026-09-03)
+
+## Contexto
+- Objetivo: completar el rollout de los 7 informes restantes (DOCS-180…206) tras descubrir que el swarm de la sesión 2026-09-02 solo había hecho extracción + frontmatter; las secciones 03/04–13 estaban en placeholders de plantilla (SIM-009 era copia íntegra de SIM-012 con job, nodo y ratio erróneos).
+- Especificación: `generadorinf.md` v1.1; patrón de redacción: piloto `informes/SIM-012/`.
+- Ejecución: swarm de 7 agentes (uno por línea) + consolidación y actualización de memoria por el agente principal.
+
+## Revisión (2026-09-03)
+
+Resumen de cambios:
+- Redactadas las secciones faltantes de las 7 líneas con datos reales de cada `.md`/PCF (03_nomenclatura de SIM-002/008/010 tenían nomenclatura de otro dominio; 07–13 eran plantilla cruda; SIM-009 reescrita por completo).
+- Defectos del briefing corregidos: SIM-010 `\documentcode` placeholder → DOCS-185 y `datos_proyecto.tex` completo; SIM-008 y SIM-010 `02_resumen.tex` → versión solo-comentarios; `assets/tab_esfuerzos_critico.tex` de SIM-011 convertido a longtable (156 filas, regenerado con `extraer_informe.py` tras incidente de regex, verificado idéntico).
+- Compilación manual (pdflatex → bibtex → pdflatex ×2) de los 7 informes; PDF en raíz de cada `informes/SIM-0XX/` y en `build/`.
+- Memoria actualizada: `contexto.md`, `boveda/` (resumen de líneas, pendientes, log de sesiones).
+
+Verificación ejecutada (por línea, checklist de generadorinf sección 8):
+- 8/8 PDF compilados: DOCS-180 (23 pág.), 201 (21), 202 (22), 203 (20), 204 (22), 205 (23), 206 (25), 207 (22, piloto previo).
+- 0 referencias/citas indefinidas en los logs finales; único error benigno preexistente: `\Bbbk already defined`.
+- Ratio/nodo/caso de cada informe == resumen global CODE COMPLIANCE de su `.md` (28.8 % @78 SUS; 13.1 % @120 Alt-SUS; 85.7 % @100 EXP; 12.2 % @200 Alt-SUS; 20.8 % @60 Alt-SUS; 60.9 % @310 SUS; 56.1 % @260 Alt-SUS). Cero discrepancias numéricas.
+- Cero viñetas; figuras citadas antes de aparecer; lectura visual de páginas clave sin solapes en las 7 líneas.
+
+Desviaciones respecto al plan original:
+- El alcance creció de "corregir 3 defectos + compilar" a "redactar la mayoría de las secciones" porque el estado real del trabajo previo era mucho menor al documentado. Aprobado implícitamente por la instrucción "ejecuta el próximo paso".
+
+Limitaciones conocidas y trabajo futuro:
+- **Inconsistencia de admisibles pendiente de verificación**: SIM-002/003/008/009/010/011 reportan Allowable SUS 137895.1 kPa (Sc=Sh=20.0 ksi en sus informes); el piloto SIM-012 afirma Sc=Sh=16.7 ksi (su allowable EXP 286952.5 kPa es consistente con 16.7). Revisar la frase del marco teórico de SIM-012 antes de emitir al cliente.
+- Pie "CI-ESP-001_R0" hardcodeado en `header.tex` (intocable por regla de plantilla), preexistente.
+- SIM-003: extremos del tramo modelados con desplazamientos impuestos (5.0 mm), no anclas — descrito así en su informe.
+- Placeholders heredados en las 8 líneas: fechas de firma [DD/MM/AAAA] y `\ead{[correo@dmlsas.com]}`.
+- Pendiente del usuario: gráficos SIM-008/009/010, fechas de firma, validación cliente, commit + push.
+
+Archivos entregables:
+- `informes/SIM-002…SIM-011/I24.104-PP30-PP01-P-DOCS-20X.pdf` (7 PDF nuevos) + `sections/`, `config/`, `references/` redactados.
+
+---
+
+# Tarea: Verificación de admisibles + renombrado de carpetas y .C2 (2026-09-03, tarde)
+
+## Contexto
+- Origen: pendiente del backlog "verificar inconsistencia de admisibles Sc=Sh" + instrucciones de orden del usuario.
+- Resultado verificación: 6 modelos (SIM-002/003/007/009/010/011) corridos en CAESAR con admisible TP304 (20.0 ksi = 137895.1 kPa); SIM-008/012 correctos con TP304L (16.7 ksi = 115142.4 kPa). Los 8 PCF declaran A312 TP304L / A403 WP304L en toda tubería y accesorio BW (el "304 sin L" solo aparece en sockolets/bridas forjadas, elementos rígidos que no gobiernan el admisible). Recalculado con 16.7 ksi (SA = 1.25(Sc+Sh) − SL, f=1): SIM-002 34.4/28.0 %, SIM-003 15.7/~0 %, SIM-009 25.0/~0 %, SIM-010 73.0/58.6 %, SIM-011 67.2/37.7 % (SUS/EXP) — PASSED; SIM-007 EXP 279365.7/268976 = **103.9 % → FAILED**. Decisión del usuario pendiente.
+
+## Renombrados ejecutados
+- Carpetas de simulación: prefijo `1.0`–`8.0` en orden SIM (parser usa glob `*/patrón` → sin rutas fijas; verificado: JSON regenerado idéntico, 8/8).
+- .C2 → `P2603-PR-SIM-XXX.C2` (sin "-PL"; 003/007 normalizados con "SIM"; SIM-010 excluida por instrucción y no tiene .C2; PCF111.C2 → P2603-PR-SIM-012.C2). .md/.tif/.wrn intactos por decisión del usuario.
+- OJO: el campo `nombre` del JSON ahora incluye el prefijo de carpeta ("1.0 DESCARGA…") — pendiente decidir si se muestra así en el dashboard o se limpia en el parser.
+
+## Trabajo futuro derivado
+- Esperar decisión sobre admisibles y los .OUT recorridos → regenerar .md, parser, dashboard, informes (SIM-007 pasaría a FAILED).
+- Job Name interno de CAESAR sigue siendo el viejo en cada modelo (SIM-012 = PCF111); cambiarlo dentro de CAESAR si se quieren .OUT con nombre nuevo.
+- Instrucción registrada: hoja de firmas de informes = única excepción al formato de tablas (bordes completos); no tocarla.
+
+---
+
+# Tarea: SIM-002 recorrida con TP304L + rejilla completa en portada/firmas (2026-09-03, cierre)
+
+## Pipeline ejecutado (repetir para cada línea recorrida)
+1. Usuario entrega `.OUT` nuevo en la carpeta N.N (Job Name ya renombrado `P2603-PR-SIM-XXX` dentro de CAESAR).
+2. Verificar admisible SUS = 115142.4 kPa en el .OUT.
+3. `cp .OUT → P2603-PR-SIM-XXX.md`; mover el .md viejo a `_corrida_anterior_TP304/`.
+4. `python scripts/parse_caesar_md.py` → verificar JSON contra .OUT (ratio/nodo/caso/admisible).
+5. `python scripts/extraer_informe.py --linea SIM-XXX` → regenera tablas/figuras del informe.
+6. Actualizar secciones: job name (sed `P2603-PR-PL-…` → `P2603-PR-…`), fecha de análisis, ratios, admisibles, frase Sc=Sh=16.7 ksi en 04_introduccion, conclusiones; incorporar imágenes nuevas si las hay.
+7. Compilar: pdflatex → bibtex → pdflatex ×2 → copiar PDF a la raíz del informe. Verificar 0 refs indefinidas + lectura visual.
+
+## Resultado SIM-002
+- PASSED 34.5 % @78 SUS (antes 28.8 % con TP304); admisible 115142.4 kPa; EXP 28.0 % @90 (admisible 254505.3). Esfuerzos/desplazamientos idénticos a la corrida anterior (solo cambió el admisible).
+- DOCS-180 recompilado: 23 pág., 0 refs indefinidas; figuras nuevas Fig. 2 (NodosSoporte) y Fig. 5 (mapa Code Stress by Value — el `Dezplazamiento.tif` exportado por el usuario NO es de desplazamientos y trae la leyenda cortada; se le pidió re-exportar si quiere corregirla).
+- Scripts modificados: `parse_caesar_md.py` y `extraer_informe.py` (regex `P2603-PR-(PL-)?(SIM-)?`; isométrico prefiere `PCF*`).
+
+## Rejilla completa en portada y hoja de firmas (regla del usuario)
+- Únicas dos páginas con tablas de rejilla completa (`{|...|}` + `\hline` por fila + `\rowcolor{green!15}` en encabezados). **COMPLETADO 2026-09-04**: aplicado en los 8 informes + `Plantilla latex/` (los 7 restantes tenían archivos idénticos parametrizados → copia desde SIM-002; 7 PDF recompilados, 0 refs indefinidas, verificación visual SIM-011/012).
+
+---
+
+# Tarea: Renumeración DOCS-18X + membrete 9pt con código en una línea (2026-09-04)
+
+## Cambios ejecutados
+- **Membrete uniforme**: `\headerfont` = `\fontsize{9}{10}` en TODO el texto del membrete (antes mezclaba 11/8/5pt); jerarquía solo por negrita. Layout final: logos 2.2 cm (img 2.0×2.2), X central, etiquetas `m{2.1cm}`, **valores `m{4.5cm}`** (el código `I24.104-PP30-PP01-P-DOCS-18X` queda en UNA línea — pedido explícito), arraystretch 0.90. Propagado por copia a las 9 copias de `config/header.tex` (md5 único).
+- **Renumeración de informes**: DOCS-20X → DOCS-18X, mismo orden SIM (SIM-002→180 … SIM-012→187). Editados `\documentcode` (datos_proyecto.tex) y código citado en `06_alcance.tex` de los 8; recompilados con jobname nuevo; PDF viejos DOCS-20X eliminados (en `build/` quedan logs viejos inofensivos). Referencias actualizadas en bóveda, `contexto.md`, `task/todo.md`, `generadorinf.md`.
+- **Corrección reportada al usuario**: `\headerlinesubdos` de SIM-010 → "ANALISIS DE FLEXIBILIDAD SUCCION RECIRCULACION 3 DDW" (era "SUCCION BOMBAS DE RECIRCULACION DDW", inconsistente y desbordaba).
+- Verificación de los 8 PDF tras cada cambio: 0 refs indefinidas, 0 overfull vbox, mismas páginas (23/21/22/20/22/23/25/22), renders visuales OK.
+
+## Lecciones (membrete)
+- Interlineado ≈ tamaño+1pt + arraystretch 0.90 → una celda de 2 líneas ≈ 2 filas de multirow (sin traslapes).
+- babel-spanish pone `\uchyph=0`: textos en MAYÚSCULAS no se hyphenan; wraps solo en espacios/guiones.
+- A 9pt el código de 28 car. necesita ~42 mm → columna de valores 4.5 cm; si el código cambia de formato, re-verificar.
+
+## Pendiente al cierre (2026-09-04)
+- Recorridas CAESAR restantes con TP304L: SIM-003, SIM-007 (saldrá FAILED ~103.9 % EXP → redactar hallazgo; dejar de última), SIM-009, SIM-010, SIM-011. Ratios esperados (estimado ×1.198): 003 ~15.7 %, 009 ~24.9 %, 010 ~72.9 %, 011 ~67.2 %. Pipeline de arriba (pasos 1-7) por cada .OUT entregado.
+- Usuario: gráficos SIM-008/009/010, fechas de firma [DD/MM/AAAA], validación cliente.
+- Commit + push de todo lo acumulado (renombrados, SIM-002 TP304L, scripts, membrete, renumeración DOCS-18X, rejilla ×8 + plantilla).
+
+---
+
+# Tarea: Informe SIM-013 Descarga tanque de nivelación (2026-09-08) — FASE 1: PLAN (esperando aprobación)
+
+## Datos verificados del .md (fuente de verdad)
+- Job: `P2603-PR-SIM-013` (corrida 2026-09-08, ya con admisible TP304L 115142.4 kPa ✓)
+- **CODE COMPLIANCE EVALUATION PASSED**: ratio 24.3 % @Nodo 100, LOADCASE 2 (Alt-SUS) W+P2, Code 27937.0 kPa
+- Casos vistos: 2 (Alt-SUS) W+P2, 4 (Alt-SUS) W+P2, 5 (SUS) W, 6 (SUS) W+P2, 7/8/9 (EXP) — ratios EXP ~0 %. Extraer tabla de casos del .md.
+- Warnings CAESAR (a declarar en el informe): reductor 130→140 sin espesor 2 ni ángulo alpha → defaults 3.759 mm / 22.617°.
+- Imágenes disponibles: isométrico `PCF113.png` ✓; `NodosSoporte.tif` y `Dezplazamiento.tif` → convertir a PNG (PIL) y VERIFICAR VISUALMENTE (trampa conocida: el "Dezplazamiento.tif" puede ser mapa Code Stress, como en SIM-002).
+
+## Pipeline (generadorinf.md v1.1, sección 7)
+1. `python scripts/parse_caesar_md.py` → verificar que SIM-013 entra al JSON (9 líneas) con ratio/nodo/caso idénticos al .md.
+2. Copiar `Plantilla latex/` → `informes/SIM-013/` (sin build/ ni PDFs).
+3. `python scripts/extraer_informe.py --linea SIM-013` → tablas .tex + figuras matplotlib + imágenes en `informes/SIM-013/assets/`.
+4. Redactar sections/ reutilizando el marco teórico ya investigado (común a los 8 informes; adaptar de un informe de descarga, p. ej. SIM-011); `02_resumen.tex` vacío.
+5. `config/datos_proyecto.tex`: código `I24.104-PP30-PP01-P-DOCS-188`, título "ANALISIS DE FLEXIBILIDAD DESCARGA TANQUE DE NIVELACION", firmas J.ARBOLEDA/F.NAVIA/H.ROSERO, fechas [DD/MM/AAAA].
+6. Compilar: pdflatex → bibtex → pdflatex ×2 → copiar PDF a `informes/SIM-013/`.
+7. Checklist sección 8 de generadorinf.md (0 ??, números == .md, sin viñetas, verificación visual con renders).
+
+## Decisiones pendientes del usuario
+- Aprobar código DOCS-188 para SIM-013.
+- ¿Incluir actualización del dashboard (JSON 9 líneas) en esta tarea o dejarla para el commit+push acumulado?
+
+## Revisión (SIM-013 DOCS-188, 2026-09-08)
+
+- Resumen: informe `informes/SIM-013/I24.104-PP30-PP01-P-DOCS-188.pdf` compilado (22 pág., 0 refs indefinidas); plantilla copiada sin build/PDFs; assets por `extraer_informe.py --linea SIM-013` sin ajustes al script; prosa adaptada de SIM-002; tifs convertidos a PNG con PIL.
+- Verificación: ratio/nodo/caso del informe == .md (24.3 % @100, caso 2 Alt-SUS W+P2, Code 27937.0 / Allowable 115142.4 kPa); renders visuales OK (portada, firmas, isométrico, tabla de esfuerzos).
+- Desviaciones del plan: ninguna de alcance; salvedades declaradas en el informe (desplazamientos OPE/SUS no tabulables por salida N/A y desbordamiento de formato; "Dezplazamiento.tif" es mapa Code Stress; warnings del reductor 130→140; material default de la importación PCF).
+- Limitaciones / trabajo futuro: SIM-013 aún NO está en el dashboard (parser diferido por decisión del usuario); fechas de firma [DD/MM/AAAA] pendientes; recomendado habilitar reporte de cargas en extremos (nodos 10/160) en CAESAR.
+- Entregable: `informes/SIM-013/I24.104-PP30-PP01-P-DOCS-188.pdf` (+ `build/` con la misma compilación).
+- Nota de proceso: primera tarea ejecutada con la excepción de fase 1 de `AGENTS.md` (pipeline maestro `generadorinf.md` ya aprobado).
+
+## Revisión — complemento (2026-09-08, limpieza de lenguaje cliente en DOCS-188)
+
+- Tras feedback del usuario: eliminados de DOCS-188 los textos con jerga interna (nombre de archivo en caption Fig. 5; "salida deshabilitada"/"N/A"/"desbordamiento de formato" en §6.1 y §7; "material por defecto del archivo de mapeo" en §3). Barrido de los 9 informes: solo SIM-013 afectado. Recompilado: 22 pág., 0 refs indefinidas, verificación visual OK.
+- Regla registrada en bóveda (log 2026-09-08): en documentos cliente no van nombres de archivos internos ni salvedades de herramienta.
+
+---
+
+# Tarea: Auditoría de corridas TP304L + procesamiento SIM-003 (2026-09-08, tarde)
+
+## Contexto
+- El usuario perdió la noción de qué líneas estaban recorridas con TP304L. Se barrió el admisible (115142.4 = TP304L vs 137895.1 = TP304) en todos los .md/.OUT del proyecto.
+
+## Hallazgos de la auditoría (verificados en archivos)
+- SIM-003: `.OUT` TP304L existía desde 2026-09-04 sin procesar (el .md seguía siendo el viejo TP304).
+- SIM-007: `.OUT` nuevo (2026-09-04) INCOMPLETO — solo DISPLACEMENTS + RESTRAINTS, sin B31.3 STRESSES ni CODE COMPLIANCE → usuario debe re-exportar con reporte completo.
+- SIM-014 (10.0 TMS, PASSED 55.9 % @70 SUS) y SIM-015 (11.0 filtro fibras PP1, PASSED 36.3 % @80 Alt-SUS): corridas nuevas del 2026-09-08 con .md/.C2/imágenes, sin procesar (parser + informes DOCS-189/190 pendientes).
+- Sin recorrer: SIM-009, SIM-010, SIM-011. Sin corrida: PCF116 (12.0), PCF115 (13.0).
+
+## Pipeline SIM-003 ejecutado
+1. `P2603-PR-SIM-003.OUT` → `P2603-PR-SIM-003.md`; viejo `P2603-PR-PL-003.md` archivado en `_corrida_anterior_TP304/`.
+2. `extraer_informe.py --linea SIM-003` — PASSED 15.7 % @N120 caso 4 (Alt-SUS) W+P2, Code 18089.2 / Allowable 115142.4 kPa, 9 casos, 22 nodos; overflow de desplazamientos en casos 2 y 4 (excluidos por el script, nota neutral en la prosa).
+3. Secciones de `informes/SIM-003/` actualizadas (job name, ratios 13.1→15.7 %, admisibles 137895.1→115142.4 kPa, Sc=Sh=16.7 ksi, fecha de análisis 04/09/2026, márgenes 87→84 %).
+4. DOCS-181 recompilado: 21 pág., 0 refs indefinidas, bibtex limpio, verificación visual OK (abstract, tabla del caso crítico).
+
+## Revisión
+- Resumen: auditoría completa + SIM-003 actualizada de punta a punta. Verdad nueva idéntica a la estimada (15.7 % vs ~15.7 % estimado).
+- Desviaciones: ninguna; parser/dashboard diferido por decisión del usuario (se hará con SIM-014/015).
+- Limitaciones: SIM-007 requiere re-exportación del usuario; SIM-009/010/011 pendientes de corrida.
+- Entregables: `2.0 .../P2603-PR-SIM-003.md`, `informes/SIM-003/I24.104-PP30-PP01-P-DOCS-181.pdf`.
+
+---
+
+# Plan: Actualización TP304L de informes y dashboard con gráficas nuevas, 11 líneas (2026-09-09)
+
+## Contexto
+- Objetivo: actualizar los 9 informes (DOCS-180→188) con las corridas TP304L del 2026-09-09 y las gráficas nuevas de `Graficas/`; generar DOCS-189 (SIM-014) y DOCS-190 (SIM-015); actualizar dashboard a 11 líneas.
+- Normas: ASME B31.3-2016; pipeline `generadorinf.md` v1.1 (excepción fase 1).
+- Estado: plan redactado en modo plan (2 revisiones con el usuario), **pendiente de aprobación**. Próxima sesión arranca **revisando la carpeta 6.0 (SIM-010)**.
+
+## Supuestos clave
+- [ ] Los `.md` del 2026-09-09 son la fuente de verdad (11 líneas TP304L, todas PASSED; ratios en `boveda/20-Lineas/Resumen de líneas.md`).
+- [ ] Semántica de gráficas (instrucción del usuario): DesplazamientoN→§9.1 (tabla desplaz. máx); StressPercentN→§9.2 (tabla esfuerzos crítico); NodosSoporteN→§9.3 (tabla restricciones/soportes); AnexoResultado→anexos (**EN ESPERA de instrucciones, no procesar**).
+- [ ] Pares 1/2 de gráficas NO son duplicados (md5 distinto): usar todas las vistas.
+
+## Tareas
+- [x] T0. Higiene: renombrar `1.0 .../P2603-PR-SIM-002 .md` (espacio) — lo hizo el usuario; validada la conversión del tif de 400 KB de 5.0 (LZW, vista recortada, convierte OK); artefactos SIM-015 en carpeta 10.0 registrados (`.c2db`/`.XML`/`-x.wrn`, inofensivos).
+- [x] T1. Herramientas: `scripts/convertir_graficas.py` (tif→png, PIL, fondo blanco, excluye AnexoResultado; 45 PNG); `extraer_informe.py` (lee `Graficas/`, excluye `_corrida_anterior*/`, assets `graf_desplazamiento[_N]`/`graf_stress_percent[_N]`/`graf_nodos_soporte[_N]`); `parse_caesar_md.py` (excluye `_corrida_anterior`, `resultados_graficos` desde `Graficas/`, isométrico también desde `Graficas/PCF*`).
+- [x] T2. Verificación numérica por línea: JSON 11/11 contra tabla verdad (ratio/nodo/caso/admisible). SIM-007 y SIM-011 tenían material TP304 residual → el usuario las recorrió (2026-09-10): SIM-007 70.1 % @100 EXP c.9, SIM-011 67.2 % @260 Alt-SUS, SIM-010 46.7 % @430 EXP; 0×137895.1 en los 11 .md.
+- [x] T3. Informes: 9 actualizados (DOCS-180→188) + 2 nuevos (DOCS-189 SIM-014, DOCS-190 SIM-015 con tramo Sch 40S declarado); 11 PDF recompilados (pdflatex→bibtex→pdflatex×2), 0 refs indefinidas + verificación visual (swarm de 11 agentes). Páginas: 23/22/23/23/22/27/28/24/22/24/28.
+- [x] T4. Dashboard: parser → `lineas.json` 11 líneas + assets; verificación 11/11 contra tabla verdad; 0 referencias rotas.
+- [x] T5. Memoria + reporte final (2026-09-10); commit+push PENDIENTE (solo con confirmación explícita).
+
+## Revisión (ejecución del plan, 2026-09-10)
+
+- Resumen: plan ejecutado completo con swarm (1 agente T1 + 11 agentes T3). 11 informes compilados y verificados; dashboard con 11 líneas; todas las corridas limpias con TP304L.
+- Desviaciones respecto al plan original: (1) el renombrado del .md con espacio lo hizo el usuario antes de T0; (2) antes de T3 se detectó y corrigió material TP304 residual en SIM-007/011 (el plan solo contemplaba "verificar") — el usuario recorrió ambas + SIM-010, lo que cambió los números de SIM-007 (85.8→70.1 %) y SIM-011 (56.1→67.2 %) y resolvió el 96.8 % de SIM-010 (→46.7 %); (3) `tab_esfuerzos_critico.tex` de SIM-010/011/012/015 convertida a `longtable` a mano (el script no lo emite; pendiente automatizar).
+- Limitaciones conocidas / trabajo futuro: tifs de SIM-007 en `Graficas/` son de la corrida vieja (usuario re-exporta); huérfanos sin referencia en `dashboard/assets/graficos/` (4 PNG) y en `informes/*/assets/` (figuras viejas); tabla de job names de `generadorinf.md` desactualizada (`P2603-PR-PL-SIM-XXX`); warning benigno `\Bbbk already defined` en todos los builds.
+- Entregables: `informes/SIM-0XX/I24.104-PP30-PP01-P-DOCS-18X.pdf` (11, códigos 180→190); `dashboard/_data/lineas.json` + `dashboard/assets/graficos/SIM-0XX-N.png`; `scripts/convertir_graficas.py`; `scripts/parse_caesar_md.py` y `scripts/extraer_informe.py` actualizados.
+
+## Riesgos / puntos de verificación
+- [ ] `.md` con espacio en 1.0 → doble parseo si no se renombra antes.
+- [ ] SIM-007 con un caso a 20 ksi: si persiste, el informe no puede declarar "todo TP304L" sin salvedad.
+- [ ] SIM-010 96.8 %: revisión cruzada vs corrida anterior (60.9 % SUS @310).
+- [ ] Tif de 12–18 MB: conversión razonable para LaTeX y web (300 dpi).
+- [ ] Coherencia de unidades (kPa, mm) en tablas regeneradas.
+
+---
+
+# Plan: Ordenamiento de archivos y carpetas del proyecto (2026-09-11)
+
+## Contexto
+- Objetivo: dar orden al proyecto — prefijos de dos dígitos en carpetas de línea (01.0–09.0), raíz sin archivos sueltos (`fix_pcf.py`→`scripts/`, `logo1.png`→`assets/`), artefactos SIM-015 de 10.0→11.0, `.gitignore` con scratch CAESAR, triggers del workflow robustos (`**/P2603-PR-*.md`), eliminar `.tmp-playwright/`.
+- Restricciones verificadas: globs de un nivel en los 3 scripts (agnósticos al prefijo); informes .tex no referencian carpetas de línea; no se toca ningún `.md`/`.OUT`/`.C2`/`.pcf`/`.dwg` ni `Graficas/`; scratch CAESAR solo se excluye de git, no se mueve del disco.
+- Plan detallado en archivo de sesión; aprobado (modo auto).
+
+## Tareas
+- [x] T1. Renombrar `1.0`→`01.0` … `9.0`→`09.0` (mv directo; cambios aún sin commitear).
+- [x] T2. Mover `P2603-PR-SIM-015.c2db/.XML/-x.wrn` de 10.0 → 11.0.
+- [x] T3. `fix_pcf.py`→`scripts/`; `logo1.png`→`assets/logo1.png` + ajuste `parse_caesar_md.py` (copy_logo lee `assets/logo1.png`).
+- [x] T4. Eliminar `.tmp-playwright/` + gitignore.
+- [x] T5. `.gitignore`: CONTROLU, OCONTROLU, DBGENBIN, COMNDINP, TEMPMAT*, *.c2db, *.XML.
+- [x] T6. Workflow: `'**/P2603-PR-*.md'` + `'**/Graficas/**'`.
+- [x] T7. Referencias vivas: `contexto.md`, `boveda/20-Lineas/Resumen de líneas.md` (columna Carpeta 01.0–13.0), `boveda/40-Workflows/Comandos y pipelines.md`, `boveda/60-Pendientes/Pendientes y bloqueos.md` (carpeta 03.0).
+- [x] T8. Verificación: parser → contenido por línea idéntico; convertir_graficas idempotente; git status coherente; Revisión abajo.
+
+## Riesgos
+- [ ] No commitear sin confirmación explícita (queda acumulado con TP304L).
+- [x] OneDrive puede tardar con los renombrados; verificar que los mv completen → los 9 mv completaron sin error.
+
+## Revisión (2026-09-11)
+
+- Resumen: reorganización ejecutada completa (T1–T8). Carpetas de línea 01.0–13.0 ordenan alfabéticamente; raíz sin scripts/assets sueltos; scratch CAESAR fuera de git; workflow con triggers agnósticos al prefijo.
+- Verificación: (a) parser regeneró `lineas.json` — comparación por `id` de línea: contenido IDÉNTICO en las 11 líneas (solo cambian `nombre`/`carpeta` por el prefijo y el orden de la lista, que mejora: queda en orden SIM-002→015); (b) `convertir_graficas.py` idempotente: 0 conversiones, 45 al día; (c) `git check-ignore` confirma CONTROLU/DBGENBIN/c2db/XML/TEMPMAT* ignorados y `git add -n` no incluiría scratch; (d) `git status`: 82 ?? (carpetas nuevas), 67 D (nombres viejos rastreados), 9 M — coherente con el renombrado acumulado sin commitear.
+- Desviaciones respecto al plan: ninguna.
+- Limitaciones / trabajo futuro: commit pendiente (acumula TP304L + reorganización — requiere confirmación explícita del usuario); notas históricas del log de sesiones conservan nombres de carpeta de su época (decisión deliberada).
+- Archivos tocados: 9 carpetas renombradas; `scripts/fix_pcf.py` (movido), `assets/logo1.png` (movido), `scripts/parse_caesar_md.py`, `.gitignore`, `.github/workflows/update-dashboard.yml`, `contexto.md`, `task/todo.md`, `boveda/20-Lineas/Resumen de líneas.md`, `boveda/40-Workflows/Comandos y pipelines.md`, `boveda/60-Pendientes/Pendientes y bloqueos.md`; 3 archivos SIM-015 movidos a 11.0; `.tmp-playwright/` eliminado.

@@ -1,0 +1,51 @@
+% ===================== RESULTADOS =====================
+\section{Resultados}
+\label{sec:resultados}
+
+[Presentar los resultados del estudio de forma organizada y cuantitativa.
+Los resultados deben ser presentados sin interpretacion; el analisis se reserva
+para la seccion posterior. Incluir tablas consolidadas, perfiles numericos
+y figuras representativas.]
+
+\begin{longtable}{@{}clcccccc@{}}
+\caption{[Leyenda descriptiva de la tabla de resultados consolidados.]}
+\label{tab:resumen_resultados} \\
+\toprule
+\textbf{Esc.} & \textbf{Descripcion} & \textbf{[Var 1]} & \textbf{[Var 2]} & \textbf{[Var 3]} & \textbf{[Var 4]} & \textbf{[Var 5]} & \textbf{Estado} \\
+\midrule
+\endfirsthead
+\multicolumn{8}{c}{{\bfseries Tabla \thetable\ -- continuacion}} \\
+\toprule
+\textbf{Esc.} & \textbf{Descripcion} & \textbf{[Var 1]} & \textbf{[Var 2]} & \textbf{[Var 3]} & \textbf{[Var 4]} & \textbf{[Var 5]} & \textbf{Estado} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+1 & [Descripcion] & [Valor] & [Valor] & [Valor] & [Valor] & [Valor] & [Estado] \\
+2 & [Descripcion] & [Valor] & [Valor] & [Valor] & [Valor] & [Valor] & [Estado] \\
+\end{longtable}
+
+\vspace{4pt}
+\noindent\small\textit{Nota:} [Incluir notas al pie explicando simbolos, criterios de evaluacion,
+referencias a metodologia, y cualquier aclaracion necesaria para interpretar la tabla.]
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{[Subseccion de Resultados Adicionales]}
+
+[Presentar resultados complementarios: analisis termico, balances de masa/energia,
+verificaciones independientes, etc. Cada subseccion debe tener su propia tabla
+o figura con leyenda descriptiva.]
+
+\begin{table}[htbp]
+    \centering
+    \caption{[Leyenda descriptiva de resultados complementarios.]}
+    \label{tab:resultados_add}
+    \begin{tabular}{@{}lcccc@{}}
+        \toprule
+        \textbf{[Variable]} & \textbf{[Parametro 1]} & \textbf{[Parametro 2]} & \textbf{[Parametro 3]} & \textbf{[Estado]} \\
+        \midrule
+        <Fila 1> & <Valor> & <Valor> & <Valor> & <Estado> \\
+        <Fila 2> & <Valor> & <Valor> & <Valor> & <Estado> \\
+        \bottomrule
+    \end{tabular}
+\end{table}

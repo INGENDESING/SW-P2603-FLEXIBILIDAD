@@ -1,0 +1,46 @@
+\documentclass[12pt,a4paper]{elsarticle}
+
+% ===================== CONFIGURACIÓN DE SALIDA PDF =====================
+\pdfoutput=1
+\pdfcompresslevel=9
+
+% ===================== IMPORTAR CONFIGURACIÓN MODULAR =====================
+\input{config/preamble.tex}
+\input{config/header.tex}
+
+\journal{DML Ingenieros Consultores --- Informe Técnico}
+
+\begin{document}
+
+% ===================== IMPORTAR SECCIONES MODULARES =====================
+\input{sections/00_hojafirmas.tex}
+\input{sections/00_portada.tex}
+\input{sections/01_frontmatter.tex}
+\input{sections/02_resumen.tex}
+\input{sections/03_nomenclatura.tex}
+
+% ===================== ÍNDICES CON MEMBRETE =====================
+\tableofcontents
+\listoftables
+\listoffigures
+\newpage
+
+% ===================== CONTENIDO PRINCIPAL =====================
+\input{sections/04_introduccion.tex}
+\input{sections/05_objetivos.tex}
+\input{sections/06_alcance.tex}
+\input{sections/07_bases_disenio.tex}
+\input{sections/08_metodologia.tex}
+\input{sections/09_resultados.tex}
+\input{sections/10_analisis.tex}
+\input{sections/11_conclusiones.tex}
+\input{sections/12_recomendaciones.tex}
+
+% ===================== BIBLIOGRAFÍA =====================
+\bibliographystyle{elsarticle-num}
+\bibliography{references/bibliografia.bib}
+
+% ===================== ANEXOS =====================
+\input{sections/13_anexos.tex}
+	
+\end{document}

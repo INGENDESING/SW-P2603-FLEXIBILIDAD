@@ -6,6 +6,16 @@
 *.tmp
 *.HPL
 *.wrn
+CONTROLU
+OCONTROLU
+DBGENBIN
+COMNDINP
+TEMPMAT*
+*.c2db
+*.XML
+
+# Renders temporales
+.tmp-playwright/
 
 # Sistema
 Thumbs.db
