@@ -14,7 +14,7 @@ Mapa de contenido de la memoria persistente del proyecto. Esta bóveda sobrevive
 - [[10-Proyecto/Contexto P2603 SW-K60|Contexto P2603 SW-K60]] — qué es el proyecto, cliente, flujo de trabajo
 - [[10-Proyecto/Bases de diseño congeladas|Bases de diseño congeladas]] — normativa, material, condiciones (NO revisar)
 
-### Líneas analizadas (8/8 PASSED)
+### Líneas analizadas (11/11 PASSED)
 - [[20-Lineas/Resumen de líneas|Resumen de líneas]] — tabla verdad CAESAR de las 8 líneas
 - Notas individuales: [[20-Lineas/SIM-002|SIM-002]] · [[20-Lineas/SIM-003|SIM-003]] · [[20-Lineas/SIM-007|SIM-007]] · [[20-Lineas/SIM-008|SIM-008]] · [[20-Lineas/SIM-009|SIM-009]] · [[20-Lineas/SIM-010|SIM-010]] · [[20-Lineas/SIM-011|SIM-011]] · [[20-Lineas/SIM-012|SIM-012]]
 

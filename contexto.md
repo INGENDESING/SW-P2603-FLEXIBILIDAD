@@ -4,13 +4,16 @@ Análisis de flexibilidad de tuberías con CAESAR II 2019. Flujo de trabajo: iso
 
 ## Estado actual
 
+- **Última tarea completada (2026-09-22, tarde)**: PCF120 (carpeta 15.0) **RESCATADO** con `scripts/fix_pcf120_basura.py` (plan B, T1–T4): la coordenada basura era centinela de Plant 3D (57 bloques) y los gaskets/pernos/welds venían duplicados 58×. Reconstruidas 24 bridas LJ (fusionadas con stub-ends reales, SKEY FLWN), reubicadas 10 válvulas bridadas + MAGNETIC FLOW METER 4" (recuperado) por FF/bore de las 11 uniones gemelas, ramal 2" completo (bola THD + 2× ELL 45 SW + sockolet), eliminados 18 soportes (lista en `PCF120 - SOPORTES ELIMINADOS.txt`) y 2508 bloques duplicados. Verificación 5/5 OK. Respaldo `PCF120 - ANTES RESCATE.pcf`. Pendiente: usuario importa en CAESAR, crea .C2, corre; ajusta TAGs de válvulas, repone soportes y revisa sockolet 2 + artefacto 1" (0.76, -528.48, 5356.57)
+- **Última tarea anterior (2026-09-17)**: PCF118 (carpeta 14.0, Descarga bomba PP30BT07) corregido, sin avisos, material TP304L ✓; ⚠️ tramo Sch 40S. Pendiente: importar en CAESAR, crear .C2 y correr.
+- **Commit+push HECHO (2026-09-11)**: `ae3021f` en `main` (acumulado TP304L + reorganización, 977 A / 44 R / 23 D / 9 M); workflow "Update Flexibilidad Dashboard" success (update-dashboard + deploy-pages) → sitio en vivo actualizado con las 11 líneas TP304L en orden SIM-002→015
 - **Última tarea completada**: reorganización de archivos y carpetas (2026-09-11): carpetas de línea con prefijo de dos dígitos `01.0`–`13.0` (orden alfabético correcto; el JSON del dashboard queda en orden SIM), `fix_pcf.py`→`scripts/`, `logo1.png`→`assets/` (parser ajustado), artefactos SIM-015 movidos de 10.0→11.0, `.tmp-playwright/` eliminado, `.gitignore` con scratch CAESAR (CONTROLU/DBGENBIN/COMNDINP/OCONTROLU/TEMPMAT*/c2db/XML), triggers del workflow robustos (`**/P2603-PR-*.md` + `**/Graficas/**`). Antes: transmittal HTML `transmittal/transmittal_DOCS-180_a_DOCS-190.html` para el Ing. Cristian Muriel (revisión de calidad; N.° `[TR-001]` placeholder por confirmar)
 - **Recorridas con material corregido (2026-09-10)**: SIM-010 (46.7 % @430 EXP), SIM-007 (70.1 % @100 EXP caso 9 — era FAILED ~103.9 % con admisible TP304), SIM-011 (67.2 % @260 Alt-SUS). Ratio máximo del proyecto: 70.1 % (SIM-007)
 - **AnexoResultado: EN ESPERA** — no procesar ningún `AnexoResultado.png` hasta instrucción del usuario
-- **Sitio en vivo**: https://ingendesing.github.io/SW-P2603-FLEXIBILIDAD/ (desactualizado hasta commit+push: el JSON local ya tiene las 11 líneas TP304L)
-- **Próxima tarea pendiente**: commit+push (con confirmación explícita); usuario re-exporta tifs de SIM-007 (los actuales son de la corrida vieja TP304) → luego `convertir_graficas.py --force` + parser + `extraer_informe.py --linea SIM-007` + recompilar DOCS-182. Esperan al usuario: número de transmittal, envío del transmittal a C. Muriel, fechas de revisión/aprobación y correo `\ead{}`, instrucción AnexoResultado, corridas SIM-016 (12.0)/PCF115 (13.0), validación cliente
+- **Sitio en vivo**: https://ingendesing.github.io/SW-P2603-FLEXIBILIDAD/ — **actualizado 2026-09-11** (deploy success tras commit `ae3021f`)
+- **Próxima tarea pendiente**: el usuario importa el PCF120 rescatado en CAESAR (crear .C2, correr; ajustar TAGs de válvulas, reponer 18 soportes de la lista, revisar sockolet 2 + artefacto 1"). Luego el usuario re-exporta tifs de SIM-007 (03.0; los actuales son de la corrida vieja TP304) → luego `convertir_graficas.py --force` + parser + `extraer_informe.py --linea SIM-007` + recompilar DOCS-182. Esperan al usuario: número de transmittal, envío del transmittal a C. Muriel, fechas de revisión/aprobación y correo `\ead{}`, instrucción AnexoResultado, corridas SIM-016 (12.0)/PCF115 (13.0)/PCF118 (14.0, PCF ya corregido 2026-09-17 — ⚠️ tramo Sch 40S)/PCF120 (15.0, PCF rescatado 2026-09-22), validación cliente
 - **Repo**: https://github.com/INGENDESING/SW-P2603-FLEXIBILIDAD (público; Pages en repos privados exige GitHub Pro)
-- **Fecha de última actualización**: 2026-09-11
+- **Fecha de última actualización**: 2026-09-22
 - **Memoria persistente (2026-09-03)**: bóveda Obsidian en `boveda/` + skills `inicializar`/`memoria` en `.kimi-code/skills/`. En cada sesión nueva: «ejecuta inicializa» (ver `inicializar.md`)
 
 ## Bases de diseño congeladas
@@ -64,6 +67,7 @@ Informes (DOCS-180→190) y dashboard (`lineas.json`) YA actualizados a estos n�
 | Archivo | Propósito |
 |---------|-----------|
 | `scripts/fix_pcf.py` | Corrección PCF Plant 3D → CAESAR II |
+| `scripts/fix_pcf120_basura.py` | Rescate de componentes en coordenada centinela + dedupe 58× (PCF120; `--proponer`/`--aplicar`/`--verificar`) (2026-09-22) |
 | `scripts/parse_caesar_md.py` | Parser CAESAR II .md → JSON + copia assets al dashboard (2026-09-10: lee `Graficas/`, excluye `_corrida_anterior`, isométrico desde `Graficas/PCF*`) |
 | `scripts/convertir_graficas.py` | tif→png de `Graficas/` (PIL, fondo blanco, excluye AnexoResultado; idempotente, `--force`) (2026-09-10) |
 | `scripts/extraer_informe.py` | Genera tablas .tex + figuras + imágenes para informes (2026-09-10: assets `graf_desplazamiento[_N]`/`graf_stress_percent[_N]`/`graf_nodos_soporte[_N]`) |
@@ -98,6 +102,15 @@ Informes (DOCS-180→190) y dashboard (`lineas.json`) YA actualizados a estos n�
 | SIM-013 | Descarga tanque de nivelación | PCF113 | P2603-PR-SIM-013.md |
 | SIM-014 | Descarga TMS | PCF112 | P2603-PR-SIM-014.md |
 | SIM-015 | Tubería filtro de fibras PP1 | PCF114 | P2603-PR-SIM-015.md |
+
+### Líneas sin corrida (PCF corregidos, pendiente CAESAR)
+
+| Carpeta | Línea | PCF | Estado |
+|---|---|---|---|
+| 12.0 | Succión bomba PP30SR03 | PCF116 | .C2 creado (`P2603-PR-SIM-016.C2`), sin corrida |
+| 13.0 | Succión bomba PP30BT17 | PCF115 | PCF corregido 2026-09-08, sin .C2 |
+| 14.0 | Descarga bomba PP30BT07 | PCF118 | PCF corregido 2026-09-17 (⚠️ tramo Sch 40S), sin .C2 |
+| 15.0 | Descarga bomba PP30BT17 | PCF120 | PCF RESCATADO 2026-09-22 (`fix_pcf120_basura.py`: 57 bloques centinela reconstruidos, dedupe 58×, 18 soportes eliminados con lista; ⚠️ bridas F304 sin L), sin .C2 |
 
 Cada carpeta 01.0–11.0 tiene `Graficas/` con Desplazamiento/NodosSoporte/StressPercent (tif + png convertidos) + AnexoResultado.png (EN ESPERA). OJO: los tifs de 03.0 (SIM-007) son de la corrida vieja TP304 → re-exportar. SIM-016 (12.0) tiene .C2 sin corrida; 13.0 sin corrida.
 

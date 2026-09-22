@@ -591,3 +591,56 @@ Archivos entregables:
 - Desviaciones respecto al plan: ninguna.
 - Limitaciones / trabajo futuro: commit pendiente (acumula TP304L + reorganización — requiere confirmación explícita del usuario); notas históricas del log de sesiones conservan nombres de carpeta de su época (decisión deliberada).
 - Archivos tocados: 9 carpetas renombradas; `scripts/fix_pcf.py` (movido), `assets/logo1.png` (movido), `scripts/parse_caesar_md.py`, `.gitignore`, `.github/workflows/update-dashboard.yml`, `contexto.md`, `task/todo.md`, `boveda/20-Lineas/Resumen de líneas.md`, `boveda/40-Workflows/Comandos y pipelines.md`, `boveda/60-Pendientes/Pendientes y bloqueos.md`; 3 archivos SIM-015 movidos a 11.0; `.tmp-playwright/` eliminado.
+
+---
+
+# Plan: Rescate de componentes en coordenada basura — PCF120 (carpeta 15.0)
+
+## Contexto
+- Objetivo: dejar `15.0 DESCARGA BOMBA PP30BT17/PCF120.pcf` importable en CAESAR II 2019 recuperando los 57 bloques que Plant 3D exportó en la coordenada centinela (-9776646, -9840066, -102887) con bore 0.0000. Se reconstruye lo recuperable desde el hardware de unión vecino en coordenadas reales (24 bridas LJ + 11 válvulas) y se elimina documentando lo irrecuperable (18 soportes + 3 bloques SUPPORT vacíos; 2 sockolets + 2 codos 45° SW solo si no se ubican).
+- Cliente / Proyecto DML: Smurfit Westrock — P2603 SW-K60
+- Normas aplicables: ASME B31.3-2016 (análisis posterior); ASME B16.5 / B16.9 / B16.10 para la geometría de las uniones reconstruidas.
+
+## Hallazgos base (investigación 2026-09-23, sesión anterior)
+- La coordenada basura es centinela de Plant 3D para componentes sin geometría resuelta; ya venía en el original (99 ocurrencias). NO es defecto de `fix_pcf.py`.
+- 57 bloques afectados; 39 son el primer componente de su sección `PIPELINE-REFERENCE` (44 de 58 secciones afectadas).
+- Los 24 stub-ends sin pareja y las 24 bridas LJ basura son las MISMAS uniones lap-joint: stub-end + gasket + pernos están en coordenadas reales (verificado por coincidencia de caras, ej. línea 11456 ↔ 1381); solo la brida perdió su geometría. En el original los stub-ends tampoco traen sufijo LAP ni bore (0.0000), por eso `merge_stubend` no pudo emparejarlos y los degradó a PIPE.
+- Bores: recuperables del tubo real que comparte nodo con el componente (ej. stub-end bore 0.0 ↔ tubo vecino bore 6.0 en el mismo nodo).
+- `fix_pcf.py` NO se modifica; el rescate es un script one-off nuevo.
+
+## Hallazgos T1 (2026-09-23) — refinamiento que INVALIDA dos pautas anteriores
+- **Gaskets y pernos duplicados 58×**: 1336 gaskets (25 únicos) y 1162 pernos (22 únicos); cada posición única aparece en las 58 secciones. La pauta "hardware al final de la sección anterior" era FALSA (era la duplicación). PCF118 sano NO la tiene (45/45). Limpieza opcional propuesta.
+- **Emparejamiento de stub-ends (determinista)**: 11 pares colineales enfrentados con bore concordante en AMBOS lados de cada par + stub que une con la knife gate REAL PMVAL1-102 + 1 boquilla de equipo (0.76, 0.12, 0.66 = descarga bomba). FF = gap − 2×3.175 mm.
+- **Asignación por FF y bore**: knife 3" (FF 50.96, idéntico a la real) → PMVAL1-084; V-port 3" (FF 165.1) → I30RF01K01-V1; MAGNETIC FLOW METER 4" (FF 248.0, bore 4") → INSTRUMENT sin geometría que `fix_pcf.py` eliminó (TAG FIT-I30BT09F01-F1, recuperable); check 3" ×2 (FF 73.0) y check 6" (FF 98.4); butterfly 3" ×3 (FF 42.0/46.9), 4" (52.0), 6" (57.3). TAGs de butterflies y checks a confirmar por el usuario con el isométrico.
+- **Ramal 2"**: huecos reales verificados (sin componente que los puentee): bola THD 2" en hueco de 91.8 mm; 2× ELL 45 SW en huecos de 46.9 mm; sockolet 1 en el arranque del ramal sobre el riser 6" (centro (0.76, 0.12, 586.44), BRANCH1 (-74.45, -75.09, 586.44), 106.4 mm = radio 6" + altura olet ✓). Sockolet 2 y artefacto 1" (0.76, -528.48, 5356.57, con 58 WELD duplicados) → MANUAL con isométrico.
+- **Donantes brida LJ**: 24 con pesos 4.08/5.44/8.16 kg (3"/4"/6") + outliers "9" y "18" (corruptos); catálogo MATERIALS tiene 3 códigos LJ (12517/12521/12525) — mapear por bore, no por donante.
+
+## Supuestos clave
+- [x] S1. (INVALIDADO en T1) La pauta "hardware al final de la sección anterior" era la duplicación 58× de gaskets/pernos; se reemplazó por emparejamiento determinista de stub-ends (colineales, enfrentados, bore concordante).
+- [x] S2. Bore de cada componente reconstruido tomado del tubo real que comparte su nodo (verificado en las 24 uniones: bore concordante en ambos lados de cada par).
+- [ ] S3. Los soportes (18, incl. 3 vacíos) no son reconstruibles desde el PCF: se eliminan y se entrega lista (sección, tipo) para reposición manual en CAESAR II. (usuario confirmó en la aprobación del plan)
+- [ ] S4. Sockolet 1, bola THD y 2 codos 45 SW: ubicación inequívoca → reconstruir. Sockolet 2 y artefacto 1" → MANUAL (eliminar del PCF y reportar).
+
+## Tareas
+- [x] T1. Script de análisis read-only `scripts/fix_pcf120_basura.py --proponer` ejecutado: 11 pares de stub-ends + 1 unión con knife real + 1 boquilla equipo; asignación tipo↔unión por FF/bore; ramal 2" con 4 huecos reales + sockolet; 18 soportes; conteo de duplicados (gasket 1336→25, bolt 1162→22, weld 148→91).
+- [x] T2. CHECKPOINT usuario (2026-09-22): aprobado con criterio "geometría y diámetros correctos; TAGs y detalles los ajusta el usuario en CAESAR II". Decisiones delegadas al agente: asignación por tamaño en orden de documento, dedupe 58×, sockolet 2 eliminado + reportado.
+- [x] T3. Parche aplicado (2026-09-22): respaldo `PCF120 - ANTES RESCATE.pcf`. 24 stub-ends → FLANGE LJ C/W STUB-END (SKEY FLWN, código 12517/12521/12525 y peso por bore, attr2 SCHClass_150); 24 bridas basura eliminadas; 10 válvulas bridadas reubicadas (EPs = cara LAP + 3.175 mm, sufijo FL); MAGNETIC FLOW METER 4" recuperado como INSTRUMENT (TAG FIT-I30BT09F01-F1); bola THD 2" en hueco 91.8; 2× ELL 45 SW en huecos 46.9 (CENTRE-POINT = intersección de tangentes, ANGLE corregido 9000→4500); sockolet 1 en riser 6" (2º eliminado); 18 soportes eliminados (lista en `PCF120 - SOPORTES ELIMINADOS.txt`); dedupe 2508 bloques GASKET/BOLT/WELD. Archivo 1.13 MB → 126 KB. Probado primero en copia.
+- [x] T4. Verificación post-parche OK: 0 coordenadas basura; conteos FLANGE=24, VALVE=12, INSTRUMENT=1, ELBOW=30, OLET=1, SUPPORT=11, GASKET=25, BOLT=22, WELD=91; 0 nodos con bore incoherente; 24 FLWN con bore>0; 5 extremos sueltos = extremos de línea preexistentes (idénticos en el respaldo pre-parche).
+- [x] T5. Registro completado (2026-09-22): tabla verdad 15.0, pendientes, log de sesiones y sección Revisión aquí. El usuario importa en CAESAR II como prueba final.
+
+## Riesgos / Puntos de verificación
+- [x] Bores concordantes en los 11 pares (3"/4"/6" verificados en ambos lados de cada par en T1).
+- [x] Knife gate: 2 en el archivo (real línea 12450 = PMVAL1-102; basura línea 19735 = PMVAL1-084) — son válvulas distintas; la basura va a la unión con FF idéntico (50.96 mm) al de la real.
+- [x] Asignación TAG↔unión de butterflies (5) y checks (3): el usuario la ajusta en CAESAR II (decisión T2) — la geometría y el bore de cada unión son los correctos independientemente del TAG.
+- [x] Pesos de brida: 2 donantes con peso corrupto ("9" y "18") — se usó el peso por bore (4.082/5.443/8.165 kg); salvedad registrada.
+- [x] Soportes eliminados = restricciones que el modelo CAESAR no tendrá: el usuario los repone manualmente (lista en `PCF120 - SOPORTES ELIMINADOS.txt`).
+- [x] ELL 45 SW: PCF usa CENTRE-POINT = intersección de tangentes (verificado contra el ELL 90 SW real), NO centro de arco; ANGLE corregido a 4500.
+- [ ] Validación final de importación en CAESAR II 2019 la hace el usuario (el agente no tiene CAESAR).
+
+## Revisión (2026-09-22)
+
+- Resumen: rescate completo de PCF120 (15.0). La exportación Plant 3D tenía 57 bloques en coordenada centinela y gaskets/pernos/welds duplicados 58×. Se reconstruyó toda la geometría desde los 24 stub-ends reales (11 pares gemelos enfrentados + unión con knife real + boquilla de equipo), se recuperaron 11 válvulas/instrumento, el ramal de 2" completo, y se eliminaron 18 soportes irrecuperables + 2508 bloques duplicados.
+- Verificación: 5/5 chequeos automáticos OK (0 basura, conteos, 0 bores incoherentes, 24 FLWN, sueltos = preexistentes). Inspección visual de bloques reescritos (FLANGE/VALVE/INSTRUMENT/ELBOW/OLET) conforme al formato PCF de los bloques reales.
+- Desviaciones respecto al plan: (1) la pauta "hardware al final de la sección anterior" resultó ser la duplicación 58× — se reemplazó por emparejamiento determinista de stub-ends (más robusto); (2) se descubrió el MAGNETIC FLOW METER 4" (fix_pcf lo había eliminado por no tener END-POINTs) y se recuperó; (3) dedupe de gaskets/pernos/welds aprobado por el usuario en T2 (no estaba en el plan original como acción segura).
+- Limitaciones / trabajo futuro: TAGs de las 5 butterflies y 3 checks asignados por tamaño en orden de documento — el usuario los confirma en CAESAR II; sockolet 2 y artefacto 1" (0.76, -528.48, 5356.57) quedaron fuera (revisar en Plant 3D/isométrico); 18 soportes por reponer manualmente (lista entregada); validación de importación en CAESAR pendiente (usuario).
+- Archivos entregables: `15.0 DESCARGA BOMBA PP30BT17/PCF120.pcf` (rescatado), `.../PCF120 - ANTES RESCATE.pcf` (respaldo), `.../PCF120 - SOPORTES ELIMINADOS.txt` (lista), `scripts/fix_pcf120_basura.py` (--proponer/--aplicar/--verificar).

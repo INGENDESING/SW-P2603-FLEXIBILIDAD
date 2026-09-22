@@ -2,23 +2,25 @@
 
 Fuente de verdad: los `.md` de CAESAR en cada carpeta de línea. Tras regenerar el JSON del dashboard, comparar SIEMPRE contra esta tabla.
 
-**Corridas nuevas TP304L (2026-09-09)**: las 11 líneas tienen `.md`/`OUT` nuevos `P2603-PR-SIM-XXX.md` y carpetas `Graficas/` (Desplazamiento/NodosSoporte/StressPercent + AnexoResultado EN ESPERA). Los informes y el dashboard AÚN tienen los datos anteriores — actualización pendiente (plan en `task/todo.md`).
+**Corridas nuevas TP304L (2026-09-09)**: las 11 líneas tienen `.md`/`OUT` nuevos `P2603-PR-SIM-XXX.md` y carpetas `Graficas/` (Desplazamiento/NodosSoporte/StressPercent + AnexoResultado EN ESPERA). Informes y dashboard actualizados 2026-09-10; desplegados 2026-09-11 (commit `ae3021f`).
 
 | Carpeta | Línea | Nombre | PCF | Resultado .md (corrida TP304L 2026-09-09) | Ratio máx | Nodo | Caso crítico | Gráficos | Informe |
 |---|---|---|---|---|---|---|---|---|---|
-| 01.0 | [[SIM-002]] | Descarga recirculación 1 DDW | PCF103 | P2603-PR-SIM-002.md (OJO: archivo con espacio `...002 .md`, renombrar en Fase 0) | 34.5 % | 78 | 6 (SUS) W+P2 | SÍ (Graficas: Desp1, Nodos1, Stress1) | DOCS-180 (pendiente actualizar) |
-| 02.0 | [[SIM-003]] | Descarga recirculación 2 DDW | PCF104 | P2603-PR-SIM-003.md | 15.7 % | 120 | 4 (Alt-SUS) W+P2 | SÍ (Desp1, Nodos1/2, Stress1) | DOCS-181 (pendiente actualizar) |
-| 03.0 | [[SIM-007]] | Línea bomba vacío nueva | PCF107 | P2603-PR-SIM-007.md (**recorrida 2026-09-10 14:42, material corregido**) | 70.1 % | 100 | 9 (EXP) L9=L1-L3 | SÍ (Desp1, Nodos1, Stress1) ⚠️ tifs del 09-09 = corrida VIEJA (85.8 %, TP304) → re-exportar | DOCS-182 (pendiente actualizar). Admisibles TP304L ✓ (0×137895.1; EXP 273789.8 = 287856 − SL). Histórico: 85.8 % @100 caso 8 con admisible EXP base TP304 |
-| 04.0 | [[SIM-008]] | Succión recirculación 1 DDW | PCF106 | P2603-PR-SIM-008.md | 22.5 % | 90 | 4 (Alt-SUS) W+P2 | SÍ (Desp1, Nodos1, Stress1) | DOCS-183 (pendiente actualizar) |
-| 05.0 | [[SIM-009]] | Succión recirculación 2 DDW | PCF105 | P2603-PR-SIM-009.md | 26.4 % | 60 | 2 (Alt-SUS) W+P2 | SÍ (Desp1, Nodos1, Stress1) | DOCS-184 (pendiente actualizar) |
-| 06.0 | [[SIM-010]] | Succión recirculación 3 DDW | 10.pcf | P2603-PR-SIM-010.md (**recorrida 2026-09-10 09:03**, .C2 09:13) | 46.7 % | 430 | 8 (EXP) L8=L3-L6 | SÍ (2× cada tipo + PCF102.jpeg) | DOCS-185 (pendiente actualizar). Histórico 2026-09-09: 96.8 % @40 EXP — la recorrida del usuario lo resolvió; admisibles TP304L ✓ |
-| 07.0 | [[SIM-011]] | Descarga bomba PP30BT03 | PCF108 | P2603-PR-SIM-011.md (**recorrida 2026-09-10 15:12, material corregido**) | 67.2 % | 260 | 4 (Alt-SUS) W+P2 | SÍ (2× cada tipo; tifs del 09-09 siguen VÁLIDOS: los esfuerzos no cambiaron, solo el admisible) | DOCS-186 (pendiente actualizar). Admisibles TP304L ✓ (0×137895.1; EXP 257442.5). Histórico: 56.1 % con admisible TP304 |
-| 08.0 | [[SIM-012]] | Succión TK Blowtank | PCF111 | P2603-PR-SIM-012.md | 34.8 % | 130 | 8 (EXP) L8=L3-L6 | SÍ (2× cada tipo) | DOCS-187 (pendiente actualizar) |
-| 09.0 | [[SIM-013]] | Descarga tanque de nivelación | PCF113 | P2603-PR-SIM-013.md | 24.3 % | 100 | 2 (Alt-SUS) W+P2 | SÍ (Desp1, Nodos1, Stress1) | DOCS-188 (pendiente actualizar) |
-| 10.0 | SIM-014 | Descarga TMS | PCF112 | P2603-PR-SIM-014.md | 55.9 % | 70 | 6 (SUS) W+P2 | SÍ (Desp1, Nodos1, Stress1) | **DOCS-189 por generar** |
-| 11.0 | SIM-015 | Tubería filtro de fibras PP1 | PCF114 | P2603-PR-SIM-015.md | 36.3 % | 80 | 2 (Alt-SUS) W+P2 | SÍ (Desp1, Nodos1/2, Stress1/2) | **DOCS-190 por generar** ⚠️ PCF114 trae tramo Sch 40S |
+| 01.0 | [[SIM-002]] | Descarga recirculación 1 DDW | PCF103 | P2603-PR-SIM-002.md (OJO: archivo con espacio `...002 .md`, renombrar en Fase 0) | 34.5 % | 78 | 6 (SUS) W+P2 | SÍ (Graficas: Desp1, Nodos1, Stress1) | DOCS-180 |
+| 02.0 | [[SIM-003]] | Descarga recirculación 2 DDW | PCF104 | P2603-PR-SIM-003.md | 15.7 % | 120 | 4 (Alt-SUS) W+P2 | SÍ (Desp1, Nodos1/2, Stress1) | DOCS-181 |
+| 03.0 | [[SIM-007]] | Línea bomba vacío nueva | PCF107 | P2603-PR-SIM-007.md (**recorrida 2026-09-10 14:42, material corregido**) | 70.1 % | 100 | 9 (EXP) L9=L1-L3 | SÍ (Desp1, Nodos1, Stress1) ⚠️ tifs del 09-09 = corrida VIEJA (85.8 %, TP304) → re-exportar | DOCS-182. Admisibles TP304L ✓ (0×137895.1; EXP 273789.8 = 287856 − SL). Histórico: 85.8 % @100 caso 8 con admisible EXP base TP304 |
+| 04.0 | [[SIM-008]] | Succión recirculación 1 DDW | PCF106 | P2603-PR-SIM-008.md | 22.5 % | 90 | 4 (Alt-SUS) W+P2 | SÍ (Desp1, Nodos1, Stress1) | DOCS-183 |
+| 05.0 | [[SIM-009]] | Succión recirculación 2 DDW | PCF105 | P2603-PR-SIM-009.md | 26.4 % | 60 | 2 (Alt-SUS) W+P2 | SÍ (Desp1, Nodos1, Stress1) | DOCS-184 |
+| 06.0 | [[SIM-010]] | Succión recirculación 3 DDW | 10.pcf | P2603-PR-SIM-010.md (**recorrida 2026-09-10 09:03**, .C2 09:13) | 46.7 % | 430 | 8 (EXP) L8=L3-L6 | SÍ (2× cada tipo + PCF102.jpeg) | DOCS-185. Histórico 2026-09-09: 96.8 % @40 EXP — la recorrida del usuario lo resolvió; admisibles TP304L ✓ |
+| 07.0 | [[SIM-011]] | Descarga bomba PP30BT03 | PCF108 | P2603-PR-SIM-011.md (**recorrida 2026-09-10 15:12, material corregido**) | 67.2 % | 260 | 4 (Alt-SUS) W+P2 | SÍ (2× cada tipo; tifs del 09-09 siguen VÁLIDOS: los esfuerzos no cambiaron, solo el admisible) | DOCS-186. Admisibles TP304L ✓ (0×137895.1; EXP 257442.5). Histórico: 56.1 % con admisible TP304 |
+| 08.0 | [[SIM-012]] | Succión TK Blowtank | PCF111 | P2603-PR-SIM-012.md | 34.8 % | 130 | 8 (EXP) L8=L3-L6 | SÍ (2× cada tipo) | DOCS-187 |
+| 09.0 | [[SIM-013]] | Descarga tanque de nivelación | PCF113 | P2603-PR-SIM-013.md | 24.3 % | 100 | 2 (Alt-SUS) W+P2 | SÍ (Desp1, Nodos1, Stress1) | DOCS-188 |
+| 10.0 | SIM-014 | Descarga TMS | PCF112 | P2603-PR-SIM-014.md | 55.9 % | 70 | 6 (SUS) W+P2 | SÍ (Desp1, Nodos1, Stress1) | DOCS-189 |
+| 11.0 | SIM-015 | Tubería filtro de fibras PP1 | PCF114 | P2603-PR-SIM-015.md | 36.3 % | 80 | 2 (Alt-SUS) W+P2 | SÍ (Desp1, Nodos1/2, Stress1/2) | DOCS-190 ⚠️ PCF114 trae tramo Sch 40S |
 | 12.0 | SIM-016 | Succión bomba PP30SR03 | PCF116 | **Sin corrida** (tiene `P2603-PR-SIM-016.C2`) | — | — | — | NO | — |
 | 13.0 | — | Succión bomba PP30BT17 | PCF115 | **Sin corrida** (sin .C2) | — | — | — | NO | — |
+| 14.0 | — | Descarga bomba PP30BT07 | PCF118 | **Sin corrida** — PCF corregido 2026-09-17 (fix_pcf: 10 END-POSITION + 5 dial + 2 instr cero + 46 pares stub/brida + 27 TAP; sin avisos) ⚠️ tramo Sch 40S (spec SS40S) además de Sch 10S | — | — | — | NO (PCF118.png) | — |
+| 15.0 | — | Descarga bomba PP30BT17 | PCF120 | **Sin corrida** — PCF RESCATADO 2026-09-22 con `scripts/fix_pcf120_basura.py`: 57 bloques en coordenada centinela reconstruidos (24 bridas LJ fusionadas con stub-ends, 10 válvulas + mag meter 4" reubicados por FF/bore, ramal 2" completo), 18 soportes eliminados (lista en `PCF120 - SOPORTES ELIMINADOS.txt`), dedupe 58× (gaskets 1336→25, pernos 1162→22, welds 148→91). Respaldo `PCF120 - ANTES RESCATE.pcf`. Pendiente: importar en CAESAR, crear .C2, correr; usuario ajusta TAGs de válvulas, repone soportes y revisa sockolet 2 + artefacto 1" (0.76, -528.48, 5356.57). Material: TP304L/WP304L ✓ Sch 10S; ⚠️ bridas LJ son A182 **F304** (sin L). Espec `SSS3` | — | — | — | NO (PCF120.png) | — |
 
 ## Condiciones de operación (levantamiento 2026-09-08, sobre corridas ANTERIORES)
 

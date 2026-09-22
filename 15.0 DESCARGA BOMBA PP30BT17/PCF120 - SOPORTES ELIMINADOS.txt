@@ -1,0 +1,21 @@
+Soportes eliminados de PCF120.pcf (exportación Plant 3D en coordenada basura).
+Reponer manualmente en CAESAR II según el modelo Plant 3D / isométrico.
+
+  1  PCF120-2     SKEY=ANCH   SP-04 SWC
+  2  PCF120-2     SKEY=ANCH   SP-04 SWC
+  3  PCF120-2     SKEY=ANCH   SP-04 SWC
+  4  PCF120-6     SKEY=ANCH   Clamp
+  5  PCF120-10    SKEY=—      (bloque vacío)
+  6  PCF120-10    SKEY=ANCH   SP-04 SWC
+  7  PCF120-14    SKEY=ANCH   Clamp
+  8  PCF120-14    SKEY=—      (bloque vacío)
+  9  PCF120-14    SKEY=—      (bloque vacío)
+ 10  PCF120-14    SKEY=ANCH   Clamp
+ 11  PCF120-28    SKEY=ANCH   Clamp
+ 12  PCF120-28    SKEY=ANCH   Clamp
+ 13  PCF120-28    SKEY=ANCH   Clamp
+ 14  PCF120-28    SKEY=ANCH   Clamp
+ 15  PCF120-28    SKEY=ANCH   Clamp
+ 16  PCF120-28    SKEY=ANCH   Clamp
+ 17  PCF120-28    SKEY=ANCH   SP-05 SWC
+ 18  PCF120-32    SKEY=ANCH   STANDARD U-BOLT, MSS SP-58, ASTM A193 Gr B8L

@@ -21,6 +21,10 @@ TEMPMAT*
 Thumbs.db
 desktop.ini
 
+# Locks de AutoCAD (sesiones abiertas)
+*.dwl
+*.dwl2
+
 # Python
 __pycache__/
 *.pyc
