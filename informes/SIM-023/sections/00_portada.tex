@@ -1,0 +1,74 @@
+% ===================== PORTADA MINIMALISTA =====================
+\begin{titlepage}
+	\thispagestyle{corporativo}
+
+	\centering
+	\vspace*{2cm}
+
+	{\Large\bfseries INFORME TÉCNICO DE INGENIERÍA}
+
+	\vspace{1cm}
+	\rule{\linewidth}{0.4pt}
+
+	\vspace{0.6cm}
+	{\huge\bfseries \projecttitle}
+
+	\vspace{0.6cm}
+	\rule{\linewidth}{0.4pt}
+
+	\vspace{2cm}
+
+	% Tabla de información del proyecto
+	\begin{flushleft}
+	\begin{tabular}{|l|l|}
+		\hline
+		\textbf{Cliente:} & \targetcompany \\
+		\hline
+		\textbf{Código:} & \documentcode \\
+		\hline
+		\textbf{Fecha:} & \docFecha \\
+		\hline
+	\end{tabular}
+	\end{flushleft}
+
+	\vspace{2cm}
+
+	% Tabla de equipo de trabajo
+	\begin{flushleft}
+	\begin{tabular}{|l|l|}
+		\hline
+		\textbf{Ingeniero Principal:} & \firmaAprobo \\
+		\hline
+		\textbf{Especialista Técnico:} & \firmaElaboro \\
+		\hline
+		\textbf{Revisor Técnico:} & \firmaReviso \\
+		\hline
+	\end{tabular}
+	\end{flushleft}
+
+	\vfill
+
+	% Tabla de control de revisiones
+	\noindent
+	\textbf{Control de Revisiones}
+	\label{tab:control_revisiones}
+	\begin{tabularx}{\textwidth}{|l|l|X|l|l|l|}
+		\hline
+		\rowcolor{green!15}
+		\textbf{Rev.} & \textbf{Fecha} & \textbf{Descripción} & \textbf{Elaboró} & \textbf{Revisó} & \textbf{Aprobó} \\
+		\hline
+		R\docRevision & \fechaRevCero & \descRevCero & \firmaElaboro & \firmaReviso & \firmaAprobo \\
+		\hline
+		R1 & \fechaRevUno & \descRevUno & -- & -- & -- \\
+		\hline
+		R2 & \fechaRevDos & \descRevDos & -- & -- & -- \\
+		\hline
+		R3 & \fechaRevTres & \descRevTres & -- & -- & -- \\
+		\hline
+		R4 & \fechaRevCuatro & \descRevCuatro & -- & -- & -- \\
+		\hline
+	\end{tabularx}
+
+\end{titlepage}
+
+\newpage

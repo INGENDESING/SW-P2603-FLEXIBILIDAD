@@ -1,0 +1,137 @@
+% ===================== RESULTADOS =====================
+\section{Resultados}
+\label{sec:resultados}
+
+Los resultados que se presentan a continuaci\'{o}n fueron extra\'{i}dos
+program\'{a}ticamente del reporte de salida de CAESAR II del job
+P2603-PR-SIM-023 (fecha de an\'{a}lisis: 09/10/2026). El modelo comprende
+328 nodos evaluados.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Desplazamientos}
+
+La Tabla~\ref{tab:desplaz-max} resume los desplazamientos m\'{a}ximos absolutos
+por caso de carga, la Figura~\ref{fig:desplazamientos} muestra el perfil de
+desplazamientos nodales del caso de operaci\'{o}n 1 (OPE) W+T1+P2 y la
+Figura~\ref{fig:graf-desplazamiento} presenta la configuraci\'{o}n deformada del
+modelo. El reporte del job no tabula los desplazamientos de los casos
+sostenidos alternos 2 y 4 (Alt-SUS) W+P2, combinaciones sin gradiente
+t\'{e}rmico cuyos movimientos quedan acotados por los de los casos de
+operaci\'{o}n y sostenidos s\'{i} tabulados. Los desplazamientos son moderados:
+el m\'{a}ximo corresponde a 34.5~\si{mm} en la componente $DZ$ del caso 8
+(EXP, rango t\'{e}rmico de la condici\'{o}n $T_2$), con 26.2~\si{mm} en $DX$ y
+4.2~\si{mm} en $DY$; en condici\'{o}n de operaci\'{o}n (caso 1) los m\'{a}ximos
+son 10.1~\si{mm} en $DX$, 25.5~\si{mm} en $DY$ y 13.3~\si{mm} en $DZ$, valores
+coherentes con el rango t\'{e}rmico ($\Delta T$~=~65~\si{\celsius}) y con la
+longitud del colector de distribuci\'{o}n entre restricciones.
+
+\input{assets/tab_desplazamientos_max.tex}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{assets/fig_desplazamientos.png}
+    \caption{Perfil de desplazamientos nodales $DX$, $DY$ y $DZ$ en el caso 1 (OPE) W+T1+P2.}
+    \label{fig:desplazamientos}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{assets/graf_desplazamiento.png}
+    \caption{Configuraci\'{o}n deformada del modelo y distribuci\'{o}n de desplazamientos (CAESAR II, job P2603-PR-SIM-023).}
+    \label{fig:graf-desplazamiento}
+\end{figure}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Esfuerzos}
+
+La Figura~\ref{fig:esfuerzos} presenta el perfil de esfuerzo de flexi\'{o}n
+(\textit{bending}) por nodo para el caso cr\'{i}tico 2 (Alt-SUS) W+P2, la
+Figura~\ref{fig:mapa-esfuerzos} muestra el mapa de esfuerzo de c\'{o}digo sobre
+el modelo 3D para ese mismo caso, y la Tabla~\ref{tab:esfuerzos-critico}
+consolida los valores de esfuerzo de c\'{o}digo, admisible y ratio de
+utilizaci\'{o}n por nodo.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{assets/fig_esfuerzos.png}
+    \caption{Perfil de esfuerzo de flexi\'{o}n por nodo, caso cr\'{i}tico 2 (Alt-SUS) W+P2. M\'{a}ximo: \num{80101.8}~\si{kPa} en el nodo 648.}
+    \label{fig:esfuerzos}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{assets/graf_stress_percent.png}
+    \caption{Mapa de porcentaje de esfuerzo de c\'{o}digo (\textit{Code Stress by Percent}) sobre el modelo 3D, caso cr\'{i}tico 2 (Alt-SUS) W+P2 (CAESAR II, job P2603-PR-SIM-023). La escala de colores indica la relaci\'{o}n entre el esfuerzo de c\'{o}digo y el admisible en cada elemento.}
+    \label{fig:mapa-esfuerzos}
+\end{figure}
+
+\input{assets/tab_esfuerzos_critico.tex}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Cargas en Soportes}
+
+Las Tablas~\ref{tab:restricciones-ope}, \ref{tab:restricciones-sus} y
+\ref{tab:restricciones-exp} presentan las fuerzas y momentos transmitidos a los
+soportes para los casos de operaci\'{o}n (caso 1), sostenido (caso 6) y
+expansi\'{o}n (caso 7), respectivamente, y las
+Figuras~\ref{fig:nodos-soporte} a~\ref{fig:nodos-soporte-4} muestran el modelo
+de CAESAR II con la ubicaci\'{o}n de los soportes y restricciones en cuatro
+vistas. La soporter\'{i}a intermedia comprende soportes r\'{i}gidos verticales
+(+Y) a lo largo del colector y de los ramales, gu\'{i}as laterales con holgura
+en los nodos 50, 280, 360, 400, 620, 640, 670, 845, 860, 920, 970 y 1240, la
+restricci\'{o}n de frontera del origen del tramo en el nodo 10 y las
+restricciones de los extremos de los ramales de alimentaci\'{o}n a los
+limpiadores en los nodos 1300, 1360, 1420 y 1480. La carga vertical m\'{a}xima
+corresponde al soporte del nodo 640, con \num{4356}~\si{N} en el caso de
+operaci\'{o}n y \num{4933}~\si{N} en el caso sostenido; en el caso de
+expansi\'{o}n 7 las cargas sobre los soportes verticales son peque\~{n}as
+(m\'{a}ximo \num{577}~\si{N}). Al no existir anclas rotacionales en el modelo,
+los momentos transmitidos a las restricciones son nulos.
+
+\input{assets/tab_restricciones_ope.tex}
+
+\input{assets/tab_restricciones_sus.tex}
+
+\input{assets/tab_restricciones_exp.tex}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{assets/graf_nodos_soporte.png}
+    \caption{Modelo de CAESAR II con los soportes y restricciones de la l\'{i}nea, vista 1 (job P2603-PR-SIM-023).}
+    \label{fig:nodos-soporte}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{assets/graf_nodos_soporte_2.png}
+    \caption{Modelo de CAESAR II con los soportes y restricciones de la l\'{i}nea, vista 2 (job P2603-PR-SIM-023).}
+    \label{fig:nodos-soporte-2}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{assets/graf_nodos_soporte_3.png}
+    \caption{Modelo de CAESAR II con los soportes y restricciones de la l\'{i}nea, vista 3 (job P2603-PR-SIM-023).}
+    \label{fig:nodos-soporte-3}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{assets/graf_nodos_soporte_4.png}
+    \caption{Modelo de CAESAR II con los soportes y restricciones de la l\'{i}nea, vista 4 (job P2603-PR-SIM-023).}
+    \label{fig:nodos-soporte-4}
+\end{figure}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Isometrico de Referencia}
+
+La Figura~\ref{fig:isometrico} presenta la vista del modelo 3D de dise\~{n}o de
+la l\'{i}nea, correspondiente al isom\'{e}trico PCF119 empleado como fuente
+geom\'{e}trica del modelo de esfuerzos.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{assets/PCF119.png}
+    \caption{Vista del modelo 3D de la l\'{i}nea de alimentaci\'{o}n a los limpiadores de arena (PCF119, AutoCAD Plant 3D 2027).}
+    \label{fig:isometrico}
+\end{figure}

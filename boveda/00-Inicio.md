@@ -33,4 +33,6 @@ Mapa de contenido de la memoria persistente del proyecto. Esta bóveda sobrevive
 - `contexto.md` — resumen de estado (se mantiene sincronizado; formato definido en `AGENTS.md`)
 - `task/todo.md` — planes y revisiones por tarea (auditoría completa)
 - `generadorinf.md` — prompt maestro v1.1 para informes LaTeX
+- `bridasBoquillas.md` — metodología de verificación de bridas (Kellogg Peq) y cargas en boquillas
 - `AGENTS.md` — rol, principios operativos y estándares de entregables
+

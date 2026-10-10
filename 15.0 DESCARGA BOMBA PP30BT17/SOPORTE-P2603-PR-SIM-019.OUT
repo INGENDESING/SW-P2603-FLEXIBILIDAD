@@ -1,86 +1,86 @@
 
-CAESAR II 2019  Ver.11.00.00.4800,  (Build 190424)   Date: SEP 23, 2026   Time: 14:14
+CAESAR II 2019  Ver.11.00.00.4800,  (Build 190424)   Date: OCT 5, 2026   Time: 16:9
 Job Name: P2603-PR-SIM-019
 Licensed To: Licensed To: Edit name in <system>\company.txt
-RESTRAINTS REPORT: Loads On Restraints
+RESTRAINTS EXTENDED REPORT: Loads On Restraints
 CASE 1 (OPE) W+T1+P2
 
  
  
 
- Node	    FX  N.	    FY  N.	    FZ  N.	 MX  N.m. 	 MY  N.m. 	 MZ  N.m. 	 Restraint Type/Tag
+ Node	  FX  N.	  FY  N.	  FZ  N.	Resultant	      MX	      MY	      MZ	Resultant	 Restraint Type/Tag
+     	        	        	        	   Force 	   N.m. 	   N.m. 	   N.m. 	  Moment 	
+     	        	        	        	      N. 	        	        	        	   N.m.  	
 
-   30	        -1	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-   30	         0	       -47	         0	         0	         0	         0	TYPE=Rigid Y w/gap;
-   30	         0	         0	         0	         0	         0	         0	TYPE=Rigid Z w/gap;
-   42	         0	      -748	         0	         0	         0	         0	TYPE=Rigid +Y;
-   45	         0	       -15	         0	         0	         0	         0	TYPE=Rigid +Y;
-   65	         0	      -962	         0	         0	         0	         0	TYPE=Rigid +Y;
-  105	         0	      -907	         0	         0	         0	         0	TYPE=Rigid +Y;
-  195	         0	     -1014	         0	         0	         0	         0	TYPE=Rigid +Y;
-  230	         0	      -981	         0	         0	         0	         0	TYPE=Rigid +Y;
-  240	         0	         0	         0	         0	         0	         0	TYPE=Rigid +Y;
-  250	         0	      -168	         0	         0	         0	         0	TYPE=Rigid +Y;
-  260	         0	      -310	         0	         0	         0	         0	TYPE=Rigid +Y;
-  270	         0	      -250	         0	         0	         0	         0	TYPE=Rigid +Y;
-  290	         0	      -281	         0	         0	         0	         0	TYPE=Rigid +Y;
-  300	         0	      -238	         0	         0	         0	         0	TYPE=Rigid +Y;
-  310	         0	      -258	         0	         0	         0	         0	TYPE=Rigid +Y;
-  320	         0	      -363	         0	         0	         0	         0	TYPE=Rigid +Y;
-  325	         0	      -410	         0	         0	         0	         0	TYPE=Rigid +Y;
-  330	         0	      -385	         0	         0	         0	         0	TYPE=Rigid +Y;
-  332	         0	      -374	         0	         0	         0	         0	TYPE=Rigid Y;
-  332	         0	         0	       -10	         0	         0	         0	TYPE=Rigid Z;
-  335	         0	      -203	         0	         0	         0	         0	TYPE=Rigid Y;
-  335	         0	         0	        14	         0	         0	         0	TYPE=Rigid Z;
-  340	         0	     -1107	         0	         0	         0	         0	TYPE=Rigid +Y;
-  430	         0	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  430	         0	      -600	         0	         0	         0	         0	TYPE=Rigid Y w/gap;
-  430	         0	         0	        -5	         0	         0	         0	TYPE=Rigid Z w/gap;
-  445	         0	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  445	         0	         0	       -25	         0	         0	         0	TYPE=Rigid Z w/gap;
-  455	         0	     -1662	         0	         0	         0	         0	TYPE=Rigid +Y;
-  457	         0	         0	         0	         0	         0	         0	TYPE=Rigid +Y;
-  465	         0	     -3825	         0	         0	         0	         0	TYPE=Rigid +Y;
-  475	         4	         0	         0	         0	         0	         0	TYPE=Rigid X;
-  475	         0	         0	        18	         0	         0	         0	TYPE=Rigid Z;
-  540	         0	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  540	         0	         0	         0	         0	         0	         0	TYPE=Rigid Y w/gap;
-  540	         0	         0	         0	         0	         0	         0	TYPE=Rigid Z w/gap;
-  565	         0	      -346	         0	         0	         0	         0	TYPE=Rigid +Y;
-  605	         0	         0	         0	         0	         0	         0	TYPE=Rigid +Y;
-  612	         0	      -954	         0	         0	         0	         0	TYPE=Rigid +Y;
-  615	         0	         0	         0	         0	         0	         0	TYPE=Rigid +Y;
-  622	         0	        51	         0	         0	         0	         0	TYPE=Rigid Y;
-  622	         0	         0	         8	         0	         0	         0	TYPE=Rigid Z;
-  625	         0	      -845	         0	         0	         0	         0	TYPE=Rigid Y w/gap;
-  625	         0	         0	         0	         0	         0	         0	TYPE=Rigid Z w/gap;
-  635	        -2	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  635	         0	         0	         0	         0	         0	         0	TYPE=Rigid Z w/gap;
-  720	        -1	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  720	         0	       -93	         0	         0	         0	         0	TYPE=Rigid Y w/gap;
-  720	         0	         0	         0	         0	         0	         0	TYPE=Rigid Z w/gap;
-  720	         0	         0	         0	         0	         0	         0	TYPE=Rigid RZ w/gap;
-  780	         0	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  780	         0	         0	         0	         0	         0	         0	TYPE=Rigid Z w/gap;
+   30	       1	       0	       0	       1	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+   30	       0	     -48	       0	      48	       0	       0	       0	       0	TYPE=Rigid +Y w/gap;
+   30	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+   42	       0	    -738	       0	     738	       0	       0	       0	       0	TYPE=Rigid +Y;
+   45	       0	     -51	       0	      51	       0	       0	       0	       0	TYPE=Rigid +Y;
+   65	       0	    -937	       0	     937	       0	       0	       0	       0	TYPE=Rigid +Y;
+  105	       0	    -794	       0	     794	       0	       0	       0	       0	TYPE=Rigid +Y;
+  195	       0	   -1007	       0	    1007	       0	       0	       0	       0	TYPE=Rigid +Y;
+  230	       0	    -982	       0	     982	       0	       0	       0	       0	TYPE=Rigid +Y;
+  240	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  250	       0	    -168	       0	     168	       0	       0	       0	       0	TYPE=Rigid +Y;
+  260	       0	    -310	       0	     310	       0	       0	       0	       0	TYPE=Rigid +Y;
+  270	       0	    -250	       0	     250	       0	       0	       0	       0	TYPE=Rigid +Y;
+  290	       0	    -282	       0	     282	       0	       0	       0	       0	TYPE=Rigid +Y;
+  300	       0	    -238	       0	     238	       0	       0	       0	       0	TYPE=Rigid +Y;
+  310	       0	    -258	       0	     258	       0	       0	       0	       0	TYPE=Rigid +Y;
+  320	       0	    -363	       0	     363	       0	       0	       0	       0	TYPE=Rigid +Y;
+  325	       0	    -410	       0	     410	       0	       0	       0	       0	TYPE=Rigid +Y;
+  330	       0	    -385	       0	     385	       0	       0	       0	       0	TYPE=Rigid +Y;
+  332	       0	    -373	       0	     373	       0	       0	       0	       0	TYPE=Rigid +Y;
+  335	       0	    -206	       0	     206	       0	       0	       0	       0	TYPE=Rigid +Y;
+  335	       0	       0	       3	       3	       0	       0	       0	       0	TYPE=Rigid Z;
+  340	       0	   -1103	       0	    1103	       0	       0	       0	       0	TYPE=Rigid +Y;
+  430	       1	       0	       0	       1	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+  430	       0	    -602	       0	     602	       0	       0	       0	       0	TYPE=Rigid +Y w/gap;
+  430	       0	       0	      -3	       3	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+  445	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+  445	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  455	       0	   -1707	       0	    1707	       0	       0	       0	       0	TYPE=Rigid +Y;
+  457	       0	    -682	       0	     682	       0	       0	       0	       0	TYPE=Rigid +Y;
+  465	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  475	       0	   -3233	       0	    3233	       0	       0	       0	       0	TYPE=Rigid +Y;
+  475	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+  540	      -1	       0	       0	       1	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+  540	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid Y w/gap;
+  540	       0	       0	      -9	       9	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+  565	       0	    -326	       0	     326	       0	       0	       0	       0	TYPE=Rigid +Y;
+  605	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  612	       0	    -957	       0	     957	       0	       0	       0	       0	TYPE=Rigid +Y;
+  615	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  622	       0	      56	       0	      56	       0	       0	       0	       0	TYPE=Rigid Y;
+  622	       0	       0	       9	       9	       0	       0	       0	       0	TYPE=Rigid Z;
+  625	       0	    -851	       0	     851	       0	       0	       0	       0	TYPE=Rigid Y w/gap;
+  625	       0	       0	      -0	       0	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+  635	      -0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+  635	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+  720	       0	     -92	       0	      92	       0	       0	       0	       0	TYPE=Rigid +Y w/gap;
+  780	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+  780	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
 
 
 
 
 
-CAESAR II 2019  Ver.11.00.00.4800,  (Build 190424)   Date: SEP 23, 2026   Time: 14:14
+CAESAR II 2019  Ver.11.00.00.4800,  (Build 190424)   Date: OCT 5, 2026   Time: 16:9
 Job Name: P2603-PR-SIM-019
 Licensed To: Licensed To: Edit name in <system>\company.txt
-RESTRAINTS REPORT: Loads On Restraints
+RESTRAINTS EXTENDED REPORT: Loads On Restraints
 CASE 2 (Alt-SUS) W+P2
 
  
 Output disabled for field "FX"
 Output disabled for field "FY"
 Output disabled for field "FZ"
+Output disabled for field "Resultant Force"
 Output disabled for field "MX"
 Output disabled for field "MY"
 Output disabled for field "MZ"
+Output disabled for field "Resultant Moment"
 
  
 Report Contains No Data to Display.
@@ -90,88 +90,88 @@ Report Contains No Data to Display.
 
 
 
-CAESAR II 2019  Ver.11.00.00.4800,  (Build 190424)   Date: SEP 23, 2026   Time: 14:14
+CAESAR II 2019  Ver.11.00.00.4800,  (Build 190424)   Date: OCT 5, 2026   Time: 16:9
 Job Name: P2603-PR-SIM-019
 Licensed To: Licensed To: Edit name in <system>\company.txt
-RESTRAINTS REPORT: Loads On Restraints
+RESTRAINTS EXTENDED REPORT: Loads On Restraints
 CASE 3 (OPE) W+T2+P2
 
  
  
 
- Node	    FX  N.	    FY  N.	    FZ  N.	 MX  N.m. 	 MY  N.m. 	 MZ  N.m. 	 Restraint Type/Tag
+ Node	  FX  N.	  FY  N.	  FZ  N.	Resultant	      MX	      MY	      MZ	Resultant	 Restraint Type/Tag
+     	        	        	        	   Force 	   N.m. 	   N.m. 	   N.m. 	  Moment 	
+     	        	        	        	      N. 	        	        	        	   N.m.  	
 
-   30	        32	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-   30	         0	       -48	         0	         0	         0	         0	TYPE=Rigid Y w/gap;
-   30	         0	         0	        67	         0	         0	         0	TYPE=Rigid Z w/gap;
-   42	         0	      -609	         0	         0	         0	         0	TYPE=Rigid +Y;
-   45	         0	     -1056	         0	         0	         0	         0	TYPE=Rigid +Y;
-   65	         0	         0	         0	         0	         0	         0	TYPE=Rigid +Y;
-  105	         0	       -37	         0	         0	         0	         0	TYPE=Rigid +Y;
-  195	         0	      -879	         0	         0	         0	         0	TYPE=Rigid +Y;
-  230	         0	     -1017	         0	         0	         0	         0	TYPE=Rigid +Y;
-  240	         0	         0	         0	         0	         0	         0	TYPE=Rigid +Y;
-  250	         0	      -144	         0	         0	         0	         0	TYPE=Rigid +Y;
-  260	         0	      -323	         0	         0	         0	         0	TYPE=Rigid +Y;
-  270	         0	      -247	         0	         0	         0	         0	TYPE=Rigid +Y;
-  290	         0	      -281	         0	         0	         0	         0	TYPE=Rigid +Y;
-  300	         0	      -239	         0	         0	         0	         0	TYPE=Rigid +Y;
-  310	         0	      -258	         0	         0	         0	         0	TYPE=Rigid +Y;
-  320	         0	      -363	         0	         0	         0	         0	TYPE=Rigid +Y;
-  325	         0	      -410	         0	         0	         0	         0	TYPE=Rigid +Y;
-  330	         0	      -385	         0	         0	         0	         0	TYPE=Rigid +Y;
-  332	         0	      -373	         0	         0	         0	         0	TYPE=Rigid Y;
-  332	         0	         0	        19	         0	         0	         0	TYPE=Rigid Z;
-  335	         0	      -206	         0	         0	         0	         0	TYPE=Rigid Y;
-  335	         0	         0	       -17	         0	         0	         0	TYPE=Rigid Z;
-  340	         0	     -1097	         0	         0	         0	         0	TYPE=Rigid +Y;
-  430	         1	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  430	         0	      -608	         0	         0	         0	         0	TYPE=Rigid Y w/gap;
-  430	         0	         0	         1	         0	         0	         0	TYPE=Rigid Z w/gap;
-  445	        10	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  445	         0	         0	         0	         0	         0	         0	TYPE=Rigid Z w/gap;
-  455	         0	     -3097	         0	         0	         0	         0	TYPE=Rigid +Y;
-  457	         0	       -40	         0	         0	         0	         0	TYPE=Rigid +Y;
-  465	         0	         0	         0	         0	         0	         0	TYPE=Rigid +Y;
-  475	      -140	         0	         0	         0	         0	         0	TYPE=Rigid X;
-  475	         0	         0	      -135	         0	         0	         0	TYPE=Rigid Z;
-  540	        64	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  540	         0	     -3419	         0	         0	         0	         0	TYPE=Rigid Y w/gap;
-  540	         0	         0	         0	         0	         0	         0	TYPE=Rigid Z w/gap;
-  565	         0	       -36	         0	         0	         0	         0	TYPE=Rigid +Y;
-  605	         0	         0	         0	         0	         0	         0	TYPE=Rigid +Y;
-  612	         0	     -1222	         0	         0	         0	         0	TYPE=Rigid +Y;
-  615	         0	         0	         0	         0	         0	         0	TYPE=Rigid +Y;
-  622	         0	        83	         0	         0	         0	         0	TYPE=Rigid Y;
-  622	         0	         0	        64	         0	         0	         0	TYPE=Rigid Z;
-  625	         0	      -841	         0	         0	         0	         0	TYPE=Rigid Y w/gap;
-  625	         0	         0	         0	         0	         0	         0	TYPE=Rigid Z w/gap;
-  635	        24	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  635	         0	         0	        -0	         0	         0	         0	TYPE=Rigid Z w/gap;
-  720	         0	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  720	         0	      -146	         0	         0	         0	         0	TYPE=Rigid Y w/gap;
-  720	         0	         0	         0	         0	         0	         0	TYPE=Rigid Z w/gap;
-  720	         0	         0	         0	         0	         0	         0	TYPE=Rigid RZ w/gap;
-  780	         9	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  780	         0	         0	         0	         0	         0	         0	TYPE=Rigid Z w/gap;
+   30	      21	       0	       0	      21	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+   30	       0	     -47	       0	      47	       0	       0	       0	       0	TYPE=Rigid +Y w/gap;
+   30	       0	       0	      23	      23	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+   42	       0	    -601	       0	     601	       0	       0	       0	       0	TYPE=Rigid +Y;
+   45	       0	    -969	       0	     969	       0	       0	       0	       0	TYPE=Rigid +Y;
+   65	       0	    -116	       0	     116	       0	       0	       0	       0	TYPE=Rigid +Y;
+  105	       0	    -101	       0	     101	       0	       0	       0	       0	TYPE=Rigid +Y;
+  195	       0	    -890	       0	     890	       0	       0	       0	       0	TYPE=Rigid +Y;
+  230	       0	   -1017	       0	    1017	       0	       0	       0	       0	TYPE=Rigid +Y;
+  240	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  250	       0	    -144	       0	     144	       0	       0	       0	       0	TYPE=Rigid +Y;
+  260	       0	    -323	       0	     323	       0	       0	       0	       0	TYPE=Rigid +Y;
+  270	       0	    -247	       0	     247	       0	       0	       0	       0	TYPE=Rigid +Y;
+  290	       0	    -280	       0	     280	       0	       0	       0	       0	TYPE=Rigid +Y;
+  300	       0	    -239	       0	     239	       0	       0	       0	       0	TYPE=Rigid +Y;
+  310	       0	    -258	       0	     258	       0	       0	       0	       0	TYPE=Rigid +Y;
+  320	       0	    -363	       0	     363	       0	       0	       0	       0	TYPE=Rigid +Y;
+  325	       0	    -410	       0	     410	       0	       0	       0	       0	TYPE=Rigid +Y;
+  330	       0	    -385	       0	     385	       0	       0	       0	       0	TYPE=Rigid +Y;
+  332	       0	    -373	       0	     373	       0	       0	       0	       0	TYPE=Rigid +Y;
+  335	       0	    -205	       0	     205	       0	       0	       0	       0	TYPE=Rigid +Y;
+  335	       0	       0	       1	       1	       0	       0	       0	       0	TYPE=Rigid Z;
+  340	       0	   -1098	       0	    1098	       0	       0	       0	       0	TYPE=Rigid +Y;
+  430	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+  430	       0	    -607	       0	     607	       0	       0	       0	       0	TYPE=Rigid +Y w/gap;
+  430	       0	       0	      -0	       0	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+  445	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+  445	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  455	       0	   -2969	       0	    2969	       0	       0	       0	       0	TYPE=Rigid +Y;
+  457	       0	    -137	       0	     137	       0	       0	       0	       0	TYPE=Rigid +Y;
+  465	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  475	       0	   -3391	       0	    3391	       0	       0	       0	       0	TYPE=Rigid +Y;
+  475	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+  540	     -31	       0	       0	      31	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+  540	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid Y w/gap;
+  540	       0	       0	     -80	      80	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+  565	       0	     -13	       0	      13	       0	       0	       0	       0	TYPE=Rigid +Y;
+  605	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  612	       0	   -1226	       0	    1226	       0	       0	       0	       0	TYPE=Rigid +Y;
+  615	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  622	       0	      78	       0	      78	       0	       0	       0	       0	TYPE=Rigid Y;
+  622	       0	       0	      64	      64	       0	       0	       0	       0	TYPE=Rigid Z;
+  625	       0	    -821	       0	     821	       0	       0	       0	       0	TYPE=Rigid Y w/gap;
+  625	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+  635	      10	       0	       0	      10	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+  635	       0	       0	      -8	       8	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+  720	       0	    -144	       0	     144	       0	       0	       0	       0	TYPE=Rigid +Y w/gap;
+  780	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+  780	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
 
 
 
 
 
-CAESAR II 2019  Ver.11.00.00.4800,  (Build 190424)   Date: SEP 23, 2026   Time: 14:14
+CAESAR II 2019  Ver.11.00.00.4800,  (Build 190424)   Date: OCT 5, 2026   Time: 16:9
 Job Name: P2603-PR-SIM-019
 Licensed To: Licensed To: Edit name in <system>\company.txt
-RESTRAINTS REPORT: Loads On Restraints
+RESTRAINTS EXTENDED REPORT: Loads On Restraints
 CASE 4 (Alt-SUS) W+P2
 
  
 Output disabled for field "FX"
 Output disabled for field "FY"
 Output disabled for field "FZ"
+Output disabled for field "Resultant Force"
 Output disabled for field "MX"
 Output disabled for field "MY"
 Output disabled for field "MZ"
+Output disabled for field "Resultant Moment"
 
  
 Report Contains No Data to Display.
@@ -181,346 +181,336 @@ Report Contains No Data to Display.
 
 
 
-CAESAR II 2019  Ver.11.00.00.4800,  (Build 190424)   Date: SEP 23, 2026   Time: 14:14
+CAESAR II 2019  Ver.11.00.00.4800,  (Build 190424)   Date: OCT 5, 2026   Time: 16:9
 Job Name: P2603-PR-SIM-019
 Licensed To: Licensed To: Edit name in <system>\company.txt
-RESTRAINTS REPORT: Loads On Restraints
+RESTRAINTS EXTENDED REPORT: Loads On Restraints
 CASE 5 (SUS) W
 
  
  
 
- Node	    FX  N.	    FY  N.	    FZ  N.	 MX  N.m. 	 MY  N.m. 	 MZ  N.m. 	 Restraint Type/Tag
+ Node	  FX  N.	  FY  N.	  FZ  N.	Resultant	      MX	      MY	      MZ	Resultant	 Restraint Type/Tag
+     	        	        	        	   Force 	   N.m. 	   N.m. 	   N.m. 	  Moment 	
+     	        	        	        	      N. 	        	        	        	   N.m.  	
 
-   30	        -2	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-   30	         0	       -60	         0	         0	         0	         0	TYPE=Rigid Y w/gap;
-   30	         0	         0	         0	         0	         0	         0	TYPE=Rigid Z w/gap;
-   42	         0	      -722	         0	         0	         0	         0	TYPE=Rigid +Y;
-   45	         0	         0	         0	         0	         0	         0	TYPE=Rigid +Y;
-   65	         0	      -994	         0	         0	         0	         0	TYPE=Rigid +Y;
-  105	         0	      -957	         0	         0	         0	         0	TYPE=Rigid +Y;
-  195	         0	     -1034	         0	         0	         0	         0	TYPE=Rigid +Y;
-  230	         0	      -977	         0	         0	         0	         0	TYPE=Rigid +Y;
-  240	         0	         0	         0	         0	         0	         0	TYPE=Rigid +Y;
-  250	         0	      -171	         0	         0	         0	         0	TYPE=Rigid +Y;
-  260	         0	      -308	         0	         0	         0	         0	TYPE=Rigid +Y;
-  270	         0	      -251	         0	         0	         0	         0	TYPE=Rigid +Y;
-  290	         0	      -281	         0	         0	         0	         0	TYPE=Rigid +Y;
-  300	         0	      -238	         0	         0	         0	         0	TYPE=Rigid +Y;
-  310	         0	      -258	         0	         0	         0	         0	TYPE=Rigid +Y;
-  320	         0	      -363	         0	         0	         0	         0	TYPE=Rigid +Y;
-  325	         0	      -410	         0	         0	         0	         0	TYPE=Rigid +Y;
-  330	         0	      -385	         0	         0	         0	         0	TYPE=Rigid +Y;
-  332	         0	      -374	         0	         0	         0	         0	TYPE=Rigid Y;
-  332	         0	         0	       -16	         0	         0	         0	TYPE=Rigid Z;
-  335	         0	      -203	         0	         0	         0	         0	TYPE=Rigid Y;
-  335	         0	         0	        22	         0	         0	         0	TYPE=Rigid Z;
-  340	         0	     -1110	         0	         0	         0	         0	TYPE=Rigid +Y;
-  430	         1	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  430	         0	      -597	         0	         0	         0	         0	TYPE=Rigid Y w/gap;
-  430	         0	         0	        -7	         0	         0	         0	TYPE=Rigid Z w/gap;
-  445	         0	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  445	         0	         0	        -2	         0	         0	         0	TYPE=Rigid Z w/gap;
-  455	         0	     -1603	         0	         0	         0	         0	TYPE=Rigid +Y;
-  457	         0	         0	         0	         0	         0	         0	TYPE=Rigid +Y;
-  465	         0	     -3830	         0	         0	         0	         0	TYPE=Rigid +Y;
-  475	         8	         0	         0	         0	         0	         0	TYPE=Rigid X;
-  475	         0	         0	        16	         0	         0	         0	TYPE=Rigid Z;
-  540	         0	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  540	         0	         0	         0	         0	         0	         0	TYPE=Rigid Y w/gap;
-  540	         0	         0	         0	         0	         0	         0	TYPE=Rigid Z w/gap;
-  565	         0	      -371	         0	         0	         0	         0	TYPE=Rigid +Y;
-  605	         0	      -757	         0	         0	         0	         0	TYPE=Rigid +Y;
-  612	         0	         0	         0	         0	         0	         0	TYPE=Rigid +Y;
-  615	         0	         0	         0	         0	         0	         0	TYPE=Rigid +Y;
-  622	         0	      -126	         0	         0	         0	         0	TYPE=Rigid Y;
-  622	         0	         0	       -13	         0	         0	         0	TYPE=Rigid Z;
-  625	         0	      -832	         0	         0	         0	         0	TYPE=Rigid Y w/gap;
-  625	         0	         0	         0	         0	         0	         0	TYPE=Rigid Z w/gap;
-  635	        -7	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  635	         0	         0	         0	         0	         0	         0	TYPE=Rigid Z w/gap;
-  720	         0	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  720	         0	       -85	         0	         0	         0	         0	TYPE=Rigid Y w/gap;
-  720	         0	         0	         1	         0	         0	         0	TYPE=Rigid Z w/gap;
-  720	         0	         0	         0	         0	         0	         0	TYPE=Rigid RZ w/gap;
-  780	         0	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  780	         0	         0	         0	         0	         0	         0	TYPE=Rigid Z w/gap;
+   30	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+   30	       0	     -57	       0	      57	       0	       0	       0	       0	TYPE=Rigid +Y w/gap;
+   30	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+   42	       0	    -727	       0	     727	       0	       0	       0	       0	TYPE=Rigid +Y;
+   45	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+   65	       0	   -1006	       0	    1006	       0	       0	       0	       0	TYPE=Rigid +Y;
+  105	       0	    -764	       0	     764	       0	       0	       0	       0	TYPE=Rigid +Y;
+  195	       0	   -1025	       0	    1025	       0	       0	       0	       0	TYPE=Rigid +Y;
+  230	       0	    -978	       0	     978	       0	       0	       0	       0	TYPE=Rigid +Y;
+  240	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  250	       0	    -170	       0	     170	       0	       0	       0	       0	TYPE=Rigid +Y;
+  260	       0	    -308	       0	     308	       0	       0	       0	       0	TYPE=Rigid +Y;
+  270	       0	    -250	       0	     250	       0	       0	       0	       0	TYPE=Rigid +Y;
+  290	       0	    -283	       0	     283	       0	       0	       0	       0	TYPE=Rigid +Y;
+  300	       0	    -237	       0	     237	       0	       0	       0	       0	TYPE=Rigid +Y;
+  310	       0	    -259	       0	     259	       0	       0	       0	       0	TYPE=Rigid +Y;
+  320	       0	    -363	       0	     363	       0	       0	       0	       0	TYPE=Rigid +Y;
+  325	       0	    -410	       0	     410	       0	       0	       0	       0	TYPE=Rigid +Y;
+  330	       0	    -385	       0	     385	       0	       0	       0	       0	TYPE=Rigid +Y;
+  332	       0	    -373	       0	     373	       0	       0	       0	       0	TYPE=Rigid +Y;
+  335	       0	    -204	       0	     204	       0	       0	       0	       0	TYPE=Rigid +Y;
+  335	       0	       0	       4	       4	       0	       0	       0	       0	TYPE=Rigid Z;
+  340	       0	   -1105	       0	    1105	       0	       0	       0	       0	TYPE=Rigid +Y;
+  430	       1	       0	       0	       1	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+  430	       0	    -601	       0	     601	       0	       0	       0	       0	TYPE=Rigid +Y w/gap;
+  430	       0	       0	      -3	       3	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+  445	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+  445	       0	   -1438	       0	    1438	       0	       0	       0	       0	TYPE=Rigid +Y;
+  455	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  457	       0	    -797	       0	     797	       0	       0	       0	       0	TYPE=Rigid +Y;
+  465	       0	   -1288	       0	    1288	       0	       0	       0	       0	TYPE=Rigid +Y;
+  475	       0	   -2142	       0	    2142	       0	       0	       0	       0	TYPE=Rigid +Y;
+  475	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+  540	       2	       0	       0	       2	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+  540	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid Y w/gap;
+  540	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+  565	       0	    -299	       0	     299	       0	       0	       0	       0	TYPE=Rigid +Y;
+  605	       0	    -761	       0	     761	       0	       0	       0	       0	TYPE=Rigid +Y;
+  612	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  615	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  622	       0	    -142	       0	     142	       0	       0	       0	       0	TYPE=Rigid Y;
+  622	       0	       0	      -0	       0	       0	       0	       0	       0	TYPE=Rigid Z;
+  625	       0	    -834	       0	     834	       0	       0	       0	       0	TYPE=Rigid Y w/gap;
+  625	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+  635	      -3	       0	       0	       3	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+  635	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+  720	       0	     -88	       0	      88	       0	       0	       0	       0	TYPE=Rigid +Y w/gap;
+  780	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+  780	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
 
 
 
 
 
-CAESAR II 2019  Ver.11.00.00.4800,  (Build 190424)   Date: SEP 23, 2026   Time: 14:14
+CAESAR II 2019  Ver.11.00.00.4800,  (Build 190424)   Date: OCT 5, 2026   Time: 16:9
 Job Name: P2603-PR-SIM-019
 Licensed To: Licensed To: Edit name in <system>\company.txt
-RESTRAINTS REPORT: Loads On Restraints
+RESTRAINTS EXTENDED REPORT: Loads On Restraints
 CASE 6 (SUS) W+P2
 
  
  
 
- Node	    FX  N.	    FY  N.	    FZ  N.	 MX  N.m. 	 MY  N.m. 	 MZ  N.m. 	 Restraint Type/Tag
+ Node	  FX  N.	  FY  N.	  FZ  N.	Resultant	      MX	      MY	      MZ	Resultant	 Restraint Type/Tag
+     	        	        	        	   Force 	   N.m. 	   N.m. 	   N.m. 	  Moment 	
+     	        	        	        	      N. 	        	        	        	   N.m.  	
 
-   30	        -2	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-   30	         0	       -60	         0	         0	         0	         0	TYPE=Rigid Y w/gap;
-   30	         0	         0	         0	         0	         0	         0	TYPE=Rigid Z w/gap;
-   42	         0	      -722	         0	         0	         0	         0	TYPE=Rigid +Y;
-   45	         0	         0	         0	         0	         0	         0	TYPE=Rigid +Y;
-   65	         0	      -994	         0	         0	         0	         0	TYPE=Rigid +Y;
-  105	         0	      -957	         0	         0	         0	         0	TYPE=Rigid +Y;
-  195	         0	     -1034	         0	         0	         0	         0	TYPE=Rigid +Y;
-  230	         0	      -977	         0	         0	         0	         0	TYPE=Rigid +Y;
-  240	         0	         0	         0	         0	         0	         0	TYPE=Rigid +Y;
-  250	         0	      -171	         0	         0	         0	         0	TYPE=Rigid +Y;
-  260	         0	      -308	         0	         0	         0	         0	TYPE=Rigid +Y;
-  270	         0	      -251	         0	         0	         0	         0	TYPE=Rigid +Y;
-  290	         0	      -281	         0	         0	         0	         0	TYPE=Rigid +Y;
-  300	         0	      -238	         0	         0	         0	         0	TYPE=Rigid +Y;
-  310	         0	      -258	         0	         0	         0	         0	TYPE=Rigid +Y;
-  320	         0	      -363	         0	         0	         0	         0	TYPE=Rigid +Y;
-  325	         0	      -410	         0	         0	         0	         0	TYPE=Rigid +Y;
-  330	         0	      -385	         0	         0	         0	         0	TYPE=Rigid +Y;
-  332	         0	      -374	         0	         0	         0	         0	TYPE=Rigid Y;
-  332	         0	         0	       -16	         0	         0	         0	TYPE=Rigid Z;
-  335	         0	      -203	         0	         0	         0	         0	TYPE=Rigid Y;
-  335	         0	         0	        22	         0	         0	         0	TYPE=Rigid Z;
-  340	         0	     -1110	         0	         0	         0	         0	TYPE=Rigid +Y;
-  430	         1	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  430	         0	      -597	         0	         0	         0	         0	TYPE=Rigid Y w/gap;
-  430	         0	         0	        -7	         0	         0	         0	TYPE=Rigid Z w/gap;
-  445	         0	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  445	         0	         0	        -2	         0	         0	         0	TYPE=Rigid Z w/gap;
-  455	         0	     -1603	         0	         0	         0	         0	TYPE=Rigid +Y;
-  457	         0	         0	         0	         0	         0	         0	TYPE=Rigid +Y;
-  465	         0	     -3830	         0	         0	         0	         0	TYPE=Rigid +Y;
-  475	         8	         0	         0	         0	         0	         0	TYPE=Rigid X;
-  475	         0	         0	        16	         0	         0	         0	TYPE=Rigid Z;
-  540	         0	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  540	         0	         0	         0	         0	         0	         0	TYPE=Rigid Y w/gap;
-  540	         0	         0	         0	         0	         0	         0	TYPE=Rigid Z w/gap;
-  565	         0	      -371	         0	         0	         0	         0	TYPE=Rigid +Y;
-  605	         0	      -757	         0	         0	         0	         0	TYPE=Rigid +Y;
-  612	         0	         0	         0	         0	         0	         0	TYPE=Rigid +Y;
-  615	         0	         0	         0	         0	         0	         0	TYPE=Rigid +Y;
-  622	         0	      -126	         0	         0	         0	         0	TYPE=Rigid Y;
-  622	         0	         0	       -13	         0	         0	         0	TYPE=Rigid Z;
-  625	         0	      -832	         0	         0	         0	         0	TYPE=Rigid Y w/gap;
-  625	         0	         0	         0	         0	         0	         0	TYPE=Rigid Z w/gap;
-  635	        -7	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  635	         0	         0	         0	         0	         0	         0	TYPE=Rigid Z w/gap;
-  720	         0	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  720	         0	       -85	         0	         0	         0	         0	TYPE=Rigid Y w/gap;
-  720	         0	         0	         1	         0	         0	         0	TYPE=Rigid Z w/gap;
-  720	         0	         0	         0	         0	         0	         0	TYPE=Rigid RZ w/gap;
-  780	         0	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  780	         0	         0	         0	         0	         0	         0	TYPE=Rigid Z w/gap;
+   30	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+   30	       0	     -57	       0	      57	       0	       0	       0	       0	TYPE=Rigid +Y w/gap;
+   30	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+   42	       0	    -727	       0	     727	       0	       0	       0	       0	TYPE=Rigid +Y;
+   45	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+   65	       0	   -1006	       0	    1006	       0	       0	       0	       0	TYPE=Rigid +Y;
+  105	       0	    -764	       0	     764	       0	       0	       0	       0	TYPE=Rigid +Y;
+  195	       0	   -1025	       0	    1025	       0	       0	       0	       0	TYPE=Rigid +Y;
+  230	       0	    -978	       0	     978	       0	       0	       0	       0	TYPE=Rigid +Y;
+  240	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  250	       0	    -170	       0	     170	       0	       0	       0	       0	TYPE=Rigid +Y;
+  260	       0	    -308	       0	     308	       0	       0	       0	       0	TYPE=Rigid +Y;
+  270	       0	    -250	       0	     250	       0	       0	       0	       0	TYPE=Rigid +Y;
+  290	       0	    -283	       0	     283	       0	       0	       0	       0	TYPE=Rigid +Y;
+  300	       0	    -237	       0	     237	       0	       0	       0	       0	TYPE=Rigid +Y;
+  310	       0	    -259	       0	     259	       0	       0	       0	       0	TYPE=Rigid +Y;
+  320	       0	    -363	       0	     363	       0	       0	       0	       0	TYPE=Rigid +Y;
+  325	       0	    -410	       0	     410	       0	       0	       0	       0	TYPE=Rigid +Y;
+  330	       0	    -385	       0	     385	       0	       0	       0	       0	TYPE=Rigid +Y;
+  332	       0	    -373	       0	     373	       0	       0	       0	       0	TYPE=Rigid +Y;
+  335	       0	    -204	       0	     204	       0	       0	       0	       0	TYPE=Rigid +Y;
+  335	       0	       0	       4	       4	       0	       0	       0	       0	TYPE=Rigid Z;
+  340	       0	   -1105	       0	    1105	       0	       0	       0	       0	TYPE=Rigid +Y;
+  430	       1	       0	       0	       1	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+  430	       0	    -601	       0	     601	       0	       0	       0	       0	TYPE=Rigid +Y w/gap;
+  430	       0	       0	      -3	       3	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+  445	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+  445	       0	   -1438	       0	    1438	       0	       0	       0	       0	TYPE=Rigid +Y;
+  455	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  457	       0	    -797	       0	     797	       0	       0	       0	       0	TYPE=Rigid +Y;
+  465	       0	   -1288	       0	    1288	       0	       0	       0	       0	TYPE=Rigid +Y;
+  475	       0	   -2142	       0	    2142	       0	       0	       0	       0	TYPE=Rigid +Y;
+  475	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+  540	       2	       0	       0	       2	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+  540	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid Y w/gap;
+  540	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+  565	       0	    -299	       0	     299	       0	       0	       0	       0	TYPE=Rigid +Y;
+  605	       0	    -761	       0	     761	       0	       0	       0	       0	TYPE=Rigid +Y;
+  612	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  615	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  622	       0	    -142	       0	     142	       0	       0	       0	       0	TYPE=Rigid Y;
+  622	       0	       0	      -0	       0	       0	       0	       0	       0	TYPE=Rigid Z;
+  625	       0	    -834	       0	     834	       0	       0	       0	       0	TYPE=Rigid Y w/gap;
+  625	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+  635	      -3	       0	       0	       3	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+  635	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+  720	       0	     -88	       0	      88	       0	       0	       0	       0	TYPE=Rigid +Y w/gap;
+  780	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+  780	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
 
 
 
 
 
-CAESAR II 2019  Ver.11.00.00.4800,  (Build 190424)   Date: SEP 23, 2026   Time: 14:14
+CAESAR II 2019  Ver.11.00.00.4800,  (Build 190424)   Date: OCT 5, 2026   Time: 16:9
 Job Name: P2603-PR-SIM-019
 Licensed To: Licensed To: Edit name in <system>\company.txt
-RESTRAINTS REPORT: Loads On Restraints
+RESTRAINTS EXTENDED REPORT: Loads On Restraints
 CASE 7 (EXP) L7=L1-L5
 
  
  
 
- Node	    FX  N.	    FY  N.	    FZ  N.	 MX  N.m. 	 MY  N.m. 	 MZ  N.m. 	 Restraint Type/Tag
+ Node	  FX  N.	  FY  N.	  FZ  N.	Resultant	      MX	      MY	      MZ	Resultant	 Restraint Type/Tag
+     	        	        	        	   Force 	   N.m. 	   N.m. 	   N.m. 	  Moment 	
+     	        	        	        	      N. 	        	        	        	   N.m.  	
 
-   30	         1	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-   30	         0	        13	         0	         0	         0	         0	TYPE=Rigid Y w/gap;
-   30	         0	         0	         0	         0	         0	         0	TYPE=Rigid Z w/gap;
-   42	         0	       -25	         0	         0	         0	         0	TYPE=Rigid +Y;
-   45	         0	       -15	         0	         0	         0	         0	TYPE=Rigid +Y;
-   65	         0	        32	         0	         0	         0	         0	TYPE=Rigid +Y;
-  105	         0	        50	         0	         0	         0	         0	TYPE=Rigid +Y;
-  195	         0	        20	         0	         0	         0	         0	TYPE=Rigid +Y;
-  230	         0	        -5	         0	         0	         0	         0	TYPE=Rigid +Y;
-  240	         0	         0	         0	         0	         0	         0	TYPE=Rigid +Y;
-  250	         0	         3	         0	         0	         0	         0	TYPE=Rigid +Y;
-  260	         0	        -2	         0	         0	         0	         0	TYPE=Rigid +Y;
-  270	         0	         1	         0	         0	         0	         0	TYPE=Rigid +Y;
-  290	         0	        -1	         0	         0	         0	         0	TYPE=Rigid +Y;
-  300	         0	         0	         0	         0	         0	         0	TYPE=Rigid +Y;
-  310	         0	        -0	         0	         0	         0	         0	TYPE=Rigid +Y;
-  320	         0	         0	         0	         0	         0	         0	TYPE=Rigid +Y;
-  325	         0	         0	         0	         0	         0	         0	TYPE=Rigid +Y;
-  330	         0	        -0	         0	         0	         0	         0	TYPE=Rigid +Y;
-  332	         0	         0	         0	         0	         0	         0	TYPE=Rigid Y;
-  332	         0	         0	         6	         0	         0	         0	TYPE=Rigid Z;
-  335	         0	        -0	         0	         0	         0	         0	TYPE=Rigid Y;
-  335	         0	         0	        -8	         0	         0	         0	TYPE=Rigid Z;
-  340	         0	         3	         0	         0	         0	         0	TYPE=Rigid +Y;
-  430	        -0	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  430	         0	        -3	         0	         0	         0	         0	TYPE=Rigid Y w/gap;
-  430	         0	         0	         2	         0	         0	         0	TYPE=Rigid Z w/gap;
-  445	         0	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  445	         0	         0	       -22	         0	         0	         0	TYPE=Rigid Z w/gap;
-  455	         0	       -59	         0	         0	         0	         0	TYPE=Rigid +Y;
-  457	         0	         0	         0	         0	         0	         0	TYPE=Rigid +Y;
-  465	         0	         4	         0	         0	         0	         0	TYPE=Rigid +Y;
-  475	        -5	         0	         0	         0	         0	         0	TYPE=Rigid X;
-  475	         0	         0	         2	         0	         0	         0	TYPE=Rigid Z;
-  540	         0	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  540	         0	         0	         0	         0	         0	         0	TYPE=Rigid Y w/gap;
-  540	         0	         0	         0	         0	         0	         0	TYPE=Rigid Z w/gap;
-  565	         0	        25	         0	         0	         0	         0	TYPE=Rigid +Y;
-  605	         0	       757	         0	         0	         0	         0	TYPE=Rigid +Y;
-  612	         0	      -954	         0	         0	         0	         0	TYPE=Rigid +Y;
-  615	         0	         0	         0	         0	         0	         0	TYPE=Rigid +Y;
-  622	         0	       177	         0	         0	         0	         0	TYPE=Rigid Y;
-  622	         0	         0	        21	         0	         0	         0	TYPE=Rigid Z;
-  625	         0	       -13	         0	         0	         0	         0	TYPE=Rigid Y w/gap;
-  625	         0	         0	         0	         0	         0	         0	TYPE=Rigid Z w/gap;
-  635	         5	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  635	         0	         0	         0	         0	         0	         0	TYPE=Rigid Z w/gap;
-  720	        -1	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  720	         0	        -7	         0	         0	         0	         0	TYPE=Rigid Y w/gap;
-  720	         0	         0	        -1	         0	         0	         0	TYPE=Rigid Z w/gap;
-  720	         0	         0	         0	         0	         0	         0	TYPE=Rigid RZ w/gap;
-  780	         0	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  780	         0	         0	         0	         0	         0	         0	TYPE=Rigid Z w/gap;
+   30	       1	       0	       0	       1	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+   30	       0	       9	       0	       9	       0	       0	       0	       0	TYPE=Rigid +Y w/gap;
+   30	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+   42	       0	     -11	       0	      11	       0	       0	       0	       0	TYPE=Rigid +Y;
+   45	       0	     -51	       0	      51	       0	       0	       0	       0	TYPE=Rigid +Y;
+   65	       0	      69	       0	      69	       0	       0	       0	       0	TYPE=Rigid +Y;
+  105	       0	     -29	       0	      29	       0	       0	       0	       0	TYPE=Rigid +Y;
+  195	       0	      17	       0	      17	       0	       0	       0	       0	TYPE=Rigid +Y;
+  230	       0	      -4	       0	       4	       0	       0	       0	       0	TYPE=Rigid +Y;
+  240	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  250	       0	       3	       0	       3	       0	       0	       0	       0	TYPE=Rigid +Y;
+  260	       0	      -2	       0	       2	       0	       0	       0	       0	TYPE=Rigid +Y;
+  270	       0	       1	       0	       1	       0	       0	       0	       0	TYPE=Rigid +Y;
+  290	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  300	       0	      -0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  310	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  320	       0	      -0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  325	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  330	       0	      -0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  332	       0	       1	       0	       1	       0	       0	       0	       0	TYPE=Rigid +Y;
+  335	       0	      -1	       0	       1	       0	       0	       0	       0	TYPE=Rigid +Y;
+  335	       0	       0	      -0	       0	       0	       0	       0	       0	TYPE=Rigid Z;
+  340	       0	       1	       0	       1	       0	       0	       0	       0	TYPE=Rigid +Y;
+  430	       1	       0	       0	       1	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+  430	       0	      -0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y w/gap;
+  430	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+  445	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+  445	       0	    1438	       0	    1438	       0	       0	       0	       0	TYPE=Rigid +Y;
+  455	       0	   -1707	       0	    1707	       0	       0	       0	       0	TYPE=Rigid +Y;
+  457	       0	     115	       0	     115	       0	       0	       0	       0	TYPE=Rigid +Y;
+  465	       0	    1288	       0	    1288	       0	       0	       0	       0	TYPE=Rigid +Y;
+  475	       0	   -1091	       0	    1091	       0	       0	       0	       0	TYPE=Rigid +Y;
+  475	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+  540	      -4	       0	       0	       4	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+  540	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid Y w/gap;
+  540	       0	       0	      -9	       9	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+  565	       0	     -27	       0	      27	       0	       0	       0	       0	TYPE=Rigid +Y;
+  605	       0	     761	       0	     761	       0	       0	       0	       0	TYPE=Rigid +Y;
+  612	       0	    -957	       0	     957	       0	       0	       0	       0	TYPE=Rigid +Y;
+  615	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  622	       0	     198	       0	     198	       0	       0	       0	       0	TYPE=Rigid Y;
+  622	       0	       0	       9	       9	       0	       0	       0	       0	TYPE=Rigid Z;
+  625	       0	     -17	       0	      17	       0	       0	       0	       0	TYPE=Rigid Y w/gap;
+  625	       0	       0	      -0	       0	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+  635	       3	       0	       0	       3	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+  635	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+  720	       0	      -4	       0	       4	       0	       0	       0	       0	TYPE=Rigid +Y w/gap;
+  780	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+  780	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
 
 
 
 
 
-CAESAR II 2019  Ver.11.00.00.4800,  (Build 190424)   Date: SEP 23, 2026   Time: 14:14
+CAESAR II 2019  Ver.11.00.00.4800,  (Build 190424)   Date: OCT 5, 2026   Time: 16:9
 Job Name: P2603-PR-SIM-019
 Licensed To: Licensed To: Edit name in <system>\company.txt
-RESTRAINTS REPORT: Loads On Restraints
+RESTRAINTS EXTENDED REPORT: Loads On Restraints
 CASE 8 (EXP) L8=L3-L6
 
  
  
 
- Node	    FX  N.	    FY  N.	    FZ  N.	 MX  N.m. 	 MY  N.m. 	 MZ  N.m. 	 Restraint Type/Tag
+ Node	  FX  N.	  FY  N.	  FZ  N.	Resultant	      MX	      MY	      MZ	Resultant	 Restraint Type/Tag
+     	        	        	        	   Force 	   N.m. 	   N.m. 	   N.m. 	  Moment 	
+     	        	        	        	      N. 	        	        	        	   N.m.  	
 
-   30	        34	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-   30	         0	        12	         0	         0	         0	         0	TYPE=Rigid Y w/gap;
-   30	         0	         0	        67	         0	         0	         0	TYPE=Rigid Z w/gap;
-   42	         0	       113	         0	         0	         0	         0	TYPE=Rigid +Y;
-   45	         0	     -1056	         0	         0	         0	         0	TYPE=Rigid +Y;
-   65	         0	       994	         0	         0	         0	         0	TYPE=Rigid +Y;
-  105	         0	       920	         0	         0	         0	         0	TYPE=Rigid +Y;
-  195	         0	       155	         0	         0	         0	         0	TYPE=Rigid +Y;
-  230	         0	       -41	         0	         0	         0	         0	TYPE=Rigid +Y;
-  240	         0	         0	         0	         0	         0	         0	TYPE=Rigid +Y;
-  250	         0	        28	         0	         0	         0	         0	TYPE=Rigid +Y;
-  260	         0	       -15	         0	         0	         0	         0	TYPE=Rigid +Y;
-  270	         0	         4	         0	         0	         0	         0	TYPE=Rigid +Y;
-  290	         0	        -0	         0	         0	         0	         0	TYPE=Rigid +Y;
-  300	         0	        -1	         0	         0	         0	         0	TYPE=Rigid +Y;
-  310	         0	         0	         0	         0	         0	         0	TYPE=Rigid +Y;
-  320	         0	        -0	         0	         0	         0	         0	TYPE=Rigid +Y;
-  325	         0	         0	         0	         0	         0	         0	TYPE=Rigid +Y;
-  330	         0	        -0	         0	         0	         0	         0	TYPE=Rigid +Y;
-  332	         0	         1	         0	         0	         0	         0	TYPE=Rigid Y;
-  332	         0	         0	        35	         0	         0	         0	TYPE=Rigid Z;
-  335	         0	        -3	         0	         0	         0	         0	TYPE=Rigid Y;
-  335	         0	         0	       -39	         0	         0	         0	TYPE=Rigid Z;
-  340	         0	        14	         0	         0	         0	         0	TYPE=Rigid +Y;
-  430	        -0	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  430	         0	       -12	         0	         0	         0	         0	TYPE=Rigid Y w/gap;
-  430	         0	         0	         8	         0	         0	         0	TYPE=Rigid Z w/gap;
-  445	        10	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  445	         0	         0	         2	         0	         0	         0	TYPE=Rigid Z w/gap;
-  455	         0	     -1494	         0	         0	         0	         0	TYPE=Rigid +Y;
-  457	         0	       -40	         0	         0	         0	         0	TYPE=Rigid +Y;
-  465	         0	      3830	         0	         0	         0	         0	TYPE=Rigid +Y;
-  475	      -148	         0	         0	         0	         0	         0	TYPE=Rigid X;
-  475	         0	         0	      -151	         0	         0	         0	TYPE=Rigid Z;
-  540	        64	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  540	         0	     -3419	         0	         0	         0	         0	TYPE=Rigid Y w/gap;
-  540	         0	         0	         0	         0	         0	         0	TYPE=Rigid Z w/gap;
-  565	         0	       335	         0	         0	         0	         0	TYPE=Rigid +Y;
-  605	         0	       757	         0	         0	         0	         0	TYPE=Rigid +Y;
-  612	         0	     -1222	         0	         0	         0	         0	TYPE=Rigid +Y;
-  615	         0	         0	         0	         0	         0	         0	TYPE=Rigid +Y;
-  622	         0	       208	         0	         0	         0	         0	TYPE=Rigid Y;
-  622	         0	         0	        78	         0	         0	         0	TYPE=Rigid Z;
-  625	         0	        -8	         0	         0	         0	         0	TYPE=Rigid Y w/gap;
-  625	         0	         0	         0	         0	         0	         0	TYPE=Rigid Z w/gap;
-  635	        31	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  635	         0	         0	        -0	         0	         0	         0	TYPE=Rigid Z w/gap;
-  720	         0	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  720	         0	       -61	         0	         0	         0	         0	TYPE=Rigid Y w/gap;
-  720	         0	         0	        -1	         0	         0	         0	TYPE=Rigid Z w/gap;
-  720	         0	         0	         0	         0	         0	         0	TYPE=Rigid RZ w/gap;
-  780	         9	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  780	         0	         0	         0	         0	         0	         0	TYPE=Rigid Z w/gap;
+   30	      21	       0	       0	      21	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+   30	       0	      10	       0	      10	       0	       0	       0	       0	TYPE=Rigid +Y w/gap;
+   30	       0	       0	      23	      23	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+   42	       0	     127	       0	     127	       0	       0	       0	       0	TYPE=Rigid +Y;
+   45	       0	    -969	       0	     969	       0	       0	       0	       0	TYPE=Rigid +Y;
+   65	       0	     890	       0	     890	       0	       0	       0	       0	TYPE=Rigid +Y;
+  105	       0	     663	       0	     663	       0	       0	       0	       0	TYPE=Rigid +Y;
+  195	       0	     135	       0	     135	       0	       0	       0	       0	TYPE=Rigid +Y;
+  230	       0	     -39	       0	      39	       0	       0	       0	       0	TYPE=Rigid +Y;
+  240	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  250	       0	      27	       0	      27	       0	       0	       0	       0	TYPE=Rigid +Y;
+  260	       0	     -15	       0	      15	       0	       0	       0	       0	TYPE=Rigid +Y;
+  270	       0	       3	       0	       3	       0	       0	       0	       0	TYPE=Rigid +Y;
+  290	       0	       2	       0	       2	       0	       0	       0	       0	TYPE=Rigid +Y;
+  300	       0	      -2	       0	       2	       0	       0	       0	       0	TYPE=Rigid +Y;
+  310	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  320	       0	      -0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  325	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  330	       0	      -0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  332	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  335	       0	      -1	       0	       1	       0	       0	       0	       0	TYPE=Rigid +Y;
+  335	       0	       0	      -3	       3	       0	       0	       0	       0	TYPE=Rigid Z;
+  340	       0	       6	       0	       6	       0	       0	       0	       0	TYPE=Rigid +Y;
+  430	      -0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+  430	       0	      -6	       0	       6	       0	       0	       0	       0	TYPE=Rigid +Y w/gap;
+  430	       0	       0	       3	       3	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+  445	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+  445	       0	    1438	       0	    1438	       0	       0	       0	       0	TYPE=Rigid +Y;
+  455	       0	   -2969	       0	    2969	       0	       0	       0	       0	TYPE=Rigid +Y;
+  457	       0	     660	       0	     660	       0	       0	       0	       0	TYPE=Rigid +Y;
+  465	       0	    1288	       0	    1288	       0	       0	       0	       0	TYPE=Rigid +Y;
+  475	       0	   -1248	       0	    1248	       0	       0	       0	       0	TYPE=Rigid +Y;
+  475	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+  540	     -33	       0	       0	      33	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+  540	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid Y w/gap;
+  540	       0	       0	     -80	      80	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+  565	       0	     286	       0	     286	       0	       0	       0	       0	TYPE=Rigid +Y;
+  605	       0	     761	       0	     761	       0	       0	       0	       0	TYPE=Rigid +Y;
+  612	       0	   -1226	       0	    1226	       0	       0	       0	       0	TYPE=Rigid +Y;
+  615	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  622	       0	     219	       0	     219	       0	       0	       0	       0	TYPE=Rigid Y;
+  622	       0	       0	      64	      64	       0	       0	       0	       0	TYPE=Rigid Z;
+  625	       0	      14	       0	      14	       0	       0	       0	       0	TYPE=Rigid Y w/gap;
+  625	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+  635	      13	       0	       0	      13	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+  635	       0	       0	      -8	       8	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+  720	       0	     -56	       0	      56	       0	       0	       0	       0	TYPE=Rigid +Y w/gap;
+  780	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+  780	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
 
 
 
 
 
-CAESAR II 2019  Ver.11.00.00.4800,  (Build 190424)   Date: SEP 23, 2026   Time: 14:14
+CAESAR II 2019  Ver.11.00.00.4800,  (Build 190424)   Date: OCT 5, 2026   Time: 16:9
 Job Name: P2603-PR-SIM-019
 Licensed To: Licensed To: Edit name in <system>\company.txt
-RESTRAINTS REPORT: Loads On Restraints
+RESTRAINTS EXTENDED REPORT: Loads On Restraints
 CASE 9 (EXP) L9=L1-L3
 
  
  
 
- Node	    FX  N.	    FY  N.	    FZ  N.	 MX  N.m. 	 MY  N.m. 	 MZ  N.m. 	 Restraint Type/Tag
+ Node	  FX  N.	  FY  N.	  FZ  N.	Resultant	      MX	      MY	      MZ	Resultant	 Restraint Type/Tag
+     	        	        	        	   Force 	   N.m. 	   N.m. 	   N.m. 	  Moment 	
+     	        	        	        	      N. 	        	        	        	   N.m.  	
 
-   30	       -33	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-   30	         0	         1	         0	         0	         0	         0	TYPE=Rigid Y w/gap;
-   30	         0	         0	       -67	         0	         0	         0	TYPE=Rigid Z w/gap;
-   42	         0	      -138	         0	         0	         0	         0	TYPE=Rigid +Y;
-   45	         0	      1040	         0	         0	         0	         0	TYPE=Rigid +Y;
-   65	         0	      -962	         0	         0	         0	         0	TYPE=Rigid +Y;
-  105	         0	      -870	         0	         0	         0	         0	TYPE=Rigid +Y;
-  195	         0	      -135	         0	         0	         0	         0	TYPE=Rigid +Y;
-  230	         0	        36	         0	         0	         0	         0	TYPE=Rigid +Y;
-  240	         0	         0	         0	         0	         0	         0	TYPE=Rigid +Y;
-  250	         0	       -25	         0	         0	         0	         0	TYPE=Rigid +Y;
-  260	         0	        13	         0	         0	         0	         0	TYPE=Rigid +Y;
-  270	         0	        -4	         0	         0	         0	         0	TYPE=Rigid +Y;
-  290	         0	        -0	         0	         0	         0	         0	TYPE=Rigid +Y;
-  300	         0	         1	         0	         0	         0	         0	TYPE=Rigid +Y;
-  310	         0	        -0	         0	         0	         0	         0	TYPE=Rigid +Y;
-  320	         0	         0	         0	         0	         0	         0	TYPE=Rigid +Y;
-  325	         0	        -0	         0	         0	         0	         0	TYPE=Rigid +Y;
-  330	         0	         0	         0	         0	         0	         0	TYPE=Rigid +Y;
-  332	         0	        -1	         0	         0	         0	         0	TYPE=Rigid Y;
-  332	         0	         0	       -29	         0	         0	         0	TYPE=Rigid Z;
-  335	         0	         3	         0	         0	         0	         0	TYPE=Rigid Y;
-  335	         0	         0	        31	         0	         0	         0	TYPE=Rigid Z;
-  340	         0	       -11	         0	         0	         0	         0	TYPE=Rigid +Y;
-  430	        -0	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  430	         0	         9	         0	         0	         0	         0	TYPE=Rigid Y w/gap;
-  430	         0	         0	        -6	         0	         0	         0	TYPE=Rigid Z w/gap;
-  445	       -10	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  445	         0	         0	       -25	         0	         0	         0	TYPE=Rigid Z w/gap;
-  455	         0	      1434	         0	         0	         0	         0	TYPE=Rigid +Y;
-  457	         0	        40	         0	         0	         0	         0	TYPE=Rigid +Y;
-  465	         0	     -3825	         0	         0	         0	         0	TYPE=Rigid +Y;
-  475	       143	         0	         0	         0	         0	         0	TYPE=Rigid X;
-  475	         0	         0	       152	         0	         0	         0	TYPE=Rigid Z;
-  540	       -64	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  540	         0	      3419	         0	         0	         0	         0	TYPE=Rigid Y w/gap;
-  540	         0	         0	         0	         0	         0	         0	TYPE=Rigid Z w/gap;
-  565	         0	      -310	         0	         0	         0	         0	TYPE=Rigid +Y;
-  605	         0	         0	         0	         0	         0	         0	TYPE=Rigid +Y;
-  612	         0	       268	         0	         0	         0	         0	TYPE=Rigid +Y;
-  615	         0	         0	         0	         0	         0	         0	TYPE=Rigid +Y;
-  622	         0	       -32	         0	         0	         0	         0	TYPE=Rigid Y;
-  622	         0	         0	       -57	         0	         0	         0	TYPE=Rigid Z;
-  625	         0	        -5	         0	         0	         0	         0	TYPE=Rigid Y w/gap;
-  625	         0	         0	         0	         0	         0	         0	TYPE=Rigid Z w/gap;
-  635	       -26	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  635	         0	         0	         0	         0	         0	         0	TYPE=Rigid Z w/gap;
-  720	        -1	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  720	         0	        53	         0	         0	         0	         0	TYPE=Rigid Y w/gap;
-  720	         0	         0	         0	         0	         0	         0	TYPE=Rigid Z w/gap;
-  720	         0	         0	         0	         0	         0	         0	TYPE=Rigid RZ w/gap;
-  780	        -9	         0	         0	         0	         0	         0	TYPE=Rigid X w/gap;
-  780	         0	         0	         0	         0	         0	         0	TYPE=Rigid Z w/gap;
+   30	     -20	       0	       0	      20	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+   30	       0	      -1	       0	       1	       0	       0	       0	       0	TYPE=Rigid +Y w/gap;
+   30	       0	       0	     -23	      23	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+   42	       0	    -137	       0	     137	       0	       0	       0	       0	TYPE=Rigid +Y;
+   45	       0	     918	       0	     918	       0	       0	       0	       0	TYPE=Rigid +Y;
+   65	       0	    -821	       0	     821	       0	       0	       0	       0	TYPE=Rigid +Y;
+  105	       0	    -692	       0	     692	       0	       0	       0	       0	TYPE=Rigid +Y;
+  195	       0	    -118	       0	     118	       0	       0	       0	       0	TYPE=Rigid +Y;
+  230	       0	      35	       0	      35	       0	       0	       0	       0	TYPE=Rigid +Y;
+  240	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  250	       0	     -24	       0	      24	       0	       0	       0	       0	TYPE=Rigid +Y;
+  260	       0	      13	       0	      13	       0	       0	       0	       0	TYPE=Rigid +Y;
+  270	       0	      -2	       0	       2	       0	       0	       0	       0	TYPE=Rigid +Y;
+  290	       0	      -2	       0	       2	       0	       0	       0	       0	TYPE=Rigid +Y;
+  300	       0	       1	       0	       1	       0	       0	       0	       0	TYPE=Rigid +Y;
+  310	       0	      -0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  320	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  325	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  330	       0	      -0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  332	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  335	       0	      -1	       0	       1	       0	       0	       0	       0	TYPE=Rigid +Y;
+  335	       0	       0	       3	       3	       0	       0	       0	       0	TYPE=Rigid Z;
+  340	       0	      -5	       0	       5	       0	       0	       0	       0	TYPE=Rigid +Y;
+  430	       1	       0	       0	       1	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+  430	       0	       6	       0	       6	       0	       0	       0	       0	TYPE=Rigid +Y w/gap;
+  430	       0	       0	      -3	       3	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+  445	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+  445	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  455	       0	    1263	       0	    1263	       0	       0	       0	       0	TYPE=Rigid +Y;
+  457	       0	    -545	       0	     545	       0	       0	       0	       0	TYPE=Rigid +Y;
+  465	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  475	       0	     157	       0	     157	       0	       0	       0	       0	TYPE=Rigid +Y;
+  475	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+  540	      30	       0	       0	      30	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+  540	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid Y w/gap;
+  540	       0	       0	      71	      71	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+  565	       0	    -313	       0	     313	       0	       0	       0	       0	TYPE=Rigid +Y;
+  605	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  612	       0	     269	       0	     269	       0	       0	       0	       0	TYPE=Rigid +Y;
+  615	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid +Y;
+  622	       0	     -21	       0	      21	       0	       0	       0	       0	TYPE=Rigid Y;
+  622	       0	       0	     -55	      55	       0	       0	       0	       0	TYPE=Rigid Z;
+  625	       0	     -31	       0	      31	       0	       0	       0	       0	TYPE=Rigid Y w/gap;
+  625	       0	       0	      -0	       0	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+  635	     -10	       0	       0	      10	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+  635	       0	       0	       8	       8	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
+  720	       0	      52	       0	      52	       0	       0	       0	       0	TYPE=Rigid +Y w/gap;
+  780	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid X w/gap;
+  780	       0	       0	       0	       0	       0	       0	       0	       0	TYPE=Rigid Z w/gap;
 
 
 
@@ -547,21 +537,21 @@ CASE 9 (EXP) L9=L1-L3
 	TABLE OF CONTENTS -- STATIC OUTPUT
 -PAGE-	---REPORT / LOAD CASE---
 	 
-1	Restraints
+1	Restraints Extended
 	        1 (OPE) W+T1+P2
-2	Restraints
+2	Restraints Extended
 	        2 (Alt-SUS) W+P2
-3	Restraints
+3	Restraints Extended
 	        3 (OPE) W+T2+P2
-4	Restraints
+4	Restraints Extended
 	        4 (Alt-SUS) W+P2
-5	Restraints
+5	Restraints Extended
 	        5 (SUS) W
-6	Restraints
+6	Restraints Extended
 	        6 (SUS) W+P2
-7	Restraints
+7	Restraints Extended
 	        7 (EXP) L7=L1-L5
-8	Restraints
+8	Restraints Extended
 	        8 (EXP) L8=L3-L6
-9	Restraints
+9	Restraints Extended
 	        9 (EXP) L9=L1-L3

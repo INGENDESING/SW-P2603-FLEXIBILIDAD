@@ -1,0 +1,75 @@
+% ===================== ANALISIS DE RESULTADOS =====================
+\section{Analisis de Resultados}
+\label{sec:analisis}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Cumplimiento de Codigo (Code Compliance)}
+
+La evaluaci\'{o}n de cumplimiento de c\'{o}digo del modelo arroj\'{o}
+\textbf{CODE COMPLIANCE EVALUATION PASSED}. El esfuerzo de c\'{o}digo
+m\'{a}ximo del sistema es \num{74454.4}~\si{kPa}, en el nodo 648, para el caso
+2 (Alt-SUS) W+P2, frente a un admisible de \num{115142.4}~\si{kPa}; la
+relaci\'{o}n de utilizaci\'{o}n m\'{a}xima es por tanto 64.7~\%. La
+Tabla~\ref{tab:top5-ratio} relaciona los cinco nodos de mayor ratio del caso
+cr\'{i}tico; todos cumplen con holgura el criterio Code $\leq$ Allowable.
+
+\input{assets/tab_top5_ratio.tex}
+
+El caso que gobierna el dise\~{n}o es el sostenido alterno W+P2, es decir, la
+combinaci\'{o}n de peso propio con la presi\'{o}n de operaci\'{o}n $P_2$; el
+segundo caso sostenido alterno (caso 4) alcanza 58.0~\% en el nodo 990, el caso
+sostenido 6 (SUS) W+P2 llega a 57.8~\% en el mismo nodo, y el caso sostenido 5
+(SUS) W, sin presi\'{o}n, presenta 48.3~\% en el nodo 260. Este resultado es
+caracter\'{i}stico de l\'{i}neas con tramos rectos largos entre restricciones,
+donde el esfuerzo longitudinal por presi\'{o}n y peso domina sobre el rango
+t\'{e}rmico: los casos de expansi\'{o}n presentan ratios moderados (4.2~\% en el
+caso 7, 20.4~\% en el caso 8 y 16.2~\% en el caso 9, todos ellos en la tee del
+nodo 480, donde el factor de intensificaci\'{o}n de esfuerzo amplifica la
+flexi\'{o}n), frente al admisible de expansi\'{o}n aplicable en dicho nodo de
+\num{236456.5}~\si{kPa}. El esfuerzo de flexi\'{o}n se concentra en la zona del
+nodo 648, como evidencia el perfil de la Figura~\ref{fig:esfuerzos}, con el
+m\'{a}ximo del caso cr\'{i}tico en dicho nodo (\num{80101.8}~\si{kPa} de
+flexi\'{o}n). En condici\'{o}n de operaci\'{o}n (casos 1 y 3, OPE, sin
+verificaci\'{o}n de c\'{o}digo) el modelo reporta un esfuerzo de flexi\'{o}n
+m\'{a}ximo de \num{68550.5}~\si{kPa} en el nodo 480 (caso 3), un esfuerzo
+circunferencial (\textit{hoop}) m\'{a}ximo de \num{29436.7}~\si{kPa} en el nodo
+488 y una intensidad de esfuerzo m\'{a}xima de \num{80672.2}~\si{kPa} en el
+nodo 480 (caso 3).
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Desplazamientos y Cargas en Soportes}
+
+Los rangos de desplazamiento son moderados: el m\'{a}ximo absoluto es
+34.5~\si{mm} en la componente $DZ$ del caso 8 (EXP)
+(Tabla~\ref{tab:desplaz-max}), lo que indica que la l\'{i}nea trabaja con
+movimientos relativos acotados y sin riesgo de interferencias por expansi\'{o}n.
+Como se advierte en la secci\'{o}n~\ref{sec:resultados}, el reporte del job no
+tabula los desplazamientos absolutos de los casos sostenidos alternos 2 y 4,
+limitaci\'{o}n que no afecta la verificaci\'{o}n de c\'{o}digo, pues esta se
+apoya en los esfuerzos y en los rangos de expansi\'{o}n.
+
+Las cargas en soportes (Tablas~\ref{tab:restricciones-ope} a
+\ref{tab:restricciones-exp}) son moderadas: la carga significativa mayor
+corresponde al soporte vertical del nodo 640 con \num{-4933}~\si{N} en el caso
+sostenido y \num{-4356}~\si{N} en el caso de operaci\'{o}n; en los casos de
+expansi\'{o}n las cargas sobre los soportes verticales son peque\~{n}as, con un
+m\'{a}ximo de \num{2935}~\si{N} en el soporte del nodo 1186 para el caso 8. Al
+no existir anclas rotacionales, las restricciones del modelo no transmiten
+momentos. No obstante, la comparaci\'{o}n de las cargas en las conexiones con
+los equipos (restricci\'{o}n de frontera del nodo 10 y extremos de los ramales
+de los nodos 1300, 1360, 1420 y 1480) con los admisibles del fabricante queda
+fuera del alcance del presente informe (secci\'{o}n~\ref{sec:alcance}).
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Sintesis de Hallazgos}
+
+La l\'{i}nea SIM-023 presenta margen frente a los criterios de
+ASME B31.3-2016: el ratio m\'{a}ximo de utilizaci\'{o}n (64.7~\%) deja
+disponible cerca de una tercera parte del admisible, los rangos de
+desplazamiento t\'{e}rmico son moderados (m\'{a}ximo 34.5~\si{mm}) y las cargas
+en soportes son moderadas. No se identifican cuellos de botella, zonas de
+sobre-esfuerzo ni configuraciones de soporte cr\'{i}ticas. El aspecto pendiente
+de verificaci\'{o}n externa es la aceptaci\'{o}n de las cargas en las
+conexiones con los equipos (nodo 10 y extremos de los ramales de los nodos
+1300, 1360, 1420 y 1480) por parte de sus fabricantes, junto con las
+advertencias de modelado declaradas en la secci\'{o}n~\ref{sec:alcance}.

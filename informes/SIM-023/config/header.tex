@@ -1,0 +1,77 @@
+% ===================== ENCABEZADO CORPORATIVO =====================
+% Todas las etiquetas y valores se importan desde datos_proyecto.tex
+
+% Tamano uniforme del membrete (9pt): toda la tabla usa esta fuente;
+% la jerarquia se da solo por peso (negrita), no por tamano.
+% Interlineado ajustado (9/10) para que una celda de 2 lineas ocupe
+% exactamente el espacio de 2 filas y no se traslapen los multirow.
+\newcommand{\headerfont}{\fontsize{9}{10}\selectfont}
+
+\newcommand{\empresaheader}{%
+    \renewcommand{\arraystretch}{0.90} % Comprime la altura de las filas
+    \setlength{\tabcolsep}{2pt}
+    \noindent
+    \begin{tabularx}{\textwidth}{@{}|>{
+\centering\arraybackslash}p{2.2cm}|>{
+\centering\arraybackslash}p{2.2cm}|>{
+\centering\arraybackslash}X|>{
+\raggedright\arraybackslash}m{2.1cm}|>{
+\raggedright\arraybackslash}m{4.5cm}|@{}}
+        \hline
+        % Fila 1
+        \multirow{5}{=}{\includegraphics[width=2.0cm,height=2.2cm,keepaspectratio]{logos/logo1.png}} &
+        \multirow{5}{=}{\includegraphics[width=2.0cm,height=2.2cm,keepaspectratio]{logos/logo2.png}} &
+        \multirow{2}{\linewidth}{\centering \headerfont \textbf{\headerlinetitulo}} &
+        \headerfont \textbf{\headerlabelcode} & \headerfont \documentcode \\ \cline{4-5}
+        % Fila 2
+        & & &
+        \headerfont \textbf{\headerlabelrevision} & \headerfont \documentrevision \\ \cline{3-5}
+        % Fila 3
+        & &
+        \multirow{2}{\linewidth}{\centering \headerfont \headerlinesubuno} &
+        \headerfont \textbf{\headerlabeldate} & \headerfont \documentdate \\ \cline{4-5}
+        % Fila 4
+        & & &
+        \headerfont \textbf{\headerlabelelaboro} & \headerfont \elaboratedby \\ \cline{3-5}
+        % Fila 5
+        & &
+        \multirow{2}{\linewidth}{\centering \headerfont \headerlinesubdos} &
+        \headerfont \textbf{\headerlabelreviso} & \headerfont \reviewedby \\ \cline{1-2} \cline{4-5}
+        % Fila 6
+        \headerfont \textbf{\headerlabelproject} &
+        \headerfont \projectnumber & &
+        \headerfont \textbf{\headerlabelaprobo} & \headerfont \approvedby \\ \hline
+    \end{tabularx}%
+}
+
+% ===================== ESTILO CORPORATIVO DEFINITIVO =====================
+\fancypagestyle{corporativo}{%
+    \fancyhf{} % Limpia todo
+    \fancyhead[C]{\empresaheader} % Membrete centrado
+    \fancyfoot[C]{%
+        \fontsize{9}{11}\selectfont\color{gray}%
+        Tels: 661 24 08 Cali - Colombia \\
+        E-mail: administrativo@dmlsas.com.co}
+    \fancyfoot[R]{%
+        \fontsize{6}{8}\selectfont%
+        CI-ESP-001\_R0 \\%
+        Pagina \thepage\ de \pageref{LastPage}}
+    \renewcommand{\headrulewidth}{0pt} % Sin linea
+    \renewcommand{\footrulewidth}{2pt} % Linea gruesa negra en pie
+}
+
+% Aplicar estilo globalmente
+\pagestyle{corporativo}
+
+% ===================== FORZAR ESTILO EN TODOS LOS CONTEXTOS =====================
+\makeatletter
+% Redefinir todos los estilos de pagina posibles para usar el nuestro
+\let\ps@plain\ps@corporativo
+\let\ps@empty\ps@corporativo
+\let\ps@headings\ps@corporativo
+\let\ps@myheadings\ps@corporativo
+
+% CRITICO: Interceptar y redefinir el estilo del frontmatter de Elsevier
+\let\ps@pprintTitle\ps@corporativo
+\let\ps@pprintFirstpage\ps@corporativo
+\makeatother

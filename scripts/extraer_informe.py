@@ -46,7 +46,7 @@ def read_caesar_md(path: Path) -> list:
     return [x for x in raw.split('\n') if x.strip()]
 
 
-REPORT_RE = re.compile(r'([A-Z][A-Z\.0-9 ]+) REPORT: (.+)')
+REPORT_RE = re.compile(r'([A-Z][A-Z\.0-9 ()]+) REPORT: (.+)')
 CASE_RE = re.compile(r'CASE\s+(\d+)\s*\(([\w-]+)\)\s*(.*)$')
 
 
@@ -162,14 +162,28 @@ def extract(root: Path, linea: str):
     case_crit = int(re.match(r'(\d+)', loadcase).group(1))
 
     # ---- esfuerzos del caso crítico ----
-    stress = [s for s in sections if 'STRESSES' in s['report']]
+    # .md nuevos (p. ej. SIM-023) traen STRESSES EXTENDED (LEGACY) en lugar de
+    # B31.3 STRESSES, con layout distinto:
+    # Node Axial Bending Torsion Hoop Max SIFi SIFo Code Allowable Ratio ...
+    stress = [s for s in sections if s['report'] == 'B31.3 STRESSES']
+    ext_stress = False
+    if not stress:
+        stress = [s for s in sections
+                  if s['report'].startswith('STRESSES EXTENDED')]
+        ext_stress = True
     sec_crit = next(s for s in stress if s['case'] == case_crit)
     esf = []
     for f in parse_tab_rows(sec_crit['lines'], 12):
-        esf.append({'node': int(f[0]), 'slp': fnum(f[1]), 'fa': fnum(f[2]),
-                    'bending': fnum(f[3]), 'torsion': fnum(f[4]),
-                    'code': fnum(f[9]), 'allow': fnum(f[10]),
-                    'ratio': fnum(f[11])})
+        if ext_stress:
+            esf.append({'node': int(f[0]), 'slp': fnum(f[1]), 'fa': None,
+                        'bending': fnum(f[2]), 'torsion': fnum(f[3]),
+                        'code': fnum(f[8]), 'allow': fnum(f[9]),
+                        'ratio': fnum(f[10])})
+        else:
+            esf.append({'node': int(f[0]), 'slp': fnum(f[1]), 'fa': fnum(f[2]),
+                        'bending': fnum(f[3]), 'torsion': fnum(f[4]),
+                        'code': fnum(f[9]), 'allow': fnum(f[10]),
+                        'ratio': fnum(f[11])})
     evaluados = [e for e in esf if e['ratio'] is not None]
     top5 = sorted(evaluados, key=lambda e: -e['ratio'])[:5]
 
@@ -195,20 +209,30 @@ def extract(root: Path, linea: str):
                 displ[s['case']] = rows
 
     # ---- restricciones por caso ----
+    # Fallback a RESTRAINTS EXTENDED cuando no hay RESTRAINTS plano (p. ej.
+    # SIM-023). Layout extended: Node FX FY FZ ResF MX MY MZ ResM Type/Tag.
+    restr_names = {s['report'] for s in sections}
+    ext_restr = 'RESTRAINTS' not in restr_names
+    restr_name = 'RESTRAINTS EXTENDED' if ext_restr else 'RESTRAINTS'
     restr = {}
     for s in sections:
-        if s['report'] == 'RESTRAINTS' and s['case']:
+        if s['report'] == restr_name and s['case']:
             rows = []
-            for f in parse_tab_rows(s['lines'], 7):
+            for f in parse_tab_rows(s['lines'], 10 if ext_restr else 7):
                 tipo = ''
-                joined = '\t'.join(f[7:]) if len(f) > 7 else ''
+                joined = '\t'.join(f[9:] if ext_restr else f[7:]) \
+                    if len(f) > (9 if ext_restr else 7) else ''
                 tm = re.search(r'TYPE=([^;]+);?', joined)
                 if tm:
                     tipo = tm.group(1).strip()
+                idx = (1, 2, 3, 5, 6, 7) if ext_restr else (1, 2, 3, 4, 5, 6)
                 rows.append({'node': int(f[0]),
-                             'fx': fnum(f[1]) or 0.0, 'fy': fnum(f[2]) or 0.0,
-                             'fz': fnum(f[3]) or 0.0, 'mx': fnum(f[4]) or 0.0,
-                             'my': fnum(f[5]) or 0.0, 'mz': fnum(f[6]) or 0.0,
+                             'fx': fnum(f[idx[0]]) or 0.0,
+                             'fy': fnum(f[idx[1]]) or 0.0,
+                             'fz': fnum(f[idx[2]]) or 0.0,
+                             'mx': fnum(f[idx[3]]) or 0.0,
+                             'my': fnum(f[idx[4]]) or 0.0,
+                             'mz': fnum(f[idx[5]]) or 0.0,
                              'type': tipo})
             if rows:
                 restr[s['case']] = rows

@@ -1,0 +1,10 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {figure}{\numberline {1}{\ignorespaces Perfil de desplazamientos nodales $DX$, $DY$ y $DZ$ en el caso 1 (OPE) W+T1+P2.}}{14}{figure.caption.11}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Configuraci\'{o}n deformada del modelo y distribuci\'{o}n de desplazamientos (CAESAR II, job P2603-PR-SIM-023).}}{14}{figure.caption.12}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Perfil de esfuerzo de flexi\'{o}n por nodo, caso cr\'{i}tico 2 (Alt-SUS) W+P2. M\'{a}ximo: \num {80101.8}~\si {kPa} en el nodo 648.}}{15}{figure.caption.13}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Mapa de porcentaje de esfuerzo de c\'{o}digo (\textit {Code Stress by Percent}) sobre el modelo 3D, caso cr\'{i}tico 2 (Alt-SUS) W+P2 (CAESAR II, job P2603-PR-SIM-023). La escala de colores indica la relaci\'{o}n entre el esfuerzo de c\'{o}digo y el admisible en cada elemento.}}{29}{figure.caption.14}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Modelo de CAESAR II con los soportes y restricciones de la l\'{i}nea, vista 1 (job P2603-PR-SIM-023).}}{34}{figure.caption.15}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Modelo de CAESAR II con los soportes y restricciones de la l\'{i}nea, vista 2 (job P2603-PR-SIM-023).}}{35}{figure.caption.16}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Modelo de CAESAR II con los soportes y restricciones de la l\'{i}nea, vista 3 (job P2603-PR-SIM-023).}}{35}{figure.caption.17}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Modelo de CAESAR II con los soportes y restricciones de la l\'{i}nea, vista 4 (job P2603-PR-SIM-023).}}{35}{figure.caption.18}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Vista del modelo 3D de la l\'{i}nea de alimentaci\'{o}n a los limpiadores de arena (PCF119, AutoCAD Plant 3D 2027).}}{36}{figure.caption.19}%

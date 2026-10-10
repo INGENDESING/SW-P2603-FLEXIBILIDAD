@@ -4,16 +4,17 @@ Análisis de flexibilidad de tuberías con CAESAR II 2019. Flujo de trabajo: iso
 
 ## Estado actual
 
-- **Última tarea completada (2026-09-22, tarde)**: PCF120 (carpeta 15.0) **RESCATADO** con `scripts/fix_pcf120_basura.py` (plan B, T1–T4): la coordenada basura era centinela de Plant 3D (57 bloques) y los gaskets/pernos/welds venían duplicados 58×. Reconstruidas 24 bridas LJ (fusionadas con stub-ends reales, SKEY FLWN), reubicadas 10 válvulas bridadas + MAGNETIC FLOW METER 4" (recuperado) por FF/bore de las 11 uniones gemelas, ramal 2" completo (bola THD + 2× ELL 45 SW + sockolet), eliminados 18 soportes (lista en `PCF120 - SOPORTES ELIMINADOS.txt`) y 2508 bloques duplicados. Verificación 5/5 OK. Respaldo `PCF120 - ANTES RESCATE.pcf`. Pendiente: usuario importa en CAESAR, crea .C2, corre; ajusta TAGs de válvulas, repone soportes y revisa sockolet 2 + artefacto 1" (0.76, -528.48, 5356.57)
+- **Última tarea completada (2026-10-10)**: **Informe SIM-023 (carpeta 20.0, Alimentación limpiadores de arena, PCF119) generado** por excepción a la secuencia acordada (instrucción del usuario: solo 20.0). El usuario la había corrido como SIM-023 (2026-10-09): PASSED 64.7 % @648, caso 2 (Alt-SUS) W+P2, admisible TP304L ✓. `extraer_informe.py` adaptado al layout EXTENDED del .md (STRESSES EXTENDED (LEGACY) + RESTRAINTS EXTENDED; fallback compatible). **DOCS-191 compilado: 42 pág., 0 refs indefinidas, verificación visual OK**. No se tocó dashboard ni AnexoResultado
+- **Tarea anterior (2026-10-09)**: PCF-304 (19.0) y PCF119 (20.0) corregidos con `fix_pcf.py` — PCF-304: 9 END-POSITION + 15 pares stub/brida + 1 INSTRUMENT-DIAL + 2 instr. cero + 5 TAP; PCF119: 13 END-POSITION + 40 pares + 10 INSTRUMENT-DIAL + 17 TAP. Ambos sin avisos, respaldos `ORIGINAL PLANT3D.pcf` generados. Alertas para CAESAR: 9 soportes ANCH (19.0) y 44 ANCH (20.0) a reclasificar; bridas LJ F304 sin L y tramos Sch 40S en ambas; 8 codos con bore 0.0 en PCF119 (mismo caso que PCF118 ×2, que corrió OK). Además se detectó trabajo del usuario no registrado: **SIM-020 (16.0) corrida — PASSED 42.3 % @438 SUS W+P2** (⚠️ wrn: material default 310 STAINLESS + soportes UNKNOWN) y **SIM-021 (17.0) corrida — PASSED 31.8 % @100 Alt-SUS W+P2**; ambas con admisible TP304L ✓, pendientes de procesar por el agente
+- **Tarea anterior (2026-09-22, tarde)**: PCF120 (carpeta 15.0) **RESCATADO** con `scripts/fix_pcf120_basura.py` (plan B, T1–T4): la coordenada basura era centinela de Plant 3D (57 bloques) y los gaskets/pernos/welds venían duplicados 58×. Reconstruidas 24 bridas LJ (fusionadas con stub-ends reales, SKEY FLWN), reubicadas 10 válvulas bridadas + MAGNETIC FLOW METER 4" (recuperado) por FF/bore de las 11 uniones gemelas, ramal 2" completo (bola THD + 2× ELL 45 SW + sockolet), eliminados 18 soportes (lista en `PCF120 - SOPORTES ELIMINADOS.txt`) y 2508 bloques duplicados. Verificación 5/5 OK. Respaldo `PCF120 - ANTES RESCATE.pcf`. El usuario ya creó `P2603-PR-SIM-019.C2` y corrió (`.OUT` 2026-09-23)
 - **Última tarea anterior (2026-09-17)**: PCF118 (carpeta 14.0, Descarga bomba PP30BT07) corregido, sin avisos, material TP304L ✓; ⚠️ tramo Sch 40S. Pendiente: importar en CAESAR, crear .C2 y correr.
 - **Commit+push HECHO (2026-09-11)**: `ae3021f` en `main` (acumulado TP304L + reorganización, 977 A / 44 R / 23 D / 9 M); workflow "Update Flexibilidad Dashboard" success (update-dashboard + deploy-pages) → sitio en vivo actualizado con las 11 líneas TP304L en orden SIM-002→015
-- **Última tarea completada**: reorganización de archivos y carpetas (2026-09-11): carpetas de línea con prefijo de dos dígitos `01.0`–`13.0` (orden alfabético correcto; el JSON del dashboard queda en orden SIM), `fix_pcf.py`→`scripts/`, `logo1.png`→`assets/` (parser ajustado), artefactos SIM-015 movidos de 10.0→11.0, `.tmp-playwright/` eliminado, `.gitignore` con scratch CAESAR (CONTROLU/DBGENBIN/COMNDINP/OCONTROLU/TEMPMAT*/c2db/XML), triggers del workflow robustos (`**/P2603-PR-*.md` + `**/Graficas/**`). Antes: transmittal HTML `transmittal/transmittal_DOCS-180_a_DOCS-190.html` para el Ing. Cristian Muriel (revisión de calidad; N.° `[TR-001]` placeholder por confirmar)
 - **Recorridas con material corregido (2026-09-10)**: SIM-010 (46.7 % @430 EXP), SIM-007 (70.1 % @100 EXP caso 9 — era FAILED ~103.9 % con admisible TP304), SIM-011 (67.2 % @260 Alt-SUS). Ratio máximo del proyecto: 70.1 % (SIM-007)
 - **AnexoResultado: EN ESPERA** — no procesar ningún `AnexoResultado.png` hasta instrucción del usuario
 - **Sitio en vivo**: https://ingendesing.github.io/SW-P2603-FLEXIBILIDAD/ — **actualizado 2026-09-11** (deploy success tras commit `ae3021f`)
-- **Próxima tarea pendiente**: el usuario importa el PCF120 rescatado en CAESAR (crear .C2, correr; ajustar TAGs de válvulas, reponer 18 soportes de la lista, revisar sockolet 2 + artefacto 1"). Luego el usuario re-exporta tifs de SIM-007 (03.0; los actuales son de la corrida vieja TP304) → luego `convertir_graficas.py --force` + parser + `extraer_informe.py --linea SIM-007` + recompilar DOCS-182. Esperan al usuario: número de transmittal, envío del transmittal a C. Muriel, fechas de revisión/aprobación y correo `\ead{}`, instrucción AnexoResultado, corridas SIM-016 (12.0)/PCF115 (13.0)/PCF118 (14.0, PCF ya corregido 2026-09-17 — ⚠️ tramo Sch 40S)/PCF120 (15.0, PCF rescatado 2026-09-22), validación cliente
+- **Próxima tarea pendiente**: (1) usuario importa PCF-303 (18.0) y PCF-304 (19.0) en CAESAR II, crea `.C2` (siguiente SIM libre: 022), reclasifica soportes y corre; (2) decidir push de `2260e4d` + cambios acumulados (incluye SIM-020 corrida, carpetas 17.0–20.0, informe SIM-023 y adaptación de `extraer_informe.py`); (3) agente (con aprobación): procesar SIM-018 (14.0), SIM-019 (15.0), SIM-020 (16.0) y SIM-021 (17.0) — SIM-020/021 ya tienen `.md` (revisar warnings de importación de SIM-020: material default 310 y soportes UNKNOWN). Siguen: re-exportar tifs de SIM-007 → recompilar DOCS-182. Esperan al usuario: número de transmittal y envío a C. Muriel, fechas de revisión/aprobación y correo `\ead{}`, corrida SIM-016 (12.0); definición sobre carpeta 13.0 (suspendida), verificación presión 180 vs ~150 psi, validación cliente
 - **Repo**: https://github.com/INGENDESING/SW-P2603-FLEXIBILIDAD (público; Pages en repos privados exige GitHub Pro)
-- **Fecha de última actualización**: 2026-09-22
+- **Fecha de última actualización**: 2026-10-10
 - **Memoria persistente (2026-09-03)**: bóveda Obsidian en `boveda/` + skills `inicializar`/`memoria` en `.kimi-code/skills/`. En cada sesión nueva: «ejecuta inicializa» (ver `inicializar.md`)
 
 ## Bases de diseño congeladas
@@ -60,7 +61,7 @@ Informes (DOCS-180→190) y dashboard (`lineas.json`) YA actualizados a estos n�
 ### 2b. Generador de informes LaTeX
 - `generadorinf.md` — Prompt maestro (v1.1, 2026-09-02) para generar un informe PDF por línea desde los `.md` CAESAR; reemplaza `PropmtGeneracionInformes.txt`. Decisiones: 8 informes independientes (D2), arquitectura híbrida script+LLM (D3). Codificación de informes: `I24.104-PP30-PP01-P-DOCS-18X` (180→187 en orden SIM); sin resumen ejecutivo (el informe ES el resumen); investigación web con agentes para marco teórico/objetivos
 - `Plantilla latex/` — Plantilla corporativa DML (elsarticle, 15 secciones modulares, `config/datos_proyecto.tex`, `compilar_informe.ps1`); convenciones en `Plantilla latex/CLAUDE_plantilla.md`. Membrete 2026-09-02: textos proyecto en `datos_proyecto.tex` (INGENIERIA DE DETALLE / EUCALYPTUS PULP PRODUCTION OPTIMIZATION PROJECT / ANALISIS DE FLEXIBILIDAD TK BLOWTANK, PROYECTO: P2603), firmas J.ARBOLEDA/F.NAVIA/H.ROSERO, logo1=DML logo2=Smurfit. El rediseño geométrico (logos grandes, letra uniforme) fue REVERTIDO por decisión del usuario — se conserva el layout original (logos 2.3×2.5 cm, arraystretch 0.80)
-- Salida: `informes/SIM-0XX/I24.104-PP30-PP01-P-DOCS-18X.pdf` — **11/11 compilados** (180→190: 23/22/23/23/22/27/28/24/22/24/28 pág., 2026-09-10; números == corridas TP304L). OJO: `tab_esfuerzos_critico.tex` de SIM-010/011/012/015 lleva conversión manual a `longtable` (se pierde al re-ejecutar `extraer_informe.py`)
+- Salida: `informes/SIM-0XX/I24.104-PP30-PP01-P-DOCS-18X.pdf` — **11/11 compilados** (180→190: 23/22/23/23/22/27/28/24/22/24/28 pág., 2026-09-10; números == corridas TP304L) **+ DOCS-191 (SIM-023, 42 pág., 2026-10-10)**. OJO: `tab_esfuerzos_critico.tex` de SIM-010/011/012/015/023 lleva conversión manual a `longtable` (se pierde al re-ejecutar `extraer_informe.py`)
 
 ### 3. Archivos clave
 
@@ -70,7 +71,7 @@ Informes (DOCS-180→190) y dashboard (`lineas.json`) YA actualizados a estos n�
 | `scripts/fix_pcf120_basura.py` | Rescate de componentes en coordenada centinela + dedupe 58× (PCF120; `--proponer`/`--aplicar`/`--verificar`) (2026-09-22) |
 | `scripts/parse_caesar_md.py` | Parser CAESAR II .md → JSON + copia assets al dashboard (2026-09-10: lee `Graficas/`, excluye `_corrida_anterior`, isométrico desde `Graficas/PCF*`) |
 | `scripts/convertir_graficas.py` | tif→png de `Graficas/` (PIL, fondo blanco, excluye AnexoResultado; idempotente, `--force`) (2026-09-10) |
-| `scripts/extraer_informe.py` | Genera tablas .tex + figuras + imágenes para informes (2026-09-10: assets `graf_desplazamiento[_N]`/`graf_stress_percent[_N]`/`graf_nodos_soporte[_N]`) |
+| `scripts/extraer_informe.py` | Genera tablas .tex + figuras + imágenes para informes (2026-09-10: assets `graf_desplazamiento[_N]`/`graf_stress_percent[_N]`/`graf_nodos_soporte[_N]`; 2026-10-10: fallback a `STRESSES EXTENDED (LEGACY)`/`RESTRAINTS EXTENDED` con su mapa de columnas — .md de SIM-023) |
 | `dashboard/index.html` | Página principal (pública cliente) |
 | `dashboard/tecnico.html` | Página técnica (interno DML) |
 | `dashboard/linea.html` | Página individual de línea (`?id=SIM-011`) |
@@ -81,6 +82,7 @@ Informes (DOCS-180→190) y dashboard (`lineas.json`) YA actualizados a estos n�
 | `dashboard/assets/logo-dml.png` | Logo DML Ingenieros Consultores (consultora) |
 | `dashboard/assets/md/` | Reportes .md copiados por el parser (descarga desde linea.html) |
 | `inicializar.md` | Punto de entrada de cada sesión nueva («ejecuta inicializa» → carga la bóveda) |
+| `bridasBoquillas.md` | Metodología de verificación de fuga en bridas (Kellogg Peq) y cargas en boquillas (API 610) |
 | `transmittal/transmittal_DOCS-180_a_DOCS-190.html` | Correo HTML de envío de los 11 informes a C. Muriel (revisión de calidad; logos base64, paleta DML #117341; N.° [TR-001] placeholder) |
 | `boveda/` | Bóveda Obsidian: memoria persistente entre sesiones (notas por línea, decisiones, pendientes, log de sesiones) |
 | `.kimi-code/skills/` | Skills del proyecto: `inicializar` (cargar contexto) y `memoria` (actualizar bóveda al cerrar/avanzar) |
@@ -103,14 +105,20 @@ Informes (DOCS-180→190) y dashboard (`lineas.json`) YA actualizados a estos n�
 | SIM-014 | Descarga TMS | PCF112 | P2603-PR-SIM-014.md |
 | SIM-015 | Tubería filtro de fibras PP1 | PCF114 | P2603-PR-SIM-015.md |
 
-### Líneas sin corrida (PCF corregidos, pendiente CAESAR)
+### Líneas sin corrida o sin procesar (pendiente CAESAR / pipeline)
 
 | Carpeta | Línea | PCF | Estado |
 |---|---|---|---|
 | 12.0 | Succión bomba PP30SR03 | PCF116 | .C2 creado (`P2603-PR-SIM-016.C2`), sin corrida |
-| 13.0 | Succión bomba PP30BT17 | PCF115 | PCF corregido 2026-09-08, sin .C2 |
-| 14.0 | Descarga bomba PP30BT07 | PCF118 | PCF corregido 2026-09-17 (⚠️ tramo Sch 40S), sin .C2 |
-| 15.0 | Descarga bomba PP30BT17 | PCF120 | PCF RESCATADO 2026-09-22 (`fix_pcf120_basura.py`: 57 bloques centinela reconstruidos, dedupe 58×, 18 soportes eliminados con lista; ⚠️ bridas F304 sin L), sin .C2 |
+| 13.0 | Succión bomba PP30BT17 | PCF115 | **En revisión / Suspendido** (PCF corregido 2026-09-08, sin .C2; tramo muy corto, costo analítico elevado) |
+| 14.0 | Descarga bomba PP30BT07 | PCF118 | **SIM-018 corrida (`.C2`/`.OUT` 2026-09-18) SIN PROCESAR** (sin .md; ⚠️ tramo Sch 40S) |
+| 15.0 | Descarga bomba PP30BT17 | PCF120 | **SIM-019 corrida (`.OUT` 2026-09-23; `.C2` modificado 2026-10-02) SIN PROCESAR** (PCF rescatado 2026-09-22; ⚠️ bridas F304 sin L) |
+| 16.0 | Tubería descarga de bomba PP30RF17 (PP30SC05) | PCF-301 | **SIM-020 CORRIDA (`.md` nuevo, pendiente procesar)**: PASSED 42.3 % @438, caso 6 (SUS) W+P2, admisible 115142.4 kPa ✓ (0×137895.1). tifs en raíz (Desplazamiento1, Nodo1/2, Stress1), no en `Graficas/`. ⚠️ wrn de importación: material "" spec SSS3 → default "(8)310 STAINLESS" y soportes UNKNOWN → "+Vertical" — verificar en el .C2 |
+| 17.0 | Descarga desde PMTUB6-094-PUB-6" hacia TANK-PP30RF13 | PCF-302 | **SIM-021 CORRIDA (`.md` nuevo, pendiente procesar)**: PASSED 31.8 % @100, caso 4 (Alt-SUS) W+P2, admisible 115142.4 kPa ✓ (0×137895.1). tifs en raíz (Desplazamiento1, Nodos1, Stress1), no en `Graficas/` |
+| 18.0 | Succión bomba PP30RF15 desde TANK-PP30RF13 | PCF-303 | **PCF corregido con `fix_pcf.py` (2026-10-05), sin .C2** (9.13 m en 14"/10"/6"/4"/2"; ⚠️ 3 soportes ANCH, bridas LJ F304 sin L, niples Sch 40S) |
+| 19.0 | Tubería descarga de bomba PP30RF15 (R) hacia PP30RF21 | PCF-304 | **PCF corregido con `fix_pcf.py` (2026-10-09), sin .C2** — 9 END-POSITION + 15 pares stub/brida fusionados + 1 INSTRUMENT-DIAL + 2 instrumentos cero + 5 TAP, sin avisos; respaldo `PCF-304 - ORIGINAL PLANT3D.pcf`. Isos PMTUB6-129-PUB-4"/115/092-PUB-6"-150H2A. Diámetros 10"/6"/4"/3"/2.5"/1.5"/0.5". TP304L/WP304L Sch 10S ✓; ⚠️ bridas LJ F304 sin L; ⚠️ stub-ends Sch 40S; ⚠️ 9 soportes ANCH a reclasificar en CAESAR II |
+| 20.0 | Alimentación limpiadores de arena | PCF119 | **SIM-023 CORRIDA (2026-10-09) y PROCESADA (2026-10-10)**: PASSED 64.7 % @648, caso 2 (Alt-SUS) W+P2, admisible 115142.4 kPa ✓ (0×137895.1). `Graficas/` completa (Desp1, Nodos1-4, Stress1). Informe **DOCS-191** compilado (42 pág., 0 refs indefinidas). .md con layout EXTENDED → `extraer_informe.py` adaptado con fallback. No incluida aún en el dashboard |
+
 
 Cada carpeta 01.0–11.0 tiene `Graficas/` con Desplazamiento/NodosSoporte/StressPercent (tif + png convertidos) + AnexoResultado.png (EN ESPERA). OJO: los tifs de 03.0 (SIM-007) son de la corrida vieja TP304 → re-exportar. SIM-016 (12.0) tiene .C2 sin corrida; 13.0 sin corrida.
 

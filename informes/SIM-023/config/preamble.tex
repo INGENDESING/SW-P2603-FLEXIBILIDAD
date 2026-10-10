@@ -1,0 +1,67 @@
+% ===================== CONFIGURACIÓN DE PÁGINA MEJORADA =====================
+\pdfminorversion=7
+\usepackage[top=3.6cm, bottom=2.5cm, left=2.0cm, right=2.0cm,
+headheight=3.0cm, headsep=0.3cm]{geometry}
+
+% ===================== TIPOGRAFÍA Y CODIFICACIÓN =====================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage{newtxtext,newtxmath}
+\usepackage{microtype}
+
+% ===================== SANGRIA Y ESPACIADO DE PARRAFOS =====================
+\setlength{\parindent}{1.5em}
+\setlength{\parskip}{0pt}
+
+% ===================== CONFIGURACIÓN DE TÍTULOS =====================
+\usepackage{titlesec}
+\titleformat{\section}{\bfseries\fontsize{14}{16}\selectfont}{\thesection}{1em}{}
+\titleformat{\subsection}{\bfseries\fontsize{12}{14}\selectfont}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\bfseries\itshape\fontsize{11}{13}\selectfont}{\thesubsubsection}{1em}{}
+
+% ===================== PAQUETES MATEMÁTICOS =====================
+\usepackage{amsmath,amssymb,amsfonts,mathtools}
+\usepackage{textgreek,gensymb,siunitx}
+
+% ===================== COMANDOS PERSONALIZADOS =====================
+% ===================== QUÍMICA Y SÍMBOLOS =====================
+\usepackage[version=4]{mhchem}
+\usepackage{chemfig,textcomp}
+
+% ===================== TABLAS Y FIGURAS =====================
+\usepackage{booktabs,array,longtable,multirow}
+\usepackage{graphicx,float,subcaption}
+\usepackage{tabularx}
+\usepackage[section]{placeins}
+\AddToHook{cmd/subsection/before}{\FloatBarrier}
+
+% ===================== SOPORTE PARA SVG =====================
+\usepackage{svg}
+
+% ===================== ENLACES E HIPERVÍNCULOS =====================
+\usepackage[hidelinks,colorlinks=true,linkcolor=blue,citecolor=blue]{hyperref}
+\usepackage{url}
+
+% ===================== OTROS PAQUETES =====================
+\usepackage[table]{xcolor}
+% Paquetes eliminados por no uso: enumitem, listings, algorithm, algpseudocode
+\usepackage{tocloft}
+\usepackage{appendix}
+\usepackage{eso-pic}
+\usepackage{lastpage}
+\usepackage{pdflscape}
+
+% (Paquetes de tablas y colores ya cargados arriba — líneas 32-34, 44)
+
+% ===================== AUTO-NUMERACIÓN DE TABLAS =====================
+\newcounter{itemcount}
+\newcolumntype{N}{>{\stepcounter{itemcount}\theitemcount}c}
+
+% ===================== CONFIGURACIÓN DEL ENCABEZADO =====================
+\usepackage{fancyhdr}
+
+% ===================== INFORMACIÓN DEL DOCUMENTO =====================
+\input{config/datos_proyecto.tex}
+
+% \journal definido en main.tex

@@ -1,0 +1,130 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Membrete Configuration Schema",
+  "description": "Schema de validación para el archivo de configuración del generador de membrete PDF",
+  "type": "object",
+  "properties": {
+    "company": {
+      "type": "object",
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "logo_path": {"type": "string"},
+        "address": {"type": "string"},
+        "phone": {"type": "string", "pattern": "^\\+[0-9]+[0-9 ]*$"},
+        "email": {"type": "string", "format": "email"},
+        "nit": {"type": "string"},
+        "website": {"type": "string"}
+      },
+      "required": ["name"],
+      "additionalProperties": false
+    },
+    "document": {
+      "type": "object",
+      "properties": {
+        "code_pattern": {"type": "string"},
+        "default_type": {"type": "string", "enum": ["PR", "PL", "IN", "TE"]},
+        "default_category": {"type": "string", "enum": ["INF", "TEC", "ADM", "FIN"]},
+        "current_year": {"type": "integer", "minimum": 20, "maximum": 99}
+      },
+      "required": ["code_pattern"],
+      "additionalProperties": false
+    },
+    "layout": {
+      "type": "object",
+      "properties": {
+        "page_size": {"type": "string", "enum": ["A4", "Letter", "Legal"]},
+        "header_height": {"type": "number", "minimum": 50, "maximum": 200},
+        "margins": {
+          "type": "object",
+          "properties": {
+            "top": {"type": "number", "minimum": 10, "maximum": 100},
+            "bottom": {"type": "number", "minimum": 10, "maximum": 100},
+            "left": {"type": "number", "minimum": 10, "maximum": 100},
+            "right": {"type": "number", "minimum": 10, "maximum": 100}
+          },
+          "required": ["top", "bottom", "left", "right"],
+          "additionalProperties": false
+        },
+        "logo_width": {"type": "number", "minimum": 20, "maximum": 200},
+        "logo_height": {"type": "number", "minimum": 10, "maximum": 100}
+      },
+      "required": ["page_size", "header_height", "margins"],
+      "additionalProperties": false
+    },
+    "styling": {
+      "type": "object",
+      "properties": {
+        "primary_color": {"type": "string", "pattern": "^#[0-9a-fA-F]{6}$"},
+        "secondary_color": {"type": "string", "pattern": "^#[0-9a-fA-F]{6}$"},
+        "accent_color": {"type": "string", "pattern": "^#[0-9a-fA-F]{6}$"},
+        "text_color": {"type": "string", "pattern": "^#[0-9a-fA-F]{6}$"},
+        "font_family": {"type": "string", "enum": ["Helvetica", "Arial", "Times-Roman"]},
+        "title_size": {"type": "integer", "minimum": 8, "maximum": 24},
+        "subtitle_size": {"type": "integer", "minimum": 6, "maximum": 18},
+        "normal_text_size": {"type": "integer", "minimum": 6, "maximum": 14},
+        "line_width": {"type": "number", "minimum": 0.1, "maximum": 2.0},
+        "border_radius": {"type": "number", "minimum": 0, "maximum": 10}
+      },
+      "required": ["primary_color", "text_color", "font_family"],
+      "additionalProperties": false
+    },
+    "element_positions": {
+      "type": "object",
+      "properties": {
+        "logo": {
+          "type": "object",
+          "properties": {
+            "x": {"type": "number"},
+            "y": {"type": "number"}
+          },
+          "required": ["x", "y"],
+          "additionalProperties": false
+        },
+        "company_info": {
+          "type": "object",
+          "properties": {
+            "x": {"type": "number"},
+            "y": {"type": "number"}
+          },
+          "required": ["x", "y"],
+          "additionalProperties": false
+        },
+        "document_info": {
+          "type": "object",
+          "properties": {
+            "x": {"type": "number"},
+            "y": {"type": "number"}
+          },
+          "required": ["x", "y"],
+          "additionalProperties": false
+        },
+        "contact_info": {
+          "type": "object",
+          "properties": {
+            "x": {"type": "number"},
+            "y": {"type": "number"}
+          },
+          "required": ["x", "y"],
+          "additionalProperties": false
+        }
+      },
+      "required": ["logo", "company_info", "document_info", "contact_info"],
+      "additionalProperties": false
+    },
+    "auto_generation": {
+      "type": "object",
+      "properties": {
+        "watch_latex_files": {"type": "boolean"},
+        "watched_files": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "debounce_delay": {"type": "number", "minimum": 0.1, "maximum": 10.0}
+      },
+      "required": ["watch_latex_files"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["company", "document", "layout", "styling", "element_positions"],
+  "additionalProperties": false
+}

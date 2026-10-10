@@ -644,3 +644,120 @@ Archivos entregables:
 - Desviaciones respecto al plan: (1) la pauta "hardware al final de la sección anterior" resultó ser la duplicación 58× — se reemplazó por emparejamiento determinista de stub-ends (más robusto); (2) se descubrió el MAGNETIC FLOW METER 4" (fix_pcf lo había eliminado por no tener END-POINTs) y se recuperó; (3) dedupe de gaskets/pernos/welds aprobado por el usuario en T2 (no estaba en el plan original como acción segura).
 - Limitaciones / trabajo futuro: TAGs de las 5 butterflies y 3 checks asignados por tamaño en orden de documento — el usuario los confirma en CAESAR II; sockolet 2 y artefacto 1" (0.76, -528.48, 5356.57) quedaron fuera (revisar en Plant 3D/isométrico); 18 soportes por reponer manualmente (lista entregada); validación de importación en CAESAR pendiente (usuario).
 - Archivos entregables: `15.0 DESCARGA BOMBA PP30BT17/PCF120.pcf` (rescatado), `.../PCF120 - ANTES RESCATE.pcf` (respaldo), `.../PCF120 - SOPORTES ELIMINADOS.txt` (lista), `scripts/fix_pcf120_basura.py` (--proponer/--aplicar/--verificar).
+
+
+---
+
+# Plan: Línea 16.0 — PCF-301 (Tubería descarga de bomba PP30RF17 / PP30SC05) para CAESAR II
+
+## Contexto
+- Objetivo: dejar `16.0 .../PCF-301/PCF-301.pcf` importable en CAESAR II 2019, igual que las demás líneas (opción a aprobada por el usuario 2026-10-05).
+- Cliente / Proyecto DML: Smurfit Westrock — P2603 SW-K60.
+- Normas aplicables: ASME B31.3-2016 (análisis posterior en CAESAR, a cargo del usuario).
+
+## Supuestos clave
+- [x] S1. Workflow estándar `scripts/fix_pcf.py` sin cambios (aprobado; flujo idéntico a PCF112–PCF118).
+- [x] S2. Ajustes de modelado (soportes, materiales, TAGs) los hace el usuario en CAESAR y los reporta al equipo de tubería (decisión del usuario).
+
+## Tareas
+- [x] T1. Diagnóstico read-only (scripts scratch): PCF sano — 0 coordenadas centinela, 0 duplicados GASKET/BOLT/WELD, 0 bores nulos, topología cerrada (7 extremos = 7 END-POSITION-NULL); TP304L/WP304L Sch 10S ✓.
+- [x] T2. `fix_pcf.py` aplicado: 7 END-POSITION + 21 pares stub/brida; sin avisos; respaldo `PCF-301 - ORIGINAL PLANT3D.pcf` (verificado inexistente antes de correr).
+- [x] T3. Verificación post-fix y commit `2260e4d` (local, sin push).
+
+## Riesgos / Puntos de verificación
+- [x] Conteos post-fix: LAPJOINT-STUBEND 0, END-POSITION 0, FLANGE 23 (21 fusionadas + 2 SO), PIPE 32, ELBOW 22, TEE 5, REDUCER 2, VALVE 13, SUPPORT 13 (idénticos al original salvo lo transformado); mismos 7 extremos libres.
+- [ ] Importación en CAESAR II 2019 (usuario).
+
+## Revisión (2026-10-05)
+- Resumen: PCF-301 (3047 → 2781 líneas) corregido con el workflow estándar; diagnóstico previo descartó los defectos del PCF120 (centinela, duplicación 58×).
+- Desviaciones: ninguna respecto al workflow estándar; se agregó diagnóstico read-only previo porque `fix_pcf.py` no tiene modo prueba (lección en `boveda/30-Decisiones`).
+- Limitaciones / hallazgos para el usuario: 21 bridas LJ A182 F304 (sin L); tramo spec `SS3` (x≈17791, extremo 6" a z=1.04 m) con bridas SO de grado truncado "ASTM A182 Gr F", empaque Garlock 3700 1/8", check swing 6" + butterfly 6"; soportes 7 ANCH / 5 DUCK / 1 HANG (riesgo de sobre-restricción); condiciones de operación de la clase `150H2A`/fluido "LFI" por confirmar vs bases congeladas; numeración de job **SIM-020 confirmada** (`P2603-PR-SIM-020.C2` creado 2026-10-05 09:20).
+- Archivos entregables: `16.0 TUBERIA DESCARGA DE BOMBA - PP30RF17 (PP30SC05)/PCF-301/PCF-301.pcf` (corregido) y `.../PCF-301 - ORIGINAL PLANT3D.pcf` (respaldo).
+
+---
+
+# Plan: Carpetas 17.0 (PCF-302) y 18.0 (PCF-303) — Corrección PCF para CAESAR II
+
+## Contexto
+- Objetivo: Corregir `PCF-302.pcf` (carpeta 17.0) y `PCF-303.pcf` (carpeta 18.0) exportados desde AutoCAD Plant 3D 2027 mediante `scripts/fix_pcf.py` para importación limpia en CAESAR II 2019, generando sus respaldos `ORIGINAL PLANT3D.pcf`.
+- Cliente / Proyecto DML: Smurfit Westrock — P2603 SW-K60.
+- Normas aplicables: ASME B31.3-2016, ASME B16.5, ASME B16.9, ASME B16.11.
+
+## Supuestos clave
+- [x] S1. PCFs geométricamente sanos (sin coordenadas centinela ni duplicaciones 58x de Plant 3D; verificado por diagnóstico read-only previo).
+- [x] S2. Se aplica el workflow estándar `scripts/fix_pcf.py` (flujo idéntico a PCF112–PCF118 y PCF-301).
+- [x] S3. Ajustes de modelado (reclasificación de soportes ANCH, verificación de bridas F304 vs F304L y niples Sch 40S) los realizará el usuario en CAESAR II.
+
+## Tareas
+- [x] T1. Ejecutar `scripts/fix_pcf.py` en `17.0 TUBERIA DESCARGA DESDE PMTUB6-094-PUB-6/PCF-302.pcf`.
+- [x] T2. Ejecutar `scripts/fix_pcf.py` en `18.0 TUBERIA SUCCION DE BOMBA PP30RF15/PCF-303.pcf`.
+- [x] T3. Verificación post-fix: confirmar 0 `END-POSITION-*`, 0 bridas de longitud cero huérfanas y creación de respaldos `ORIGINAL PLANT3D.pcf`.
+- [x] T4. Registrar estado en la bóveda de memoria y actualizar `contexto.md`.
+
+## Riesgos / Puntos de verificación
+- [x] Respaldos creados correctamente antes de modificar los archivos destino: `PCF-302 - ORIGINAL PLANT3D.pcf` (32172 bytes) y `PCF-303 - ORIGINAL PLANT3D.pcf` (53247 bytes).
+- [x] Conteo de transformaciones: PCF-302 (3 `END-POSITION`, 4 pares stub/brida fusionados); PCF-303 (7 `END-POSITION`, 7 pares stub/brida fusionados, 3 TAP eliminados). 0 bridas huérfanas.
+- [x] Alerta técnica para modelado: en PCF-302 hay 9 soportes con SKEY ANCH y en PCF-303 hay 3 con SKEY ANCH (riesgo de sobre-restricción si no se reclasifican en CAESAR II).
+- [x] Alerta de material: bridas Lap Joint especificadas como A182 Gr F304 (sin L).
+
+## Revisión (2026-10-05)
+- Resumen: Saneamiento exitoso de `PCF-302.pcf` (carpeta 17.0) y `PCF-303.pcf` (carpeta 18.0) para importación en CAESAR II 2019. Respaldos creados intactos.
+- Desviaciones: Ninguna respecto al workflow estándar.
+- Limitaciones / hallazgos para el usuario:
+  - PCF-302 (17.0): 9 soportes ANCH + 1 DUCK (abrazaderas y riser exportados como anclajes); bridas LJ A182 Gr F304 (sin L); niple Sch 40S.
+  - PCF-303 (18.0): 3 soportes ANCH; bridas LJ A182 Gr F304 (sin L); boquilla/spool de 14" en succión de TANK-PP30RF13; ramales en 10", 4" y 2"; niple Sch 40S.
+  - El usuario debe reclasificar los soportes y validar materiales en CAESAR II, asignando las numeraciones SIM correspondientes (ej. SIM-021 y SIM-022 si procede).
+- Archivos entregables:
+  - `17.0 TUBERIA DESCARGA DESDE PMTUB6-094-PUB-6/PCF-302.pcf`
+  - `17.0 TUBERIA DESCARGA DESDE PMTUB6-094-PUB-6/PCF-302 - ORIGINAL PLANT3D.pcf`
+  - `18.0 TUBERIA SUCCION DE BOMBA PP30RF15/PCF-303.pcf`
+  - `18.0 TUBERIA SUCCION DE BOMBA PP30RF15/PCF-303 - ORIGINAL PLANT3D.pcf`
+
+
+
+# Plan: Corrección de archivos PCF en carpetas 19.0, 20.0 y 21.0
+
+## Contexto
+- Objetivo: Aplicar el script de saneamiento `fix_pcf.py` a los archivos `.pcf` exportados de Plant 3D ubicados en las carpetas 19.0, 20.0 y 21.0, para asegurar su correcta importación en CAESAR II 2019.
+- Cliente / Proyecto DML: Smurfit Westrock — P2603 SW-K60
+- Normas aplicables: N/A (fase de preprocesamiento de geometría)
+
+## Supuestos clave
+- [ ] Los archivos a corregir tienen extensión `.pcf` y fueron exportados de AutoCAD Plant 3D. El usuario mencionó "pdf", pero asumimos que es un error tipográfico y se refiere a "pcf".
+- [ ] El procedimiento es el estándar del proyecto (uso de `scripts/fix_pcf.py`).
+
+## Tareas
+- [ ] T1. Ejecutar análisis de solo lectura y respaldar los archivos originales (`UserDefinedLine.pcf`) de las carpetas 19.0, 20.0 y 21.0.
+- [ ] T2. Aplicar `scripts/fix_pcf.py` a cada archivo.
+- [ ] T3. Identificar alertas de modelado (bridas F304 sin 'L', niples Sch 40S, exceso de soportes ANCH, etc.).
+- [ ] T4. Validar que la geometría quede libre de huérfanos para su importación en CAESAR II.
+
+## Riesgos / Puntos de verificación
+- [ ] Que se generen correctamente los respaldos `- ORIGINAL PLANT3D.pcf`.
+- [ ] Validación de la topología (0 avisos de pares sin fusionar).
+
+## Revisión (2026-10-08)
+- **Resumen de cambios**: Se ejecutó `scripts/fix_pcf.py` en los archivos `UserDefinedLine.pcf` de las carpetas 19.0, 20.0 y 21.0. Se crearon los respaldos respectivos. La geometría fue saneada resolviendo terminales y uniones de bridas lap joint con sus stub-ends sin emitir avisos (huérfanos).
+- **Desviaciones**: Ninguna. El procedimiento se ejecutó según lo planificado.
+- **Limitaciones conocidas**: 
+  - Carpeta 19.0: 2 soportes ANCH, 1 Niple Sch 40S, 1 Brida LJ F304 (sin L).
+  - Carpeta 20.0: 8 soportes ANCH, 4 Niples Sch 40S, 3 Bridas LJ F304 (sin L).
+  - Carpeta 21.0: 11 soportes ANCH, 8 Niples Sch 40S, 3 Bridas LJ F304 (sin L).
+  El usuario deberá reclasificar los excesos de anclajes (ANCH) en CAESAR II y validar los cambios de material/cedula en el modelo.
+- **Archivos entregables**:
+  - `19.0 PMTUB6-102-PUB-6-150H2A/UserDefinedLine.pcf`
+  - `19.0 PMTUB6-102-PUB-6-150H2A/UserDefinedLine - ORIGINAL PLANT3D.pcf`
+  - `20.0 PMTUB6-103-PUB-6-150H2A/UserDefinedLine.pcf`
+  - `20.0 PMTUB6-103-PUB-6-150H2A/UserDefinedLine - ORIGINAL PLANT3D.pcf`
+  - `21.0 PMTUB6-120-PUB-6-150H2A/UserDefinedLine.pcf`
+  - `21.0 PMTUB6-120-PUB-6-150H2A/UserDefinedLine - ORIGINAL PLANT3D.pcf`
+
+
+---
+
+## Revisión — Informe SIM-023 / DOCS-191 (2026-10-10)
+
+- Resumen de cambios: pipeline `generadorinf.md` ejecutado solo para la carpeta 20.0 (excepción a la secuencia acordada, instrucción explícita del usuario). 6 tifs→png; `extraer_informe.py` adaptado al layout EXTENDED del .md de SIM-023 y ejecutado; informe clonado de `informes/SIM-015`, redactado (subagente) y compilado como DOCS-191: 42 pág., 0 refs/citas indefinidas, números == .md (64.7 % @648, caso 2 Alt-SUS W+P2), verificación visual OK.
+- Desviaciones respecto al plan: adaptación no prevista de `extraer_informe.py` (el .md usa `STRESSES EXTENDED (LEGACY)` de 13 columnas y `RESTRAINTS EXTENDED`; fallback compatible hacia atrás). Conversión a longtable otra vez manual (esfuerzos 656 filas + 3 restricciones) — sigue en pie la mejora de emitir longtable automático.
+- Limitaciones conocidas: casos 2/4 (Alt-SUS) sin tabla de desplazamientos en el reporte (nota neutral en el informe); fechas de revisión/aprobación pendientes como en los demás informes; SIM-023 aún NO está en el dashboard (parser al final de la secuencia acordada).
+- Entregables: `informes/SIM-023/I24.104-PP30-PP01-P-DOCS-191.pdf` (+ `build/`), assets generados en `informes/SIM-023/assets/`, PNG en `20.0 ALIMENTACION LIMPIADORES DE ARENA/Graficas/`.

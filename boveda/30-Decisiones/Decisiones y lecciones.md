@@ -52,6 +52,20 @@ Registro de por qué se hizo cada cosa y errores ya resueltos. **Consultar antes
 - **PCF: `CENTRE-POINT` de un ELBOW es la intersección de las tangentes**, no el centro del arco (verificado con un ELL 90 SW real). Plant 3D puede dejar `ANGLE` corrupto en bloques basura (9000 en unos ELL 45 → corregir a 4500).
 - Script: `scripts/fix_pcf120_basura.py` (`--proponer`/`--aplicar`/`--verificar`). Reusable si otro PCF llega con el mismo defecto.
 
+### PCF-301 / práctica de diagnóstico previo (2026-10-05)
+
+- **Antes de `fix_pcf.py`, diagnóstico read-only**: `fix_pcf.py` NO tiene modo prueba y escribe el respaldo `... - ORIGINAL PLANT3D.pcf` con `shutil.copyfile` → **re-ejecutarlo sobre un PCF ya corregido sobrescribe el original con la versión corregida**. Verificar siempre que el respaldo no exista antes de correrlo. Chequeos útiles (5 min): coordenadas > 1e6 mm (centinela), duplicados de GASKET/BOLT/WELD, bore 0, extremos sueltos vs END-POSITION-NULL (contar bridas de longitud cero y gaskets como componentes para no generar falsos sueltos), descripciones de material, PIPING-SPEC por componente, SKEY de soportes.
+- **Soportes de Plant 3D**: en PCF-301, 7 de 13 llegan con SKEY `ANCH` (anclaje) — no verificado si es el valor por defecto del catálogo → al importar en CAESAR pueden quedar como anclajes totales y sobre-restringir (resultados EXP irreales). Decisión del usuario: él reclasifica en CAESAR y reporta al equipo de tubería — el agente no modifica soportes en el PCF salvo instrucción.
+- **Bridas LJ A182 F304 (sin L)** en spec `SSS3`: ya van 2 líneas (PCF120, PCF-301) → patrón del catálogo de Plant 3D, no error puntual; reportar a tubería en bloque.
+
+### Alcance de análisis: Carpeta 13.0 — Succión bomba PP30BT17 (2026-10-05)
+
+- **Suspensión / revisión por costo-beneficio**: se suspende el modelado en CAESAR por tratarse de un tramo muy corto cuyo costo analítico es desproporcionado respecto a la criticidad del trazado. Queda registrado como «En revisión / Suspendido» en tabla verdad y pendientes; no se le asigna código SIM por ahora.
+
+### .md CAESAR con layout EXTENDED (2026-10-10, SIM-023)
+- El .md de SIM-023 no trae `B31.3 STRESSES REPORT` ni `RESTRAINTS REPORT` planos: usa `STRESSES EXTENDED (LEGACY) REPORT` (13 columnas: Node, Axial, Bending, Torsion, Hoop, Max Intensity, SIFi, SIFo, Code, Allowable, Ratio, Piping Code, Element) y `RESTRAINTS EXTENDED REPORT` (Node, FX, FY, FZ, Resultante, MX, MY, MZ, Resultante, Type/Tag). Además los títulos llevan paréntesis → el regex de secciones `[A-Z0-9. ]+` no los capturaba (StopIteration al buscar el caso crítico).
+- `extraer_informe.py` adaptado con fallback: regex de títulos acepta `()`; esfuerzos prefieren `B31.3 STRESSES` y caen a EXTENDED con su mapa de columnas (bending=f[2], code=f[8], allow=f[9], ratio=f[10]); restricciones igual (fx..fz=f[1..3], mx..mz=f[5..7]). Compatible hacia atrás: verificado que los .md viejos no traen secciones EXTENDED.
+
 ## Estilo de entregables (de `AGENTS.md`)
 
 - Prohibido viñetas en informes cliente; tablas Elsevier (`toprule/midrule/bottomrule`, sin bordes verticales, leyenda arriba).
